@@ -1,0 +1,1255 @@
+% --- set doc class ---
+\documentclass[11pt,oneside]{book}                  % book class with chapters (oneside to avoid mirrored margins)
+
+% --- Language & Encoding ---
+\usepackage[ngerman]{babel}                         % German hyphenation, captions, date formats
+\usepackage[T1]{fontenc}                            % Proper output encoding (umlauts copy/paste correctly)
+\usepackage[utf8]{inputenc}                         % Input encoding: write umlauts directly in UTF-8
+
+% --- Fonts & Math ---
+\usepackage{lmodern}                                % Load Latin Modern fonts (includes serif, sans-serif, and mono)
+\renewcommand{\familydefault}{\sfdefault}           % Set default font family to Latin Modern Sans Serif
+\usepackage{newtxmath}                              % Times-like math that matches well with LM
+\usepackage{microtype}                              % Subtle typographic improvements (protrusion, expansion)
+\usepackage{siunitx}                                % Consistent numbers & units: \SI{3.0}{m/s}, tables with S
+\sisetup{locale=DE}
+\usepackage{soul}                                      % Text highlighting (e.g., \hl{})
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,bending}
+\usepackage{cancel}
+
+% --- Page Geometry ---
+\usepackage[a4paper,left=20mm,right=20mm,top=28mm,bottom=28mm]{geometry}
+\setlength{\parindent}{0pt}                         % Suppress paragraph indentation globally (no need to write \noindent)
+\setlength{\parskip}{6pt}                           % a bit of space between paragraphs
+
+% --- Graphics & Floats ---
+\usepackage{graphicx}                               % \includegraphics[width=.5\textwidth]{...}
+\usepackage{float}                                  % force floats with [H]
+\usepackage[justification=centering]{caption}       % Centered captions
+\usepackage{subcaption}                             % Subfigures via subfigure environment
+\graphicspath{{images/}}                            % Look for figures under ./images/
+\usepackage{floatflt}                               % show text and figure side by side (also works inside \begin ... \end blocks)
+\usepackage{wrapfig}                                % show text and figure side by side
+
+
+% --- Tables ---
+\usepackage{booktabs}                               % table rules (toprule, midrule, bottomrule)
+\usepackage{tabularx}                               % Tables with automatic column width adjustment
+\usepackage[table]{xcolor}                          % table color support, including row/column shading in tables
+
+% --- Math & Theorems ---
+\usepackage{amsmath}                                % Display math environments, align, cases, etc.
+\let\openbox\relax                                  % Avoid \openbox clash with newtxmath
+\usepackage{amsthm}                                 % Theorem environments + proof environment
+\usepackage{mathtools}                              % Extra math tools (e.g. \coloneqq, paired delimiters)
+\numberwithin{equation}{chapter}                    % Equation numbers like (1.1), (1.2), ...
+
+% ---------- Hyperlinks & Cleveref ----------
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref} % links
+\usepackage[nameinlink,noabbrev]{cleveref}   % Smart cross-refs: \cref{fig:...,thm:...}
+
+% --- Theorem aliases for cleveref ---
+\usepackage{aliascnt}
+
+% Theoremstyle
+\newtheoremstyle{mystyle}
+    {18pt}% Space above
+    {12pt}% Space below
+    {\normalfont}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem head
+    {0.5em}% Space after theorem head
+    {}% Theorem head spec
+
+
+\theoremstyle{mystyle}
+
+% Hauptzähler
+\newtheorem{theorem}{Satz}[chapter]
+\crefname{theorem}{Satz}{Sätze}
+\Crefname{theorem}{Satz}{Sätze}
+
+% came enumeration accross def, lemma, remark..., but different typename for cleverref
+\newaliascnt{lemma}{theorem}
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+\crefname{lemma}{Lemma}{Lemmata}
+\Crefname{lemma}{Lemma}{Lemmata}
+
+\newaliascnt{corollary}{theorem}
+\newtheorem{corollary}[corollary]{Korollar}
+\aliascntresetthe{corollary}
+\crefname{corollary}{Korollar}{Korollare}
+\Crefname{corollary}{Korollar}{Korollare}
+
+\newaliascnt{proposition}{theorem}
+\newtheorem{proposition}[proposition]{Proposition}
+\aliascntresetthe{proposition}
+\crefname{proposition}{Proposition}{Propositionen}
+\Crefname{proposition}{Proposition}{Propositionen}
+
+\newaliascnt{definition}{theorem}
+\newtheorem{definition}[definition]{Definition}
+\aliascntresetthe{definition}
+\crefname{definition}{Definition}{Definitionen}
+\Crefname{definition}{Definition}{Definitionen}
+
+\newaliascnt{satzdefinition}{theorem}
+\newtheorem{satzdefinition}[satzdefinition]{Satz-Definition}
+\aliascntresetthe{satzdefinition}
+\crefname{satzdefinition}{Satz-Definition}{Satz-Definitionen}
+\Crefname{satzdefinition}{Satz-Definition}{Satz-Definitionen}
+
+\newaliascnt{remark}{theorem}
+\newtheorem{remark}[remark]{Bemerkung}
+\aliascntresetthe{remark}
+\crefname{remark}{Bemerkung}{Bemerkungen}
+\Crefname{remark}{Bemerkung}{Bemerkungen}
+
+\newaliascnt{example}{theorem}
+\newtheorem{example}[example]{Beispiel}
+\aliascntresetthe{example}
+\crefname{example}{Beispiel}{Beispiele}
+\Crefname{example}{Beispiel}{Beispiele}
+
+\crefname{figure}{Abbildung}{Abbildungen}
+\Crefname{figure}{Abbildung}{Abbildungen}
+
+% ---------- Custom command to insert a break after a theorem head ----------
+\newcommand{\breakafterhead}{\mbox{}\\[-2em]}
+\newcommand{\bigbreakafterhead}{\mbox{}\\[-1em]}
+
+% ---------- Lists ----------
+\usepackage{enumitem}                        % Customizable lists; set labels for nested enumerate
+\setlist[enumerate,1]{label=\arabic*., labelsep=1em}       % 1., 2., 3., ...
+\setlist[enumerate,2]{label=\alph*), labelsep=1em}         % a), b), c), ...
+\setlist[enumerate,3]{label=\roman*), labelsep=1em}        % i), ii), iii), ...
+
+% Customize all itemize levels
+\setlist[itemize,1]{label=\(\bullet\), labelsep=1em}
+\setlist[itemize,2]{label=\(\circ\), labelsep=1em}
+\setlist[itemize,3]{label=\textbullet, labelsep=1em}
+
+
+% ---------- Headers/Footers ----------
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\nouppercase{\leftmark}}       % Right header: current chapter title
+\fancyfoot[C]{\thepage}                      % Center footer: page number
+\renewcommand{\headrulewidth}{0.4pt}
+
+% --- Custom heading (not in ToC, bold, underlined, with spacing) ---
+\newcommand{\heading}[1]{%
+  \vspace{1em}% space before
+  \noindent\textbf{\underline{#1}}%
+}
+
+\newcommand{\headingnospace}[1]{%
+  \noindent\textbf{\underline{#1}}%
+}
+
+
+
+% --- Title Data ---
+\title{Einführung in die Allgemeine Relativitätstheorie}
+\author{Ciel Frey}
+\date{\today}
+
+% ===================== Document =====================
+\begin{document}
+
+% --- Front matter (roman page numbers) ---
+\frontmatter
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    {\usefont{T1}{ptm}{b}{sc}\Huge Einführung in die Allgemeine Relativitätstheorie\par}
+    \vspace{0.5cm}
+    \rule{\textwidth}{0.4pt}\par
+    \vspace{0.5cm}
+    {\LARGE\ VO 136.026, Priv. Doz. Dr. Herbert Balasin, WS 2025/26\par}
+    \vspace{0.5cm}
+    {\Large\itshape Mitschrift von Ciel Frey\par}
+    \vfill
+    \includegraphics[width=0.7\textwidth]{spacetime_curve.png}\par
+    \vfill
+    {\large \today\par}
+\end{titlepage}
+
+\tableofcontents
+
+\chapter*{Vorwort}
+Diese Mitschrift ergänzt die bereits vorhandenen Mitschriften von Robert Berndl-Forstner (WS20/21) und Florian Lindenbauer (WS18/19), die hier zu finden sind: \newline
+\url{https://forum.fstph.at/t/einf-i-d-allgemeine-relativitaetstheorie-mitschrift-ws2018/3734} \newline
+\url{https://forum.fstph.at/t/latex-skriptum-allg-relativitaetstheorie/4021} \par
+
+Zuerst gibt es eine kurze Einführung, wie es zur speziellen und allgemeinen Relativitätstheorie (kurz SRT und ART) kam. Anschließend wird SRT mit Raumzeit-Diagrammen und dem Minkowski-Raum beschrieben. In den darauffolgenden Kapiteln werden die mathematischen Tools vorgestellt, die für das Verständnis von ART benötigt werden. Zum Schluss folgt die Einsteingleichung. Einen tieferen Einblick in ART gewährt die im Sommersemester anschließende VO 136.002 Geometrie und Gravitation I. \par
+
+An einigen Stellen habe ich zusätzliche Passagen eingefügt, die zwar nicht Teil der Vorlesung waren, mir aber beim Verständnis geholfen haben. Diese sind entsprechend mit \textit{„nicht Teil der VO“} markiert.
+
+Das Bild des Titelblatts stellt die Raumzeitkrümmung in 3D dar. \newline
+{\footnotesize Quelle: \url{https://sketchfab.com/3d-models/gravity-warping-space-time-749a8acac04049a89dc8d02054a02ee8}}
+
+% --- Main matter (arabic page numbers) ---
+\mainmatter
+
+\chapter{Einführung}\label{chap:Einführung}
+
+entfernt um es für den prompt zu kürzen
+
+\chapter{Multilineare Algebra}
+Um die allgemeine Relativitätstheorie mathematisch präzise formulieren zu können, benötigen wir Werkzeuge aus der sogenannten multilinearen Algebra. Dieses Kapitel führt die wichtigsten Begriffe ein, auf denen später die Tensorrechnung aufbaut.
+
+\section{Vektorräume}
+
+\begin{definition}
+Ein \textbf{Körper} ist ein Tupel $(\Gamma, +, \cdot)$, bestehend aus einer Menge $\Gamma$ und zwei inneren zweistelligen Verknüpfungen $+$ und $\cdot$ (Addition und Multiplikation):
+
+\begin{equation*}
+\begin{aligned}
++ &:\Gamma\times\Gamma\to\Gamma,\quad (a,b)\mapsto a+b \\
+\cdot &:\Gamma\times\Gamma\to\Gamma,\quad (a,b)\mapsto a\cdot b 
+\end{aligned}
+\end{equation*}
+
+Für die Verknüpfungen gleiten die folgenden Axiome:
+
+\textbf{1. Additive Eigenschaften}
+\vspace{-1em}
+
+\begin{enumerate}
+    \item[(1.1)] $\forall a,b,c \in \Gamma: \; a + (b + c) = (a + b) + c$ \hfill (Assoziativgesetz)
+    \item[(1.2)] $\forall a,b \in \Gamma: \; a + b = b + a$ \hfill (Kommutativgesetz)
+    \item[(1.3)] $\exists 0 \in \Gamma\; \forall a \in \Gamma: \; 0 + a = a$ \hfill (neutrales Element bzgl. +)
+    \item[(1.4)] $\forall a \in \Gamma\; \exists -a \in \Gamma: \; (-a) + a = 0$ \hfill (additives Inverses)
+\end{enumerate}
+
+Damit ist $(\Gamma, +)$ eine \textit{kommutative/abelsche Gruppe}.
+\vspace{1em}
+
+\textbf{2. Multiplikative Eigenschaften}
+\vspace{-1em}
+
+\begin{enumerate}
+    \item[(2.1)] $\forall a,b,c \in \Gamma: \; a \cdot (b \cdot c) = (a \cdot b) \cdot c$ \hfill (Assoziativgesetz)
+    \item[(2.2)] $\forall a,b \in \Gamma: \; a \cdot b = b \cdot a$ \hfill (Kommutativgesetz)
+    \item[(2.3)] $\exists 1 \in \Gamma\; \forall a \in \Gamma: \; 1 \cdot a = a$ \hfill (neutrales Element bzgl. $\cdot$)
+    \item[(2.4)] $\forall a \in \Gamma\setminus\{0\}\; \exists a^{-1} \in \Gamma: \; a^{-1}\cdot a = 1$ \hfill (multiplikatives Inverses)
+\end{enumerate}
+
+Damit ist $(\Gamma\setminus\{0\}, \cdot)$ ebenfalls eine kommutative/abelsche Gruppe.
+\vspace{1em}
+
+\textbf{3. Zusammenspiel von Addition und Multiplikation}
+\vspace{-1em}
+
+\begin{enumerate}
+    \item[(3.1)] $\forall a,b,c \in \Gamma: \; a\cdot(b + c) = a\cdot b + a\cdot c$ \hfill (Linksdistributivgesetz)
+    \item[(3.2)] $\forall a,b,c \in \Gamma: \; (b + c)\cdot a = b\cdot a + c\cdot a$ \hfill (Rechtsdistributivgesetz)
+\end{enumerate}
+
+Beispiele: $(\mathbb{R}, +, \cdot), \ (\mathbb{C}, +, \cdot)$
+
+\end{definition}
+
+\begin{definition}\label{def:Vektorraum}
+Ein \textbf{Vektorraum} über einem Körper $(\Gamma, +, \cdot)$, kurz $\Gamma$, ist ein Tupel $(V, \oplus, \odot)$, bestehend aus einer Menge $V$, einer inneren zweistelligen Verknüpfung $\oplus$ (Vektoraddition) und einer äußeren zweistelligen Verknüpfung $\odot$ (Skalarmultiplikation).
+
+\begin{equation*}
+\begin{aligned}
+\oplus &: V\times V \to V,\quad (u,w)\mapsto u\oplus w \\
+\odot &: \Gamma\times V \to V,\quad (\lambda,u)\mapsto \lambda\odot u
+\end{aligned}
+\end{equation*}
+
+Für die Verknüpfungen gleiten die folgenden Axiome:
+
+\textbf{1. Vektoraddition}
+\vspace{-1em}
+
+\begin{enumerate}
+    \item[(1.1)] $\forall u,v,w\in V:\; u\oplus(v\oplus w)=(u\oplus v)\oplus w$ \hfill (Assoziativgesetz)
+    \item[(1.2)] $\forall v,w\in V:\; v\oplus w = w\oplus v$ \hfill (Kommutativgesetz)
+    \item[(1.3)] $\exists 0\in V\;\forall v\in V:\; 0\oplus v=v$ \hfill (neutrales Element bzgl. + (Nullvektor))
+    \item[(1.4)] $\forall v\in V\;\exists (-v)\in V:\; (-v)\oplus v = 0$ \hfill (additives Inverses)
+\end{enumerate}
+Damit bildet $(V,\oplus)$ eine kommutative/abelsche Gruppe.
+\vspace{1em}
+
+\textbf{2. Skalarmultiplikation}
+\vspace{-1em}
+
+\begin{enumerate}
+    \item[(2.1)] $\forall v\in V,\;\lambda,\mu\in\Gamma:\; (\lambda\mu)\odot v = \lambda\odot(\mu\odot v)$ \hfill (Assoziativgesetz)
+    \item[(2.2)] $\exists 1\in\Gamma\;\forall v\in V:\; 1\odot v = v$ \hfill (neutrales Element bzgl. $\cdot$ (Skalar))
+    \item[(2.3)] $\forall u,v\in V,\;\lambda\in\Gamma:\; \lambda\odot(u\oplus v)=(\lambda\odot u)\oplus(\lambda\odot v)$ \hfill (Linksdistributivgesetz)
+    \item[(2.4)] $\forall v\in V,\;\lambda,\mu\in\Gamma:\; (\lambda+\mu)\odot v = (\lambda\odot v)\oplus(\mu\odot v)$ \hfill (Rechtsdistributivgesetz)
+\end{enumerate}
+
+Beispiele: $(\mathbb{R}^n, +, \cdot)\ \text{über dem Körper } \mathbb{R}, \ (\mathbb{C}^n, +, \cdot)\ \text{über dem Körper } \mathbb{C}, \ n\in\mathbb{N}$
+
+\end{definition}
+
+
+\begin{remark}
+    Wir verwenden ab jetzt für Körperaddition \& Vektoraddition $+$ und Körpermultiplikation \& Skalarmultiplikation $\cdot$, um die Notation zu vereinfachen. 
+\end{remark}
+
+Es folgt bereits und muss somit nicht extra gefordert werden:
+\vspace{-1em}
+
+
+\begin{corollary}\label{cor:zerovec}
+    \begin{equation*}
+        \exists \ 0 \in \Gamma, \ \forall v\in V: \ 0\cdot v = 0 \in V 
+    \end{equation*}
+\end{corollary}
+
+\begin{proof}
+\begin{equation*}
+\begin{aligned}
+    & 0 \cdot v 
+    \overset{\substack{\text{neutr. El.} \\ \text{bzgl. }+}}{=} (0+0)\cdot v 
+    \overset{\substack{\text{Rechts-} \\ \text{distr.ges.}}}{=} 0 \cdot v + 0 \cdot v \qquad | -0 \cdot v \text{ (additives Inverses)}\\
+    & \Rightarrow 0 = 0 \cdot v
+\end{aligned}
+\end{equation*}
+\end{proof}
+
+\section{Linearkombination und lineare Unabhängigkeit}
+\begin{definition}
+Sei $(V,\Gamma)$ ein Vektorraum und $(v_\alpha)_{\alpha\in I}\subseteq V$ ein Teilsystem von Vektoren (auch Familie oder Teilmenge von Vektoren genannt). Die Indexmenge ist beliebig und kann sogar überabzählbar unendlich sein. Ein Vektor $v\in V$ heißt \textbf{Linearkombination} dieses Teilsystems, wenn es Skalare $\lambda^\alpha\in\Gamma$ gibt mit
+
+\begin{equation*}
+v = \sum_{\alpha\in I}\lambda^\alpha v_\alpha
+\qquad
+\lambda^\alpha\ne 0 \text{ für endlich viele } \alpha
+\end{equation*}
+
+Auch hier verwendet der Physiker gerne die Einsteinsche Summenkonvention: $\sum_{\alpha\in I}\lambda^\alpha v_\alpha \equiv \lambda^\alpha v_\alpha$
+
+\begin{remark}
+    Bei der Forderung, dass nur endlich viele $\lambda^\alpha \ne 0$ sein dürfen, geht \cref{cor:zerovec} ein und sie ist notwendig, da rein algebraisch definierte Vektorräume (\cref{def:Vektorraum}) keinen Abstandsbegriff in Form einer Topologie oder Metrik besitzen. Somit existiert kein Konvergenzbegriff für unendliche Summen und Linearkombinationen müssen endlich sein. Man beachte, dass es für jeden Vektorraum mind. eine Topologie gibt, mit diesem er ein topologischer Vektorraum wird, wir hier jedoch ausschließlich die algebraische Definition betrachten. Siehe \hl{später}
+\end{remark}
+
+\end{definition}
+
+\begin{definition}
+Sei $(V,\Gamma)$ ein Vektorraum und $(v_\alpha)_{\alpha\in I}\subseteq V$ ein Teilsystem von Vektoren, wobei $I$ beliebige Indexmenge. Seien $\lambda^\alpha \in \Gamma$.
+\begin{itemize}
+    \item $(v_\alpha)_{\alpha\in I}$ heißt \textbf{linear unabhängig} (kurz l.u.) genau dann wenn
+    \begin{equation}\label{eq:lu}
+        \lambda^\alpha v_\alpha = 0 \quad \Leftrightarrow \quad \forall\alpha\in I: \ \lambda^\alpha = 0
+    \end{equation}
+
+    Das heißt: der Nullvektor lässt sich nur mit einer Linearkombination von Vektoren aus $(v_\alpha)_{\alpha\in I}$ darstellen, in der \textit{alle} Koeffizienten $\lambda^\alpha = 0$. Da alle Vektoren unterschiedlich sind, können sie nicht voneinander abgezogen werden sodass $0$ rauskommt. Die Vektoren zeigen in verschiedene Richtungen.
+    
+    Bemerkung: die Rückrichtung von \eqref{eq:lu} gilt klarerweise immer.
+\end{itemize}
+
+Sind diese Bedingungen nicht erfüllt, heißt das Teilsystem linear abhängig: 
+
+\begin{itemize}
+    \item $(v_\alpha)_{\alpha\in I}$ heißt \textbf{linear abhängig} (kurz l.a.) genau dann wenn
+    \begin{equation*}
+        \exists \ \text{endlich viele } \alpha \in I \text{ mit } \lambda^\alpha \ne 0: \ \lambda^\alpha v_\alpha = 0
+    \end{equation*}
+
+    Das heißt: der Nullvektor lässt sich auch mit einer Linearkombination von Vektoren aus $(v_\alpha)_{\alpha\in I}$ darstellen, in der \textit{nicht alle} Koeffizienten $\lambda^\alpha = 0$. 
+\end{itemize}
+
+
+\begin{itemize}
+    \item Eine äquivalente Definition für linear abhängig ist:
+    \begin{equation*}
+        \exists \beta \in I: v_\beta = \sum_{\alpha \in I \backslash \{\beta\}} \lambda^\alpha v_\alpha
+    \end{equation*}
+
+Das heißt: mind. ein Vektor des Teilsystems kann durch eine Linearkombination der anderen Vektoren des Teilsystems dargestellt werden. Die Vektoren zeigen in dieselbe oder in die entgegengesetzte Richtung.
+
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+    Vektorräume $(v_\alpha)_{\alpha\in I}\subseteq V$ sind per Definition linear abhängig: zu jedem Vektor $v_\beta \in V$ ist das additive Inverse $-v_\beta$ ebenso enthalten. Dann kann beispielsweise die Linearkombination gewählt werden $1 \cdot v_\beta + 1 \cdot (-v_\beta ) + \sum_{\alpha \in I \backslash \{\beta\}} 0\cdot v_\alpha =0$.
+\end{remark}
+
+\begin{corollary}\label{cor:eindeutig}
+Sei $(v_\alpha)_{\alpha\in I}\subseteq V$ linear unabhängig. Wenn ein Vektor $v \in V$ durch diese mit einer Linearkombination ($v= \lambda^\alpha v_\alpha$), dann ist die Darstellung eindeutig (d.h. $(\lambda^\alpha)_{\alpha\in I}$ eindeutig).
+\end{corollary}
+
+\begin{proof}
+Annahme: es gibt zwei verschiedene Mengen von Koeffizienten $(\lambda^\alpha)_{\alpha\in I}$ und $(\mu^\alpha)_{\alpha\in I}$ durch die $v \in V$ ebenso darstellbar ist: $v= \lambda^\alpha v_\alpha = \mu^\alpha v_\alpha$.
+
+Dann ist
+\begin{equation*}
+\begin{aligned}
+0 & = v - v = \lambda^\alpha v_\alpha - \mu^\alpha v_\alpha \overset{\text{Distr.ges.}}{=} (\lambda^\alpha-\mu^\alpha)v_\alpha \\
+& \overset{v_\alpha \text{ l.u.}}{\Rightarrow} \lambda ^\alpha - \mu ^\alpha = 0 \ \Rightarrow \ \lambda^\alpha = \mu^\alpha, \ \forall \alpha \in I
+\end{aligned}
+\end{equation*}
+\end{proof}
+
+\section{Basis eines Vektorraums}
+
+Wir können Vektoren also eindeutig durch eine Linearkombination aus linear unabhängigen Vektoren darstellen. Beispielsweise können mit zwei linear unabhängigen Vektoren alle anderen, die in derselben Ebene liegen, aufgespannt werden, aber keine, die aus der Ebene herauszeigen. Also stellt sich die Frage: Welche kleinste Menge von Vektoren reicht aus, um alle anderen im Raum zu erzeugen? Dies führt uns zu dem Begriff der Basis.
+
+\begin{definition}
+Sei $(V,\Gamma)$ ein Vektorraum und $U := (v_\alpha)_{\alpha\in I}\subseteq V$ ein Teilsystem von Vektoren, wobei $I$ beliebige Indexmenge. Seien $\lambda^\alpha \in \Gamma$. \newline
+
+Dann heißt
+\begin{equation*}
+\mathrm{span}(U) := 
+\left\{\lambda^\alpha v_\alpha \ \middle| \  \lambda^\alpha \in \Gamma, \; v_\alpha \in U \right\}
+\end{equation*}
+die \textbf{lineare Hülle} von $U$. Andere Schreibweisen sind: $[U], \ \langle U \rangle$
+
+
+$\mathrm{span}(U)$ ist die Menge aller Linearkombinationen der Vektoren $v_\alpha$. Sie ist der kleinste lineare Teilraum, der U enthält (also $U \subseteq \mathrm{span}(U)$). Wenn U ein linearer Teilraum ist, dann gilt: $U = \mathrm{span}(U)$.
+
+$U$ heißt \textbf{Erzeugendensystem} von $V$, wenn gilt:
+\begin{equation*}
+\mathrm{span}(U) = V
+\end{equation*}
+
+Das bedeutet: $U$ \textit{spannt den gesamten Raum $V$ auf}. Jeder Vektor $v \in V$ lässt sich als Linearkombination von Vektoren aus $U$ darstellen.
+
+\end{definition}
+
+\begin{definition}
+Sei $(V,\Gamma)$ ein Vektorraum und $B \subseteq V$ ein Teilsystem von Vektoren.
+
+$\mathcal{B}$ heißt \textbf{Basis} des Vektorraums $V$ wenn $\mathcal{B}$ ein linear unabhängiges Erzeugendensystem von $V$ ist. \newline
+Das bedeutet: Jeder Vektor in $V$ lässt sich als Linearkombination von Vektoren aus $B$ darstellen und die Vektoren von $B$ sind linear unabhängig.
+\end{definition}
+
+\begin{remark}
+Basen eines Vektorraums sind nicht eindeutig.
+\end{remark}
+
+\begin{example} \label{ex:basis} \breakafterhead
+\begin{itemize}
+    \item Im Vektorraum $\mathbb{R}^2$ ist
+    \begin{equation*}
+    \mathcal{B} = \{ (1,0), (0,1) \}
+    \end{equation*}
+    eine Basis (es gibt auch andere).  
+    Diese Basis wird \textit{Standardbasis} oder \textit{kanonische Basis} genannt.
+
+    \item $\mathbb{C}$ als Vektorraum über $\mathbb{R}$:  
+    \begin{equation*}
+    \mathcal{B} = \{ 1, i \}
+    \end{equation*}
+
+    \item $\mathbb{C}$ als Vektorraum über $\mathbb{C}$:  
+    \begin{equation*}
+    \mathcal{B} = \{ 1 \} \quad \text{oder auch} \quad \mathcal{B} = \{ i \}
+    \end{equation*}
+
+    \item $\mathbb{C}^2$ als Vektorraum über $\mathbb{C}$:
+    \begin{equation*}
+    \mathcal{B} = \{ (1,0), (0,i) \}
+    \quad \text{oder auch} \quad
+    \mathcal{B} = \{ (i,0), (0,-i) \}
+    \end{equation*}
+\end{itemize}
+\end{example}
+
+Nun stellt sich die Frage: Hat jeder Vektorraum eine Basis? Um das zu beantworten, benötigen wir erst mal weitere Definitionen.
+
+\begin{definition}
+Eine Relation $\leq \subseteq M^2$ auf einer Menge $M$ heißt \textbf{Totale Ordnung} oder \textbf{lineare Ordnung} $(M, \leq)$, wenn für alle $x,y,z \in M$ gilt:
+\begin{enumerate}
+    \item $x \leq x$ \hfill (Reflexivität)
+    \item $x \leq y \;\wedge\; y \leq x \;\Rightarrow\; x = y$ \hfill (Antisymmetrie)
+    \item $x \leq y \;\wedge\; y \leq z \;\Rightarrow\; x \leq z$ \hfill (Transitivität)
+    \item $x \leq y \;\vee\; y \leq x$ \hfill (Totalität / Linearität)
+\end{enumerate}
+Die Bedingung 4. bedeutet, dass alle Elemente der Menge $M$ paarweise vergleichbar sind.
+\end{definition}
+
+\begin{definition}
+Eine Relation $\leq \subseteq M^2$ auf einer Menge $M$ heißt \textbf{Halbordnung} oder \textbf{partielle Ordnung} $(M, \leq)$, wenn für alle $x,y,z \in M$ obige Bedingungen 1., 2. und 3. erfüllt sind. Es fehlt also die Vergleichbarkeit aller Elemente aus $M$ bzgl. $\leq$.
+\end{definition}
+
+\begin{example}[Totalordnung] \breakafterhead
+\begin{itemize} 
+    \item Die Mengen $(\mathbb{N}, \leq)$, $(\mathbb{Z}, \leq)$, $(\mathbb{Q}, \leq)$ und $(\mathbb{R}, \leq)$ sind totalgeordnet.  
+    Auch die leere Menge $(\varnothing, \prec)$ ist mit der leeren Ordnung totalgeordnet (trivialerweise, da es keine Elemente gibt, die nicht vergleichbar wären).
+    \item Ein weiteres Beispiel ist $(\mathbb{C}, \leq_{\mathrm{lex}})$, wenn man $\mathbb{C}$ als $\mathbb{R} \times \mathbb{R}$ auffasst und die \textit{lexikographische Ordnung} verwendet:
+    \begin{equation*}
+    (a,b) \leq_{\mathrm{lex}} (c,d) \quad :\Leftrightarrow \quad (a < c) \;\text{ oder }\; (a = c \wedge b \leq d).
+    \end{equation*}
+\end{itemize}
+\end{example}
+
+
+\begin{example}[Halbordnung, aber keine Totalordnung] \breakafterhead
+\begin{itemize}
+    \item Betrachte die Potenzmenge
+    \begin{equation*}
+    \mathcal{P}(\{1,2,3\}) = \{ \varnothing, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\} \}
+    \end{equation*}
+    mit der Inklusionsrelation $\subseteq$.  
+    Dann ist $(\mathcal{P}(\{1,2,3\}), \subseteq)$ eine Halbordnung, aber keine Totalordnung, da z.\,B.
+    \begin{equation*}
+    \{1\} \not\subseteq \{2\} \quad \text{und} \quad \{2\} \not\subseteq \{1\}.
+    \end{equation*}
+    Diese beiden Mengen sind also \textit{nicht vergleichbar}.
+    
+    \item Betrachte $(\mathbb{C}, \leq)$, wobei $\mathbb{C}$ als Menge aufgefasst wird.  
+    Dann gilt:
+    \begin{equation*}
+    1 + 0 \cdot i = 1 \leq 2 = 2 + i \cdot 0, \qquad 0 + 1 \cdot i = i \leq 2 \cdot i = 0 + 2 \cdot i 
+    \end{equation*}
+    aber
+    \begin{equation*}
+    1 + 0 \cdot i = 1 \not\leq i = 0 + 1 \cdot i
+    \end{equation*}
+    Daher sind die komplexen Zahlen im Allgemeinen \textit{nicht vergleichbar} und bilden somit keine Totalordnung.
+\end{itemize}        
+\end{example}
+
+
+\begin{definition}
+Sei $(M, \leq)$ eine halbgeordnete Menge und $T \subseteq M$ eine Teilmenge.  
+Ein Element $s \in M$ heißt \textbf{obere Schranke} von $T$, wenn gilt:
+\begin{equation*}
+\forall t \in T: \; t \leq s
+\end{equation*}
+Das bedeutet: $s$ ist größer oder gleich jedem Element aus $T$ (bezüglich der Ordnung $\leq$).
+\end{definition}
+
+\begin{definition}
+Ein Element $m \in M$ einer halbgeordneten Menge $(M, \leq)$ heißt \textbf{maximal in M}, wenn gilt:
+\begin{equation*}
+\forall x \in M: \; m \leq x \;\Rightarrow\; x = m
+\end{equation*}
+Das heißt: es gibt kein Element $x \in M$, das echt größer als $m$ ist. Es kann mehrere Maximale Elemente in M geben. Diese sind nicht vergleichbar, da sonst eines größer wäre als das andere.
+\end{definition}
+
+
+\begin{definition}
+Sei $(M, \leq)$ eine halbgeordnete Menge.  
+Eine Teilmenge $T \subseteq M$ heißt \textbf{Kette}, wenn sie totalgeordnet ist. \newline
+Eine Kette ist also eine totalgeordnete Teilmenge einer halbgeordneten Menge. Die Bezeichnung Kette rührt daher, dass die Elemente davon nacheinander aufgereiht werden können: $t_1 \leq t_2 \leq \dots \leq t_n$ - also eine \textit{Kette} bilden.
+\end{definition}
+
+Das Lemma von Zorn ist ein fundamentales Hilfsmittel in der linearen Algebra und der Mengenlehre. Es sichert die Existenz maximaler Elemente in bestimmten halbgeordneten Mengen. 
+
+\begin{theorem}[Lemma von Zorn] \bigbreakafterhead
+
+\underline{Voraussetzungen:} 
+\begin{itemize}
+    \item $(A, \leq)$ halbgeordnete Menge 
+    \item Jede Kette von $A$ besitzt eine obere Schranke, die in $A$ liegt (muss nicht in der Kette liegen).
+\end{itemize}
+
+\underline{Behauptung:}
+Dann hat $A$ maximale Elemente bzgl. "$\leq$".
+\end{theorem}
+
+Wir verwenden nun das Lemma von Zorn zu zeigen, dass jeder Vektorraum maximal linear unabhängige Teilsysteme besitzt und zeigen anschließend mit \cref{thm:erzeugen}, dass ein maximal linear unabhängiges Teilsystem eine Basis ist. Insgesamt also, dass jeder Vektorraum eine Basis besitzt.
+
+\begin{theorem}\label{thm:maximal}
+    Jeder Vektorraum besitzt maximal linear unabhängige Teilsysteme.
+\end{theorem}
+
+\begin{proof}
+Sei $(V,\Gamma)$ ein Vektorraum. Wir betrachten die Menge $\mathcal{L}$ aller Teilmengen von $V$, die linear unabhängig sind:
+\begin{equation*}
+\mathcal{L} = \{ L \subseteq V \mid L \text{ ist linear unabhängig} \}.
+\end{equation*}
+
+Auf $\mathcal{L}$ definieren wir eine Ordnungsrelation durch Inklusion:
+\begin{equation*}
+\forall L_1,L_2 \in \mathcal{L}: \ L_1 \leq L_2 \;:\Leftrightarrow\; L_1 \subseteq L_2
+\end{equation*}
+
+$(\mathcal{L}, \leq)$ ist eine halbgeordnete Menge, da die Inklusion reflexiv, antisymmetrisch und transitiv ist. \newline 
+
+\begin{minipage}[t]{0.72\textwidth}
+Um das Lemma von Zorn anwenden zu können, muss also noch gezeigt werden, dass jede Kette von $\mathcal{L}$ eine obere Schranke besitzt, die in $\mathcal{L}$ liegt.
+
+Sei $\mathcal{K} = (L_\alpha)_{\alpha \in I} \subseteq \mathcal{L}$ eine Kette. (Also $L_1 \subseteq L_2 \subseteq L_3 \subseteq \dots$). $\mathcal{K}$ ist eine Menge von Mengen. Dessen obere Schranke ist die Vereinigung:
+\begin{equation*}
+L^* = \bigcup_{\alpha \in I} L_\alpha
+\end{equation*}
+
+\end{minipage}\hfill
+\begin{minipage}[t]{0.25\textwidth}
+\centering
+\vspace{-3em}
+\includegraphics[width=\textwidth]{Kette.jpg}\\[0.3em]
+\small Die Kette $\mathcal{K}$
+\end{minipage}
+
+Also muss noch gezeigt werden, dass $L^* \in \mathcal{L}$. Das heißt, es muss gezeigt werden, dass $L^*$ linear unabhängig ist.
+
+Sei $L^* = (v_\beta)_{\beta \in J }$. Für lineare Unabhängigkeit muss gezeigt werden: \newline
+$\lambda^\beta v_\beta = 0 \ \Rightarrow \ \forall\beta\in J: \ \lambda^\beta = 0 $
+
+Sei also $\lambda^\beta v_\beta = 0$, wobei nach der Definition der Linearkombination nur endlich viele $\lambda^\beta \neq 0$ sein können. Seien diese die $\lambda^{\beta_1}, \ \lambda^{\beta_2}, \dots, \ \lambda^{\beta_n}$. Betrachte die zugehörigen $v_{\beta_i}$. 
+
+\textbf{Fall 1:} Alle $v_{\beta_i}, \ i= 1, ..., n$ liegen in einem $L_{\alpha}$. Da $L_\alpha \in \mathcal{L}$ und $\mathcal{L}$ aus linear unabhängigen Mengen besteht, ist also $v_{\beta_i}, \ i= 1, ..., n$ linear unabhängig und somit $\lambda^{\beta_i} = 0 \ \text{für } i=1, ..., n$. Also $L^*=(v_\beta)_{\beta \in J }$ linear unabhängig.
+
+\textbf{Fall 2:} Alle $v_{\beta_i}, \ i= 1, ..., n$ liegen in unterschiedlichen $L_{\alpha_i}$. \newline
+Da $(L_\alpha)_{\alpha\in I}$ eine Kette ist, sind die $L_{\alpha_i}$ paarweise durch Inklusion vergleichbar. Für $v_{\beta_1} \in L_{\alpha_1}$ und $v_{\beta_2} \in L_{\alpha_2}$ gilt also: \newline
+entweder $L_{\alpha_1} \subseteq L_{\alpha_2}$ und somit $v_{\beta_1}, v_{\beta_2} \in L_{\alpha_2}$ \newline
+oder $L_{\alpha_2} \subseteq L_{\alpha_1}$ und somit $v_{\beta_1}, v_{\beta_2} \in L_{\alpha_1}$.
+
+Also existiert ein Index, ab dem alle drin liegen:
+\begin{equation*}
+\exists \ \alpha_N\in I \ \text{mit} \ v_{\beta_1},\dots,v_{\beta_n}\in L_{\alpha_N}
+\end{equation*}
+
+Wie in Fall 1 folgt nun, dass $L^*=(v_\beta)_{\beta \in J }$ linear unabhängig ist.
+
+Nun kann das Lemma von Zorn angewandt werden: $\mathcal{L}$ hat maximale Elemente bzgl. "$\leq$". 
+
+Da $\mathcal{L}$ aus linear unabhängigen Teilsystemen besteht, gibt es also maximal linear unabhängige Teilsysteme $M\subseteq V$.
+\end{proof}
+
+\begin{remark}
+Neben der bereits genannten Definition für \textit{Maximalität}, ist die folgende etwas intuitiver: eine l.u. Menge von Vektoren heißt \textit{maximal}, wenn durch Hinzufügen eines weiteren Vektors die Menge linear abhängig wird.
+\end{remark}
+
+\begin{theorem}\label{thm:erzeugen}
+Sei $M=(v_\alpha)_{\alpha \in I}$ eine maximale linear unabhängige Teilmenge des Vektorraums $V$.  
+Dann lässt sich jeder Vektor $v \in V$ eindeutig als Linearkombination der Basisvektoren darstellen:
+\begin{equation*}
+v = \lambda^\alpha v_\alpha
+\end{equation*}
+
+Das heißt: $M$ ist ein linear unabhängiges Erzeugendensystem von $V$ und somit eine Basis.
+\end{theorem}
+
+\begin{proof}
+Dazu unterscheiden wir zwei Fälle.
+
+\textbf{Fall 1:} $v \in M$.  
+Da $M$ per Definition linear unabhängig ist, ist $v$ nur über nur einen einzigen Vektor aus dem System $(v_\alpha)_{\alpha \in I}$ darstellbar: sich selbst.  
+\begin{equation*}
+v = v_{\alpha_0} = \lambda^{\alpha_0} v_{\alpha_0} + \lambda^{\alpha_i} v_{\alpha_i},
+\end{equation*}
+wobei $\lambda^{\alpha_0} = 1$ und alle übrigen $\lambda^{\alpha_i} = 0$ sind.  
+Damit ist $v$ also eindeutig als Linearkombination der Basisvektoren dargestellt.
+
+\textbf{Fall 2:} $v \notin M$.  
+Dann ist die Menge $\{v\} \cup M$ größer als $M$.  
+Da sich $M$ aber ein maximal linear unabhängiges Teilsystem von $V$ ist, ist jede Vereinigung von $M$ mit weiteren Elementen aus $V$ nicht mehr linear unabhängig.  
+Das bedeutet, dass eine nichttriviale Darstellung der Null existiert, die sowohl $v$ als auch Elemente aus $v_\alpha \in M$ enthält.  
+Also gilt:
+\begin{equation}\label{eq:linabh}
+\exists \ (\lambda^{\alpha})_{\alpha \in I} \neq (0)_{\alpha \in I} : \ \lambda v + \lambda^{\alpha} v_\alpha = 0
+\end{equation}
+
+Nun unterscheiden wir wieder zwei Möglichkeiten:
+
+\begin{itemize}
+    \item Wenn $\lambda = 0$, folgt mit \eqref{eq:linabh}, dass $\lambda^{\alpha} v_\alpha = 0$. Da $(v_\alpha)_{\alpha \in I}$ l.u. muss also $\lambda^{\alpha} = 0$ für alle $\alpha \in I$. Das steht jedoch im Widerspruch zur Annahme, dass $(\lambda^{\alpha})_{\alpha \in I} \neq (0)_{\alpha \in I}$. Dieser Fall kann nicht eintreten.
+    \item Wenn $\lambda \neq 0$, dann gilt:
+    \begin{equation*}
+    \lambda v = - \lambda^{\alpha} v_\alpha
+    \quad \Rightarrow \quad
+    v = -\frac{\lambda^{\alpha}}{\lambda} v_\alpha =: \mu^{\alpha} v_\alpha
+    \end{equation*}
+    Damit ist $v$ als Linearkombination der Vektoren $v_\alpha \in M$ darstellbar.  
+\end{itemize}
+
+Mit \cref{cor:eindeutig} folgt die Eindeutigkeit.
+\end{proof}
+
+\begin{remark}
+Häufig wird die Basis mit $(E_\alpha)_{\alpha \in I}$ bezeichnet, und die Koeffizienten des Vektors $v$ als dessen Komponenten:
+\begin{equation*}
+v = v^{\alpha} E_{\alpha}
+\end{equation*}
+
+Diese Koeffizienten bezeichnet man als \textit{Koordinaten} des Vektors bezüglich der Basis $(E_\alpha)$.
+\end{remark}
+
+\begin{definition}
+Die Mengen $M$ und $N$ heißen \textbf{gleichmächtig}, falls es eine Bijektion
+\begin{equation*}
+f : M \to N
+\end{equation*}
+gibt.  
+
+Die \textbf{Mächtigkeit} oder \textbf{Kardinalität} einer Menge $M$ ist die Äquivalenzklasse aller Mengen, die zu $M$ gleichmächtig sind.  \newline
+Wenn $M$ \textit{endlich} ist, dann ist existiert eine Bijektion zur Menge $\{1,2,\dots,n\}$, wobei $n$ die Anzahl der Elemente von $M$ ist, und es ist $|M| = n$. Die Mächtigkeit entspricht also der Anzahl der Elemente der Menge.
+
+Ist $M$ \textit{nicht endlich}, dann ist $|M| = \infty$.
+
+Die Definition über die Bijektion ist notwendig, da für überabzählbar unendliche Mengen, die Elemente nicht gezählt werden können und man nicht von einer \glqq Anzahl der Elemente der Menge\grqq \ sprechen kann.
+\end{definition}
+
+\begin{definition}
+Sei $(V,\Gamma)$ ein Vektorraum und $\mathcal{B}$ eine Basis des Vektorraums. Dann heißt 
+\begin{equation*}
+\dim_{\Gamma} V := |\mathcal{B}|
+\end{equation*}
+die \textbf{Dimension} des Vektorraums $V$ über $\Gamma$.
+
+Besitzt $V$ keine endliche Basis, wird $V$ \textbf{unendlich-dimensional} genannt.
+\end{definition}
+
+\begin{remark}
+Ein Vektorraum mit Dimension $0$ besteht nur aus dem Nullpunkt, da jeder Vektorraum das Element $0$ und sich selbst enthält.
+Also gilt insbesondere
+\begin{equation*}
+\dim\{0\}=0.
+\end{equation*}
+
+\begin{itemize}
+    \item $\dim V = 1$  →  Gerade durch den Ursprung
+    \item $\dim V = 2$  →  Ebene durch den Ursprung
+    \item $\dim V = 3$  →  unendlicher Würfel
+\end{itemize}
+
+In \cref{ex:basis} lernten wir Basen von $\mathbb{C}$ und $\mathbb{R}$ kennen. Daher kennen wir nun ihre Dimension:
+\begin{itemize}
+    \item $\dim_\mathbb{R} \mathbb{R}^2 = 2$
+    \item $\dim_\mathbb{R} \mathbb{C} = 2$
+    \item $\dim_\mathbb{C} \mathbb{C} = 1$
+    \item $\dim_\mathbb{C} \mathbb{C}^2 = 2$
+\end{itemize}
+
+
+\end{remark}
+
+
+\section{Dualraum}
+\begin{definition}
+    Seien $V$ und $W$ Vektorräume über dem Körper $\Gamma$. Eine Abbildung $\varphi: V \rightarrow W$ heißt \textbf{lineare Abbildung}, wenn für alle $v, w \in V$ und $\lambda \in \Gamma$ die folgenden Bedingungen erfüllt sind:
+    \begin{align}
+    \varphi(v + w) &= \varphi(v) + \varphi(w) \qquad \text{(Additivität)} \label{eq:Additivität} \\
+    \varphi(\lambda \cdot v) &= \lambda \cdot \varphi(v) \qquad \qquad \text{(Homogenität)} \label{eq:Homogenität}
+    \end{align}
+
+    Der \textbf{Raum der linearen Abbildungen} ist definiert als
+    \begin{equation*}
+        L(V, W) = \{\, \varphi : V \to W \mid \varphi \text{ ist linear} \,\}
+    \end{equation*}
+\end{definition}
+
+Für zwei lineare Abbildungen $\varphi, \psi \in L(V, W)$ definieren wir außerdem Addition und Skalarmultiplikation durch:
+\begin{equation*}
+\begin{aligned}
++ &: L(V, W) \times L(V, W) \to L(V, W): \ (\varphi,\psi) \mapsto \varphi + \psi \\
+\cdot &: \Gamma\times L(V, W) \to L(V, W): \ (\lambda,\varphi) \mapsto \lambda\cdot \varphi
+\end{aligned}
+\end{equation*}
+
+Wir kennen eine Funktion, wenn wir ihre Wertetabelle kennen. Daher definieren wir, was die Abbildungen für $v \in V$, $\lambda \in \Gamma$ liefern:
+\begin{align}
+(\varphi + \psi)(v) &:= \varphi(v) + \psi(v) \in \Gamma \label{eq:Addition} \\
+(\lambda \cdot \varphi)(v) &:= \lambda \cdot \varphi(v) \in \Gamma \label{eq:Skalarmultiplikation}
+\end{align}
+
+\begin{definition}
+Der \textbf{Dualraum} $V^\sim$ eines Vektorraums $(V, \Gamma)$ ist definiert als die Menge aller linearen Abbildungen von $V$ nach $\Gamma$:
+\begin{equation*}
+V^\sim := L(V, \Gamma)
+\end{equation*}
+\end{definition}
+
+\begin{lemma}\label{lem:DualerVR}
+$V^\sim$ ist ein Vektorraum über dem Körper $\Gamma$.
+\end{lemma}
+
+\begin{proof}
+Wir müssen nachweisen, dass die Rechengesetze eines Vektorraums erfüllt sind.  
+
+\begin{itemize}
+    \item Zunächst zeigen wir, dass $(\varphi + \psi)$ und $(\lambda \cdot \psi)$ linear sind, also $\varphi + \psi \in V^\sim$ und $\lambda \cdot \psi \in V^\sim$. Man sagt $V^\sim$ ist \textit{abgeschlossen bzgl. $+$ und $\cdot$}.
+    \begin{itemize}
+        \item Additivität für $(\varphi + \psi)$: \newline
+            Für $v,w \in V$ gilt:
+            \begin{align*}
+            (\varphi + \psi)(v + w)
+            &\overset{\eqref{eq:Addition}}{=} \varphi(v + w) + \psi(v + w) \\
+            &\overset{\eqref{eq:Additivität}}{=} \varphi(v) + \varphi(w) + \psi(v) + \psi(w) \\
+            &= (\varphi(v) + \psi(v)) + (\varphi(w) + \psi(w)) \\
+            &\overset{\eqref{eq:Addition}}{=} (\varphi + \psi)(v) + (\varphi + \psi)(w)
+            \end{align*}
+            
+        \item Homogenität für $(\varphi + \psi)$: \newline
+            Ebenso gilt für $\lambda \in \Gamma$:
+            \begin{align*}
+            (\varphi + \psi)(\lambda v)
+            &\overset{\eqref{eq:Skalarmultiplikation}}{=} \varphi(\lambda v) + \psi(\lambda v) \\
+            &\overset{\eqref{eq:Homogenität}}{=} \lambda \varphi(v) + \lambda \psi(v) \\
+            &\overset{\substack{\text{Linksdistr.} \\ \text{ges. in }\Gamma}}{=} \lambda (\varphi(v) + \psi(v)) \\
+            &\overset{\eqref{eq:Skalarmultiplikation}}{=} \lambda (\varphi + \psi)(v)
+            \end{align*}
+    
+        \item Additivität und Homogenität für $(\lambda \cdot \psi)$ sind analog.
+    \end{itemize}
+
+    \item Nun müssen die Vektorraumaxiome überprüft werden.
+    \begin{itemize}
+        \item + bzgl. :
+            \begin{align*}
+            (\lambda \cdot (\varphi + \psi))(v)
+            &\overset{\eqref{eq:Skalarmultiplikation}}{=} \lambda \cdot ((\varphi + \psi)(v))
+            \overset{\eqref{eq:Addition}}{=} \lambda (\varphi(v) + \psi(v)) \\
+            &\overset{\substack{\text{Linksdistr.} \\ \text{ges. in }\Gamma}}{=} \lambda \varphi(v) + \lambda \psi(v)
+            \overset{\eqref{eq:Skalarmultiplikation}}{=} (\lambda \cdot \varphi)(v) + (\lambda \cdot \psi)(v)
+            \overset{\eqref{eq:Addition}}{=} ((\lambda \cdot \varphi) + (\lambda \cdot \psi))(v)
+            \end{align*}
+        \item Die restlichen Vektorraumaxiome für $(\varphi + \psi)$ und $(\lambda \cdot \psi)$ sind dem Leser überlassen :)
+    \end{itemize}
+\end{itemize}
+
+\end{proof}
+
+\subsection{Basis des Dualraums}
+Sei $(V,\Gamma)$ ein Vektorraum mit einer Basis $(E_\alpha)_{\alpha\in I}$. Für ein beliebiges $\varphi \in V^\sim$  definieren wir 
+\begin{equation*}
+  \varphi_\alpha \coloneqq \varphi(E_\alpha) \in \Gamma, \quad \alpha\in I
+\end{equation*}
+
+\begin{theorem}\label{thm:lineareAbbEindeutig}
+Sei $(V,\Gamma)$ ein Vektorraum mit einer Basis $(E_\alpha)_{\alpha \in I}$.  
+Für jede Familie $(\varphi_\alpha)_{\alpha \in I}$ von Skalaren aus $\Gamma$ existiert genau eine lineare Abbildung
+\begin{equation*}
+\varphi : V \to \Gamma
+\end{equation*}
+mit
+\begin{equation}\label{eq:phi}
+\varphi(E_\alpha) = \varphi_\alpha \qquad \forall\, \alpha \in I.
+\end{equation}
+
+Das heißt $\varphi \in V^\sim$ wird eindeutig durch $(\varphi_\alpha)_{\alpha\in I}$ bestimmt.
+\end{theorem}
+
+\begin{proof} \breakafterhead
+
+\begin{itemize}
+    \item zz: $\varphi$ wird durch $\varphi_\alpha$ bestimmt: \newline
+    Für $v=v^\alpha E_\alpha$, mit $v^\alpha \in \Gamma$ gilt:
+    \begin{equation*}
+      \varphi(v) = \varphi(v^\alpha E_\alpha)
+      \overset{\varphi \text{ linear}}{=} v^\alpha \varphi(E_\alpha)
+      \overset{\eqref{eq:phi}}{=} v^\alpha \varphi_\alpha.
+    \end{equation*}
+    \item zz: $\varphi$ ist eindeutig \newline
+    Seien $\varphi,\psi\in V^\sim$ mit $\varphi(E_\alpha)=\psi(E_\alpha)$ für alle $\alpha$, so folgt für jedes $v=v^\alpha E_\alpha \in V$
+    \begin{equation*}
+      \varphi(v)=\varphi(v^\alpha E_\alpha) 
+      \overset{\varphi \text{ linear}}{=} v^\alpha\varphi(E_\alpha)=v^\alpha\psi(E_\alpha)
+      \overset{\psi \text{ linear}}{=} \psi(v^\alpha E_\alpha)=\psi(v)
+    \end{equation*}
+    Also $\varphi=\psi$. D.h. Funktionen aus $V^\sim$, die auf einer Basis übereinstimmen, stimmen überall überein.
+\end{itemize}
+\end{proof}
+
+Wir können nun also zu vorgegebenen Zahlen $(\varphi_\alpha)_{\alpha \in I}$ auf eindeutige Weise eine zugehörige Funktion finden. Für die neutralen Elemente $0$ und $1$ des Vektorraums können wir damit eine Basis für den Dualraum konstruieren.
+
+\begin{satzdefinition}
+Sei $(V,\Gamma)$ ein Vektorraum mit dim$V < \infty$, einer Basis $(E_\alpha)_{\alpha \in I}$ und $V^\sim$ sein Dualraum. Dann ist $(e^\alpha)_{\alpha\in J}\subseteq V^\sim$ mit
+\begin{equation}\label{eq:dualeBasis}
+  e^\alpha(E_\beta) \;=\; \delta^\alpha_\beta,
+  \quad \alpha,\beta\in J
+\end{equation}
+
+eine Basis von $V^\sim$, genannt \textbf{duale Basis}, wobei $\delta^\alpha_\beta$ das Kronecker-Delta bezeichnet und eine Matrix ist:
+\begin{equation*}
+  \delta^\alpha_\beta \;=\; \begin{cases}
+    1, & \alpha=\beta\\
+    0, & \alpha\neq \beta
+  \end{cases}
+\end{equation*}
+\end{satzdefinition}
+
+\begin{proof} \breakafterhead
+\begin{itemize}
+    \item zz: Die Familie $(e^\alpha)_{\alpha\in J}\subseteq V^\sim$ ist linear unabhängig.
+    
+        Also zz: $(\lambda_\alpha e^\alpha)(v)=0 \ \Rightarrow \ \lambda_\alpha=0 \ \forall \alpha \in J$ \newline        
+        Nach \cref{thm:lineareAbbEindeutig} ist jede lineare Abbildung durch die Bilder der Vektoren einer Basis eindeutig bestimmt. Daher genügt es, die Auswertung von $e^\alpha \in V^\sim$ auf Basiselementen zu betrachten: \newline
+        \begin{equation*}
+          0 = (\lambda_\alpha e^\alpha)(E_\beta) 
+          \overset{\eqref{eq:Skalarmultiplikation}}{=} \lambda_\alpha\, e^\alpha(E_\beta)
+          \overset{\eqref{eq:dualeBasis}}{=} \lambda_\alpha\,\delta^\alpha_\beta = \lambda_\beta \quad \forall \beta \in J
+        \end{equation*}
+
+    \item zz: Jede Abbildung $\varphi \in V^\sim$ kann als Linearkombination von $(e^\alpha)_{\alpha\in J}$ dargestellt werden. 
+    \newline Also zz: $\forall v\in V: \varphi(v) = (\varphi_\alpha e^\alpha)(v) $
+
+    Wieder genügt es, die Auswertung von $\varphi \in V^\sim$ auf Basiselementen zu betrachten. Für $v=v^\alpha E_\alpha$ erhält man
+    \begin{equation*}
+      \varphi(E_\alpha) = \varphi_\alpha = \varphi_\beta \delta_\alpha^\beta \overset{\eqref{eq:dualeBasis}}{=} \varphi_\beta e^\beta(E_\alpha) \overset{\eqref{eq:Skalarmultiplikation}}{=} (\varphi_\beta e^\beta)(E_\alpha)
+    \end{equation*}
+    Das letzte Gleichheitszeichen gilt nur, wenn es endlich viele $\varphi_\beta$ gibt, da sonst die Definition der Linearkombination $\varphi_\beta e^\beta$ verletzt ist. Da $\varphi(E_\beta)=\varphi_\beta$ folgt somit, dass es dies nur der Fall ist, wenn es endlich viele $E_\alpha$ gibt, also dim$V < \infty$ bzw. $|I| < \infty$.
+\end{itemize}
+\end{proof}
+
+Das heißt, sobald wir eine Basis in $V$ wählen, erhalten wir direkt eine Basis in $V^\sim$ dazu, wenn dim$V<\infty$.
+
+\section{Bilineare Abbildungen}
+
+Wir betrachten wieder einen Vektorraum $(V,\Gamma)$.  
+Der \textbf{Raum der bilinearen Abbildungen} von $V$ nach $\Gamma$ ist definiert als
+
+\begin{equation*}
+\mathfrak{Bil}(V,\Gamma) := \{ f : V \times V \to \Gamma \mid f \text{ ist linear in beiden Argumenten} \}.
+\end{equation*}
+
+Das heißt, eine Abbildung $f \in \mathfrak{Bil}(V,\Gamma)$ erfüllt für alle $v,v',w,w'\in V$ und $\lambda \in \Gamma$ die Bedingungen:
+\begin{align*}
+f(v+v',w) &= f(v,w) + f(v',w) \\
+f(v,w+w') &= f(v,w) + f(v,w') \\
+f(\lambda v, w) &= \lambda f(v,w) \\
+f(v, \lambda w) &= \lambda f(v,w)
+\end{align*}
+
+Für zwei bilineare Abbildungen $f, g \in \mathfrak{Bil}(V,\Gamma)$ definieren wir ebenso Addition und Skalarmultiplikation durch:
+\begin{equation*}
+\begin{aligned}
++ &: \mathfrak{Bil}(V,\Gamma) \times \mathfrak{Bil}(V,\Gamma) \to \mathfrak{Bil}(V,\Gamma): \ (f,g) \mapsto f + g \\
+\cdot &: \Gamma\times \mathfrak{Bil}(V,\Gamma) \to \mathfrak{Bil}(V,\Gamma): \ (\lambda,f) \mapsto \lambda\cdot f
+\end{aligned}
+\end{equation*}
+
+Für $v, v', \in V$, $\lambda \in \Gamma$:
+\begin{align}
+(f + g)(v,v') &:= f(v,v') + g(v,v')  \in \Gamma \label{eq:AdditionBi} \\
+(\lambda \cdot f)(v,v') &:= \lambda \cdot f(v,v') \in \Gamma \label{eq:SkalarmultiplikationBi}
+\end{align}
+
+\begin{lemma}
+Der Raum $\mathfrak{Bil}(V,\Gamma)$ ist ein Vektorraum über $\Gamma$.
+\end{lemma}
+
+\begin{proof}
+Da wir in \cref{lem:DualerVR} bereits die Linearität der Addition und Skalarmultiplikation in einem Argument gezeigt haben, kann durch Festhalten je eines der beiden Argumente auf die Linearität in beiden Argumenten geschlossen werden.
+
+Ebenso folgen anschließend wie zuvor die Vektorraumaxiome.
+\end{proof}
+
+\begin{definition}[Vorlesung]\label{def:tensorproduktVO}
+Seien $V$ ein Vektorraum über $\Gamma$ und $V^\sim$ sein Dualraum. Für zwei Funktionen $\varphi,\psi \in V^\sim$ ist das \textbf{Tensorprodukt} definiert als
+\begin{equation}\label{eq:tensorprod}
+\begin{aligned}
+\otimes : V^\sim \times V^\sim \to \mathfrak{Bil}(V, \Gamma): \ (\varphi,\psi) \mapsto \varphi \otimes \psi \\
+(\varphi \otimes \psi)(v,w) := \varphi(v) \cdot \psi(w) \in \Gamma, \qquad v,w\in V
+\end{aligned}
+\end{equation}
+
+Damit wird der \textbf{Tensorproduktraum zweiter Ordnung} in der VO definiert als
+\begin{align}\label{al:tensorprodraum}
+\bigotimes\nolimits^{\!2}\! V^\sim := V^\sim\otimes V^\sim
+:= \Bigl\{f \in \mathfrak{Bil}(V, \Gamma) \; \big| \; 
+f= \sum_{(\varphi, \psi) \in V^{\sim} \times V^{\sim}}\lambda^{(\varphi, \psi)} (\varphi \otimes  \psi), \quad \lambda \in \Gamma, \ \text{nur endlich viele } \lambda^{(\varphi, \psi)} \ne 0\Bigr\}
+\end{align}
+wobei $f \in \mathfrak{Bil}(V, \Gamma)$ wegen \eqref{eq:tensorprod} und da die Verknüpfung von bilinearen Funktionen wieder bilinear ist.
+\end{definition}
+
+$V^\sim \otimes V^\sim$ wird durch die folgenden Operationen zum Vektorraum:
+\begin{align}
+\label{eq:additiontensor}
+\left(\sum_{i,j} \lambda^{(i,j)} \, (\varphi_i\otimes\psi_j)\right)
++ \left(\sum_{l,k} \mu^{(k,l)}\,(\tilde{\varphi}_k\otimes\tilde{\psi}_l)\right)
+&:= \sum_{i,j} \lambda^{(i,j)}\,(\varphi_i\otimes\psi_j)
++ \sum_{l,k} \mu^{(k,l)}\,(\tilde{\varphi}_k\otimes\tilde{\psi}_l) \qquad \text{(Addition)} \\
+\mu \cdot\left(\sum_{i,j} \lambda^{(i,j)}\,(\varphi_i\otimes\psi_j)\right)
+\label{eq:skalarmulttensor}
+&:= \sum_{i,j} (\mu \lambda^{(i,j)})\,(\varphi_i\otimes\psi_j), \quad \mu \in \Gamma \quad \text{(Skalarmultiplikation)}
+\end{align}
+
+Mit der Definition der Vorlesung \eqref{al:tensorprodraum} folgt eine \textit{mengentheoretische} Teilmengenbeziehung
+\begin{equation}\label{eq:teilmenge}
+V^\sim\otimes V^\sim \subseteq \mathfrak{Bil}(V,\Gamma)
+\end{equation}
+
+Da $V^\sim \otimes V^\sim$ ein Vektorraum ist, kann auch gezeigt werden, dass er ein Untervektorraum von $\mathfrak{Bil}(V,\Gamma)$ ist.
+\vspace{2em}
+
+In der Vorlesung wird das Tensorprodukt $\varphi \otimes \psi$ direkt als bilineare Funktion definiert. In der Literatur findet man auch die folgende Definition.
+
+{\footnotesize Quellen: \href{https://duncan.math.sc.edu/s23/math742/notes/lin_alg.pdf}{Multilinear Algebra by Alexander Duncan, 3. Kapitel Tensor Products, Definition 3.1.} \\
+\url{https://en.wikipedia.org/wiki/Tensor_product#Linearly_disjoint}}
+
+\begin{definition}[Nicht Teil der Vorlesung]\label{def:tensorproduktFormal}
+Seien $V$ ein Vektorraum über $\Gamma$ und $V^\sim$ sein Dualraum. Für zwei Funktionen $\varphi,\psi \in V^\sim$ ist das \textbf{Tensorprodukt} definiert als
+\begin{equation*}
+\begin{aligned}
+\otimes : V^\sim \times V^\sim \to V^\sim \otimes V^\sim: \ (\varphi,\psi) \mapsto \varphi \otimes \psi \\
+(\varphi \otimes \psi)(v,w) := \varphi(v) \cdot \psi(w) \in \Gamma, \qquad v,w\in V
+\end{aligned}
+\end{equation*}
+
+Damit wird der \textbf{Tensorproduktraum zweiter Ordnung} in der Literatur definiert als
+\begin{align*}
+\bigotimes\nolimits^{\!2}\! V^\sim := V^\sim\otimes V^\sim
+&:= \operatorname{span}\bigl\{\,\varphi\otimes\psi \;\big|\; \varphi,\psi\in V^\sim\,\bigr\}
+= \Bigl\{\,\sum_{i=1}^N \lambda^i\,(\varphi_i\otimes\psi_i)\ \Big|\ 
+N\in\mathbb{N},\ \lambda^i\in\Gamma,\ \varphi_i,\psi_i\in V^\sim \Bigr\} \\
+\end{align*}
+Hier ist $\sum_{i=1}^N \lambda^i\,(\varphi_i\otimes\psi_i)$ eine \textit{formale Summe}: die Ausdrücke $\varphi_i\otimes\psi_i$ werden zunächst \emph{nicht} als Funktionen verstanden, sondern nur als Symbole. Man betrachtet sie also wie Bausteine eines neu konstruierten Vektorraums, auf denen Addition und Skalarmultiplikation wie gewohnt definiert sind. Erst durch die Abbildung 
+\begin{equation}\label{eq:bigphi}
+\Phi : V^\sim \otimes V^\sim \to \mathfrak{Bil}(V,\Gamma): \ \varphi\otimes\psi \mapsto \varphi \cdot\psi
+\end{equation}
+erhalten diese formalen Summen eine Bedeutung als \textit{konkrete bilineare Abbildungen}.
+
+Dann ist
+\begin{align*}
+\Phi(V^\sim\otimes V^\sim) = \Bigl\{f \in \mathfrak{Bil}(V, \Gamma) \; \big| \; 
+f= \sum_{(\varphi, \psi) \in V^{\sim} \times V^{\sim}}\lambda^{(\varphi, \psi)} \Phi(\varphi \otimes  \psi), \quad \lambda \in \Gamma, \ \text{nur endlich viele } \lambda^{(\varphi, \psi)} \ne 0\Bigr\}
+\end{align*}
+
+Mit dieser Definition ist $\Phi(V^\sim\otimes V^\sim) \subseteq \mathfrak{Bil}(V,\Gamma)$.
+
+Es kann gezeigt werden, dass $\Phi$ ein \textit{kanonischer oder natürlicher Vektorraum-Isomorphismus} ist. Kanonisch heißt, der Isomorphismus ergibt sich allein aus der Struktur, die die beteiligten Räume schon von Natur aus haben. Er hängt nicht von der Wahl der Basis ab. Hier wird also die Definition \eqref{eq:tensorprod} bzgl. dieses kanonischen Isomorphismus verstanden.
+
+Ein \textit{Vektorraum-Isomorphismus} ist definiert als lineare und bijektive Abbildung.
+
+Das heißt: 
+\begin{itemize}
+    \item $(V^\sim \otimes V^\sim, +, \cdot)$ und $(\mathfrak{Bil}(V,\Gamma),+,\cdot)$ haben dieselbe \textbf{algebraische Struktur}: Addition und Skalarmultiplikation erfüllen dieselben Rechenregeln (Vektorraumaxiome) und werden, da $\Phi$ linear ist, strukturerhaltend abgebildet:
+    
+    $\forall \varphi_1,\varphi_2,\psi_1,\psi_2 \in V^\sim$ und $\lambda \in \Gamma$ gilt:
+    \begin{equation}\label{eq:linearität}
+    \Phi((\varphi_1 \otimes\psi_1) + (\varphi_2 \otimes\psi_2))
+      = \Phi(\varphi_1 \otimes\psi_1) + \Phi(\varphi_2 \otimes\psi_2),
+    \qquad
+    \Phi(\lambda \cdot (\varphi \otimes\psi))
+      = \lambda \cdot \Phi(\varphi \otimes\psi)
+    \end{equation}
+    
+    \item $V^\sim \otimes V^\sim$ und $\mathfrak{Bil}(V,\Gamma)$ sind \textbf{gleichmächtig}, da $\Phi$ bijektiv ist: zu jedem $g \in \mathfrak{Bil}(V,\Gamma)$ kann genau ein $f \in V^\sim \otimes V^\sim$ gefunden werden, mit dem es durch $\Phi(f)=g$ identifiziert wird.
+    \item Die beiden Räume sind also \textbf{nicht identisch}, verhalten sich jedoch gleich. Wenn dim$V< \infty$ gilt $\Phi(V^\sim \otimes V^\sim) = \mathfrak{Bil}(V,\Gamma)$, siehe \cref{thm:biliso}.
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[Vorlesung mit \cref{def:tensorproduktVO}]\label{thm:biltensor}
+Wenn der Vektorraum $V$ endlich dimensional ist, ist der Tensorproduktraum bereits \textit{mengentheoretisch} gleich dem Raum der bilinearen Abbildungen:
+\begin{equation*}
+V^\sim \otimes V^\sim = \mathfrak{Bil}(V,\Gamma)
+\end{equation*}
+\end{theorem}
+
+
+\begin{proof} 
+$\subseteq$ wurde bereits in \eqref{eq:teilmenge} argumentiert. Daher zeigen wir nun $\supseteq$.
+
+zz: $\forall f \in \mathfrak{Bil}(V,\Gamma) \Rightarrow f \in V^\sim\otimes V^\sim$
+
+Sei $(E_\alpha)_{\alpha\in I}$ eine Basis des Vektorraums $V$ und $f\in\mathfrak{Bil}(V,\Gamma)$. 
+Wir definieren
+\begin{equation}\label{eq:ftensor}
+f(E_\alpha, E_\beta) =: f_{\alpha\beta} \in \Gamma
+\end{equation}
+
+Zeige: $f$ wird durch $f_{\alpha\beta}$ eindeutig bestimmt.
+
+Für beliebige Vektoren $v = v^\alpha E_\alpha$ und $w = w^\beta E_\beta$ gilt:
+\begin{equation*}
+f(v,w) = f(v^\alpha E_\alpha,\, w^\beta E_\beta)
+\overset{f \text{ bilinear}}{=} v^\alpha w^\beta f(E_\alpha, E_\beta)
+\overset{\eqref{eq:ftensor}}{=} v^\alpha w^\beta f_{\alpha\beta}
+\end{equation*}
+Die Abbildung wird also in der Tat durch $f_{\alpha\beta}$ bestimmt. Die Beweisführung der Eindeutigkeit ist gleich wie die im Beweis von \eqref{thm:lineareAbbEindeutig}: zwei Funktionen, die auf einer Basis übereinstimmen, stimmen überall überein.
+
+Kann \eqref{eq:ftensor} nun verwenden, um die Aussage zu zeigen: \newline
+Sei $(e^\alpha)_{\alpha\in I}$ die duale Basis. Dann gilt
+\begin{align*}
+f(E_\alpha, E_\beta)
+&\overset{\eqref{eq:f}}{=} f_{\alpha \beta}
+= f_{\gamma \delta} \delta_\alpha^\gamma \delta_\beta^\delta
+\overset{\substack{\text{duale} \\ \text{Basis}}}{=} f_{\gamma\delta}\,e^\gamma(E_\alpha)\,e^\delta(E_\beta) \\
+&\overset{\substack{\eqref{eq:tensorprod}}}{=} f_{\gamma \delta}(e^\gamma \otimes e^\delta)(E_\alpha, E_\beta) 
+\overset{\eqref{eq:skalarmulttensor}}{=} (f_{\gamma \delta}e^\gamma \otimes e^\delta)(E_\alpha, E_\beta)
+\end{align*}
+
+Damit das letzte Gleichheitszeichen gilt, also die Definition der Linearkombination nicht verletzt wird, muss wieder $(E_\alpha)_{\alpha \in I}$ endlich sein, also dim$V< \infty$.
+
+Damit stimmen $f$ und $f_{\gamma \delta}e^\gamma \otimes e^\delta$ auf einer Basis überein und stimmen somit überall überein. Also ist gezeigt, dass jede bilineare Abbildung $f$ als endliche Summe
+\begin{equation*}
+f = f_{\gamma\delta}\, e^\gamma \otimes e^\delta \in V^\sim\otimes V^\sim.
+\end{equation*}
+geschrieben werden kann. Daraus folgt
+\begin{equation*}
+\mathfrak{Bil}(V,\Gamma) \subseteq V^\sim\otimes V^\sim.
+\end{equation*}
+
+\end{proof}
+
+
+\begin{theorem}[nicht Teil der Vorlesung mit \cref{def:tensorproduktFormal}]\label{thm:biliso}
+Wenn der Vektorraum $V$ endlich dimensional ist, ist der Tensorproduktraum isomorph zum Raum der bilinearen Abbildungen:
+\begin{equation*}
+V^\sim \otimes V^\sim \;\cong\; \mathfrak{Bil}(V,\Gamma)
+\end{equation*}
+Das heißt die Abbildung \eqref{eq:bigphi} ist ein Vektorraum-Isomorphismus.
+
+Wenn der Vektorraum $V$ unendlich dimensional ist, ist $\Phi$ nicht surjektiv. Es gilt also nur $\Phi(V^\sim \otimes V^\sim) \subsetneq \mathfrak{Bil}(V,\Gamma)$. Man sagt, $V^\sim \otimes V^\sim$ wird in $\mathfrak{Bil}(V,\Gamma)$ eingebettet.
+\end{theorem}
+
+{\footnotesize Quelle: {\href{https://duncan.math.sc.edu/s23/math742/notes/lin_alg.pdf}{Multilinear Algebra by Alexander Duncan, 3. Kapitel Tensor Products, Corollary 3.8.}}}
+
+\begin{remark}
+Damit ist gezeigt, dass jede bilineare Abbildung $f$ eindeutig als Linearkombination
+\begin{equation*}
+f = f_{\alpha\beta}\, e^\alpha \otimes e^\beta
+\end{equation*}
+dargestellt werden kann.  
+Die Menge $\{ e^\alpha \otimes e^\beta \}$ bildet somit eine Basis von $\mathfrak{Bil}(V,\Gamma)$.
+\end{remark}
+
+
+\section{Multilineare Abbildungen}
+
+Analog zum bilinearen Fall betrachten wir Abbildungen, die in mehreren Argumenten linear sind.
+
+\begin{definition}
+Der \textbf{Raum der p-multilinearen Abbildungen} ist gegeben durch
+\begin{equation*}
+\mathfrak{Multp}(V,\Gamma) := \{ f : \underbrace{V \times \cdots \times V}_{\displaystyle \text{\small p mal}} \to \Gamma \mid f \text{ ist linear in jedem Argument} \}
+\end{equation*}
+\end{definition}
+
+Wir definieren wir Addition und Skalarmultiplikation durch
+\begin{equation*}
+\begin{aligned}
++ &: \mathfrak{Multp}(V,\Gamma) \times \mathfrak{Multp}(V,\Gamma) \to \mathfrak{Multp}(V,\Gamma): \ (f,g) \mapsto f + g \\
+\cdot &: \Gamma\times \mathfrak{Multp}(V,\Gamma) \to \mathfrak{Multp}(V,\Gamma): \ (\lambda,f) \mapsto \lambda\cdot f
+\end{aligned}
+\end{equation*}
+
+Für $v_i \in V$, $\lambda \in \Gamma$:
+\begin{align}
+(f+g)(v_1,\dots,v_p) &:= f(v_1,\dots,v_p) + g(v_1,\dots,v_p) \in \Gamma\\
+(\lambda \cdot f)(v_1,\dots,v_p) &:= \lambda \cdot f(v_1,\dots,v_p) \in \Gamma
+\end{align}
+womit durch Festhalten aller Argumente, bis auf eines und der Linearität in einem Argument gezeigt werden kann, dass $\mathfrak{Multp}(V,\Gamma)$ wieder ein Vektorraum über $\Gamma$ ist.
+
+\begin{definition}[Vorlesung]\label{def:tensorprodmultp}
+Für $\varphi_1,\dots,\varphi_p \in V^\sim$ definieren wir das \textbf{p-fache Tensorprodukt}
+\begin{equation}
+\otimes : \underbrace{V^\sim \times \cdots \times V^\sim}_{\displaystyle \text{\small p mal}} \to \mathfrak{Multp}(V,\Gamma): \ (\varphi_1, ..., \varphi_p) \mapsto \varphi_1 \otimes \cdots \otimes \varphi_p \\
+\end{equation}
+
+Für $v_1, ..., v_p \in V$ ist
+\begin{equation}\label{eq:multtensorprod}
+(\varphi_1 \otimes \cdots \otimes \varphi_p)(v_1,\dots,v_p)
+:= \varphi_1(v_1) \cdot ... \cdot \varphi_p(v_p) \in \Gamma
+\end{equation}
+
+Damit wird der \textbf{Tensorproduktraum p-ter Ordnung} in der VO definiert als
+\begin{align*}
+&\bigotimes\nolimits^{\!p}\! V^\sim 
+:= \underbrace{V^\sim \otimes \cdots \otimes V^\sim}_{\displaystyle \text{\small p mal}} \\
+&:= \Bigl\{f \in \mathfrak{Multp}(V, \Gamma) \; \big| \; 
+f= \sum_{(\varphi_1, ..., \varphi_p) \in \underbrace{ V^\sim \times \cdots \times V^\sim}_{\displaystyle \text{\tiny p mal}}}
+\lambda^{(\varphi_1, ..., \varphi_p)} (\varphi_1 \otimes \cdots \otimes  \varphi_p), \ \lambda \in \Gamma, \ \text{ \small nur endl. viele } \lambda^{(\varphi_1, ..., \varphi_p)} \ne 0\Bigr\}
+\end{align*}
+wobei $f \in \mathfrak{Multp}(V, \Gamma)$ wegen \eqref{eq:multtensorprod} und da die Verknüpfung von multilinearen Funktionen wieder multilinear ist.
+
+Damit gilt wieder insbesondere (mengentheoretisch)
+\begin{equation}\label{eq:teilmengemultp}
+\bigotimes\nolimits^{\!p}\! V^\sim  \subseteq \mathfrak{Multp}(V,\Gamma)
+\end{equation}
+\end{definition}
+
+$\mathfrak{Multp}(V,\Gamma)$ wird mit der Addition und Skalarmultiplikation zum Vektorraum. Es kann wieder gezeigt werden, dass $\bigotimes\nolimits^{\!p}\! V^\sim$ dann ein Untervektorraum von $\mathfrak{Multp}(V,\Gamma)$ ist.
+
+
+
+\begin{remark}[Nicht Teil der VO]\label{rem:multpisom}
+Wieder kann obige Definition in der Literatur mit
+\begin{equation}
+\otimes : \underbrace{V^\sim \times \cdots \times V^\sim}_{\displaystyle \text{\small p mal}} \to \underbrace{V^\sim \otimes \cdots \otimes V^\sim}_{\displaystyle \text{\small p mal}}: \ (\varphi_1, ..., \varphi_p) \mapsto \varphi_1 \otimes \cdots \otimes \varphi_p
+\end{equation}
+
+und bzgl. des kanonischen Isomorphismus
+\begin{equation}\label{eq:multpiso}
+\Phi : \bigotimes\nolimits^{\!p}\! V^\sim \to \mathfrak{Multp}(V,\Gamma): \varphi_1 \otimes ... \otimes \varphi_p \mapsto \varphi_1 \cdot ... \cdot \varphi_p
+\end{equation}
+gefunden werden.
+\end{remark}
+
+
+\begin{theorem}[Vorlesung]
+Wenn der Vektorraum $V$ endlich dimensional ist, ist der Tensorproduktraum p-ter Ordnung mengentheoretisch gleich dem Raum der p-multilinearen Abbildungen:
+\begin{equation*}
+\bigotimes\nolimits^{\!p}\! V^\sim = \mathfrak{Multp}(V,\Gamma)
+\end{equation*}
+\end{theorem}
+
+\begin{proof}
+$\subseteq$ wurde bereits in \eqref{eq:teilmengemultp} argumentiert. Daher zeigen wir nun $\supseteq$.
+
+zz: $\forall f \in \mathfrak{Multp}(V,\Gamma) \Rightarrow f \in \bigotimes\nolimits^{\!p}\! V^\sim$
+
+Sei $(E_\alpha)_{\alpha\in I}$ eine Basis von $V$ und $(e^\alpha)_{\alpha\in I}$ die duale Basis. 
+Dann ist für $f\in\mathfrak{Multp}(V,\Gamma)$
+\begin{equation}\label{eq:fmult}
+f(E_{\alpha_1},\dots,E_{\alpha_p}) =: f_{\alpha_1\dots\alpha_p} \in \Gamma.
+\end{equation}
+
+Der Beweis, dass $f$ durch diese Darstellung eindeutig bestimmt ist, ist analog zu dem Abschnitt im Beweis von \cref{thm:biliso}.
+
+Sei nun $f \in \mathfrak{Multp}(V,\Gamma)$ und 
+$(E_\alpha)_{\alpha\in I}$ eine Basis von $V$ mit dualer Basis $(e^\alpha)_{\alpha\in I}$.
+Dann gilt analog zum bilinearen Fall:
+\begin{equation*}
+\begin{aligned}
+f(E_{\alpha_1},\ldots,E_{\alpha_p})
+&\overset{\eqref{eq:fmult}}{=} f_{\alpha_1\ldots\alpha_p}
+=f_{\beta_1\ldots\beta_p}\,\delta_{\alpha_1}^{\beta_1}\cdots\delta_{\alpha_p}^{\beta_p} \\
+&\overset{\substack{\text{duale} \\ \text{Basis}}}{=} f_{\beta_1\ldots\beta_p}\, e^{\beta_1}(E_{\alpha_1})\cdots e^{\beta_p}(E_{\alpha_p}) \\
+&\overset{\eqref{eq:multtensorprod}}{=} f_{\beta_1\ldots\beta_p}\,
+   (e^{\beta_1}\otimes\cdots\otimes e^{\beta_p})(E_{\alpha_1},\ldots,E_{\alpha_p}) \\
+&\overset{\substack{\text{Skalar-} \\ \text{mult.}}}{=} (\,f_{\beta_1\ldots\beta_p}\, e^{\beta_1}\otimes\cdots\otimes e^{\beta_p}\,)
+   (E_{\alpha_1},\ldots,E_{\alpha_p})
+\end{aligned}
+\end{equation*}
+
+Damit das letzte Gleichheitszeichen gilt, also die Definition der Linearkombination nicht verletzt wird, muss wieder $(E_\alpha)_{\alpha \in I}$ endlich sein, also dim$V< \infty$.
+
+Damit stimmen $f$ und $f_{\beta_1\ldots\beta_p}\, e^{\beta_1}\otimes\cdots\otimes e^{\beta_p}$ auf einer Basis überein und stimmen somit überall überein. Also ist gezeigt, dass jede multilineare Abbildung $f$ als endliche Summe
+\begin{equation*}
+f = f_{\beta_1\ldots\beta_p}\, e^{\beta_1}\otimes\cdots\otimes e^{\beta_p} \in \bigotimes\nolimits^{\!p}\! V^\sim
+\end{equation*}
+dargestellt werden kann.
+\end{proof}
+
+
+\begin{theorem}[Nicht Teil der VO mit \cref{rem:multpisom}]
+Wenn der Vektorraum $V$ endlich dimensional ist, ist der Tensorproduktraum p-ter Ordnung isomorph zum Raum der p-multilinearen Abbildungen:
+\begin{equation*}
+\bigotimes\nolimits^{\!p}\! V^\sim \cong \mathfrak{Multp}(V,\Gamma)
+\end{equation*}
+
+Das heißt die Abbildung $\Phi$ von \eqref{eq:multpiso} ist ein Vektorraum-Isomorphismus.
+
+Wenn der Vektorraum $V$ unendlich dimensional ist, ist $\Phi$ nicht surjektiv. Es gilt also nur $\Phi(\bigotimes\nolimits^{\!p}\! V^\sim) \subsetneq \mathfrak{Multp}(V,\Gamma)$. Man sagt, $\bigotimes\nolimits^{\!p}\! V^\sim$ wird in $\mathfrak{Multp}(V,\Gamma)$ eingebettet.
+\end{theorem}
+
+\section{Doppeldualraum}
+
+
+\section{Gemischte multilineare Abbildungen}
+
+
+\section{Basis- und Koordinatentransformationen}
+
+
+\section{Abstrakte Indexschreibweise}
+
+
+\chapter{Topologie}\label{chap:Topologie}
+
+
+\chapter{Mannigfaltigkeiten}\label{chap:Mannigfaltigkeiten}
+
+\chapter{Differentialgeometrie und Einsteingleichungen}\label{chap:Differentialgeometrie und Einsteingleichungen}
+
+\end{document}
