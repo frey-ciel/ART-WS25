@@ -3810,7 +3810,7 @@ Insbesondere gilt
 \begin{equation*}
 \bigcup_{\alpha \in I} O_\alpha
 =
-f^{-1}\!\left( \bigcup_{\alpha \in I} \mathcal{O}'_\alpha \right).
+f^{-1}\!\left( \bigcup_{\alpha \in I} \mathcal{O}'_\alpha \right)
 \end{equation*}
 
 und damit
@@ -4035,9 +4035,13 @@ Eine Menge $A \subseteq X$ ist \textbf{abgeschlossen} : $\Leftrightarrow$ $A^c:=
 \end{definition}
 
 \begin{remark}
+In der Vorlesung wird statt $X \setminus A$ geschrieben $X - A$.
+\end{remark}
+
+\begin{remark}
 Die leere Menge $\emptyset$ und die Gesamtmenge $X$ sind immer offen und abgeschlossen zugleich:
 Per Definition ist immer $\emptyset, X \in \mathfrak{X}$ (also die Mengen sind offen) und es gilt:
-$\emptyset^c=X \setminus \emptyset = X$, $X^c = X \setminus X = \emptyset$.
+$\emptyset^c=X \setminus \emptyset = X$, $X^c = X \setminus X = \emptyset$ (also sind die Mengen abgeschlossen).
 
 Fun fact: Wenn $\emptyset$ und $X$ die einzigen Mengen sind, die offen und abgeschlossen sind, ist der Raum \textit{zusammenhängend} (kann nicht in disjunkte nichtleere offene Mengen zerlegt werden).
 \end{remark}
@@ -4075,7 +4079,7 @@ Somit auch
 
 Diese Kettenbeziehung bleibt durch Vereinigung über $x' \in X \setminus \{x\}$ erhalten
 \begin{equation*}
-\underbrace{\bigcup_{x' \in X \setminus \{x\}} \{x'\}}_{= X \setminus \{x\}}  \subseteq \bigcup_{x' \in X \setminus \{x\}} \mathcal{O}_{x'} \subseteq X \setminus \{x\}
+\underbrace{\bigcup_{x' \in X \setminus \{x\}} \{x'\}}_{= X \setminus \{x\}}  \subseteq \bigcup_{x' \in X \setminus \{x\}} \mathcal{O}_{x'} \subseteq \underbrace{\bigcup_{x' \in X \setminus \{x\}} X \setminus \{x\}}_{= X \setminus \{x\}}
 \end{equation*}
 
 Wir erhalten
@@ -4085,7 +4089,7 @@ X \setminus \{x\} \subseteq \bigcup_{x' \in X \setminus \{x\}} \mathcal{O}_{x'} 
 
 Also
 \begin{equation*}
-X \setminus \{x\} = \bigcup_{x' \in X \setminus \{x\}} \mathcal{O}_{x'} \in \mathfrak{X}
+X \setminus \{x\} = \bigcup_{x' \in X \setminus \{x\}} \mathcal{O}_{x'} \overset{\text{(O3)}}{\in} \mathfrak{X}
 \end{equation*}
 
 Damit ist $\{x\}$ abgeschlossen.
@@ -4110,7 +4114,7 @@ Das heißt: verschiedene einpunktige Mengen lassen sich durch disjunkte offene M
 \end{figure}
 
 
-Hier werden die beiden Punkte nicht nur getrennt, sondern sogar durch disjunkte offene Mengen. Insbesondere gilt:
+Hier werden die beiden Punkte nicht nur getrennt, sondern sogar durch disjunkte offene Mengen. Also eine Verschärfung von $T_1$. Insbesondere gilt:
 \begin{equation*}
 T_2 \Rightarrow T_1
 \qquad
@@ -4250,16 +4254,606 @@ Metrische Räume sind $T_2$ und $T_4$. Da $T_2 \Rightarrow T_1 \Rightarrow T_0$ 
 \end{remark}
 
 
-\section{Die Euklidische Topologie}
+\section{Die euklidische Topologie}
+
+Wir wollen nun untersuchen, mit welcher Topologie der Raum $\mathbb{R}^n$ \emph{standardmäßig} ausgestattet wird, sodass die aus der reellen Analysis bekannten Begriffe von Konvergenz und $\varepsilon$--$\delta$-Stetigkeit mit der topologischen Struktur übereinstimmen. Diese Topologie heißt die \textbf{euklidische Topologie} oder auch \textbf{Standardtopologie des $\mathbb{R}^n$}.
+
+
+\begin{definition}
+Eine Abbildung
+\begin{equation*}
+d : X \times X \to \mathbb{R}
+\end{equation*}
+heißt \textbf{Metrik}, falls für alle $x,y,z \in X$ gilt:
+\begin{align*}
+d(x,y) \geq 0 \quad & \text{und} \quad d(x,y) = 0 \Leftrightarrow x=y &\text{(positive Definitheit)} \\
+d(x,y) &= d(y,x) &\text{(Symmetrie)} \\
+d(x,y) &\le d(x,z) + d(z,y) &\text{(Dreiecksungleichung)}
+\end{align*}
+
+Ein Raum $(M,d)$, der mit einer Metrik $d$ versehen ist, heißt \textbf{metrischer Raum}.
+\end{definition}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.2\textwidth]{Dreiecksungl.jpg}
+\caption{Dreiecksungleichung}
+\end{figure}
+
+Der Abstand zwischen zwei Punkten $x,y \in \mathbb{R}^n$ wird durch die \textbf{euklidische Metrik} beschrieben
+\begin{equation*}
+d(x,y) := \|x-y\|_2 := \sqrt{\sum_{i=1}^n (x_i-y_i)^2}
+\end{equation*}
+wobei $\| \cdot \|_2$ die \textbf{euklidische Norm} ist.
+
+Mithilfe dieses Abstands definieren wir sogenannte \textbf{offene Kugeln}.
+Für einen Mittelpunkt $x \in \mathbb{R}^n$ und einen Radius $\varepsilon > 0$
+sei
+\begin{equation*}
+K(x,\varepsilon)
+:= \{\, y \in \mathbb{R}^n \mid \|y - x\|_2 < \varepsilon \,\}
+\end{equation*}
+
+Wir definieren die \textbf{euklidische Topologie} $\mathfrak{R}$ als die Menge aller Teilmengen $O \subseteq \mathbb{R}^n$, die sich als Vereinigung offener Kugeln $K_\alpha := K(x_\alpha, \varepsilon_\alpha)$
+schreiben lassen:
+\begin{equation*}
+\mathfrak{R}
+:= \bigl\{\, O \subseteq \mathbb{R}^n \mid
+O = \bigcup_{\alpha \in I} K_\alpha \,\bigr\}
+\end{equation*}
+
+Dann heißt $(\mathbb{R}^n,\mathfrak{R})$ \textbf{euklidischer Raum}.
+
+Diese Definition liefert zunächst lediglich eine Kandidatenmenge. Wir müssen nun zeigen, dass $\mathfrak{R}$ tatsächlich eine Topologie ist.
+Dazu überprüfen wir die drei Topologieaxiome.
+
+\begin{itemize}
+    \item[(O1)] zz: $\emptyset, \mathbb{R}^n \in \mathfrak{R}$
+    
+    Wir definieren
+    \begin{equation*}
+    \emptyset := \bigcup_{\alpha \in \emptyset} K_\alpha
+    \end{equation*}
+    Damit ist $\emptyset \in \mathfrak{R}$.
+
+    Für jedes $x \in \mathbb{R}^n$ existiert ein $n \in \mathbb{N}$ mit $\|x\|_2 < n$, also $x \in K(0,n)$ und
+    \begin{align*}
+    \{x\} &\subseteq K(0,n) \\
+    \Leftrightarrow \underbrace{\bigcup_{x \in\mathbb{R}^n}\{x\}}_{=\mathbb{R}^n} & \subseteq \underbrace{\bigcup_{x \in \mathbb{R}^n} K(0,n)}_{=K(0,n)} \\
+    \Leftrightarrow \mathbb{R}^n & \subseteq K(0,n)
+    \end{align*}
+    Außerdem gilt 
+    \begin{equation*}
+        K(0,n) \subseteq \bigcup_{n \in \mathbb{N}} K(0,n) \subseteq \mathbb{R}^n
+    \end{equation*}
+    
+    Somit folgt
+    \begin{equation*}
+    \mathbb{R}^n = \bigcup_{n \in \mathbb{N}} K(0,n) \in \mathfrak{R}
+    \end{equation*}
+
+    \item[(O2)] zz: $\forall O_1, O_2 \in \mathfrak{R}: \mathcal{O}_1 \cap \mathcal{O}_2 \in \mathfrak{R}$
+
+    Braucht mehr Überlegungen, da der Durchschnitt von Kugeln nicht notwendigerweise eine Kugel sein muss. Seien nun $\mathcal{O}_1, \mathcal{O}_2 \in \mathfrak{R}$. Dann existieren Familien offener Kugeln $(K_\alpha)_{\alpha\in I}$ und
+    $(K_\beta)_{\beta\in J}$ mit
+    \begin{equation*}
+    \mathcal{O}_1 = \bigcup_{\alpha\in I} K_\alpha,
+    \qquad
+    \mathcal{O}_2 = \bigcup_{\beta\in J} K_\beta.
+    \end{equation*}
+    Der Schnitt lässt sich schreiben als
+    \begin{equation*}
+    \mathcal{O}_1 \cap \mathcal{O}_2
+    = \bigcup_{\substack{\alpha \in I \\ \beta \in J}} K_\alpha \cap K_\beta
+    \end{equation*}
+    
+    Fall 1: für $\alpha \in I, \beta \in J: \ K_\alpha \cap K_\beta = \emptyset \in \mathfrak{R} \ \checkmark$
+    
+    Fall 2: für $\alpha \in I, \beta \in J: K_\alpha \cap K_\beta \neq \emptyset$. Dieser Fall benötigt mehr Arbeit.  
+
+    Dazu werden wir zeigen, dass für $y \in K_\alpha \cap K_\beta$ und ein spezielles $\delta^* >0$ gilt: 
+    \begin{equation*}
+    K_\alpha \cap K_\beta = \bigcup_{y \in K_\alpha \cap K_\beta} K(y,\delta^*) \in \mathfrak{R}
+    \end{equation*}
+    \begin{minipage}[t]{0.65\textwidth}
+    Sei also $y \in K_\alpha \cap K_\beta$ beliebig.
+
+    Dann gelten die Abstände
+    \begin{equation*}
+    \eta_\alpha := \|y - x_\alpha\|_2 < \varepsilon_\alpha
+    \qquad
+    \eta_\beta := \|y - x_\beta\|_2 < \varepsilon_\beta
+    \end{equation*}
+    
+    Wir setzen
+    \begin{equation*}
+    \delta_\alpha := \varepsilon_\alpha - \eta_\alpha > 0,
+    \qquad
+    \delta_\beta := \varepsilon_\beta - \eta_\beta > 0,
+    \end{equation*}
+    und definieren
+    \begin{equation*}
+    \delta^* := \min\{\delta_\alpha,\delta_\beta\}
+    \end{equation*}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.345\textwidth}
+    \centering
+    \vspace{-1em}
+    \includegraphics[width=\textwidth]{Euklid1.jpg}
+    \includegraphics[width=\textwidth]{Euklid2.jpg}
+    \end{minipage}
+    
+    Wir zeigen nun:
+    \begin{equation*}
+    K(y,\delta^*) \subseteq K_\alpha \cap K_\beta
+    \end{equation*}
+    Dafür müssen wir zeigen, dass $\forall z \in K(y,\delta^*): \ z \in K_\alpha \land z \in K_\beta$ \newline
+    Also müssen wir zeigen: $\|z-x_\alpha \|_2 < \varepsilon_\alpha \land \|z-x_\beta \|_2 < \varepsilon_\beta$ \newline
+    Sei dazu $z \in K(y,\delta^*$ beliebig.
+    Dann gilt
+    \begin{align*}
+    \|z-x_\alpha\|_2 = \|z-y + y-x_\alpha\|_2
+    &\overset{\triangle \text{Ungl.}}{\leq} \|z-y\|_2 + \|y-x_\alpha\|_2 \\
+    & < \delta^* + \eta_\alpha \\
+    &\le \delta_\alpha + \eta_\alpha \\
+    & = \varepsilon_\alpha - \eta_\alpha + \eta_\alpha = \varepsilon_\alpha
+    \end{align*}
+    Also ist $z \in K_\alpha$.
+    Die gleiche Rechnung liefert
+    \begin{equation*}
+    \|z-x_\beta\| < \varepsilon_\beta,
+    \end{equation*}
+    also $z \in K_\beta$.
+    
+    Damit gilt
+    \begin{equation*}
+    K(y,\delta^*) \subseteq K_\alpha \cap K_\beta.
+    \end{equation*}
+    und auch
+    \begin{align*}
+    \{y\} &\subseteq K(y,\delta^*) \subseteq K_\alpha \cap K_\beta \\
+    \Leftrightarrow \underbrace{\bigcup_{y \in K_\alpha \cap K_\beta} \{y\}}_{=K_\alpha \cap K_\beta} &\subseteq \bigcup_{y \in K_\alpha \cap K_\beta} K(y,\delta^*) \subseteq \underbrace{\bigcup_{y \in K_\alpha \cap K_\beta} K_\alpha \cap K_\beta}_{=K_\alpha \cap K_\beta}
+    \end{align*}
+    
+    Somit folgt:
+    \begin{equation*}
+    K_\alpha \cap K_\beta
+    = \bigcup_{y \in K_\alpha \cap K_\beta} K(y,\delta^*)
+    \in \mathfrak{R}.
+    \end{equation*}
+
+    Damit haben wir erhalten
+    \begin{equation*}
+    \mathcal{O}_1 \cap \mathcal{O}_2
+    = \bigcup_{\substack{\alpha \in I \\ \beta \in J}} K_\alpha \cap K_\beta
+    = \bigcup_{\substack{\alpha \in I \\ \beta \in J}} \bigcup_{y \in K_\alpha \cap K_\beta} K(y,\delta^*)
+    \in \mathfrak{R}.
+    \end{equation*}
+
+    \item[(O3)] zz: $\forall (O_\alpha)_{\alpha\in I} \subseteq \mathfrak{R}: \ \bigcup_{\alpha \in I} \mathcal{O}_\alpha \in \mathfrak{R}$
+    
+    Sei nun $(O_\alpha)_{\alpha\in I} \subseteq \mathfrak{R}$.
+    Dann existieren für jedes $\alpha$ offene Kugeln $(K_{\beta})_{\beta\in I_\alpha}$
+    mit
+    \begin{equation*}
+    O_\alpha = \bigcup_{\beta\in I_\alpha} K_\beta.
+    \end{equation*}
+    Daraus folgt
+    \begin{equation*}
+    \bigcup_{\alpha\in I} O_\alpha
+    = \bigcup_{\alpha\in I} \bigcup_{\beta\in I_\alpha} K_\beta \in \mathfrak{R}.
+    \end{equation*}
+\end{itemize}
+
+
+Damit sind alle drei Topologieaxiome erfüllt, und $\mathfrak{R}$ ist eine Topologie auf $\mathbb{R}^n$. 
+\vspace{1em}
+
+
+\begin{definition}
+Ein Vektorraum $V$ über dem Körper $\mathbb{K}\in\{\mathbb{R},\mathbb{C}\}$, versehen mit einer Topologie $\mathfrak{X}$, heißt \textbf{topologischer Vektorraum}, wenn die algebraischen Operationen Vektoraddition und Skalarmultiplikation stetig sind.
+\end{definition}
+
+\begin{tcolorbox}[noVO]
+\begin{remark}[Nicht Teil der VO] \breakafterhead
+
+Sei $(V,\|\cdot\|)$ ein Vektorraum mit einer Norm.
+
+\begin{enumerate}
+    \item Die Norm induziert durch Differenzenbildung eine Metrik
+    \begin{equation*}
+        d(x,y) := \|x-y\|, \qquad x,y \in V.
+    \end{equation*}
+    Damit wird der Vektorraum $(V,d)$ ein metrischer Raum.
+
+    \item Mit dieser Metrik definieren wir für $x\in V$ und $\varepsilon>0$
+    die offene Kugel
+    \begin{equation*}
+        U_\varepsilon(x) := \{\, y\in V \mid d(x,y)<\varepsilon \,\}
+    \end{equation*}
+    Damit heißt eine Teilmenge $M\subseteq V$ \emph{offen}, falls
+    \begin{equation*}
+        \forall x\in M\ \exists\,\varepsilon>0:\ U_\varepsilon(x)\subseteq M.
+    \end{equation*}
+
+    \item Über diese offenen Mengen induziert die Metrik nun auf $V$ eine Topologie:
+    \begin{equation*}
+        \mathfrak{X} := \{\, M\subseteq V \mid M \text{ ist offen} \,\}
+    \end{equation*}
+    \item Mit dieser Topologie wird der Vektorraum $V$ zu einem \textit{topologischen Vektorraum} $(V,\mathfrak{X})$. 
+\end{enumerate}
+
+Die so entstehende Topologie heißt die von der Norm induzierte \textbf{Normtopologie}. Das heißt, jeder Normierte Raum kann zu einem metrischen Raum gemacht werden und jeder metrische Raum kann zu einem topologischen Raum gemacht werden. Damit gelten alle Aussagen über topologische Räume auch für metrische und normierte Räume (siehe \cref{fig:map}).
+\end{remark}
+\end{tcolorbox}
+
+\begin{figure}[H]
+\centering
+\includegraphics[angle=90,width=1\textwidth]{Mathmap.jpg}
+\caption{(nicht Teil der VO) Karte von einem Teil der mathematischen Räume}
+\label{fig:map}
+\end{figure}
+
+\begin{remark}
+In endlichdimensionalen Vektorräumen sind alle Normen äquivalent. Daher induzieren die zugehörigen Metriken dieselbe Topologie: im $\mathbb{R}^n$ und $\mathbb{C}^n$ wird diese die \textbf{euklidische Topologie} oder auch die \textbf{Standardtopologie} des $\mathbb{R}^n$ und $\mathbb{C}^n$ genannt.
+\end{remark}
 
 \section{Kompaktheit und Parakompaktheit}
+
+Kompaktheit und Parakompaktheit sind zentrale Begriffe der Topologie und spielen später insbesondere bei der Theorie der Mannigfaltigkeiten eine wichtige Rolle.
+
+\begin{definition}
+Sei $(X,\mathfrak{X})$ ein topologischer Raum. Eine Familie offener Mengen $(O_\alpha)_{\alpha\in I} \subseteq \mathfrak{X}$
+heißt \textbf{offene Überdeckung} von $X$, falls
+\begin{equation*}
+X = \bigcup_{\alpha\in I} O_\alpha
+\end{equation*}
+\end{definition}
+
+Eine offene Überdeckung heißt \textbf{endlich}, wenn es endlich viele Indizes
+$\alpha_1,\dots,\alpha_N\in I$ gibt mit
+\begin{equation*}
+X = O_{\alpha_1}\cup \dots \cup O_{\alpha_N}
+\end{equation*}
+
+\begin{definition}
+Ein topologischer Raum $(X,\mathfrak{X})$ heißt \textbf{kompakt}, wenn gilt: zu jeder offenen Überdeckung von $X$ existiert eine endliche Subüberdeckung/Teilüberdeckung. Das heißt
+\begin{equation*}
+\forall (O_\alpha)_{\alpha\in I} \subseteq \mathfrak{X} \text{ mit } X = \bigcup_{\alpha\in I} O_\alpha \ \exists \, \mathcal{O}_{\alpha_1}, ..., \mathcal{O}_{\alpha_N} \in \mathfrak{X}: \ X=O_{\alpha_1}\cup \dots \cup O_{\alpha_N}
+\end{equation*}
+\end{definition}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{Endlüberdeck.jpg}
+\caption{$\bigcup_{i=1}^3\mathcal{O}_i$ ist eine endliche Teilüberdeckung von X}
+\end{figure}
+
+\begin{remark}
+In der Literatur findet man die Definition der Kompaktheit teils auch mit der Hausdorff-Bedingung.
+\end{remark}
+
+\begin{remark}
+Im $\mathbb{R}^n$ gilt: Eine Teilmenge $M\subseteq\mathbb{R}^n$ ist genau dann kompakt, wenn sie abgeschlossen und beschränkt ist (Satz von Heine-Borel). Insbesondere ist $\mathbb{R}^n$ selbst nicht kompakt, während z.B. die Oberfläche einer Kugel kompakt ist.
+\end{remark}
+
+\begin{definition}
+Seien $(O_\alpha)_{\alpha\in I}$ und $(O_\beta)_{\beta\in J}$ offene
+Überdeckungen von $X$.
+Die Überdeckung $(O_\beta)_{\beta\in J}$ heißt \textbf{Verfeinerung} von
+$(O_\alpha)_{\alpha\in I}$, falls
+\begin{equation*}
+\forall \beta\in J\ \exists \alpha\in I:\ O_\beta \subseteq O_\alpha
+\end{equation*}
+\end{definition}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{Verfeinerung.jpg}
+\caption{Offene Überdeckung $X=\bigcup_{i=1}^3\mathcal{O}_i$; Verfeinerung $X=\bigcup_{i=1}^5\mathcal{O}_i$, \newline 
+denn: 
+$\mathcal{O}_1 \subseteq \mathcal{O}_1, \ \mathcal{O}_2 \subseteq \mathcal{O}_2, \ \mathcal{O}_3 \subseteq \mathcal{O}_3, \ \mathcal{O}_4 \subseteq \mathcal{O}_1, \ \mathcal{O}_5 \subseteq \mathcal{O}_2$}
+\end{figure}
+
+\begin{definition}
+Eine offene Überdeckung $(O_\alpha)_{\alpha\in I}$ von $X$ heißt
+\textbf{lokal endlich}, wenn zu jedem Punkt $x\in X$ eine Umgebung $U(x)$
+existiert, die nur endlich viele Mengen der Überdeckung schneidet, d.h.
+\begin{equation*}
+\forall x \in X \ \exists \, U(x) \in \mathfrak{X} \text{ mit } x \in U(x): \ |\{\alpha\in I \mid O_\alpha \cap U(x) \neq \emptyset \}| < \infty
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+Ein topologischer Raum $(X,\mathfrak{X})$ heißt \textbf{parakompakt}, wenn zu jeder offenen Überdeckung von $X$ eine lokal endliche Verfeinerung existiert.
+\end{definition}
+
+\begin{remark}
+Parakompaktheit ist eine schwächere Eigenschaft als Kompaktheit.
+Insbesondere gilt:
+\begin{equation*}
+\text{kompakt} \;\Rightarrow\; \text{parakompakt}
+\end{equation*}
+Metrische Räume sind parakompakt.
+\end{remark}
+
+
 
 \chapter{Mannigfaltigkeiten}\label{chap:Mannigfaltigkeiten}
 \section{Der Begriff der Mannigfaltigkeit}
 
-\section{Kartenwechsel und Atlas}
+In der Allgemeinen Relativitätstheorie wird Gravitation durch gekrümmte Räume beschrieben, die mathematisch als Mannigfaltigkeiten modelliert werden.
+
+\begin{definition}
+Eine \textbf{(topologische) Mannigfaltigkeit} ist ein topologischer Raum $(M,\mathfrak{M})$ mit den folgenden Eigenschaften:
+\begin{itemize}
+    \item $M$ ist ein Hausdorff-Raum \qquad (Folgen haben eindeutigen Grenzwert)
+    \item $M$ ist parakompakt \qquad (benötigt um einen vernünftigen Integrationsbegriff zu definieren)
+    \item $M$ ist lokal homöomorph zum $(\mathbb{R}^n, \mathfrak{R})$ \qquad ("dem $\mathbb{R}^n$ sehr ähnlich")
+\end{itemize}
+Die Zahl $n$ heißt dann die \textbf{Dimension} der Mannigfaltigkeit $M$.
+\end{definition}
+
+Die \textbf{lokale Homöomorphie} zum $\mathbb{R}^n$ bedeutet, dass für jeden Punkt
+$p\in M$ eine offene Umgebung existiert, die (mit der von $M$ induzierten
+Spurtopologie) homöomorph zum euklidischen Raum ist:
+\begin{equation*}
+\forall p\in M\ \exists\, \mathcal{O}_p \in \mathfrak{M} \text{ mit } p\in \mathcal{O}_p: \
+(\mathcal{O}_p,\mathfrak{M} \cap{\mathcal{O}_p}) \simeq (\mathbb{R}^n,\mathfrak{R})
+\end{equation*}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{Lochom.jpg}
+\end{figure}
+
+\begin{remark}
+In der Allgemeinen Relativitätstheorie betrachtet man in der Regel 4-dimensionale Mannigfaltigkeiten, wobei drei Dimensionen räumlich und eine
+zeitlich interpretiert werden.
+\end{remark}
+
+\begin{definition}
+Das Paar $(\mathcal{O},\Phi)$ bestehend aus einer offenen Menge $\mathcal{O} \in \mathfrak{M}$ und einem Homöomorphismus
+\begin{equation*}
+\Phi : \mathcal{O} \to \Phi(\mathcal{O}) \subseteq \mathbb{R}^n, \quad \Phi(p)=(x^1(p),\dots,x^n(p))
+\end{equation*}
+heißt \textbf{Karte} der Mannigfaltigkeit $M$.
+
+Da $\Phi$ ein Homöomorphismus ist, besitzt die Abbildung eine stetige Inverse
+\begin{equation*}
+\Phi^{-1} : \Phi(\mathcal{O}) \subseteq \mathbb{R}^n \to \mathcal{O}
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+Eine Familie von Karten
+\begin{equation*}
+(\mathcal{O}_\alpha,\Phi_\alpha)_{\alpha\in I}
+\end{equation*}
+heißt ein \textbf{Atlas} der Mannigfaltigkeit $M$, falls gilt:
+\begin{equation*}
+M = \bigcup_{\alpha\in I} \mathcal{O}_\alpha
+\end{equation*}
+\end{definition}
+
+\begin{example}
+Die Erdoberfläche ist eine 2-dimensionale Mannigfaltigkeit. Jede Region $\mathcal{O}_i$ der gekrümmten Erdoberfläche kann mit einer Karte $(\mathcal{O}_i,\Phi_i)$ auf eine Ebene $\Phi_i(\mathcal{O}_i) \subseteq \mathbb {R}^2$ abgebildet werden. Ein Atlas ist die Sammlung all dieser Karten, bei der auch Überlappungen zugelassen werden.
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{Erde.jpg}
+\caption{Die Erdoberfläche als Mannigfaltigkeit. Der gelbe Bereich auf der Kugel (links) ist die Überlappung $\mathcal{O}_1 \cap \mathcal{O}_2$, der gelbe Bereich rechts im $\mathbb{R}^2$ ist die Abbildung davon unter $\Phi_1$ und $\Phi_2$. Um zwischen $\Phi_1(\mathcal{O}_1 \cap \mathcal{O}_2)$ und $\Phi_2(\mathcal{O}_1 \cap \mathcal{O}_2)$ zu wechseln, also auf die andere Karte zu wechseln, benötigt es die \textit{Kartenwechselabbildung}. }
+\end{figure}
+\end{example}
+
+\begin{example}
+Weitere Beispiele für Mannigfaltigkeiten sind der $\mathbb{R}^n, \mathbb{C}^n$, die Kleinflasche und das Möbiusband.
+\end{example}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Klein_bottle_1.jpg}
+        \caption{Die Kleinflasche besitzt nur eine Seite und keine Innen- \textit{und} Außenseite. Sie besitzt auch keinen Rand.}
+        {\footnotesize{Quelle: \url{https://de.laborxing.com/produkten/kleinsche-flasche}}}
+    \end{subfigure}
+    \hspace{1em}
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Möbius_Strip.jpg}
+        \caption{Das Möbiusband besitzt ebenso nur eine Seite und keine Innen- \textit{und} Außenseite, aber hat einen Rand.}
+        {\footnotesize{Quelle: \url{https://de.wikipedia.org/wiki/M%C3%B6biusband#/media/Datei:M%C3%B6bius_Strip.jpg}}}
+    \end{subfigure}
+\end{figure}
+\vspace{1em}
+
+
+\section{Kartenwechsel}
+Überlappen sich zwei offene Umgebungen $\mathcal{O}_\alpha, \mathcal{O}_\beta \in \mathfrak{M}$, die homöomorph zum $\mathbb{R}^n$ sind, so wird dessen Durchschnitt durch verschiedene Karten abgebildet. Der Übergang zwischen diesen Darstellungen erfolgt über die \textbf{Kartenwechselabbildung}.
+
+\begin{definition}
+Für zwei Karten $(O_\alpha,\Phi_\alpha)$ und $(O_\beta,\Phi_\beta)$ mit
+$O_\alpha\cap O_\beta\neq\emptyset$ ist der \textbf{Kartenwechsel}
+\begin{equation*}
+\Psi_{\beta\alpha}
+:= \Phi_\beta \circ \Phi_\alpha^{-1}
+: \Phi_\alpha(O_\alpha\cap O_\beta) \subseteq \mathbb{R}^n
+\to \Phi_\beta(O_\alpha\cap O_\beta) \subseteq \mathbb{R}^n
+\end{equation*}
+\end{definition}
+
+Der inverse Kartenwechsel ist gegeben durch
+\begin{equation*}
+\Psi_{\alpha\beta} := \Phi_\alpha \circ \Phi_\beta^{-1}
+\end{equation*}
+und es gilt
+\begin{equation*}
+\Psi_{\alpha\beta}\circ\Psi_{\beta\alpha} = \mathrm{id}_{\Phi_\alpha(O_\alpha\cap O_\beta)}
+\qquad
+\Psi_{\beta\alpha}\circ\Psi_{\alpha\beta} = \mathrm{id}_{\Phi_\beta(O_\alpha\cap O_\beta)}
+\end{equation*}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{Kartenw1.jpg}
+\caption{Kartenwechsel zwischen zwei Karten}
+\end{figure}
+
+Seien drei offenen Mengen $\mathcal{O}_\alpha, \mathcal{O}_\beta, \mathcal{O}_\gamma \in \mathfrak{M}$, die homöomorph zum $\mathbb{R}^n$ sind, mit
+\begin{equation*}
+\mathcal{O}_\alpha \cap \mathcal{O}_\beta \cap \mathcal{O}_\gamma \neq \emptyset,
+\end{equation*}
+so können drei Kartenwechsel definiert werden:
+\begin{align*}
+\Psi_{\beta\alpha} &= \Phi_\beta \circ \Phi_\alpha^{-1}, \\
+\Psi_{\gamma\beta} &= \Phi_\gamma \circ \Phi_\beta^{-1}, \\
+\Psi_{\gamma\alpha} &= \Phi_\gamma \circ \Phi_\alpha^{-1}.
+\end{align*}
+
+\begin{proposition}[Dreifachdurchschnittsbedingung]
+Das Diagramm der Kartenwechsel ist kommutativ, d.h.
+\begin{equation}\label{eq:dreifach}
+\Psi_{\gamma\alpha}
+= \Psi_{\gamma\beta} \circ \Psi_{\beta\alpha}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Es gilt
+\begin{equation*}
+\Psi_{\gamma\beta} \circ \Psi_{\beta\alpha}
+= (\Phi_\gamma \circ \Phi_\beta^{-1}) \circ (\Phi_\beta \circ \Phi_\alpha^{-1})
+\overset{\text{assoziativ}}{=} \Phi_\gamma \circ \underbrace{(\Phi_\beta^{-1}\circ\Phi_\beta)}_{=\mathrm{id}} \circ \Phi_\alpha^{-1}
+= \Phi_\gamma \circ \Phi_\alpha^{-1}
+= \Psi_{\gamma\alpha}
+\end{equation*}
+\end{proof}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{Kartenw2.jpg}
+\caption{Kartenwechsel zwischen drei Karten}
+\end{figure}
+
+Diese Dreifachdurchschnittsbedingung lässt sich auf beliebige Mehrfachüberlappungen verallgemeinern.
+
+Die Vierfachdurchschnittsbedingung ist $\Psi_{\alpha \delta} = \Psi_{\alpha \beta} \circ ( \Psi_{\beta \gamma} \circ \Psi_{\gamma \delta})$. Diese folgt direkt aus der Dreifachdurchschnittsbedingung:
+\begin{equation*}
+\Psi_{\alpha \beta} \circ ( \Psi_{\beta \gamma} \circ \Psi_{\gamma \delta})
+\overset{\eqref{eq:dreifach}}{=} \Psi_{\alpha \beta} \circ \Psi_{\beta \delta} 
+\overset{\eqref{eq:dreifach}}{=} \Psi_{\alpha \delta}
+\end{equation*}
+
+Das kann induktiv weitergeführt werden zur Mehrfachdurchschnittsbedingung
+\begin{equation*}
+\Psi_{\alpha_0\alpha_k}=\Psi_{\alpha_0\alpha_1}\circ\Psi_{\alpha_1\alpha_2}\circ\dots\circ\Psi_{\alpha_{k-1}\alpha_k}
+\end{equation*}
+
+\begin{remark}
+Eine Karte beschreibt, \textit{wie} $\mathcal{O}$ im $\mathbb{R}^n$ dargestellt wird. Beispielsweise durch kartesische Koordinaten $\Phi_\alpha(p) = (x, y, z)$ oder durch Zylinderkoordinaten $\Phi_\beta(p) = (r, \phi, z)$. Der Kartenwechsel $\Psi_{\alpha \beta}$ ist dann die Transformation von den Zylinderkoordinaten in kartesische Koordinaten: $\Psi_{\alpha \beta}(r,\phi,z)=(r\cdot \mathrm{cos}\phi,r \cdot \mathrm{sin}\phi, z)=(x,y,z)$.
+\end{remark}
 
 \section{Skalarfelder auf Mannigfaltigkeiten}
+Da wir nun Mannigfaltigkeiten kennen, können wir Skalarfelder definieren. 
+
+\begin{definition}
+Sei $(M,\mathfrak{M})$ eine Mannigfaltigkeit.
+Eine Abbildung
+\begin{equation*}
+F : M \to \mathbb{R}
+\end{equation*}
+heißt \textbf{reellwertiges Skalarfeld} auf $M$.
+\end{definition}
+
+Skalarfelder bilden also jeden Punkt $p$ einer Mannigfaltigkeit auf einen \textit{Skalar} $F(p)$ ab. Dabei kann es sich beispielsweise um ein Temperaturfeld handeln, das jedem Punkt im Raum eine Temperatur zuweist.
+
+Ein Skalarfeld $F$ ist zunächst nur als abstrakte Abbildung auf der Mannigfaltigkeit definiert. Um ein Skalarfeld rechnerisch zu untersuchen, betrachten wir daher seine Darstellung in lokalen Koordinaten, die durch die Karten der Mannigfaltigkeit gegeben sind.
+
+\begin{definition}
+Sei $(M,\mathfrak{M})$ eine Mannigfaltigkeit, $F : M \to \mathbb{R}$ ein Skalarfeld und $(\mathcal{O}_\alpha,\Phi_\alpha)$ eine Karte der Mannigfaltigkeit.
+Dann heißt
+\begin{equation*}
+f_\alpha := F \circ \Phi_\alpha^{-1}
+: \Phi_\alpha(\mathcal{O}_\alpha) \subseteq \mathbb{R}^n \to \mathbb{R}
+\end{equation*}
+\textbf{lokaler Repräsentant} oder auch \textbf{lokale Darstellung} von $F$ in der $\alpha$-Karte.
+\end{definition}
+
+$f_\alpha$ ist keine Koordinatentransformation, sondern die Darstellung eines Skalarfeldes in den Koordinaten der Karte $(\mathcal{O}_\alpha,\Phi_\alpha)$. Ob diese Koordinaten kartesisch, zylindrisch oder sphärisch sind, hängt allein von der gewählten Karte ab.
+
+Entsprechend erhält man zu einem Atlas $(\mathcal{O}_\alpha,\Phi_\alpha)_{\alpha\in I}$
+eine Familie numerischer Funktionen
+\begin{equation*}
+(f_\alpha)_{\alpha\in I} \ 
+\text{ mit }
+\ f_\alpha : \mathbb{R}^n \to \mathbb{R}
+\end{equation*}
+
+Die lokalen Darstellungen $(f_\alpha)_{\alpha\in I}$ dürfen jedoch nicht unabhängig voneinander gewählt werden. Überlappen sich zwei Karten $\mathcal{O}_\alpha$ und $\mathcal{O}_\beta$, so müssen die entsprechenden Funktionen auf dem Überlappungsbereich zueinander passen.
+
+\begin{definition}
+Seien $(\mathcal{O}_\alpha,\Phi_\alpha)$ und $(\mathcal{O}_\beta,\Phi_\beta)$ zwei Karten mit $\mathcal{O}_\alpha \cap \mathcal{O}_\beta \neq \emptyset$.
+Die lokalen Darstellungen $f_\alpha$ und $f_\beta$ eines Skalarfeldes $F$ heißen \textbf{kompatibel}, wenn gilt:
+\begin{equation}\label{eq:komp}
+\forall x \in \Phi_\beta(\mathcal{O}_\alpha \cap \mathcal{O}_\beta): \
+f_\beta(x) = (f_\alpha \circ \Psi_{\alpha\beta})(x)
+\end{equation}
+wobei $\Psi_{\alpha\beta} := \Phi_\alpha \circ \Phi_\beta^{-1}$
+\end{definition}
+
+Begründung: \newline
+Sei $x \in \Phi_\beta(\mathcal{O}_\alpha \cap \mathcal{O}_\beta)$. Dann ist
+\begin{equation*}
+f_\beta(x) = (F \circ \Phi_\beta^{-1})(x) = (F \circ \underbrace{(\Phi_\alpha^{-1} \circ \Phi_\alpha)}_{=\mathrm{id}} \circ \Phi_\beta^{-1})(x) = ((F \circ \Phi_\alpha^{-1}) \circ (\Phi_\alpha \circ \Phi_\beta^{-1}))(x) = (f_\alpha \circ \Psi_{\alpha\beta})(x)
+\end{equation*}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{Skalarfeld.jpg}
+\end{figure}
+
+\subsubsection*{Skalarfelder sind kartenunabhängig (koordinatenunabhängig)}
+Die lokale Darstellung $f_\alpha$ eines Skalarfeldes $F$ erlaubt es, den abstrakten Begriff einer Funktion auf einer Mannigfaltigkeit auf bekannte numerische Funktionen zurückzuführen. Dabei ist zu beachten, dass ein Punkt $p \in M$ je nach Karte durch unterschiedliche
+Koordinaten beschrieben wird.
+
+Sei $p \in \mathcal{O}_\alpha \cap \mathcal{O}_\beta$. Dann besitzt $p$ bezüglich der Karten $(\mathcal{O}_\alpha,\Phi_\alpha)$ und
+$(\mathcal{O}_\beta,\Phi_\beta)$ die Koordinatendarstellungen
+\begin{equation*}
+x_\alpha^i := \Phi^i_\alpha(p) \in \mathbb{R}^n \ \text{ und } \
+x_\beta^i := \Phi^i_\beta(p) \in \mathbb{R}^n
+\end{equation*}
+Obwohl $x_\alpha$ und $x_\beta$ im Allgemeinen verschieden sind, repräsentieren beide denselben Punkt der Mannigfaltigkeit.
+
+Zwischen diesen Koordinaten besteht eine bijektive Beziehung, gegeben durch die Kartenwechselabbildungen
+\begin{equation*}
+x_\alpha^i = \Psi_{\alpha\beta}(x_\beta^i)
+ \ \text{ und } \
+x_\beta^i = \Psi_{\beta\alpha}(x_\alpha^i)
+\end{equation*}
+
+Die Kompatibilitätsbedingung der lokalen Darstellungen stellt sicher, dass die numerischen Funktionen $f_\alpha$ und $f_\beta$ denselben Funktionswert liefern, wenn sie auf Koordinaten angewandt werden, die demselben Punkt $p$ entsprechen:
+\begin{equation*}
+f_\alpha(x_\alpha^i)
+= f_\alpha(\Psi_{\alpha\beta}^i(x_\beta^i))
+= (f_\alpha \circ \Psi_{\alpha\beta})(x_\beta^j)
+\overset{\eqref{eq:komp}}{=} f_\beta(x_\beta^j)
+\end{equation*}
+
+Dies entspricht der physikalischen Forderung, dass eine skalare Größe – etwa eine Temperatur – unabhängig von der gewählten Karte denselben Wert besitzt. Die numerischen Funktionen hängen von der gewählten Karte (Koordinatendarstellung) ab, der physikalische Wert jedoch nicht.
+
+Über die lokalen Darstellungen lässt sich die Wirkung des Skalarfeldes auf einen Punkt der Mannigfaltigkeit vollständig beschreiben. Für jeden Punkt $p \in M$ existiert eine Karte $(\mathcal{O}_\alpha,\Phi_\alpha)$ mit $p \in \mathcal{O}_\alpha$, sodass gilt:
+\begin{equation*}
+F(p) = f_\alpha(\Phi_\alpha^i(p))
+\end{equation*}
+Liegt der Punkt $p$ zusätzlich in einer weiteren Karte $\mathcal{O}_\beta$, so folgt aus der Kompatibilität der lokalen Darstellungen ebenso:
+\begin{equation*}
+F(p) = f_\beta(\Phi_\beta^i(p))
+\end{equation*}
+
+Der Wert des Skalarfeldes ist somit unabhängig von der gewählten Karte und eindeutig durch die lokalen Darstellungen bestimmt.
+
+Diese Konstruktion ist analog zur Darstellung eines Vektors in verschiedenen Basen: Die einzelnen Komponenten hängen von der gewählten Basis ab, der Vektor selbst jedoch nicht. Ebenso hängen die lokalen Darstellungen $f_\alpha$ von der Wahl der Karte ab, während das Skalarfeld $F$ kartenunabhängig ist.
+
 
 \section{Vektoren auf Mannigfaltigkeiten}
 
