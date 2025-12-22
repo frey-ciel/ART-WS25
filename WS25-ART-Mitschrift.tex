@@ -4832,12 +4832,12 @@ x_\beta^i = \Psi_{\beta\alpha}(x_\alpha^i)
 \end{equation*}
 
 Die Kompatibilitätsbedingung der lokalen Darstellungen stellt sicher, dass die numerischen Funktionen $f_\alpha$ und $f_\beta$ denselben Funktionswert liefern, wenn sie auf Koordinaten angewandt werden, die demselben Punkt $p$ entsprechen:
-\begin{equation*}
+\begin{equation}\label{eq:numfunk}
 f_\alpha(x_\alpha^i)
 = f_\alpha(\Psi_{\alpha\beta}^i(x_\beta^i))
 = (f_\alpha \circ \Psi_{\alpha\beta})(x_\beta^j)
 \overset{\eqref{eq:komp}}{=} f_\beta(x_\beta^j)
-\end{equation*}
+\end{equation}
 
 Dies entspricht der physikalischen Forderung, dass eine skalare Größe – etwa eine Temperatur – unabhängig von der gewählten Karte denselben Wert besitzt. Die numerischen Funktionen hängen von der gewählten Karte (Koordinatendarstellung) ab, der physikalische Wert jedoch nicht.
 
@@ -4854,6 +4854,15 @@ Der Wert des Skalarfeldes ist somit unabhängig von der gewählten Karte und ein
 
 Diese Konstruktion ist analog zur Darstellung eines Vektors in verschiedenen Basen: Die einzelnen Komponenten hängen von der gewählten Basis ab, der Vektor selbst jedoch nicht. Ebenso hängen die lokalen Darstellungen $f_\alpha$ von der Wahl der Karte ab, während das Skalarfeld $F$ kartenunabhängig ist.
 
+Statt der Kartenwechselabbildung (Koordinatenwechselfunktion) können die Koordinaten $x_\alpha^i$ auch als Funktion der Koordinaten einer anderen Karte $x_\beta^k$ aufgefasst werden
+\begin{align*}
+x_\beta^k(x_\alpha^i):= \Psi_{\beta\alpha}^k(x_\alpha^i)=x_\beta^k \\
+x_\alpha^k(x_\beta^i):= \Psi_{\alpha\beta}^k(x_\beta^i)=x_\alpha^k
+\end{align*}
+Damit kann \eqref{eq:numfunk} nun folgendermaßen dargestellt werden
+\begin{equation*}
+f_\alpha(x_\alpha^i) = f_\beta(x_\beta^j) = f_\beta(x_\beta^j(x_\alpha^i))
+\end{equation*}
 
 \section{Vektoren auf Mannigfaltigkeiten}
 
