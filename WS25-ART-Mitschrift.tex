@@ -6,18 +6,14 @@
 \usepackage[T1]{fontenc}                            % Proper output encoding (umlauts copy/paste correctly)
 \usepackage[utf8]{inputenc}                         % Input encoding: write umlauts directly in UTF-8
 
-% --- Fonts & Math ---
+% --- Fonts ---
 \usepackage{lmodern}                                % Load Latin Modern fonts (includes serif, sans-serif, and mono)
 \renewcommand{\familydefault}{\sfdefault}           % Set default font family to Latin Modern Sans Serif
 \usepackage{newtxmath}                              % Times-like math that matches well with LM
 \usepackage{microtype}                              % Subtle typographic improvements (protrusion, expansion)
 \usepackage{siunitx}                                % Consistent numbers & units: \SI{3.0}{m/s}, tables with S
-\sisetup{locale=DE}
-\usepackage{soul}                                      % Text highlighting (e.g., \hl{})
-\usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,calc,bending}
-\usepackage{cancel}
-
+\sisetup{locale=DE}                                 % set punctuation and comma for numbers like this: 1.234,56 
+\usepackage{soul}                                   % Text highlighting (e.g., \hl{})
 
 % --- Page Geometry ---
 \usepackage[a4paper,left=20mm,right=20mm,top=28mm,bottom=28mm]{geometry}
@@ -26,13 +22,14 @@
 
 % --- Graphics & Floats ---
 \usepackage{graphicx}                               % \includegraphics[width=.5\textwidth]{...}
-\usepackage{float}                                  % force floats with [H]
+\usepackage{float}                                  % force figures to be placed exactly where they are in the latex text with [H]
 \usepackage[justification=centering]{caption}       % Centered captions
 \usepackage{subcaption}                             % Subfigures via subfigure environment
 \graphicspath{{images/}}                            % Look for figures under ./images/
 \usepackage{floatflt}                               % show text and figure side by side (also works inside \begin ... \end blocks)
 \usepackage{wrapfig}                                % show text and figure side by side
-
+\usepackage{tikz}                                   % tikz drawings
+\usetikzlibrary{arrows.meta,positioning,calc,bending}
 
 % --- Tables ---
 \usepackage{booktabs}                               % table rules (toprule, midrule, bottomrule)
@@ -43,11 +40,12 @@
 \usepackage{amsmath}                                % Display math environments, align, cases, etc.
 \let\openbox\relax                                  % Avoid \openbox clash with newtxmath
 \usepackage{amsthm}                                 % Theorem environments + proof environment
+\usepackage{cancel}                                 % cross out terms
 \usepackage{mathtools}                              % Extra math tools (e.g. \coloneqq, paired delimiters)
 \numberwithin{equation}{chapter}                    % Equation numbers like (1.1), (1.2), ...
 
 % ---------- Hyperlinks & Cleveref ----------
-\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref} % links
+\usepackage[colorlinks=true,allcolors=blue]{hyperref} % Clickable links with colored text
 \usepackage[nameinlink,noabbrev]{cleveref}   % Smart cross-refs: \cref{fig:...,thm:...}
 
 % --- Theorem aliases for cleveref ---
@@ -1437,7 +1435,7 @@ Beispiele: $(\mathbb{R}, +, \cdot), \ (\mathbb{C}, +, \cdot)$
 \end{definition}
 
 \begin{definition}\label{def:Vektorraum}
-Ein \textbf{Vektorraum} über einem Körper $(\Gamma, +, \cdot)$, kurz $\Gamma$, ist ein Tupel $(V, \oplus, \odot)$, bestehend aus einer Menge $V$, einer inneren zweistelligen Verknüpfung $\oplus$ (Vektoraddition) und einer äußeren zweistelligen Verknüpfung $\odot$ (Skalarmultiplikation).
+Ein \textbf{Vektorraum} über einem Körper $(\Gamma, +, \cdot)$, kurz $\Gamma$, ist ein Tupel $(V, \oplus, \odot)$, bestehend aus einer Menge $V$, einer inneren zweistelligen Verknüpfung $\oplus$ (Vektoraddition) und einer äußeren zweistelligen Verknüpfung $\odot$ (Multiplikation mit Skalaren).
 
 \begin{equation*}
 \begin{aligned}
@@ -1460,7 +1458,7 @@ Für die Verknüpfungen gleiten die folgenden Axiome:
 Damit bildet $(V,\oplus)$ eine kommutative/abelsche Gruppe.
 \vspace{1em}
 
-\textbf{2. Skalarmultiplikation}
+\textbf{2. Multiplikation mit Skalaren}
 \vspace{-1em}
 
 \begin{enumerate}
@@ -2502,7 +2500,7 @@ Jeder Vektorraum hat einen Dualraum. Da der Dualraum $V^\sim$ ein Vektorraum ist
 \begin{definition}
 Der \textbf{Doppeldualraum} (auch \textbf{Bidualraum}) eines Vektorraums $(V,\Gamma)$ ist der Dualraum des Dualraums:
 \begin{equation*}
-V^{\sim\sim} := (V^\sim)^\sim = \{\Psi: V^\sim \to \Gamma : \Psi \text{ ist linear}\}
+V^{\sim\sim} := (V^\sim)^\sim = \{\psi: V^\sim \to \Gamma : \Psi \text{ ist linear}\}
 \end{equation*}
 
 \begin{figure}[ht]
@@ -2680,9 +2678,9 @@ Für
 \end{equation}
 
 gilt auch
-\begin{equation*}
+\begin{equation}\label{eq:tensordef}
 \mathfrak{Mult_{p,q}}(V^\sim,V,\Gamma) = \bigotimes\nolimits^p V \otimes \bigotimes\nolimits^q V^\sim = \bigotimes\nolimits^p_q V
-\end{equation*}
+\end{equation}
 Entsprechend heißen Elemente $t \in \bigotimes\nolimits^p_q V$ \textbf{(p,q)-Tensoren} oder \textbf{Tensoren vom Typ (p,q)}. \textit{Diese} Definition werden wir ab jetzt verwenden.
 \vspace{1em}
 
@@ -2765,7 +2763,7 @@ Für beliebige Vektoren $v_1,\ldots,v_q\in V$ und Kovektoren $\varphi_1,\ldots,\
 
 Diese Gleichung beschreibt die Auswertung eines $(p,q)$-Tensors in Komponentenform.
 
-\section{Basis- und Koordinatentransformationen}
+\section{Basis- und Koordinatentransformationen}\label{sec:basistrafo}
 Wir haben bisher mit einer festen Basis des Vektorraums bzw. Dualraums gearbeitet. Da Vektorräume mehrere Basen besitzen ist es oft notwendig, von einer Basis/Koordinatendarstellung in eine andere zu transformieren. 
 
 Seien dazu $(E_\alpha)_{\alpha\in I}$ und $(\tilde{E}_\alpha)_{\alpha\in I}$ zwei Basen desselben Vektorraums $V$. Um von einer Basis zur anderen überzugehen, verwenden wir eine Basistransformation. Es soll gelten:
@@ -4588,8 +4586,8 @@ In der Allgemeinen Relativitätstheorie wird Gravitation durch gekrümmte Räume
 Eine \textbf{(topologische) Mannigfaltigkeit} ist ein topologischer Raum $(M,\mathfrak{M})$ mit den folgenden Eigenschaften:
 \begin{itemize}
     \item $M$ ist ein Hausdorff-Raum \qquad (Folgen haben eindeutigen Grenzwert)
-    \item $M$ ist parakompakt \qquad (benötigt um einen vernünftigen Integrationsbegriff zu definieren)
-    \item $M$ ist lokal homöomorph zum $(\mathbb{R}^n, \mathfrak{R})$ \qquad ("dem $\mathbb{R}^n$ sehr ähnlich")
+    \item $M$ ist parakompakt \qquad (um lokale Begriffe zu globalisieren)
+    \item $M$ ist lokal homöomorph zum $(\mathbb{R}^n, \mathfrak{R})$ \qquad ("dem $\mathbb{R}^n$ sehr ähnlich / sieht im Herangezoomten aus wie der $\mathbb{R}^n$")
 \end{itemize}
 Die Zahl $n$ heißt dann die \textbf{Dimension} der Mannigfaltigkeit $M$.
 \end{definition}
@@ -4605,6 +4603,7 @@ Spurtopologie) homöomorph zum euklidischen Raum ist:
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{Lochom.jpg}
+\caption{Homöomorphismus $\phi$}
 \end{figure}
 
 \begin{remark}
@@ -4613,22 +4612,22 @@ zeitlich interpretiert werden.
 \end{remark}
 
 \begin{definition}
-Das Paar $(\mathcal{O},\Phi)$ bestehend aus einer offenen Menge $\mathcal{O} \in \mathfrak{M}$ und einem Homöomorphismus
+Das Paar $(\mathcal{O},\phi)$ bestehend aus einer offenen Menge $\mathcal{O} \in \mathfrak{M}$ und einem Homöomorphismus
 \begin{equation*}
-\Phi : \mathcal{O} \to \Phi(\mathcal{O}) \subseteq \mathbb{R}^n, \quad \Phi(p)=(x^1(p),\dots,x^n(p))
+\phi : \mathcal{O} \to \phi(\mathcal{O}) \subseteq \mathbb{R}^n, \quad \phi(p)=(x^1(p),\dots,x^n(p))
 \end{equation*}
 heißt \textbf{Karte} der Mannigfaltigkeit $M$.
 
-Da $\Phi$ ein Homöomorphismus ist, besitzt die Abbildung eine stetige Inverse
+Da $\phi$ ein Homöomorphismus ist, besitzt die Abbildung eine stetige Inverse
 \begin{equation*}
-\Phi^{-1} : \Phi(\mathcal{O}) \subseteq \mathbb{R}^n \to \mathcal{O}
+\phi^{-1} : \phi(\mathcal{O}) \subseteq \mathbb{R}^n \to \mathcal{O}
 \end{equation*}
 \end{definition}
 
 \begin{definition}
 Eine Familie von Karten
 \begin{equation*}
-(\mathcal{O}_\alpha,\Phi_\alpha)_{\alpha\in I}
+(\mathcal{O}_\alpha,\phi_\alpha)_{\alpha\in I}
 \end{equation*}
 heißt ein \textbf{Atlas} der Mannigfaltigkeit $M$, falls gilt:
 \begin{equation*}
@@ -4637,13 +4636,15 @@ M = \bigcup_{\alpha\in I} \mathcal{O}_\alpha
 \end{definition}
 
 \begin{example}
-Die Erdoberfläche ist eine 2-dimensionale Mannigfaltigkeit. Jede Region $\mathcal{O}_i$ der gekrümmten Erdoberfläche kann mit einer Karte $(\mathcal{O}_i,\Phi_i)$ auf eine Ebene $\Phi_i(\mathcal{O}_i) \subseteq \mathbb {R}^2$ abgebildet werden. Ein Atlas ist die Sammlung all dieser Karten, bei der auch Überlappungen zugelassen werden.
+Die Erdoberfläche ist eine 2-dimensionale Mannigfaltigkeit. Jede Region $\mathcal{O}_i$ der gekrümmten Erdoberfläche kann mit einer Karte $(\mathcal{O}_i,\phi_i)$ auf eine Ebene $\phi_i(\mathcal{O}_i) \subseteq \mathbb {R}^2$ abgebildet werden. Ein Atlas ist die Sammlung all dieser Karten, bei der auch Überlappungen zugelassen werden.
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{Erde.jpg}
-\caption{Die Erdoberfläche als Mannigfaltigkeit. Der gelbe Bereich auf der Kugel (links) ist die Überlappung $\mathcal{O}_1 \cap \mathcal{O}_2$, der gelbe Bereich rechts im $\mathbb{R}^2$ ist die Abbildung davon unter $\Phi_1$ und $\Phi_2$. Um zwischen $\Phi_1(\mathcal{O}_1 \cap \mathcal{O}_2)$ und $\Phi_2(\mathcal{O}_1 \cap \mathcal{O}_2)$ zu wechseln, also auf die andere Karte zu wechseln, benötigt es die \textit{Kartenwechselabbildung}. }
+\caption{Die Erdoberfläche als Mannigfaltigkeit. Der gelbe Bereich auf der Kugel (links) ist die Überlappung $\mathcal{O}_1 \cap \mathcal{O}_2$, der gelbe Bereich rechts im $\mathbb{R}^2$ ist die Abbildung davon unter $\phi_1$ und $\phi_2$. Um zwischen $\phi_1(\mathcal{O}_1 \cap \mathcal{O}_2)$ und $\phi_2(\mathcal{O}_1 \cap \mathcal{O}_2)$ zu wechseln, also auf die andere Karte zu wechseln, benötigt es die \textit{Kartenwechselabbildung}. Diese beschreibt auf welcher anderen Seite im Atlas die Karte weiter geht.}
 \end{figure}
 \end{example}
+
+Also sind Mannigfaltigkeiten eine Ansammlung von $\mathbb{R}^n$s, die auf geeignete Weise miteinander verklebt sind.  
 
 \begin{example}
 Weitere Beispiele für Mannigfaltigkeiten sind der $\mathbb{R}^n, \mathbb{C}^n$, die Kleinflasche und das Möbiusband.
@@ -4672,25 +4673,25 @@ Weitere Beispiele für Mannigfaltigkeiten sind der $\mathbb{R}^n, \mathbb{C}^n$,
 Überlappen sich zwei offene Umgebungen $\mathcal{O}_\alpha, \mathcal{O}_\beta \in \mathfrak{M}$, die homöomorph zum $\mathbb{R}^n$ sind, so wird dessen Durchschnitt durch verschiedene Karten abgebildet. Der Übergang zwischen diesen Darstellungen erfolgt über die \textbf{Kartenwechselabbildung}.
 
 \begin{definition}
-Für zwei Karten $(O_\alpha,\Phi_\alpha)$ und $(O_\beta,\Phi_\beta)$ mit
+Für zwei Karten $(O_\alpha,\phi_\alpha)$ und $(O_\beta,\phi_\beta)$ mit
 $O_\alpha\cap O_\beta\neq\emptyset$ ist der \textbf{Kartenwechsel}
 \begin{equation*}
-\Psi_{\beta\alpha}
-:= \Phi_\beta \circ \Phi_\alpha^{-1}
-: \Phi_\alpha(O_\alpha\cap O_\beta) \subseteq \mathbb{R}^n
-\to \Phi_\beta(O_\alpha\cap O_\beta) \subseteq \mathbb{R}^n
+\psi_{\beta\alpha}
+:= \phi_\beta \circ \phi_\alpha^{-1}
+: \phi_\alpha(O_\alpha\cap O_\beta) \subseteq \mathbb{R}^n
+\to \phi_\beta(O_\alpha\cap O_\beta) \subseteq \mathbb{R}^n
 \end{equation*}
 \end{definition}
 
 Der inverse Kartenwechsel ist gegeben durch
 \begin{equation*}
-\Psi_{\alpha\beta} := \Phi_\alpha \circ \Phi_\beta^{-1}
+\psi_{\alpha\beta} := \phi_\alpha \circ \phi_\beta^{-1}
 \end{equation*}
 und es gilt
 \begin{equation*}
-\Psi_{\alpha\beta}\circ\Psi_{\beta\alpha} = \mathrm{id}_{\Phi_\alpha(O_\alpha\cap O_\beta)}
+\psi_{\alpha\beta}\circ\psi_{\beta\alpha} = \mathrm{id}_{\phi_\alpha(O_\alpha\cap O_\beta)}
 \qquad
-\Psi_{\beta\alpha}\circ\Psi_{\alpha\beta} = \mathrm{id}_{\Phi_\beta(O_\alpha\cap O_\beta)}
+\psi_{\beta\alpha}\circ\psi_{\alpha\beta} = \mathrm{id}_{\phi_\beta(O_\alpha\cap O_\beta)}
 \end{equation*}
 
 \begin{figure}[H]
@@ -4705,27 +4706,27 @@ Seien drei offenen Mengen $\mathcal{O}_\alpha, \mathcal{O}_\beta, \mathcal{O}_\g
 \end{equation*}
 so können drei Kartenwechsel definiert werden:
 \begin{align*}
-\Psi_{\beta\alpha} &= \Phi_\beta \circ \Phi_\alpha^{-1}, \\
-\Psi_{\gamma\beta} &= \Phi_\gamma \circ \Phi_\beta^{-1}, \\
-\Psi_{\gamma\alpha} &= \Phi_\gamma \circ \Phi_\alpha^{-1}.
+\psi_{\beta\alpha} &= \phi_\beta \circ \phi_\alpha^{-1}, \\
+\psi_{\gamma\beta} &= \phi_\gamma \circ \phi_\beta^{-1}, \\
+\psi_{\gamma\alpha} &= \phi_\gamma \circ \phi_\alpha^{-1}.
 \end{align*}
 
 \begin{proposition}[Dreifachdurchschnittsbedingung]
-Das Diagramm der Kartenwechsel ist kommutativ, d.h.
+Das Diagramm der Kartenwechsel kommutiert, d.h.
 \begin{equation}\label{eq:dreifach}
-\Psi_{\gamma\alpha}
-= \Psi_{\gamma\beta} \circ \Psi_{\beta\alpha}
+\psi_{\gamma\alpha}
+= \psi_{\gamma\beta} \circ \psi_{\beta\alpha}
 \end{equation}
 \end{proposition}
 
 \begin{proof}
 Es gilt
 \begin{equation*}
-\Psi_{\gamma\beta} \circ \Psi_{\beta\alpha}
-= (\Phi_\gamma \circ \Phi_\beta^{-1}) \circ (\Phi_\beta \circ \Phi_\alpha^{-1})
-\overset{\text{assoziativ}}{=} \Phi_\gamma \circ \underbrace{(\Phi_\beta^{-1}\circ\Phi_\beta)}_{=\mathrm{id}} \circ \Phi_\alpha^{-1}
-= \Phi_\gamma \circ \Phi_\alpha^{-1}
-= \Psi_{\gamma\alpha}
+\psi_{\gamma\beta} \circ \psi_{\beta\alpha}
+= (\phi_\gamma \circ \phi_\beta^{-1}) \circ (\phi_\beta \circ \phi_\alpha^{-1})
+\overset{\text{assoziativ}}{=} \phi_\gamma \circ \underbrace{(\phi_\beta^{-1}\circ\phi_\beta)}_{=\mathrm{id}} \circ \phi_\alpha^{-1}
+= \phi_\gamma \circ \phi_\alpha^{-1}
+= \psi_{\gamma\alpha}
 \end{equation*}
 \end{proof}
 
@@ -4737,20 +4738,20 @@ Es gilt
 
 Diese Dreifachdurchschnittsbedingung lässt sich auf beliebige Mehrfachüberlappungen verallgemeinern.
 
-Die Vierfachdurchschnittsbedingung ist $\Psi_{\alpha \delta} = \Psi_{\alpha \beta} \circ ( \Psi_{\beta \gamma} \circ \Psi_{\gamma \delta})$. Diese folgt direkt aus der Dreifachdurchschnittsbedingung:
+Die Vierfachdurchschnittsbedingung ist $\psi_{\alpha \delta} = \psi_{\alpha \beta} \circ ( \psi_{\beta \gamma} \circ \psi_{\gamma \delta})$. Diese folgt direkt aus der Dreifachdurchschnittsbedingung:
 \begin{equation*}
-\Psi_{\alpha \beta} \circ ( \Psi_{\beta \gamma} \circ \Psi_{\gamma \delta})
-\overset{\eqref{eq:dreifach}}{=} \Psi_{\alpha \beta} \circ \Psi_{\beta \delta} 
-\overset{\eqref{eq:dreifach}}{=} \Psi_{\alpha \delta}
+\psi_{\alpha \beta} \circ ( \psi_{\beta \gamma} \circ \psi_{\gamma \delta})
+\overset{\eqref{eq:dreifach}}{=} \psi_{\alpha \beta} \circ \psi_{\beta \delta} 
+\overset{\eqref{eq:dreifach}}{=} \psi_{\alpha \delta}
 \end{equation*}
 
 Das kann induktiv weitergeführt werden zur Mehrfachdurchschnittsbedingung
 \begin{equation*}
-\Psi_{\alpha_0\alpha_k}=\Psi_{\alpha_0\alpha_1}\circ\Psi_{\alpha_1\alpha_2}\circ\dots\circ\Psi_{\alpha_{k-1}\alpha_k}
+\psi_{\alpha_0\alpha_k}=\psi_{\alpha_0\alpha_1}\circ\psi_{\alpha_1\alpha_2}\circ\dots\circ\psi_{\alpha_{k-1}\alpha_k}
 \end{equation*}
 
 \begin{remark}
-Eine Karte beschreibt, \textit{wie} $\mathcal{O}$ im $\mathbb{R}^n$ dargestellt wird. Beispielsweise durch kartesische Koordinaten $\Phi_\alpha(p) = (x, y, z)$ oder durch Zylinderkoordinaten $\Phi_\beta(p) = (r, \phi, z)$. Der Kartenwechsel $\Psi_{\alpha \beta}$ ist dann die Transformation von den Zylinderkoordinaten in kartesische Koordinaten: $\Psi_{\alpha \beta}(r,\phi,z)=(r\cdot \mathrm{cos}\phi,r \cdot \mathrm{sin}\phi, z)=(x,y,z)$.
+Eine Karte beschreibt, \textit{wie} $\mathcal{O}$ im $\mathbb{R}^n$ dargestellt wird. Beispielsweise durch kartesische Koordinaten $\phi_\alpha(p) = (x, y, z)$ oder durch Zylinderkoordinaten $\phi_\beta(p) = (r, \phi, z)$. Der Kartenwechsel $\psi_{\alpha \beta}$ ist dann die Transformation von den Zylinderkoordinaten in kartesische Koordinaten: $\psi_{\alpha \beta}(r,\phi,z)=(r\cdot \mathrm{cos}\phi,r \cdot \mathrm{sin}\phi, z)=(x,y,z)$.
 \end{remark}
 
 \section{Skalarfelder auf Mannigfaltigkeiten}
@@ -4770,18 +4771,18 @@ Skalarfelder bilden also jeden Punkt $p$ einer Mannigfaltigkeit auf einen \texti
 Ein Skalarfeld $F$ ist zunächst nur als abstrakte Abbildung auf der Mannigfaltigkeit definiert. Um ein Skalarfeld rechnerisch zu untersuchen, betrachten wir daher seine Darstellung in lokalen Koordinaten, die durch die Karten der Mannigfaltigkeit gegeben sind.
 
 \begin{definition}
-Sei $(M,\mathfrak{M})$ eine Mannigfaltigkeit, $F : M \to \mathbb{R}$ ein Skalarfeld und $(\mathcal{O}_\alpha,\Phi_\alpha)$ eine Karte der Mannigfaltigkeit.
-Dann heißt
+Sei $(M,\mathfrak{M})$ eine Mannigfaltigkeit, $F : M \to \mathbb{R}$ ein Skalarfeld und $(\mathcal{O}_\alpha,\phi_\alpha)$ eine Karte der Mannigfaltigkeit.
+Dann heißt die numerische Funktion
 \begin{equation*}
-f_\alpha := F \circ \Phi_\alpha^{-1}
-: \Phi_\alpha(\mathcal{O}_\alpha) \subseteq \mathbb{R}^n \to \mathbb{R}
+f_\alpha := F \circ \phi_\alpha^{-1}
+: \phi_\alpha(\mathcal{O}_\alpha) \subseteq \mathbb{R}^n \to \mathbb{R}
 \end{equation*}
 \textbf{lokaler Repräsentant} oder auch \textbf{lokale Darstellung} von $F$ in der $\alpha$-Karte.
 \end{definition}
 
-$f_\alpha$ ist keine Koordinatentransformation, sondern die Darstellung eines Skalarfeldes in den Koordinaten der Karte $(\mathcal{O}_\alpha,\Phi_\alpha)$. Ob diese Koordinaten kartesisch, zylindrisch oder sphärisch sind, hängt allein von der gewählten Karte ab.
+$f_\alpha$ ist keine Koordinatentransformation, sondern die Darstellung eines Skalarfeldes in den Koordinaten der Karte $(\mathcal{O}_\alpha,\phi_\alpha)$. Ob diese Koordinaten kartesisch, zylindrisch oder sphärisch sind, hängt allein von der gewählten Karte ab.
 
-Entsprechend erhält man zu einem Atlas $(\mathcal{O}_\alpha,\Phi_\alpha)_{\alpha\in I}$
+Entsprechend erhält man zu einem Atlas $(\mathcal{O}_\alpha,\phi_\alpha)_{\alpha\in I}$
 eine Familie numerischer Funktionen
 \begin{equation*}
 (f_\alpha)_{\alpha\in I} \ 
@@ -4789,85 +4790,1026 @@ eine Familie numerischer Funktionen
 \ f_\alpha : \mathbb{R}^n \to \mathbb{R}
 \end{equation*}
 
-Die lokalen Darstellungen $(f_\alpha)_{\alpha\in I}$ dürfen jedoch nicht unabhängig voneinander gewählt werden. Überlappen sich zwei Karten $\mathcal{O}_\alpha$ und $\mathcal{O}_\beta$, so müssen die entsprechenden Funktionen auf dem Überlappungsbereich zueinander passen.
-
-\begin{definition}
-Seien $(\mathcal{O}_\alpha,\Phi_\alpha)$ und $(\mathcal{O}_\beta,\Phi_\beta)$ zwei Karten mit $\mathcal{O}_\alpha \cap \mathcal{O}_\beta \neq \emptyset$.
-Die lokalen Darstellungen $f_\alpha$ und $f_\beta$ eines Skalarfeldes $F$ heißen \textbf{kompatibel}, wenn gilt:
-\begin{equation}\label{eq:komp}
-\forall x \in \Phi_\beta(\mathcal{O}_\alpha \cap \mathcal{O}_\beta): \
-f_\beta(x) = (f_\alpha \circ \Psi_{\alpha\beta})(x)
-\end{equation}
-wobei $\Psi_{\alpha\beta} := \Phi_\alpha \circ \Phi_\beta^{-1}$
-\end{definition}
-
-Begründung: \newline
-Sei $x \in \Phi_\beta(\mathcal{O}_\alpha \cap \mathcal{O}_\beta)$. Dann ist
-\begin{equation*}
-f_\beta(x) = (F \circ \Phi_\beta^{-1})(x) = (F \circ \underbrace{(\Phi_\alpha^{-1} \circ \Phi_\alpha)}_{=\mathrm{id}} \circ \Phi_\beta^{-1})(x) = ((F \circ \Phi_\alpha^{-1}) \circ (\Phi_\alpha \circ \Phi_\beta^{-1}))(x) = (f_\alpha \circ \Psi_{\alpha\beta})(x)
-\end{equation*}
-
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{Skalarfeld.jpg}
 \end{figure}
 
+Sollen lokale Darstellungen $(f_\alpha)_{\alpha\in I}$ ein gemeinsames (globales) Skalarfeld $F$ beschreiben, dürfen sie nicht unabhängig voneinander gewählt werden. Überlappen sich zwei Karten $\mathcal{O}_\alpha$ und $\mathcal{O}_\beta$, so müssen die entsprechenden Funktionen auf dem Überlappungsbereich zueinander passen.
+
+\begin{proposition}[Kompatibilitätsbedingung]
+Seien $(\mathcal{O}_\alpha,\phi_\alpha)$ und $(\mathcal{O}_\beta,\phi_\beta)$ zwei Karten mit $\mathcal{O}_\alpha \cap \mathcal{O}_\beta \neq \emptyset$. Seien $f_\alpha$ und $f_\beta$ lokale Darstellungen desselben Skalarfeldes $F$. Dann gilt
+\begin{equation}\label{eq:komp}
+\forall x \in \phi_\beta(\mathcal{O}_\alpha \cap \mathcal{O}_\beta): \
+f_\beta(x) = (f_\alpha \circ \psi_{\alpha\beta})(x)
+\end{equation}
+wobei $\psi_{\alpha\beta} := \phi_\alpha \circ \phi_\beta^{-1}$
+\end{proposition}
+\begin{proof}
+Dies geht aus der Definition der lokalen Darstellung hervor. \newline
+Sei $x \in \phi_\beta(\mathcal{O}_\alpha \cap \mathcal{O}_\beta)$. Dann ist
+\begin{equation*}
+f_\beta(x) = (F \circ \phi_\beta^{-1})(x) = (F \circ \underbrace{(\phi_\alpha^{-1} \circ \phi_\alpha)}_{=\mathrm{id}} \circ \phi_\beta^{-1})(x) = ((F \circ \phi_\alpha^{-1}) \circ (\phi_\alpha \circ \phi_\beta^{-1}))(x) = (f_\alpha \circ \psi_{\alpha\beta})(x)
+\end{equation*}
+\end{proof}
+Die beiden lokalen Darstellungen $f_{\alpha}$ und $f_{\beta}$ beschreiben denselben physikalischen/geometrischen Wert, nur in verschiedenen Koordinaten, da sie vom selben globalen Skalarfeld $F$ stammen. 
+
 \subsubsection*{Skalarfelder sind kartenunabhängig (koordinatenunabhängig)}
 Die lokale Darstellung $f_\alpha$ eines Skalarfeldes $F$ erlaubt es, den abstrakten Begriff einer Funktion auf einer Mannigfaltigkeit auf bekannte numerische Funktionen zurückzuführen. Dabei ist zu beachten, dass ein Punkt $p \in M$ je nach Karte durch unterschiedliche
 Koordinaten beschrieben wird.
 
-Sei $p \in \mathcal{O}_\alpha \cap \mathcal{O}_\beta$. Dann besitzt $p$ bezüglich der Karten $(\mathcal{O}_\alpha,\Phi_\alpha)$ und
-$(\mathcal{O}_\beta,\Phi_\beta)$ die Koordinatendarstellungen
+Sei $p \in \mathcal{O}_\alpha \cap \mathcal{O}_\beta$. Dann besitzt $p$ bezüglich der Karten $(\mathcal{O}_\alpha,\phi_\alpha)$ und
+$(\mathcal{O}_\beta,\phi_\beta)$ die Koordinatendarstellungen
 \begin{equation*}
-x_\alpha^i := \Phi^i_\alpha(p) \in \mathbb{R}^n \ \text{ und } \
-x_\beta^i := \Phi^i_\beta(p) \in \mathbb{R}^n
+x_\alpha^i := \phi^i_\alpha(p) \in \mathbb{R}^n \ \text{ und } \
+x_\beta^i := \phi^i_\beta(p) \in \mathbb{R}^n
 \end{equation*}
-Obwohl $x_\alpha$ und $x_\beta$ im Allgemeinen verschieden sind, repräsentieren beide denselben Punkt der Mannigfaltigkeit.
+Obwohl $x_\alpha$ und $x_\beta$ im Allgemeinen verschieden sind, repräsentieren beide denselben Punkt der Mannigfaltigkeit
+\begin{equation*}
+\phi^{-1}_\alpha(x_\alpha^i) = \phi^{-1}_\beta(x_\beta^i) = p \in M
+\end{equation*}
 
 Zwischen diesen Koordinaten besteht eine bijektive Beziehung, gegeben durch die Kartenwechselabbildungen
 \begin{equation*}
-x_\alpha^i = \Psi_{\alpha\beta}(x_\beta^i)
+x_\alpha^i = \psi^i_{\alpha\beta}(x_\beta^k) = (\phi_\alpha \circ \phi_\beta^{-1})^i(x_\beta^k)
  \ \text{ und } \
-x_\beta^i = \Psi_{\beta\alpha}(x_\alpha^i)
+x_\beta^i = \psi^i_{\beta\alpha}(x_\alpha^k) = (\phi_\beta \circ \phi_\alpha^{-1})^i(x_\alpha^k)
 \end{equation*}
 
 Die Kompatibilitätsbedingung der lokalen Darstellungen stellt sicher, dass die numerischen Funktionen $f_\alpha$ und $f_\beta$ denselben Funktionswert liefern, wenn sie auf Koordinaten angewandt werden, die demselben Punkt $p$ entsprechen:
 \begin{equation}\label{eq:numfunk}
 f_\alpha(x_\alpha^i)
-= f_\alpha(\Psi_{\alpha\beta}^i(x_\beta^i))
-= (f_\alpha \circ \Psi_{\alpha\beta})(x_\beta^j)
-\overset{\eqref{eq:komp}}{=} f_\beta(x_\beta^j)
+= f_\alpha(\psi_{\alpha\beta}^i(x_\beta^k))
+= (f_\alpha \circ \psi_{\alpha\beta})(x_\beta^k)
+\overset{\eqref{eq:komp}}{=} f_\beta(x_\beta^k)
 \end{equation}
 
 Dies entspricht der physikalischen Forderung, dass eine skalare Größe – etwa eine Temperatur – unabhängig von der gewählten Karte denselben Wert besitzt. Die numerischen Funktionen hängen von der gewählten Karte (Koordinatendarstellung) ab, der physikalische Wert jedoch nicht.
 
-Über die lokalen Darstellungen lässt sich die Wirkung des Skalarfeldes auf einen Punkt der Mannigfaltigkeit vollständig beschreiben. Für jeden Punkt $p \in M$ existiert eine Karte $(\mathcal{O}_\alpha,\Phi_\alpha)$ mit $p \in \mathcal{O}_\alpha$, sodass gilt:
+\underline{Rekonstruktion des Skalarfeldes aus der lokalen Darstellung}\newline
+Umgekehrt kann zu gegebenen lokalen Darstellungen $(f_\alpha)_{\alpha\in I}, \ f_\alpha : \mathbb{R}^n \to \mathbb{R}$ das zugehörige Skalarfeld $F$ gewonnen werden.
+
+Für einen Punkt $p \in M$ existiert eine Karte $(\mathcal{O}_\alpha,\phi_\alpha)$ mit $p \in \mathcal{O}_\alpha$, sodass wir definieren können
 \begin{equation*}
-F(p) = f_\alpha(\Phi_\alpha^i(p))
+F(p) := f_\alpha(\phi_\alpha^i(p)) = f_\alpha(x_\alpha^i)
 \end{equation*}
-Liegt der Punkt $p$ zusätzlich in einer weiteren Karte $\mathcal{O}_\beta$, so folgt aus der Kompatibilität der lokalen Darstellungen ebenso:
+Liegt der Punkt $p$ zusätzlich in einer weiteren Karte $(\mathcal{O}_\beta,\phi_\beta)$, so können wir ebenso definieren
 \begin{equation*}
-F(p) = f_\beta(\Phi_\beta^i(p))
+F(p) := f_\beta(\phi_\beta^i(p)) = f_\beta(x_\beta^i) \overset{\eqref{eq:numfunk}}{=}(f_\alpha \circ \psi_{\alpha\beta})(x_\beta^i)=f_\alpha(x_\alpha^i)
 \end{equation*}
 
-Der Wert des Skalarfeldes ist somit unabhängig von der gewählten Karte und eindeutig durch die lokalen Darstellungen bestimmt.
+Da per Definition der Mannigfaltigkeit für jeden Punkt $p \in M$ eine Karte existiert, gilt obiges für alle $p\in M$. Der Wert des Skalarfeldes ist somit unabhängig von der gewählten Karte und eindeutig durch die lokalen Darstellungen bestimmt.
 
-Diese Konstruktion ist analog zur Darstellung eines Vektors in verschiedenen Basen: Die einzelnen Komponenten hängen von der gewählten Basis ab, der Vektor selbst jedoch nicht. Ebenso hängen die lokalen Darstellungen $f_\alpha$ von der Wahl der Karte ab, während das Skalarfeld $F$ kartenunabhängig ist.
+Diese Konstruktion ist analog zur Darstellung eines Vektors in verschiedenen Basen: Die einzelnen Komponenten hängen von der gewählten Basis ab, der Vektor selbst, als abstraktes Objekt, jedoch nicht. Ebenso hängen die lokalen Darstellungen $f_\alpha$ von der Wahl der Karte ab, während das Skalarfeld $F$ kartenunabhängig ist.
 
 Statt der Kartenwechselabbildung (Koordinatenwechselfunktion) können die Koordinaten $x_\alpha^i$ auch als Funktion der Koordinaten einer anderen Karte $x_\beta^k$ aufgefasst werden
 \begin{align*}
-x_\beta^k(x_\alpha^i):= \Psi_{\beta\alpha}^k(x_\alpha^i)=x_\beta^k \\
-x_\alpha^k(x_\beta^i):= \Psi_{\alpha\beta}^k(x_\beta^i)=x_\alpha^k
+x_\beta^k(x_\alpha^i):= \psi_{\beta\alpha}^k(x_\alpha^i)=x_\beta^k \\
+x_\alpha^k(x_\beta^i):= \psi_{\alpha\beta}^k(x_\beta^i)=x_\alpha^k
 \end{align*}
+
+\begin{definition}\label{def:kartekoord}
+Für zwei Karten $(O,\phi)$ und $(\tilde{O},\tilde{\phi})$ mit $O\cap \tilde{O}\neq\emptyset$ ist der \textbf{Kartenwechsel in Koordinatendarstellung} gegeben durch
+\begin{equation*}
+\psi: \phi(O \cap \tilde{O}) \subseteq \mathbb{R}^n
+\to \tilde{\phi}(O \cap \tilde{O}) \subseteq \mathbb{R}^n : x^k \mapsto \tilde{x}^i(x^k):= \psi^i(x^k)=\tilde{x}^i
+\end{equation*}
+\end{definition}
+
 Damit kann \eqref{eq:numfunk} nun folgendermaßen dargestellt werden
 \begin{equation*}
 f_\alpha(x_\alpha^i) = f_\beta(x_\beta^j) = f_\beta(x_\beta^j(x_\alpha^i))
 \end{equation*}
 
-\section{Vektoren auf Mannigfaltigkeiten}
+\begin{definition}
+Eine Mannigfaltigkeit heißt \textbf{$C^k$-differenzierbare Mannigfaltigkeit}, wenn alle Kartenwechselabbildungen $\psi$ $k$-mal stetig differenzierbar sind, d.h. $\psi \in C^k$.
+
+Eine Mannigfaltigkeit heißt \textbf{glatte Mannigfaltigkeit} oder \textbf{$C^\infty$-Mannigfaltigkeit}, wenn alle Kartenwechselabbildungen unendlich oft stetig differenzierbar sind, d.h. $\psi \in C^\infty$.
+\end{definition}
+
+Wir fordern hier glatte Mannigfaltigkeiten, da andernfalls auch die lokalen Darstellungen von Skalarfeldern nur $C^k$ wären, da sie über
+\begin{equation*}
+f_\alpha = F \circ \phi_\alpha^{-1}
+\end{equation*}
+definiert sind. D.h. das Skalarfeld wäre lokal nur $k$-mal stetig differenzierbar.
+
+Als anschauliches Beispiel für ein Skalarfeld betrachten wir eine Wetterkarte. Bei einer solchen wird jedem Punkt eines zweidimensionalen Raumes (der Landkarte) ein Skalar zugeordnet, beispielsweise die Temperatur oder der Luftdruck. Formal handelt es sich dabei um eine Abbildung, die jedem Punkt einen reellen Wert zuweist.
+
+Im Alltag kann eine Wetterkarte meist sinnvoll interpretiert werden, ohne die gekrümmte Gestalt der Erdoberfläche, also die zweidimensionale Mannigfaltigkeit, zu berücksichtigen. 
+
+\subsection{Skalarfelder und Karten am Beispiel der stereographischen Projektion}
+Als Beispiel betrachten wir die Kugeloberfläche $S^2$ (zweidimensionale Mannigfaltigkeit).
+Zur Beschreibung von $S^2$ genügen bereits zwei Karten, die gemeinsam einen Atlas bilden: die Nordpolprojektion und die Südpolprojektion.
+
+Jede dieser Projektionen bildet alle Punkte der Kugeloberfläche, mit Ausnahme des jeweiligen Projektionspols, auf eine Ebene ab, die am gegenüberliegenden Pol tangential anliegt.
+
+Die Abbildung erfolgt dabei folgendermaßen: Die direkte Verbindungslinie zwischen dem Projektionspol und einem Punkt $p\in S^2$ wird so weit verlängert, bis sie die entsprechende Tangentialebene schneidet. Der Schnittpunkt ist das Bild von $p$ in der Ebene.
+
+Damit gilt:
+\begin{itemize}
+\item Die Nordpolprojektion $\phi_N$ (vom Norpol ausgehend) bildet $S^2\setminus\{N\}$ auf eine Ebene in $\mathbb{R}^2\setminus\{N\}$ ab.
+\item Die Südpolprojektion $\phi_S$ (vom Südpol ausgehend) bildet $S^2\setminus\{S\}$ auf eine Ebene in $\mathbb{R}^2\setminus\{S\}$ ab.
+\end{itemize}
+
+Zusammen beschreiben diese beiden Karten die gesamte Mannigfaltigkeit $S^2$ und bilden somit einen Atlas.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{images/Proj3d.jpg}
+\caption{stereographische Projektion in 3D Ansicht}
+{\footnotesize{Quelle: ART Mitschrift Berndl-Forstner (WS20/21) \url{https://forum.fstph.at/t/latex-skriptum-allg-relativitaetstheorie/4021}}}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{images/Proj2d.jpg}
+\caption{stereographische Projektion in 2D Ansicht}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[t]{0.6\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/Südpolproj.jpg}
+        \caption{Südpolprojektion}
+        {\footnotesize{Quelle: \url{https://www.geogebra.org/m/d6jucfnc}}}        
+    \end{subfigure}
+    \hspace{1em}
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/Nordpolproj.jpg}
+        \caption{Nordpolprojektion}
+    \end{subfigure}
+    \caption{Projektion der Erde}
+    \label{fig:erdproj}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{images/Lichtproj.jpg}
+\caption{Nordpolprojektion mithilfe von Licht}
+\end{figure}
+
+\underline{Herleitung der Gestalt der Kartenwechselabbildung} \newline
+Sei $p\in S^2$. Dann ist $\phi_N(p)=x^i \in \mathbb{R}^2 \setminus \{N\}$ und $\phi_S(p)=\tilde{x}^i \in \mathbb{R}^2 \setminus \{S\}$. Für die Koordinaten von $x^i$ und $\tilde{x}^i$ verwenden wir Polarkoordinaten. Dabei ist der Winkel (Längengrad) $\varphi$ für beide Projektionen identisch. Der Unterschied zwischen den beiden Darstellungen liegt ausschließlich im radialen Abstand $\rho$ bzw. $\tilde{\rho}$, zum Süd- bzw. Nordpol, welchen wir als Koordinatenursprung für die jeweilige Ebene festlegen. Um die Rechnungen zu vereinfachen, setzen wir den Durchmesser der Kugel auf $d=1$.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{images/Nordpolproj2.jpg}
+\caption{Die Position eines Punktes $x^i$ in der projizierten Ebene wird durch den Winkel $\varphi$ und Radius $\rho$ beschrieben: $\rho \cdot e_\rho^i(\varphi)=x^i$}
+\end{figure}
+
+Aus der Geometrie ergibt sich
+\begin{equation*}
+\tan \alpha = \frac{\rho}{d} = \frac{\rho}{1} = \rho, \qquad \tan \beta = \tilde{\rho}
+\end{equation*}
+
+\begin{minipage}[t]{0.83\textwidth}
+Da $p$ auf der Kugeloberfläche liegt, liegt dieser Punkt auf einem Thaleskreis (verbindet man einen bel. Punkt auf einem Halbkreis mit dessen Endpunkten schließen die beiden Strecken einen rechten Winkel ein). Daher stehen die Verbindungsstrecken $\overline{Np}$ und $\overline{Sp}$ im rechten Winkel aufeinander. Da die Summe der Winkel in einem Dreieck $180^{\circ}=\pi$ beträgt, ist somit $\beta = \pi - \frac{\pi}{2}-\alpha = \frac{\pi}{2} - \alpha$. Somit folgt
+
+\begin{equation}\label{eq:rho}
+\tilde{\rho}
+= \tan \beta
+= \tan\!\left(\frac{\pi}{2} - \alpha\right)
+= \frac{1}{\tan \alpha}
+= \frac{1}{\rho}
+\end{equation}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.15\textwidth}
+\centering
+\vspace{-2em}
+\includegraphics[width=\textwidth]{images/Thaleskreis.jpg}
+\small Thaleskreis
+\vspace{1em}
+
+\includegraphics[width=\textwidth]{images/Thaleskreis1.jpg}
+\end{minipage}
+
+Sei $e_\rho^i(\varphi) = (\cos\varphi,\sin\varphi)$ der Einheitsvektor in radialer Richtung im $\mathbb{R}^2$. Dann sind die Koordinaten des Bildpunktes bezüglich der Nordpolprojektion
+\begin{equation*}
+\phi_N(p) = x^i = \rho\, e_\rho^i(\varphi)
+\end{equation*}
+
+Es folgt die Kartenwechselabbildung zwischen Nord- und Südpolprojektion
+\begin{equation*}
+x^i = \rho\, e_\rho^i(\varphi) \overset{\eqref{eq:rho}}{=}
+\frac{1}{\tilde{\rho}}\, e_\rho^i(\varphi) \overset{\frac{1}{\tilde{\rho}} \cdot \tilde{x}^i = e_{\tilde{\rho}}^i(\varphi)}{=}
+\frac{1}{\tilde{\rho}^2}\, \tilde{x}^i \overset{\substack{\tilde{\rho}^2=|\tilde{x}^m|^2 \\ =\tilde{x}^m\tilde{x}^m}}{=} 
+\frac{1}{\tilde{x}^m\tilde{x}^m} \tilde{x}^i 
+\qquad \tilde{x}^i  \in \mathbb{R}^2\setminus\{0\}.
+\end{equation*}
+
+und
+\begin{equation*}
+\tilde{x}^i
+= \frac{1}{x^m x^m}\, x^i,
+\qquad x^i \in \mathbb{R}^2\setminus\{0\}.
+\end{equation*}
+
+Zusammengefasst: Auf dem Überlappungsbereich der beiden Karten sind die Koordinaten durch die Kartenwechselabbildung miteinander verknüpft. Da dort $\tilde{\rho} = \tfrac{1}{\rho}$ gilt, können die beiden Darstellungen ineinander umgerechnet werden.
+
+\underline{Darstellung eines Skalarfeldes} \newline
+Wir betrachten nun ein Skalarfeld $F:S^2 \to \mathbb{R}$ auf der Mannigfaltigkeit $S^2$.
+Bezüglich der Nordpolprojektion $\phi_N$ sei das Skalarfeld lokal dargestellt durch
+\begin{equation*}
+f:= F \circ \phi_N^{-1} : \mathbb{R}^2 \to \mathbb{R},
+\qquad
+f(x^i) := \frac{1}{1 + \rho^2}
+= \frac{1}{1 + x^i x^i}
+\end{equation*}
+
+Da es sich um ein Skalarfeld handelt, muss es auch bezüglich der anderen Karte darstellbar sein. Bezeichnet $\tilde{f}$ die lokale Darstellung bezüglich der Südpolprojektion $\phi_S$
+\begin{equation*}
+\tilde{f}:= F \circ \phi_S^{-1} : \mathbb{R}^2 \to \mathbb{R},
+\qquad
+\tilde{f}(x^i) := \frac{1}{1 + \tilde{\rho}^2}
+= \frac{1}{1 + \tilde{x}^i \tilde{x}^i}
+\end{equation*}
+
+Dann muss für $p \in S^2$ gelten
+\begin{equation*}
+F(p) = \tilde{f}(\tilde{x}^i) = f(x^i)
+\end{equation*}
+
+und es kann die Darstellung des Skalarfeldes bezüglich der anderen Karten angeschrieben werden
+\begin{equation*}
+\tilde{f}(\tilde{x}^i) = f(x^i) = \frac{1}{1 + \rho^2} \overset{\eqref{eq:rho}}{=} \frac{1}{1 + \frac{1}{\tilde{\rho}^2}}
+= \frac{\tilde{\rho}^2}{1 + \tilde{\rho}^2}
+= \frac{\tilde{x}^i \tilde{x}^i}{1 + \tilde{x}^i \tilde{x}^i}
+\end{equation*}
+
+Für $\rho \to \infty$ geht die Funktion $f(x^i)=\tfrac{1}{1+\rho^2}$ gegen $0$. Dieser Grenzfall entspricht geometrisch dem Annähern an den Nordpol. (Der Nordpol ist hier wie der Punkt im unendlichen bei der Riemannschen Zahlenkugel.)
+
+Da die Nord- und Südpolprojektion zusammen einen Atlas der Kugeloberfläche bilden, existiert ein globales Skalarfeld $F$ auf $S^2$,
+dessen lokale Darstellungen durch $f$ und $\tilde{f}$ gegeben sind.
+
+Die Mannigfaltigkeit muss nicht als eingebettetes Objekt im $\mathbb{R}^3$ aufgefasst werden. Die Beschreibung durch Karten und Kartenwechsel enthält bereits die vollständige geometrische Information über das Skalarfeld auf $S^2$.
+
+Anhand der stereographischen Projektion erkennt man sehr deutlich, dass verschiedene Karten ein und dieselbe Mannigfaltigkeit in den $\mathbb{R}^n$ auf sehr unterschiedliche Weise abbilden können. Obwohl stets dieselbe Punktmenge der Mannigfaltigkeit $(M,\mathfrak{M})$ beschrieben wird, können die Bilder im Zielraum völlig verschieden aussehen. Vgl. \cref{fig:erdproj} bzw. auch die Tatsache, dass die Kartenwechselabbildung nicht linear ist: \newline
+Wenn wir eine Gerade in $\mathbb{R}^2 \setminus{N}$ durch die Kartenwechselabbilung $\psi: x^i= \rho\ e^i_\rho(\varphi) \mapsto \tilde{x}^i= \frac{1}{\rho}\ e^i_\rho(\varphi)$ in $\mathbb{R}^2 \setminus{S}$ abbilden, wird diese Gerade gekrümmt.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{images/Kartenwech1.jpg}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{images/Kartenwech2.jpg}
+\end{figure}
+
+Wenn wir diese Gerade nun ins Unendliche verlängern, wird der Abstand $\rho$ der Punkte auf der Gerade zu $S$ immer größer und somit $\tilde{\rho} = \frac{1}{\rho}$ immer kleiner. Es bildet sich in $\mathbb{R}^2 \setminus{S}$ ein Kreis. Beim Grenzübergang $\rho \to \infty$ gilt $lim_{\rho \to \infty} \tilde{\rho}= 0$, wir treffen auf den Nordpol. 
+
+Das heißt, jede Gerade wird durch die Kartenwechselabbilung auf einen Kreis abgebildet, der durch den Pol verläuft. Außerdem werden Kurven auf Kurven abgebildet.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{images/Kartenwech3.jpg}
+\end{figure}
+
+\section{Vektoren auf Mannigfaltigkeiten (Tangentialraum)}
+Ziel dieser Sektion ist es, Vektorfelder bzw. allgemein Tensorfelder auf Mannigfaltigkeiten zu definieren. Vektorfelder bzw. Tensorfelder auf dem $\mathbb{R}^n$ bilden auf einen Vektorraum $V$ bzw. Tensorraum $\mathcal{T}^r_s$ ab
+\begin{equation*}
+v : \mathbb{R}^n \to V
+\qquad
+t : \mathbb{R}^n \to \mathcal{T}^r_s
+\end{equation*}
+Wenn wir dies auf allgemeine Mannigfaltigkeiten übertragen möchten, benötigen wir einen Vektorraum bzw. Tensorraum auf der Mannigfaltigkeit, in den die Vektorfelder bzw. Tensorfelder abgebildet werden.
+
+Wie wir anhand der stereographischen Projektion gesehen haben, ist die Kartenwechselabbilung im allgemeinen nicht linear. Somit wird die Vektorraumstruktur beim Kartenwechsel nicht erhalten. Es stellt sich nun die Frage, wie wir den Kartenwechsel linearisieren können. Der Kartenwechsel bildet Kurven auf Kurven ab. Wir betrachten nun mehrere Kurven, die durch einen fixierten Punkt $p\in M$ bzw. in Koordinatendarstellungen $x_0^i$ in einer Karte verlaufen und dessen Tangentialvektoren $v^i := \dot{x}_0^i$ in diesem Punkt. Wie sich herausstellen wird, spannen diese Tangentialvektoren einen Vektorraum auf, den \textit{Tangentialraum}. Wir erhalten also für jeden Punkt $p \in M$ einen Vektorraum. Das Vektorraumkonzept wird lokalisiert. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{images/Tpm.jpg}
+\end{figure}
+
+Sei nun $(M, \mathfrak{M})$ eine beliebige Mannigfaltigkeit. Wir betrachten eine Kurve $\gamma: I \to M$ mit $I \subset \mathbb{R}$ beliebiges Intervall, die bei $p=\gamma(0)$ differenzierbar ist. Wir wählen zwei Karten $(\mathcal{O},\phi)$, $(\tilde{\mathcal{O}},\tilde{\phi})$ mit $\gamma(I) \subset {\mathcal{O}} \cap \tilde{\mathcal{O}}$, dann erhält die Kurve in Koordinaten die Darstellung
+\begin{equation*}
+x^i(t) = \phi^i(\gamma(t)) \qquad 
+\tilde{x}^i(t) = \tilde{\phi}^i(\gamma(t))
+\end{equation*}
+
+Dann ist der Tangentialvektor der Kurve in der jeweiligen Karte an $t=0$ gegeben durch:
+\begin{equation*}
+v^i := \left.\frac{d}{dt}\right|_{t=0} x^i(t) = \dot{x}^i(0)
+\qquad
+\tilde{v}^i := \left.\frac{d}{dt}\right|_{t=0} \tilde{x}^i(t) = \dot{\tilde{x}}^i(0)
+\end{equation*}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{images/Curve.jpg}
+\end{figure}
+
+Wir suchen nun nach einer linearen Beziehung zwischen $v^i$ und $\tilde{v}^i$.
+
+Auf dem Überlappungsbereich hängen die Koordinaten über den Kartenwechsel zusammen. Wie in \cref{def:kartekoord} beschrieben können wir die \glqq neuen\grqq\ Koordinaten als Funktionen der \glqq alten\grqq\ auffassen:
+\begin{equation*}\label{eq:kartenwechselkoord}
+\tilde{x}^i(x^k):= \psi^i(x^k)=\tilde{x}^i \in \phi^k(\mathcal{O} \cap \tilde{\mathcal{O}})
+\end{equation*}
+
+Wenden wir nun die Kettenregel auf $\tilde{x}^i(t)=\tilde{x}^i(x^k(t))$ an, so erhalten wir:
+\begin{equation}\label{eq:tangent_transform}
+\tilde{v}^i
+= \left.\frac{d}{dt}\right|_{t=0}\tilde{x}^i(t)
+= \left.\frac{d}{dt}\right|_{t=0}\tilde{x}^i(x(t))
+= \frac{\partial \tilde{x}^i}{\partial x^l}(\underbrace{x^k(0)}_{=:x_0^k})\ v^l
+= \frac{\partial \tilde{x}^i}{\partial x^l}(x_0^k)\ v^l
+\end{equation}
+
+Die Matrix $\frac{\partial \tilde{x}^i}{\partial x^l}$ ist die \textbf{Jacobi-Matrix} des Kartenwechsels. Sie gibt an, wie sich $v^i$ unter einem Kartenwechsel verändert und ist \textbf{linear}. Somit ist diese Transformation linear in $v$. Sie hängt nur vom Punkt $p$ (bzw. $x_0$) ab, nicht von der konkreten Kurve $\gamma$. Wichtig: wir beschränken uns hier auf den einen Punkt $x_0^i$! Global bleibt der Kartenwechsel im Allgemeinen nichtlinear.
+
+Es kann viele verschiedene Kurven geben, die durch denselben Punkt $p$ bzw. in Koordinaten $x_0^i$ laufen und dort dieselbe \glqq Anfangsrichtung\grqq\ $v^i$ besitzen. Wir fassen diese zusammen mit der folgenden \textbf{Äquivalenzrelation}:
+
+\begin{equation*}
+x_1^i(t) \sim x_2^i(t)  :\Leftrightarrow
+\begin{cases}
+x_1^i(0)=x_2^i(0) =: x_0^i \\
+\dot{x}_1^i(0) = \dot{x}_2^i(0) = v^i
+\end{cases}
+\end{equation*}
+
+Die Äquivalenzklasse ist dann $[x^i(t)]_\sim = \{y^i(t) \ | \ y^i(0)=x_0^i, \ \dot{y}^i(0)=v^i\}$.
+
+Diese Äquivalenz ist \textbf{kartenunabhängig} und hängt nur von $p \in M$ ab. D.h. $x_1^i(t) \sim x_2^i(t) \, \Leftrightarrow \, \tilde{x}_1^i(t) \sim \tilde{x}_2^i(t)$. Das folgt aus dem Transformationsgesetz \eqref{eq:tangent_transform}: Wenn zwei Kurven in einer Karte denselben Tangentialvektor besitzen, dann haben sie wegen der linearen Jacobi-Transformation auch in jeder anderen Karte denselben Tangentialvektor:
+
+Transformieren wir in $x_0^k$ die Tangentialvektoren $v_1^i = v_2^i$ zweier Kurven mit \eqref{eq:tangent_transform}
+\begin{equation*}
+\tilde{v}_1^i= \frac{\partial \tilde{x}^i}{\partial x^l}(x_0^k)\ v^l_1
+\qquad
+\tilde{v}_2^i= \frac{\partial \tilde{x}^i}{\partial x^l}(x_0^k)\ v^l_2
+\end{equation*}
+Da die Jacobi-Matrix nur von $x_0^k$ bzw. $p \in M$ abhängt, wird dieselbe Matrix auf $v_1^i = v_2^i$ angewandt und wir erhalten $\tilde{v}_1^i=\tilde{v}_2^i$. 
+
+Koordinatenunabhängig geschrieben:
+\begin{equation*}
+\gamma_1(t) \sim \gamma_2(t)  :\Leftrightarrow
+\begin{cases}
+\gamma_1(0)=\gamma_2(0) \\
+\dot{\gamma}_1(0) = \dot{\gamma}_2(0)
+\end{cases}
+\end{equation*}
+
+\begin{definition}
+Der \textbf{Tangentialraum} an einem Punkt $p\in M$ ist die Menge aller obiger Äquivalenzklassen von Kurven $\gamma$ durch $p$, die in $p$ differenzierbar sind:
+\begin{equation*}
+T_pM := \{[\gamma]_\sim \mid \gamma: I\to M \text{ differenzierbar in }p\in M, \ \gamma(0)=p\}
+\end{equation*}
+\end{definition}
+
+\underline{Vektorraumstruktur des Tangentialraums}\newline
+Damit der Tangentialraum zu einem Vektorraum wird, muss er bzgl. der Addition und der Skalarmultiplikation abgeschlossen sein. Zudem muss die Addition und die Skalarmultiplikation unabhängig von der Wahl der Karte sein. 
+
+In einer fixierten Karte $(\mathcal{O},\phi)$ betrachten dazu zwei Kurven $\gamma_x$ und $\gamma_y$ mit Koordinaten $x^i(t)$ und $y^i(t)$ bzgl. dieser Karte, die beide durch den Punkt $\gamma_x(0)=\gamma_y(0)=p \in \mathcal{O} \subset M$ bzw. in Koordinaten $x^i_0$ verlaufen und in diesem Punkt die Tangentialvektoren 
+\begin{align*}
+v= [\gamma_x]_\sim\in T_pM
+\text{ mit Komponenten } 
+v^i := \dot{x}^i_0 \in \mathbb{R} \\
+w= [\gamma_y]_\sim\in T_pM
+\text{ mit Komponenten } 
+w^i := \dot{y}^i_0 \in \mathbb{R}
+\end{align*}
+besitzen.
+
+Um die Summe der beiden Tangentialvektoren zu definieren, konstruieren wir eine dritte Kurve $\gamma_z$ mit Koordinaten $z^i(t)$, die ebenso durch den Punkt $x^i_0$ verläuft
+\begin{equation*}
+z^i(t) := x_0^i + t\,(v^i + w^i) \qquad \text{(also eine Gerade)}
+\end{equation*}
+
+Diese Kurve besitzt den Tangentialvektor
+\begin{equation*}
+\dot{z}^i(0) = v^i + w^i
+\end{equation*}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{images/Tpmvek.jpg}
+\end{figure}
+
+Wir definieren die Summe $v+w := [\gamma_z] \in T_pM$ als die Äquivalenzklasse der Kurve $\gamma_z$.
+
+Es bleibt zu zeigen, dass diese Definition unabhängig von der Wahl der Karte ist. Dazu betrachten wir eine zweite Karte $(\tilde{\mathcal{O}},\tilde{\phi})$ mit
+$p\in\tilde{\mathcal{O}}$ und die entsprechenden Koordinatendarstellungen nach dem Kartenwechsel $\psi$ (siehe \eqref{eq:kartenwechselkoord})
+\begin{align*}
+\tilde{x}^i(t) = \psi^i(x^k(t))=\tilde{x}^i(x^k(t))\\
+\tilde{y}^i(t) = \psi^i(y^k(t))=\tilde{y}^i(y^k(t))\\
+\tilde{z}^i(t) = \psi^i(z^k(t))=\tilde{z}^i(z^k(t))
+\end{align*}
+
+Nach dem Transformationsgesetz \eqref{eq:tangent_transform} für Tangentialvektoren gilt
+\begin{equation*}
+\tilde{v}^i
+= \frac{\partial \tilde{x}^i}{\partial x^k}(x_0^m)\, v^k,
+\qquad
+\tilde{w}^i
+= \frac{\partial \tilde{x}^i}{\partial x^k}(x_0^m)\, w^k,
+\end{equation*}
+Für die Kurve $\gamma_z$ ergibt sich entsprechend
+\begin{equation*}
+\dot{\tilde{z}}^i(0)
+= \frac{\partial \tilde{x}^i}{\partial x^k}(x_0^m)\,(v^k + w^k)
+= \tilde{v}^i + \tilde{w}^i
+\end{equation*}
+
+Damit besitzt die Kurve $\tilde{z}^i(t)$ in der neuen Karte genau den Tangentialvektor, der der Summe der beiden transformierten Tangentialvektoren entspricht. Die Addition ist somit unabhängig von der Wahl der Karte.
+
+Folglich ist die Addition von Tangentialvektoren eine koordinatenunabhängige Operation. Der Beweis für die Skalarmultiplikation wird mit $z^i(t):=x_0^i+(\lambda v^i)t$ geführt und geht analog.
+
+Folglich ist der Tangentialraum $T_pM$ ein \textbf{Vektorraum}. Allerdings haben wir bisher eine \textbf{koordinaten- bzw. basisabhängige Darstellung} der Elemente von $T_pM$:\newline
+$v\in T_pM$ (Tangentialvektor) $\Leftrightarrow \exists$ eine Kurve in Koordinaten $x^i(t)$ mit $\phi^i(p)=x^i(0)=: x_0^i$ für ein $p\in \mathcal{O} \subset M$ und $v^i=\dot{x}^i(0)$ und der Kartenwechseltransformation $\tilde v^i = \frac{\partial \tilde{x}^i}{\partial x^k}(x_0^m)\,v^k$.
+\vspace{1em}
+
+\underline{Koordinanten- bzw. basisunabhängige Darstellung vom Tangentialraum}\newline
+Schreiben wir den Tangentialvektor mit Hilfe eines abstrakten Index $a$, so ist der Vektor selbst unabhängig von der Wahl der Karte. Bezüglich einer Karte $(\mathcal{O},\phi)$ lässt sich $v^a$ als Linearkombination von Komponenten $v^i$ und Basiselementen $E_i^a$ darstellen:
+\begin{equation}\label{eq:tpmabstrakt}
+v^a = v^i E_i^a
+\end{equation}
+In einer anderen Karte $(\tilde{\mathcal{O}},\tilde{\phi})$ gilt entsprechend
+\begin{equation*}
+v^a = \tilde{v}^i \tilde{E}_i^a
+\end{equation*}
+
+Die Komponenten eines Tangentialvektors transformieren beim Kartenwechsel gemäß \eqref{eq:tangent_transform}
+\begin{equation*}
+\tilde{v}^i = \frac{\partial \tilde{x}^i}{\partial x^k}(x_0^m)\,v^k
+\end{equation*}
+
+Somit ist
+\begin{equation*}
+v^a = \tilde{v}^i \tilde{E}_i^a = v^k  \frac{\partial \tilde{x}^i}{\partial x^k}(x_0^m)\tilde{E}_k^a \overset{\eqref{eq:tpmabstrakt}}{=} v^i E_i^a
+\end{equation*}
+
+Also
+\begin{equation*}
+\frac{\partial \tilde{x}^i}{\partial x^k}(x_0^m)\tilde{E}_i^a = E_i^a
+\end{equation*}
+
+bzw.
+\begin{equation}\label{eq:partdiff1}
+\tilde{E}_i^a = \frac{\partial x^k}{\partial \tilde{x}^i}(x_0^m)\,E_i^a
+\end{equation}
+
+Also ist das Transformationsverhalten der Basisvektoren invers zum Transformationsverhalten der Tangentialvektoren.
+
+Wir suchen nun ein natürliches Objekt mit genau diesem Transformationsverhalten. Betrachte dazu den Kartenwechsel
+\begin{equation*}
+\tilde{x}^k(t) = \tilde{x}^k(x^i(t))
+\end{equation*}
+
+und dessen Ableitung
+\begin{equation*}
+\partial_i := \frac{\partial }{\partial x^i} \overset{\substack{\text{Ketten-} \\ \text{regel}}}{=} \underbrace{\frac{\partial}{\partial \tilde{x}^k}}_{=:\tilde{\partial}_k}\frac{\partial \tilde{x}^k}{\partial x^i} 
+ = \tilde{\partial}_k \frac{\partial \tilde{x}^k}{\partial x^i} 
+\end{equation*}
+
+Also
+\begin{equation}\label{eq:partdiff3}
+\partial_i \big|_{x_0^m}= \tilde{\partial}_k \big|_{x_0^m} \frac{\partial \tilde{x}^k}{\partial x^i}(x_0^m)
+\end{equation}
+bzw.
+\begin{equation}\label{eq:partdiff2}
+\tilde{\partial}_i \big|_{x_0^m}= \partial_k \big|_{x_0^m} \frac{\partial x^k}{\partial \tilde{x}^i}(x_0^m)
+\end{equation}
+
+Vergleiche \eqref{eq:partdiff1} mit \eqref{eq:partdiff2}: die Operatoren $\partial_i$ besitzen genau das Transformationsverhalten der Basiselemente $E_i^a$ und sind von der Struktur des Vektorraums her ununterscheidbar.
+
+ Wir identifizieren daher
+\begin{equation*}
+E_i^a \leftrightarrow \partial_i^a\big|_{x_0^m}
+\end{equation*}
+
+Damit kann jeder Tangentialvektor geschrieben werden als
+\begin{equation}\label{eq:vektortrafo}
+v^a = v^i \partial_i^a\big|_{x_0^m} = \tilde{v}^i \tilde{\partial}_i^a\big|_{x_0^m}
+\end{equation}
+
+Der Tangentialraum am Punkt $p\in M$ lässt sich somit \textbf{basis- und koordinatenunabhängig} als Vektorraum darstellen als
+\begin{equation*}
+T_pM = \left\{
+v^a \;\big|\; 
+\forall\, \text{Karten } (\mathcal{O},\phi) \text{ mit } p \in \mathcal{O}, \, \phi^i(p)=x_0^m: \; v^a = v^i \partial_i^a \big|_{x_0^m} \right\}
+\end{equation*}
+
+Also Vektoren $v^a$, die in jeder Karte $(\mathcal{O},\phi)$ mit $p \in \mathcal{O}, \, \phi^m(p)=x_0^m$ darstellbar sind als $v^a = v^i \partial_i^a \big|_{x_0^m}$.
+
+Aus \eqref{eq:vektortrafo} erhalten wir wieder \eqref{eq:tangent_transform}:
+\begin{equation*}
+v^a = v^i\,\partial_i^a\big|_{x_0^m} \overset{\eqref{eq:partdiff3}}{=} v^i\,\frac{\partial \tilde{x}^k}{\partial x^i}(x_0^m)\,\tilde{\partial}_k^a\big|_{x_0^m}
+= \left(\frac{\partial \tilde{x}^k}{\partial x^i}(x_0^m)\,v^i\right) \tilde{\partial}_k^a\big|_{x_0^m} \overset{\eqref{eq:vektortrafo}}{=} \tilde{v}^k \tilde{\partial}_k^a\big|_{x_0^m}
+\end{equation*}
+
+Somit folgt das Transformationsverhalten der Tangentialvektoren beim Kartenwechsel \eqref{eq:tangent_transform} 
+\begin{equation*}
+\boxed{
+\tilde{v}^k = \frac{\partial \tilde{x}^k}{\partial x^i}(x_0^m)\,v^i
+}
+\end{equation*}
+
+Also muss man sich nur \eqref{eq:vektortrafo} und die Kettenregel \eqref{eq:partdiff3} merken und kann sich daher das Transformationsverhalten der Tangentialvektoren herleiten.
+
+Wir können nun den erarbeiteten Vektorraum verwenden, um Vektorfelder auf Mannigfaltigkeiten zu definieren. 
+\begin{definition}
+Sei $(M, \mathfrak{M})$ eine $C^k$-Mannigfaltigkeit. Ein \textbf{$C^k$-Vektorfeld} ist dann
+\begin{equation*}
+v^a: M \to T_pM: p \mapsto v^a(p) \quad \forall p \in M
+\end{equation*}
+Das Vektorfeld bildet also jeden Punkt $p \in M$ auf einen Tangentialvektor $v^a(p) \in T_pM$ ab.
+
+Für jede Karte $(\mathcal{O},\phi)$ mit Koordinaten $x^i$ besitzt $v^a$ lokal eine Darstellung
+\begin{equation*}
+v^a = v^i(x^k)\,\partial_i^a\big|_{x_0^m}
+\end{equation*}
+wobei die \textbf{numerischen Funktionen/Vektorfelder (Komponenten des Vektorfelds)}
+\begin{equation*}
+v^i: v^a \circ \phi^{-1} : \phi(\mathcal{O}) \subseteq \mathbb{R}^n \to \mathbb{R}
+\end{equation*}
+$k$-mal stetig differenzierbar sind.
+\end{definition}
+
+
+\begin{tcolorbox}[noVO]
+\begin{definition}[Nicht Teil der VO] \breakafterhead
+
+Die disjunkte Vereinigung aller Tangentialräume von $M$ heißt \textbf{Tangentialbündel} und wird definiert als
+\begin{equation*}
+TM := \dot{\bigcup_{p \in M}} T_pM
+\end{equation*} 
+D.h.
+\begin{equation*}
+TM = \bigcup_{p \in M} T_pM  \quad
+\text{ und } \quad
+T_pM \cap T_{\tilde{p}}M = \emptyset \text{ (paarweise disjunkt)}
+\end{equation*} 
+\end{definition}
+
+Mit dem Tangentialbündel lautet die Definition:
+\begin{definition}[Nicht Teil der VO] \breakafterhead
+
+Sei $(M, \mathfrak{M})$ eine $C^k$-Mannigfaltigkeit und die kanonische Projektion $\pi:TM \to M$. Ein \textbf{$C^k$-Vektorfeld} ist dann
+\begin{equation*}
+v^a: M \to TM: p \mapsto v^a(p) \in T_pM
+\end{equation*} 
+mit
+\begin{equation*}
+\pi \circ v^a = \mathrm{id}_M
+\end{equation*} 
+
+wobei die numerischen Funktionen/Vektorfelder (Komponenten des Vektorfelds) $k$-mal stetig differenzierbar sind.
+\end{definition}
+\end{tcolorbox}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{Vector_field_E.png}
+\caption{Vektorfeld auf der Mannigfaltigkeit $S^2$}
+\end{figure}
+
+\subsection{Dualraum des Tangentialraums (Kotangentialraum)}
+Wir erinnern uns an die Definition von (r,s)-Tensoren \eqref{eq:tensordef}
+\begin{equation*}
+\mathfrak{Mult}_{r,s}(V^\sim,V,\Gamma) = \bigotimes\nolimits^r V \otimes \bigotimes\nolimits^s V^\sim = \bigotimes\nolimits^r_s V =: T^r_s
+\end{equation*}
+
+Also brauchen wir für Tensorfelder auf Mannigfaltigkeiten noch das Konzept des Dualraums vom Tangentialraum. Da der Tangentialraum $T_pM$ ein Vektorraum ist, besitzt er einen Dualraum. Diesen bezeichnen wir als den \textbf{Kotangentialraum} $(T_pM)^\sim$.
+
+Ein Kovektor $\omega_a\in (T_pM)^\sim$ ist somit eine lineare Abbildung
+\begin{equation*}
+\omega_a : T_pM \to \mathbb{R}: v^a \mapsto \omega_av^a
+\end{equation*}
+
+Bezüglich einer Basis $E_i^a$ des Tangentialraums existiert eine duale Basis $e^i_a$ des Kotangentialraums, definiert durch die Dualitätsrelation
+\begin{equation}\label{eq:duarel}
+e^i_a(E_j^a) = \delta^i_j
+\end{equation}
+Damit lässt sich ein Kovektor schreiben als
+\begin{equation*}
+\omega_a = \omega_i\, e^i
+\end{equation*}
+
+Da wir das Transformationsverhalten der Basis $E_i^a$ des Tangentialraums kennen (siehe \eqref{eq:partdiff1}) und in \cref{sec:basistrafo} gezeigt haben, dass die duale Basis $e^i_a$ stets invers zur Vektorbasis transformiert, folgt für einen Kartenwechsel $\tilde{x}^i=\tilde{x}^i(x^k)$
+\begin{equation*}
+\tilde{e}^i_a = \frac{\partial \tilde{x}^i}{\partial x^k}(x_0^m)\, e^k_a
+\end{equation*}
+
+Wir suchen wieder nach einem Objekt, das obiges Transformationsverhalten aufweist. Dazu betrachten wir das totale Differential
+\begin{equation}\label{eq:dualtrafo}
+d\tilde{x}^i\big|_{x_0^m} = \underbrace{\frac{\partial \tilde{x}^i}{\partial x^k}}_{=\partial_k\tilde{x}^i}(x_0^m)\, dx^k\big|_{x_0^m}
+\end{equation}
+Wir sehen, dass $dx^i$ exakt dasselbe Transformationsverhalten wie die dualen Basiselemente $e^i_a$ besitzt und somit von der Struktur des Vektorraums her ununterscheidbar sind. Wir identifizieren daher
+\begin{equation*}
+e^i_a \leftrightarrow dx^i_a\big|_{x_0^m}
+\end{equation*}
+
+Damit kann der Kotangentialraum am Punkt $p\in M$ \textbf{basis- und koordinatenunabhängig} dargestellt werden als
+\begin{equation*}
+(T_pM)^\sim = \left\{
+\omega_a \;\big|\; 
+\forall\, \text{Karten } (\mathcal{O},\phi) \text{ mit } p \in \mathcal{O}, \, \phi^m(p)=x_0^m: \; \omega_a = \omega_i dx^i_a\big|_{x_0^m} \right\}
+\end{equation*}
+Also Kovektoren $\omega^a$, die in jeder Karte $(\mathcal{O},\phi)$ mit $p \in \mathcal{O}, \, \phi^m(p)=x_0^m$ darstellbar sind als $\omega_a = \omega_i dx^i_a\big|_{x_0^m}$.
+
+\begin{remark}[Dualitätsrelation]
+Mit der Identifikation $E_i^a \leftrightarrow \partial_i^a\big|_{x_0^m}$ und $e^i_a\leftrightarrow dx^i_a\big|_{x_0^m}$ kann die Dualitätsrelation \eqref{eq:duarel} nun geschrieben werden als
+\begin{equation*}
+dx^i_a\big|_{x_0^m}(\partial_j^a\big|_{x_0^m}) = \delta^i_j
+\end{equation*}
+\end{remark}
+
+\begin{remark}[Transformation Kovektor bzgl. Kartenwechsel]
+Ein Kovektor $\omega_a$ kann bezüglich zweier Karten $(\mathcal O,\phi)$ und $(\tilde{\mathcal O},\tilde\phi)$ geschrieben werden als
+\begin{equation}\label{eq:kovektor}
+\omega_a = \omega_i\, dx^i_a\big|_{x_0^m} = \tilde{\omega}_i\, d\tilde{x}^i_a\big|_{x_0^m}
+\end{equation}
+
+Setze das Transformationsverhalten der Basiselemente \eqref{eq:dualtrafo} in \eqref{eq:kovektor} ein 
+\begin{equation*}
+\omega_i\, dx^i_a\big|_{x_0^m} = \tilde{\omega}_i\ \partial_k\tilde{x}^i\big|_{x_0^m}\, dx_a^k\big|_{x_0^m}
+\end{equation*}
+
+bzw.
+\begin{equation*}
+\tilde{\omega}_i\, d\tilde{x}^i_a\big|_{x_0^m} = \tilde{\omega}_i\ \partial_k\tilde{x}^i\big|_{x_0^m}\, dx_a^k\big|_{x_0^m}
+\end{equation*}
+
+und vergleiche die Koeffizienten, so folgt das Transformationsverhalten der Komponenten beim Kartenwechsel
+\begin{equation*}
+\boxed{
+\omega_i  = \tilde{\omega}_i\ \partial_k\tilde{x}^i\big|_{x_0^m}
+}
+\qquad
+\boxed{
+\tilde{\omega}_i = \omega_i\ \tilde{\partial}_kx^i\big|_{x_0^m}
+}
+\end{equation*}
+
+Das Transformationsverhalten der Komponenten ergibt sich somit \emph{automatisch} aus dem Transformationsverhalten der Basisobjekte
+$dx^i_a$ und muss nicht auswendig gelernt werden.
+\end{remark}
+
+Ausgehend vom Tangential- und Kotangentialraum ist nun der Tensorproduktraum vom Typ $(r,s)$ am \newline
+Punkt $p$
+\begin{equation*}
+\bigotimes\nolimits^r_s T_pM =
+\underbrace{T_pM \otimes \cdots \otimes T_pM}_{r\text{-mal}}
+\otimes
+\underbrace{(T_pM)^\sim \otimes \cdots \otimes (T_pM)^\sim}_{s\text{-mal}}
+\end{equation*}
+
+Ein Tensor $t^{a_1\ldots a_r}_{b_1\ldots b_s}\in \bigotimes^r_s T_pM$ besitzt bezüglich einer Karte, die $p$ enthält, die Darstellung
+\begin{align*}
+t^{a_1\ldots a_r}_{b_1\ldots b_s} &= t^{i_1\ldots i_r}_{j_1\ldots j_s} \partial^{a_1}_{i_1}\otimes\cdots\otimes\partial^{a_r}_{i_r} \otimes dx_{b_1}^{j_1}\otimes\cdots\otimes dx_{b_s}^{j_s} \\
+&\overset{\eqref{eq:multtensorprod}}{=}
+t^{i_1\ldots i_r}_{j_1\ldots j_s} \, \partial^{a_1}_{i_1}\cdot ... \cdot\partial^{a_r}_{i_r} \cdot dx_{b_1}^{j_1}\cdot ... \cdot dx_{b_s}^{j_s} \\
+&= \tilde{t}^{i_1\ldots i_r}_{j_1\ldots j_s} \, \tilde{\partial}^{a_1}_{i_1}\cdot ... \cdot\tilde{\partial}^{a_r}_{i_r} \cdot d\tilde{x}_{b_1}^{j_1}\cdot ... \cdot d\tilde{x}_{b_s}^{j_s} 
+\end{align*}
+
+Nun können wir Tensorfelder auf Mannigfaltigkeiten zu definieren. 
+\begin{definition}
+Sei $(M, \mathfrak{M})$ eine $C^k$-Mannigfaltigkeit. Ein \textbf{(r,s)-$C^k$-Tensorfeld} ist dann
+\begin{equation*}
+t^{a_1\ldots a_r}_{b_1\ldots b_s}: M \to \bigotimes\nolimits^r_s T_pM: p \mapsto t^{a_1\ldots a_r}_{b_1\ldots b_s}(p) \quad \forall p \in M
+\end{equation*}
+Das Tensorfeld bildet also jeden Punkt $p \in M$ auf einen Tensor $t^{a_1\ldots a_r}_{b_1\ldots b_s}(p) \in \bigotimes\nolimits^r_s T_pM$ ab.
+
+Für jede Karte $(\mathcal{O},\phi)$ mit Koordinaten $x^i$ besitzt $t^{a_1\ldots a_r}_{b_1\ldots b_s}$ lokal eine Darstellung
+\begin{equation*}
+t^{a_1\ldots a_r}_{b_1\ldots b_s} = t^{i_1\ldots i_r}_{j_1\ldots j_s} \, \partial^{a_1}_{i_1}\cdot ... \cdot\partial^{a_r}_{i_r} \cdot dx_{b_1}^{j_1}\cdot ... \cdot dx_{b_s}^{j_s}
+\end{equation*}
+wobei die \textbf{numerischen Funktionen/Tensorfelder (Komponenten des Tensorfelds)}
+\begin{equation*}
+t^{i_1\ldots i_r}_{j_1\ldots j_s}: t^{a_1\ldots a_r}_{b_1\ldots b_s} \circ \phi^{-1} : \phi(\mathcal{O}) \subseteq \mathbb{R}^n \to \mathbb{R}
+\end{equation*}
+$k$-mal stetig differenzierbar sind.
+\end{definition}
+
+\begin{tcolorbox}[noVO]
+Sei $T^r_s(T_pM) :=\bigotimes\nolimits^r_s T_pM$ Tensorproduktraum des Vektorraums $T_pM$.
+
+\begin{definition}[Nicht Teil der VO] \breakafterhead
+
+Die disjunkte Vereinigung aller Tensorprodukträume von $M$ heißt \textbf{(r,s)-Tensorbündel} und wird definiert als
+\begin{equation*}
+T^r_s(TM) := \dot{\bigcup_{p \in M}} T^r_s(T_pM)
+\end{equation*} 
+\end{definition}
+
+Mit dem (r,s)-Tensorbündel lautet die Definition:
+\begin{definition}[Nicht Teil der VO] \breakafterhead
+
+Sei $(M, \mathfrak{M})$ eine $C^k$-Mannigfaltigkeit und die kanonische Projektion $\pi^r_s:T^r_s(TM) \to M$. \newline
+Ein \textbf{(r,s)-$C^k$-Tensorfeld} ist dann
+\begin{equation*}
+t^{a_1\ldots a_r}_{b_1\ldots b_s}: M \to T^r_s(TM): p \mapsto t^{a_1\ldots a_r}_{b_1\ldots b_s}(p) \in T_pM
+\end{equation*} 
+mit
+\begin{equation*}
+\pi^r_s \circ t^{a_1\ldots a_r}_{b_1\ldots b_s} = \mathrm{id}_M
+\end{equation*} 
+
+wobei die numerischen Funktionen/Tensorfelder (Komponenten des Tensorfelds) $k$-mal stetig differenzierbar sind.
+\end{definition}
+\end{tcolorbox}
+\vspace{1em}
+
+Ein Vektorfeld ist dabei ein Spezialfall eines Tensorfeldes mit kontravariantem Grad $1$ und kovariantem Grad $0$.
+
+\begin{definition}
+Der \textbf{Raum der (r,s)-$C^\infty$-Tensorfelder} ist definiert als
+\begin{equation*}
+\mathcal T^r_s(M) := \left\{ t^{a_1\ldots a_r}_{b_1\ldots b_s} \text{ ist ein } C^\infty \text{-Tensorfeld}\right\}
+\end{equation*}
+\end{definition}
+
+Insbesondere gilt:
+\begin{align*}
+\mathcal T^0_0(M)&=C^\infty(M) \;\text{ist der Raum der $C^\infty$-Skalarfelder}\\
+\mathcal T^1_0(M) &\;\text{ist der Raum der $C^\infty$-Vektorfelder}\\
+\mathcal T^0_1(M) &\;\text{ist der Raum der $C^\infty$-Kovektorfelder (1-Formen)} \\
+\mathcal T^1_1(M) &\;\text{ist der Raum der (1,1)-$C^\infty$-Tensorfelder}
+\end{align*}
+
 
 \chapter{Differentialgeometrie und Einsteingleichungen}\label{chap:Differentialgeometrie und Einsteingleichungen}
 \section{Kovariante Ableitung}
+Im flachen Raum $\mathbb{R}^n$ (euklidische Geometrie) wird ein Vektor $v^a = v^i\,\partial_i^a$ entlang einer Kurve $\gamma(t)$ mit Koordinaten $x^i(t)$ als \emph{parallel} betrachtet, wenn er sich entlang der Kurve nicht ändert. Da die Basisvektoren $\partial_i^a$ im $\mathbb{R}^n$ ortsunabhängig sind, reduziert sich diese Bedingung auf die Konstanz der Komponenten:
+\begin{equation*}
+\frac{d}{dt} v^i(x^m(t)) = 0
+\end{equation*}
+Die gewöhnliche Ableitung misst in diesem Fall genau die Abweichung von der Parallelität.
+
+Auf einer gekrümmten Mannigfaltigkeit ist diese Situation jedoch nicht mehr so einfach. 
+Ein Tangentialvektor entlang einer Kurve $\gamma(t)$ besitzt die Darstellung
+\begin{equation*}
+v^a(x^m(t)) = v^i(x^m(t))\,\partial_i^a\big|_{x^m(t)}
+\end{equation*}
+
+Bei einer Ableitung nach dem Kurvenparameter $t$ ändern sich nun nicht nur die Komponenten $v^i(x^m(t))$, sondern auch die Basisvektoren $\partial_i^a\big|_{x^m(t)}$ selbst, da diese vom Punkt $p=\gamma(t)\in M$ via $\phi^i(\gamma(t))=x^i(t)$ abhängen.
+
+Die gewöhnliche Ableitung misst daher nicht ausschließlich eine tatsächliche geometrische Änderung des Vektors, sondern enthält zusätzliche Beiträge, die durch den Wechsel der lokalen Basis entstehen. Eine verschwindende gewöhnliche Ableitung ist somit im Allgemeinen nicht gleichbedeutend mit Parallelität.
+
+Ziel der kovarianten Ableitung ist es, eine Ableitung zu definieren, die genau die Änderung eines Vektors misst, die einer Abweichung von der Parallelität entspricht. Sie erlaubt es, den Begriff der Parallelverschiebung auf gekrümmten Mannigfaltigkeiten sinnvoll zu definieren.
+
+\subsection{Koordinatenkovariante Ableitung auf Skalarfeldern}
+Wir betrachten zunächst ein Skalarfeld
+$f \in \mathcal T^0_0(M)$,
+also eine Abbildung
+\begin{equation*}
+f : M \to \mathbb{R}
+\end{equation*}
+die bezüglich einer Karte $(\mathcal{O},\phi)$ mit Koordinaten $x^i$ lokal durch $f(x^i)$ dargestellt wird.
+Auf diese Darstellung können wir die partielle Ableitung anwenden:
+\begin{equation*}
+\partial_i f := \frac{\partial f}{\partial x^i}
+\end{equation*}
+
+Diese Größe ist jedoch \emph{nicht} koordinatenunabhängig. Wir suchen daher eine Ableitung, deren Wirkung auf Skalarfelder unabhängig von der Wahl der Karte ist.
+
+Sei 
+
+\begin{definition}
+Die \textbf{koordinatenkovariante Ableitung eines Skalarfeldes} ist definiert als
+\begin{equation*}
+\partial_a: \mathcal{T}^0_0(M) \to \mathcal{T}^0_1(M): f \mapsto \partial_a f := \partial_i f\, dx^i_a 
+\end{equation*}
+$\partial_a f$ ist also ein Kovektorfeld. Hierbei wirken Ableitungssymbole nur auf das direkt folgende Objekt, sofern nicht durch Klammern anders gekennzeichnet.
+\end{definition}
+
+Die partielle Ableitung wirkt auf der lokalen Darstellung des Skalarfelds, die koordinatenkovariante Ableitung wirkt auf dem Skalarfeld selbst.
+
+Wir zeigen nun, dass diese Definition tatsächlich koordinatenunabhängig ist, also $\tilde{\partial}_a f=\partial_a f$.
+
+Seien dazu $(\mathcal{O},\phi)$ und $(\tilde{\mathcal{O}},\tilde{\phi})$ zwei Karten mit Kartenwechsel $\tilde{x}^k = \tilde{x}^k(x^i)$ bzw. $x^k = x^k(\tilde{x}^i)$. Gilt für die lokale Darstellung des Skalarfeldes
+\begin{equation*}
+f(x^k) = f(x^k(\tilde{x}^i))
+\end{equation*}
+
+Mit der Kettenregel folgt
+\begin{equation}\label{eq:kettenreg}
+\tilde{\partial}_i f
+= \frac{\partial f}{\partial \tilde{x}^i}(x^k(\tilde{x}^i))
+= \frac{\partial x^k}{\partial \tilde{x}^i}\, \frac{\partial f}{\partial x^k}
+= \tilde{\partial}_i x^k\, \partial_k f
+\end{equation}
+
+Zugleich gilt für das totale Differential
+\begin{equation}\label{eq:totdiff}
+dx^i = dx^i(\tilde{x}^k) = \frac{\partial x^i}{\partial \tilde{x}^k}\, d\tilde{x}^k = \tilde{\partial}_k x^i\, d\tilde{x}^k
+\end{equation}
+
+Setzt man beides zusammen, so ergibt sich
+\begin{equation*}
+\tilde{\partial}_a f 
+= \tilde{\partial}_i f\, d\tilde{x}^i_a 
+\overset{\eqref{eq:kettenreg}}{=} \tilde{\partial}_i x^k\, \partial_k f \, d\tilde{x}^i_a 
+= \underbrace{\tilde{\partial}_i x^k\, d\tilde{x}^i_a}_{\overset{\eqref{eq:totdiff}}{=}dx^k_a} \, \partial_k f
+= dx^k_a \,\partial_k f
+= \partial_a f
+\end{equation*}
+
+Damit ist die koordinatenkovariante Ableitung auf Skalarfeldern unabhängig von der Wahl der Karte. 
+
+\begin{remark}
+Da aus \eqref{eq:kettenreg} folgt, dass $\partial_if$ beim Kartenwechsel kontravariant transformiert und wir bereits wissen, dass $dx^i$ kovariant transformiert, hätte man sofort schließen können, dass die Koordinatenkovariante Ableitung auf Skalarfeldern koordinatenunabhängig ist, da sich die jeweilige Koordinatenabhängigkeit in der Kombination $\partial_i f\,dx^i_a$ aufhebt.
+\end{remark}
+
+\subsection{Koordinatenkovariante Ableitung auf Vektorfeldern}
+Nachdem wir gesehen haben, dass alle koordinatenkovarianten Ableitungen auf Skalarfeldern in allen Koordinaten übereinstimmen, untersuchen wir nun, ob dies auch für Vektorfelder gilt.
+
+Sei $v^a = v^i(x^m)\,\partial_i^a \in \mathcal T^1_0(M)$ ein Vektorfeld.
+
+\begin{definition}\label{def:koordkovar}
+Die \textbf{koordinatenkovariante Ableitung eines Vektorfeldes} bezüglich der Karte $(\mathcal O,\phi)$ ist definiert durch
+\begin{equation*}
+\partial_b: \mathcal{T}^1_0(M) \to \mathcal{T}^1_1(M): v^a \mapsto \partial_b v^a := \partial_j v^i\, dx^j_b \, \partial_i^a
+\end{equation*}
+$\partial_b v^a$ ist also ein Tensorfeld.
+\end{definition}
+
+Mit der Leibnizregel können wir schreiben:
+\begin{equation}\label{eq:leibniz}
+\partial_b v^a = \partial_b\bigl(v^i\,\partial_i^a\bigr)
+= \partial_b v^i\,\partial_i^a + v^i\,\partial_b \partial_i^a 
+\end{equation}
+
+Vergleicht man diesen Ausdruck mit \cref{def:koordkovar}, so folgt
+\begin{equation*}
+\partial_b v^i = \partial_j v^i\, dx^j_b
+\quad
+\text{und}
+\quad \partial_b \partial_i^a = 0
+\end{equation*}
+
+$\partial_b \partial_i^a = 0$ bedeutet, dass diese Basisvektoren $\partial_i^a$ bezüglich der koordinatenkovarianten Ableitung $\partial_b$ konstant sind. Da jede Karte/Koordinatensystem ihre eigene Basis besitzt, liefert jedes Koordinatensystem seinen eigenen koordinatenkovarianten Ableitungsoperator. Also gilt im Allgemeinen für verschiedene Karten $(\mathcal O,\phi)$ und $(\tilde{\mathcal O},\tilde{\phi})$: $\partial_b \tilde{\partial}_i^a \neq 0$, $\tilde{\partial}_b \partial_i^a \neq 0$ aber $\tilde{\partial}_b \tilde{\partial}_i^a = 0$.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{images/Parallelversch1.jpg}
+\caption{Wenn wir einen Vektor $v$ im ungetildeten Koordinatensystem parallel verschieben, dann ändern sich dessen Basisvektoren $\partial_i^a$ nicht bzgl. des eigenen Ableitungsoperators $\partial_b$, also $\partial_b \partial_i^a = 0$, aber im allgemeinen schon bzlg. des  Ableitungsoperators $\tilde{\partial}_b$ des getildeten Koordinantensystems, also $\tilde{\partial}_b \partial_i^a \neq 0$. Dasselbe gilt auch für das getildete Koordinatensystem.}
+
+\end{figure}
+
+Somit ist die koordinatenkovarianten Ableitung auf Vektorfeldern \textit{abhängig} von der Wahl der Karte. Also gilt im Allgemeinen $\partial_b v^a \neq \tilde{\partial}_b v^a$. Wir haben somit keinen globalen Ableitungsbegriff.
+
+\medskip
+\underline{Transformationsverhalten der koordinatenkovarianten Ableitung auf einem Vektorfeld}\newline
+Wir betrachten dazu zwei Karten $(\mathcal O,\phi)$ und $(\tilde{\mathcal O},\tilde{\phi})$ mit Koordinaten $x^i$ bzw. $\tilde{x}^i$. Das Vektorfeld kann bezüglich beider Basen dargestellt werden:
+\begin{equation*}
+v^a = v^i\,\partial_i^a = \tilde v^i\,\tilde\partial_i^a 
+\end{equation*}
+
+Wir berechnen nun $\partial_b v^a$ in der Tilde Darstellung:
+\begin{align*}
+\partial_b v^a
+&= \partial_b(\tilde{v}^i\,\tilde{\partial}_i^a) \\
+&\overset{\text{Leibniz}}{=} 
+\underbrace{\partial_b \tilde{v}^i}_{\overset{\substack{\text{num. VF} \\ \text{ist skalare} \\ \text{Fkt.}}}{=} \tilde{\partial}_b \tilde{v}^i}\tilde{\partial}_i^a 
++ \tilde{v}^i\partial_b \underbrace{\tilde{\partial}_i^a}_{\overset{\substack{\text{Basis-} \\ \text{Trafo}}}{=}\tilde{\partial}_ix^j \partial_j^a} \\
+&= \tilde{\partial}_b (\underbrace{\tilde{v}^i\tilde{\partial}_i^a}_{=v^a}) 
++ \underbrace{\tilde{v}^i}_{=\tilde{v}^j \delta^i_j = \tilde{v}^j \tilde{\partial}^c_jd\tilde{x}^i_c = v^c d\tilde{x}^i_c}\partial_b \, \tilde{\partial}_ix^j \partial_j^a \\
+&= \tilde{\partial}_b v^a + d\tilde{x}^i_c\, v^c \partial_b \, \tilde{\partial}_ix^j \underbrace{\partial_j^a}_{\overset{\substack{\text{Basis-} \\ \text{Trafo}}}{=}\partial_j\tilde{x}^k \tilde{\partial}^a_k} \\
+&= \tilde{\partial}_b v^a + d\tilde{x}^i_c\, v^c \underbrace{\partial_b \, \tilde{\partial}_ix^j\partial_j\tilde{x}^k \tilde{\partial}^a_k}_{\overset{\text{skalare Fkt.}}{=} \tilde{\partial}_b \, \tilde{\partial}_ix^j\partial_j\tilde{x}^k \tilde{\partial}^a_k} \\
+&= \tilde{\partial}_b v^a + d\tilde{x}^i_c\, v^c \underbrace{\tilde{\partial}_b}_{=\tilde{\partial}_l d\tilde{x}^l_b} \, \tilde{\partial}_ix^j\partial_j\tilde{x}^k \tilde{\partial}^a_k \\
+&= \tilde{\partial}_b v^a + d\tilde{x}^i_c\, d\tilde{x}^l_b \tilde{\partial}_l \, \tilde{\partial}_ix^j\partial_j\tilde{x}^k \tilde{\partial}^a_k v^c\\
+\end{align*}
+
+Also insgesamt
+\begin{equation*}
+\partial_b v^a = \tilde{\partial}_b v^a + d\tilde{x}^i_c\, d\tilde{x}^l_b \tilde{\partial}_l \, \tilde{\partial}_ix^j\partial_j\tilde{x}^k \tilde{\partial}^a_k v^c
+\end{equation*}
+
+Wir definieren das \textbf{Christoffel-Symbol}
+\begin{equation*}
+\Gamma^a_{cb} := d\tilde{x}^i_c\, d\tilde{x}^l_b \tilde{\partial}_l \, \tilde{\partial}_ix^j\partial_j\tilde{x}^k \tilde{\partial}^a_k
+\end{equation*}
+
+und erhalten damit
+\begin{equation}\label{eq:koordkovartrafo}
+\partial_b v^a = \tilde{\partial}_b v^a + \underbrace{\Gamma^a_{cb}\, v^c}_{\text{linearer Zusatzterm}}
+\end{equation}
+
+bzw.
+\begin{equation}\label{eq:difftensor}
+(\partial_b - \tilde{\partial}_b)v^a = \Gamma^a_{cb}\, v^c  \in \mathcal{T}_1^1(M)
+\end{equation}
+
+wobei a,b,c abstrakte Indizes und i, j, k, l Zählindizes sind. 
+
+Zusammengefasst erhalten wir:
+\begin{itemize}
+\item Auf Skalarfeldern stimmen alle koordinatenkovarianten Ableitungen überein.
+\item Auf Vektorfeldern unterscheiden sich die koordinatenkovarianten Ableitungen verschiedener Koordinatensysteme um einen linearen Zusatzterm. Dieser Zusatzterm beschreibt die Änderung der Basisvektoren beim Kartenwechsel und kann als Maß für die Abweichung von Parallelität interpretiert werden.
+\end{itemize}
+
+\begin{remark}
+Das Christoffel-Symbol $\Gamma^a_{cb}$ ist ein lokal im Kartenüberlapp definierter Ausdruck, der vom Kartenwechsel abhängt. Er beschreibt die Differenz zweier Ableitungsoperatoren \eqref{eq:difftensor}, von denen mindestens einer eine koordinatenkovariante Ableitung ist. Das Christoffel-Symbol zwar Tensor-artig aber tatsächlich kein Tensor, da es, vereinfacht gesagt, nicht wie ein Tensor transformiert. Erst die Differenz \eqref{eq:difftensor} ist ein Tensor, der sogenannte \textbf{Differenztensor}.
+\end{remark}
+
+
+\begin{tcolorbox}[noVO]
+\begin{remark}[Nicht Teil der VO] \breakafterhead
+
+{\footnotesize Quellen:
+\url{https://en.wikipedia.org/wiki/Christoffel_symbols}\newline
+\url{https://einsteinrelativelyeasy.com/index.php?option=com_content&view=article&id=25&catid=10&Itemid=112}\newline
+\url{https://profoundphysics.com/christoffel-symbols-a-complete-guide-with-examples/}}
+
+Es gilt $\Gamma^a_{cb}(p) \in \mathbb{R}$ für Punkte aus dem Kartenüberlapp $p \in \mathcal{O} \cap \tilde{\mathcal{O}} \subset M$. Als Abbildung gilt $\Gamma^a_{cb} \in C^\infty(\mathcal{O} \cap \tilde{\mathcal{O}})$.
+
+Für ein besseres Verständnis betrachte ich das Christoffel-Symbol $\Gamma^a_{cb}$ in \textbf{Koordinatendarstellung}.
+
+Betrachte wieder \eqref{eq:leibniz} 
+\begin{equation*}
+\partial_b v^a = \partial_b\bigl(v^i\,\partial_i^a\bigr)
+= (\partial_b v^i)\, \partial_i^a + v^i \underbrace{\partial_b \partial_i^a }_{= \Gamma^k_{ib}\,\partial^a_k}
+= \underbrace{(\partial_b v^i)}_{\substack{\text{Ableitung} \\ \text{Komponenten}}}
+\underbrace{\partial_i^a }_{\text{Basisvektor}}
++ \underbrace{v^i}_{\text{Komponenten}}
+\underbrace{\Gamma^k_{ib}\,\partial^a_k}_{\substack{\text{Änderung der} \\ \text{Basisvektoren}}}
+\end{equation*}
+
+Also in koordinatenabhängiger/basisabhängiger Darstellung
+\begin{equation*}
+\partial_b \partial_i^a := \Gamma^k_{ib}\,\partial^a_k \in \mathcal{T}_0^1(M)
+\end{equation*}
+wobei
+\begin{itemize}
+\item der Zählindex $i$ gibt den Basisvektor an, dessen Änderung betrachtet wird ($\partial_i^a$)
+\item der abstrakte Index $b$ gibt die Richtung an, entlang der abgeleitet wird
+\item der Zählindex $k$ gibt den Basisvektor $\partial_k^a$ an, in dessen Richtung die Ableitung vom Basisvektor $\partial_i^a$ zeigt (Vektorrichtung den Zusatzterm zeigt)
+\end{itemize}
+
+Beispiel in Polarkoordinaten (siehe anschließend genauer):
+\begin{equation*}
+\partial_\varphi e_r = 0 \cdot e_r + \frac{1}{r}e_\varphi = \Gamma^r_{r\varphi} \cdot e_r + \Gamma^\varphi_{r\varphi}\cdot e_\varphi
+\end{equation*}
+
+Das heißt, bei einer Ableitung eines Vektors $\partial_b v^a= \partial_b (v^i \partial^a_i)$ in Richtung $b$ beschreibt das Christoffel-Symbol $\Gamma^k_{ib}$ die Änderung des Basisvektors $\partial_i^a$, indem es den Koeffizienten der Komponente des Basisvektors $\partial_k^a$ angibt, in dessen Richtung die Ableitung vom Basisvektor $\partial_i^a$ zeigt. Aus diesem Grund können Christoffel-Symbole selbst in flachen Räumen auftreten, sofern die Koordinatenbasis nicht konstant ist (z.\,B. in Polarkoordinaten).
+
+Das Christoffel-Symbol misst \emph{nicht} die Änderung der Komponenten $v^i$ eines Vektorfeldes. 
+
+\end{remark}
+
+
+\begin{example}[Nicht Teil der VO] \breakafterhead
+
+{\footnotesize Quelle: \url{https://en.wikipedia.org/wiki/Polar_coordinate_system#Differential_geometry}}
+
+Wir betrachten die Ebene $\mathbb{R}^2$ als differenzierbare Mannigfaltigkeit.
+In kartesischen Koordinaten $(x,y)$ sind die Koordinatenbasisvektoren
+\begin{equation*}
+e_x = \partial_x = (1,0),
+\qquad
+e_y = \partial_y = (0,1)
+\end{equation*}
+\textit{ortsunabhängig}, sodass ihre Ableitungen verschwinden:
+\begin{equation*}
+\partial_x \partial_x = \partial_x \partial_y
+= \partial_y \partial_x = \partial_y \partial_y = 0
+\end{equation*}
+
+Bei einem Vektorfeld in kartesischen Koordinaten $v(x,y) = v_1(x,y)\partial_x + v_2(x,y)\partial_y$ ändern sich bei der Ableitung somit nur die Komponenten $v_1(x,y)$ und $v_2(x,y)$ und nicht die Basisvektoren $\partial_x$ und $\partial_y$.
+
+Die Christoffel-Symbole sind somit $\Gamma^x_{xx}=\Gamma^y_{xx}=\Gamma^x_{xy}=\Gamma^y_{xy}=\Gamma^x_{yx}=\Gamma^y_{yx}=\Gamma^x_{yy}=\Gamma^y_{yy}=0$.
+
+Transformieren wir in Polarkoordinaten $(r,\varphi)$ (führen einen Kartenwechsel durch) mit
+\begin{equation*}
+x = r\cos\varphi,
+\qquad
+y = r\sin\varphi 
+\end{equation*}
+lauten die Basisvektoren
+\begin{equation*}
+e_r= \partial_r  = \cos\varphi\,\partial_x + \sin\varphi\,\partial_y,
+\qquad
+r\,e_\varphi= \partial_\varphi = -r\sin\varphi\,\partial_x + r\cos\varphi\,\partial_y
+\end{equation*}
+Diese Basisvektoren sind nun \emph{ortsabhängig}. Betrachten wir nun ihre Ableitungen
+\begin{align*}
+&\partial_r \partial_r = \partial_r(\cos\varphi\,\partial_x + \sin\varphi\,\partial_y) = {\color{blue}0} \cdot \partial_r + {\color{red}0} \cdot \partial_\varphi\  
+\rightarrow \ {\color{blue}\Gamma^r_{rr} = 0}, \  {\color{red}\Gamma^\varphi_{rr} = 0}\\
+&\partial_\varphi \partial_r = \partial_\varphi(\cos\varphi\,\partial_x + \sin\varphi\,\partial_y)
+= -\sin\varphi\,\partial_x + \cos\varphi\,\partial_y 
+= {\color{blue}0} \cdot \partial_r + {\color{red}\frac{1}{r}}\,\partial_\varphi 
+\rightarrow \ {\color{blue}\Gamma^r_{\varphi r} = 0}, \  {\color{red}\Gamma^\varphi_{\varphi r} = \frac{1}{r}}\\
+&\partial_r \partial_\varphi
+= \partial_r(-r\sin\varphi\,\partial_x + r\cos\varphi\,\partial_y)
+= -\sin\varphi\,\partial_x + \cos\varphi\,\partial_y = = {\color{blue}0} \cdot \partial_r + {\color{red}\frac{1}{r}}\,\partial_\varphi 
+\rightarrow \ {\color{blue}\Gamma^r_{r \varphi} = 0}, \  {\color{red}\Gamma^\varphi_{r \varphi} = \frac{1}{r}} \\
+&\partial_\varphi \partial_\varphi = \partial_\varphi(-r\sin\varphi\,\partial_x + r\cos\varphi\,\partial_y) = 
+-r\cos\varphi\,\partial_x - r\sin\varphi\,\partial_y = {\color{blue}-r} \cdot\partial_r + {\color{red}0} \cdot \partial_\varphi
+\rightarrow \ {\color{blue}\Gamma^r_{\varphi \varphi} = -r}, \  {\color{red}\Gamma^\varphi_{\varphi \varphi} = 0}
+\end{align*}
+
+Daraus folgt, dass sich bei einem Vektorfeld in Polarkoordinaten $v(r,\varphi) = v_1(r,\varphi)\partial_r + v_2(r,\varphi)\partial_\varphi$ bei der Ableitung sowohl die Komponenten $v_1(r,\varphi)$ und $v_2(r,\varphi)$ als auch die Basisvektoren $\partial_r$ und $\partial_\varphi$ ändern.
+
+Obwohl der Raum selbst flach ist, treten diese Terme aufgrund der nichtlinearen Koordinatenwahl auf (ist ein Kreis!).
+\end{example}
+\end{tcolorbox}
+\vspace{1em}
+
+Im $\mathbb{R}^n$ gibt es nicht \underline{den} Gradienten, sondern jedes Koordinatensystem definiert seinen eigenen Gradienten in dessen Koordinaten.
+
+\subsection{Von der koordinatenkovarianten Ableitung zur kovarianten Ableitung}
 
 \section{Riemanntensor}
 
