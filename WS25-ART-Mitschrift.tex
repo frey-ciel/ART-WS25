@@ -217,42 +217,54 @@ Das Bild des Titelblatts stellt die Raumzeitkrümmung in 3D dar. \newline
 \chapter{Einführung}\label{chap:Einführung}
 
 \section{Newtonsche Mechanik und Gravitationsphysik}
-Die Gravitation zählt seit Jahrhunderten zu den zentralen Themen der Physik. Schon Isaac Newton formulierte nach der bekannten Anekdote mit dem fallenden Apfel das \textit{Gravitationsgesetz}
+Die Gravitation zählt seit Jahrhunderten zu den zentralen Themen der Physik. Schon Isaac Newton formulierte nach der bekannten Anekdote mit dem fallenden Apfel das \textit{Gravitationsgesetz}.
 
+Der Betrag der Gravitationskraft/Schwerkraft lautet
+\begin{equation*}
+F_{\text{grav}} = G \frac{M m}{r^2}
+\end{equation*}
+wobei $M$ und $m$ die Massen zweier Körper, $r=|\vec x |$ ihr Abstand, $\vec x$ der Ortsvektor von $m$ relativ zu $M$ und $G = 6,6743 \cdot 10^{-11} \frac{m^3}{kg\cdot s^2}$ die Gravitationskonstante. 
+
+In Vektorform lautet die Gravitationskraft
+\begin{equation*}
+\vec F_{\text{grav}} = -G \frac{M m}{r^3}\, \vec x
+\end{equation*}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{images/Gravitation.jpg}
+\end{figure}
+
+In Vektorkomponenten $i$ geschrieben
 \begin{equation*}
 F^i_{\text{grav}} = - G \frac{M m}{r^3}\, x^i
 \end{equation*}
 
-wobei $M$ und $m$ die Massen zweier Körper, $r$ ihr Abstand, $G = 6,673 \cdot 10^{-11} \frac{m^3}{kg\cdot s^2}$ die Gravitationskonstante und $x^i$ der Ort von Körper $i$ ist. Dieses Gesetz beschreibt in den meisten Fällen eine sehr gute Näherung der tatsächlich auftretenden Gravitationswechselwirkungen.
+Dieses Gesetz beschreibt bei Geschwindigkeiten, die wesentlich kleiner als die Lichtgeschwindigkeit sind, eine sehr gute Näherung der auftretenden Gravitationswechselwirkungen.
+
+
 
 Das Gravitationsgesetz kann auch mithilfe des Gravitationspotentials $\Phi(r)=-\frac{GM}{r}$ formuliert werden:
-
 \begin{equation*}
-F^i_{\text{grav}} = -m \partial_i \Phi(x^m(t))
+F^i_{\text{grav}} = -m \partial_i \Phi(x^k(t))
 \end{equation*}
-
-wobei $\partial_i \Phi(x^m(t)) = \frac{\partial\Phi}{\partial x^i}$
+wobei $\partial_i := \frac{\partial}{\partial x^i}$ die partielle Ableitung nach der $i$-ten Raumkoordinate bezeichnet und somit $\partial_i\Phi = (\nabla \Phi)^i$ die Komponenten des Gradienten des Gravitationspotentials.
 
 Zugleich verband Newton das Konzept der \textit{Kraft} mit dem der \textit{Beschleunigung} und formulierte damit die Grundlage der heute sogenannten \textit{Newton’schen Mechanik}. Nach dem zweiten Newtonschen Axiom gilt
-
 \begin{equation*}
-m\,\ddot{x}^i(t) = F^i(x^m(t)).
+m\,\ddot{x}^i(t) = F^i(x^k(t))
 \end{equation*}
 
 Die an der jeweiligen Position des Körpers wirkende Kraft ist also Masse mal Beschleunigung.
 
 Die Lösung dieser Gleichung beschreibt die Bahn $x^i(t,m)$ eines (punktförmig gedachten) Körpers in Abhängigkeit von der Zeit und der Masse des Körpers. Wendet man das zweite Newtonsche Axiom auf die Gravitationskraft an, erhält man:
-
 \begin{equation*}
-m\,\ddot{x}^i(t)
-= F^i_{\text{grav}} =- G\,\frac{M m}{r^3}\, x^i(t).
+\cancel{m}\,\ddot{x}^i(t) = F^i_{\text{grav}} = -\cancel{m} \partial_i \Phi(x^k(t))
 \end{equation*}
 
 Die Masse $m$ kürzt sich heraus, sodass sich die Bewegungsgleichung auch in der Form
-
 \begin{equation*}
-\ddot{x}^i(t)
-= - G\,\frac{M}{r^3}\, x^i(t)
+\ddot{x}^i(t) = - \partial_i \Phi(x^k(t))
 \end{equation*}
 
 schreiben lässt.  
@@ -260,22 +272,20 @@ Die Bahn des Teilchens ist somit unabhängig von seiner Masse, also $x^i=x^i(t)$
 
 Diese Unabhängigkeit legt den Grundstein für das spätere \textit{Äquivalenzprinzip} der Allgemeinen Relativitätstheorie: Alle Körper fallen im selben Gravitationsfeld im Vakuum gleich schnell, unabhängig von ihrer Masse.
 
-Wirken keine Kräfte $(F^i = 0^i)$, so folgt aus dem zweiten Newtonschen Axiom mit zweimaliger Integration:
-
+Wirken keine Kräfte $(F^i = 0)$, so folgt aus dem zweiten Newtonschen Axiom mit zweimaliger Integration:
 \begin{equation*}
-m\,\ddot{x}^i(t) = 0^i
+m\,\ddot{x}^i(t) = 0
 \quad\Rightarrow\quad
 x^i(t) = x^i_0 + \dot{x}^i_0\,t
 \end{equation*}
-
 Dies entspricht dem \textit{ersten Newtonschen Axiom}:  
 Ein kräftefreier Körper bleibt in Ruhe oder bewegt sich geradlinig mit konstanter Geschwindigkeit. Also ist die Bahn eine Gerade mit gleichförmiger Bewegung.
 
 \subsection{Inertialsystem, Galilei-Transformation und Galileisches Relativitätsprinzip (nicht Teil der VO)}
-Bewegungen können immer nur relativ zu etwas beschrieben werden: von etwas weg, zu etwas hin, ruhend relativ zu etwas. Ein \textit{Bezugssystem} (oder Koordinatensystem) hat einen Bezugspunkt (Koordinatenursprung), bezüglich dessen die Bewegungen beobachtet werden. Es gibt ruhende und bewegte Bezugssysteme.
+Bewegungen können immer nur relativ zu etwas beschrieben werden: von etwas weg, zu etwas hin, ruhend relativ zu etwas. Ein \textbf{Bezugssystem} (oder Koordinatensystem) hat einen Bezugspunkt (Koordinatenursprung), bezüglich dessen die Bewegungen beobachtet werden. Es gibt ruhende und bewegte Bezugssysteme.
 
 \begin{definition}
-Ein \textit{Inertialsystem} hat die folgenden äquivalenten Definitionen:
+Ein \textbf{Inertialsystem} hat die folgenden äquivalenten Definitionen:
 \begin{itemize}
     \item ein Bezugssystem, in dem das erste Newtonsche Gesetz gilt: jeder kräftefreie Körper innerhalb dieses Bezugssystems befindet sich entweder in Ruhe oder bewegt sich mit konstanter Geschwindigkeit auf einer Geraden.
     \item ein nicht beschleunigtes Bezugssystem.
@@ -295,7 +305,7 @@ Oder auch: Bewegt sich ein Inertialsystem $I'$ mit konstanter Geschwindigkeit re
 Dieses Prinzip bedeutet, dass keine mechanischen Experimente durchgeführt werden können, die erkennen lassen, ob man sich in Ruhe oder in gleichförmiger Bewegung befindet.
 
 \begin{definition}
-Die \textit{Galilei-Transformation} beschreibt den Zusammenhang zwischen den Raum- und Zeitkoordinaten zweier Inertialsysteme $I$ und $I'$, die sich mit konstanter Geschwindigkeit $v$ zueinander bewegen.  
+Die \textbf{Galilei-Transformation} beschreibt den Zusammenhang zwischen den Raum- und Zeitkoordinaten zweier Inertialsysteme $I$ und $I'$, die sich mit konstanter Geschwindigkeit $\vec v$ zueinander bewegen, wobei $\vec r$ die Position des Körpers und $t$ die Zeit beschreibt.
 Sie lautet:
 
 \begin{equation*}
@@ -309,9 +319,15 @@ t' &= t \qquad \qquad \text{Zeit bleibt gleich / ist absolut}
 \end{definition}
 
 \begin{example}
-    Ein Schiff bewegt sich geradlinig und gleichförmig mit Geschwindigkeit $v$.  
+    Ein Schiff bewegt sich geradlinig und gleichförmig mit Geschwindigkeit $\vec v$.  
     Ein Fußballspieler unter Deck kann durch ein Experiment - etwa indem er einen Ball hochwirft - nicht feststellen, ob sich das Schiff bewegt oder ruht.  
-    Das Schiff bildet also ein Inertialsystem, und die Flugbahn des Balls kann mit der Galilei-Transformation in das ruhende System an Land überführt werden:
+    Das Schiff bildet also ein Inertialsystem, und die Flugbahn des Balls kann mit der Galilei-Transformation in das ruhende System an Land überführt werden.
+    
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{images/Boat.jpg}
+\end{figure}
+
 \end{example}
 
 
@@ -331,7 +347,8 @@ Ein Zug fährt geradlinig mit konstanter Geschwindigkeit $v_1 = \SI{100}{km/h}$ 
 
 \heading{Konflikt: Lichtgeschwindigkeit}
 
-Aus den Maxwell-Gleichungen (Gesetze des Elektromagnetismus) folgt, dass die Lichtgeschwindigkeit $c = \SI{299,792}{km/s}$ konstant ist. Experimente zeigen, dass diese Geschwindigkeit in allen Inertialsystemen denselben Wert hat (invariant ist).  
+Aus den Maxwell-Gleichungen (Gesetze des Elektromagnetismus) folgt, dass die Lichtgeschwindigkeit \\ 
+$c = \SI{299792}{km/s}$ konstant ist. Experimente zeigen, dass diese Geschwindigkeit in allen Inertialsystemen denselben Wert hat (invariant ist).  
 Damit widerspricht die Lichtgeschwindigkeit jedoch der Galilei-Transformation, da sie sich nicht addieren lässt.
 
 \begin{example}
@@ -377,7 +394,7 @@ Im fahrenden Zug bewegt sich das Photon diagonal, da sich die Spiegel weiter bew
 \includegraphics[width=\linewidth]{Train.jpg}
 \end{wrapfigure}
 
-Es gilt: $L=c \cdot t$ (Distanz = Weg $\cdot$ Zeit) \newline
+Es gilt: $L=c \cdot t$ (Weg = Geschwindigkeit $\cdot$ Zeit) \newline
 Sei $t$ die Zeit, die aus der Sicht von $B$ im Zug vergeht, und $t'$ die Zeit, die $B$ an seiner Lichtuhr abliest.
 
 Dann ist 
@@ -422,8 +439,6 @@ t' = \gamma \cdot t
 Da $\frac{v^2}{c^2}<1$ für alles außer Licht, ist $\sqrt{1 - \frac{v^2}{c^2}} \in (0,1)$ (Bruch) und somit $\gamma > 1$.
 
 Aus Sicht der ruhenden Person $B$ außerhalb des Zugs, die ihr Zeit mit $t'$ misst, vergeht die Zeit der Person $A$ im Zug mit $t=\frac{t'}{\gamma}$. Also ist die Zeit im Zug, aus Sicht von außerhalb, um den Faktor $\gamma$ langsamer. (z.B. $t'=\SI{2}{s}$ vergeht außen, dann vergeht $t=\SI{1}{s}$ innen) 
-
-\pagebreak
 
 \renewcommand{\arraystretch}{1.5}   % Row spacing
 \rowcolors{2}{gray!10}{white}       % Alternating row colors
