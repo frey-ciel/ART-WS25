@@ -240,11 +240,9 @@ In Vektorkomponenten $i$ geschrieben
 F^i_{\text{grav}} = - G \frac{M m}{r^3}\, x^i
 \end{equation*}
 
-Dieses Gesetz beschreibt bei Geschwindigkeiten, die wesentlich kleiner als die Lichtgeschwindigkeit sind, eine sehr gute Näherung der auftretenden Gravitationswechselwirkungen.
+Dieses Gesetz beschreibt bei Geschwindigkeiten, die wesentlich kleiner als die Lichtgeschwindigkeit sind und solange man sich nicht in der Nähe großer Massen aufhält, eine sehr gute Näherung der auftretenden Gravitationswechselwirkungen.
 
-
-
-Das Gravitationsgesetz kann auch mithilfe des Gravitationspotentials $\Phi(r)=-\frac{GM}{r}$ formuliert werden:
+Das Gravitationsgesetz kann auch mithilfe des Gravitationspotentials (Skalarfeld) $\Phi(r)=-\frac{GM}{r}$ formuliert werden:
 \begin{equation*}
 F^i_{\text{grav}} = -m \partial_i \Phi(x^k(t))
 \end{equation*}
@@ -270,7 +268,12 @@ Die Masse $m$ kürzt sich heraus, sodass sich die Bewegungsgleichung auch in der
 schreiben lässt.  
 Die Bahn des Teilchens ist somit unabhängig von seiner Masse, also $x^i=x^i(t)$.
 
-Diese Unabhängigkeit legt den Grundstein für das spätere \textit{Äquivalenzprinzip} der Allgemeinen Relativitätstheorie: Alle Körper fallen im selben Gravitationsfeld im Vakuum gleich schnell, unabhängig von ihrer Masse.
+Diese Unabhängigkeit wird als das \href{https://de.wikipedia.org/wiki/Allgemeine_Relativit%C3%A4tstheorie#Verallgemeinerung_des_%C3%84quivalenzprinzips}{\textbf{klassische Äquivalenzprinzip}} oder auch \textbf{schwache Äquivalenzprinzip} bezeichnet, und geht auf Überlegungen von Galileo Galilei und seine \href{https://www.leifiphysik.de/mechanik/freier-fall-senkrechter-wurf/geschichte/galileis-untersuchung-des-freien-falls}{Versuche mit Kugeln auf schiefen Bahnen} zurück
+\begin{quote}
+Alle Körper fallen im selben Gravitationsfeld im Vakuum gleich schnell, unabhängig von ihrer Masse. Die Beschleunigung hängt allein vom Gravitationsfeld ab.
+\end{quote}
+
+Bei der Mondlandung 1971 wurde dies im Vakuum bestätigt: Hammer und Feder trafen gleichzeitig auf der Mondoberfläche auf: \url{https://www.youtube.com/watch?v=Oo8TaPVsn9Y}
 
 Wirken keine Kräfte $(F^i = 0)$, so folgt aus dem zweiten Newtonschen Axiom mit zweimaliger Integration:
 \begin{equation*}
@@ -377,7 +380,7 @@ Special Relativity Part 2: Time Dilation and the Twin Paradox: \url{https://yout
 \includegraphics[width=\linewidth]{Lichtuhr.jpg}
 \end{wrapfigure}
 
-Eine Lichtuhr besteht aus zwei Spiegeln, zwischen denen ein Photon hin und her springt. Jedes Mal, wenn das Photon einen Spiegel erreicht, tickt die Uhr um eine Einheit weiter. \textit{Fun fact: Für eine Sekunde müssten dafür die Spiegel }$L = c \cdot \SI{1}{s} = \SI{299792458}{km}$ \textit{voneinander entfernt sein.}
+Eine Lichtuhr besteht aus zwei Spiegeln, zwischen denen ein Photon hin und her springt. Jedes Mal, wenn das Photon einen Spiegel erreicht, tickt die Uhr um eine Einheit weiter. \textit{Fun fact: Für eine Sekunde müssten dafür die Spiegel }$L = c \cdot \SI{1}{s} = \SI{299792}{km}$ \textit{voneinander entfernt sein.}
 
 \begin{wrapfigure}[4]{r}{0.30\textwidth}
 \vspace{-1.6em}
@@ -397,7 +400,7 @@ Im fahrenden Zug bewegt sich das Photon diagonal, da sich die Spiegel weiter bew
 Es gilt: $L=c \cdot t$ (Weg = Geschwindigkeit $\cdot$ Zeit) \newline
 Sei $t$ die Zeit, die aus der Sicht von $B$ im Zug vergeht, und $t'$ die Zeit, die $B$ an seiner Lichtuhr abliest.
 
-Dann ist 
+Dann ist mit dem Satz des Pythagoras
 \begin{equation*}
 \begin{aligned}
  & c^2t^2+v^2t'^2=c^2t'^2 \\
@@ -416,7 +419,7 @@ Dies ist die \textbf{Zeitdilatationsgleichung}.
 
 Hierbei gilt:
 \begin{itemize}
-  \item $t$ $\dots$ Eigenzeit / proper time (aus der Sicht des ruhenden Beobachters, die gemessene Zeit der Person im bewegten System; für die Person \textit{im} Zug, ruht dieser)
+  \item $t$ $\dots$ Eigenzeit / proper time (Zeit von bewegtem System, aus der Sicht des ruhenden Beobachters; ruhender Beobachter sieht wie die Person \textit{im} Zug ihre \textit{eigene} Zeit hat)
   \item $t'$ $\dots$ dilated time (Zeit, die vom ruhenden Beobachter für sich selbst gemessen wird)
   \item $v$ $\dots$ Geschwindigkeit des bewegten Objekts relativ zum ruhenden Beobachter
 \end{itemize}
@@ -429,7 +432,7 @@ Der Faktor
 \gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}
 \end{equation*}
 
-heißt \textit{Lorentz-Faktor}.
+heißt \textbf{Lorentz-Faktor}.
 
 Damit gilt
 \begin{equation*}
@@ -440,7 +443,7 @@ t' = \gamma \cdot t
 
 Da $\frac{v^2}{c^2}<1$ für alles außer Licht, ist $\sqrt{1 - \frac{v^2}{c^2}} \in (0,1)$ (Bruch) und somit $\gamma > 1$.
 
-Aus Sicht der ruhenden Person $B$ außerhalb des Zugs, die ihr Zeit mit $t'$ misst, vergeht die Zeit der Person $A$ im Zug mit $t=\frac{t'}{\gamma}$. Also ist die Zeit im Zug, aus Sicht von außerhalb, um den Faktor $\gamma$ langsamer. (z.B. $t'=\SI{2}{s}$ vergeht außen, dann vergeht $t=\SI{1}{s}$ innen) 
+Aus Sicht der ruhenden Person $B$ außerhalb des Zugs, die ihre Zeit mit $t'$ misst, vergeht die Zeit der Person $A$ im Zug mit $t=\frac{t'}{\gamma}$. Also ist die Zeit im Zug, aus Sicht von außerhalb, um den Faktor $\gamma$ langsamer. (z.B. $t'=\SI{2}{s}$ vergeht außen, dann vergeht, für $\gamma =2$, die Zeit $t=\SI{1}{s}$ innen) 
 
 \renewcommand{\arraystretch}{1.5}   % Row spacing
 \rowcolors{2}{gray!10}{white}       % Alternating row colors
@@ -459,8 +462,8 @@ Aus Sicht der ruhenden Person $B$ außerhalb des Zugs, die ihr Zeit mit $t'$ mis
 99,9\%  & 22 \\
 99,99\%   & 70 \\
 \end{tabular}
-\caption{Lorentz Faktor zu Geschwindigkeit gegeben in Prozent der Lichtgeschwindigkeit. \newline
-1\% = 10792,5 km/h}
+\caption{Lorentz-Faktor zu Geschwindigkeit gegeben in Prozent der Lichtgeschwindigkeit. \newline
+1\% = \SI{1079252848,8}{km/h}}
 \end{table}
 \rowcolors{1}{}{}  % beendet die abwechselnde Zeilenfärbung
 
@@ -598,13 +601,14 @@ Anstelle der Galilei-Transformation gilt nun die Lorentz-Transformation.
 Das Gravitationsgesetz von Newton ist in den meisten Situationen eine sehr gute Näherung. Bei genauen Messungen oder in der Nähe großer Massen treten jedoch Abweichungen auf. Beispiele sind die Lichtablenkung oder die Periheldrehung der Planeten. Solche Effekte lassen sich mit der Newtonschen Mechanik nicht erklären.
 
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[t]{0.4\textwidth}
         \centering
         \includegraphics[width=\linewidth]{Periheldrehung.png}
-        \caption{Die Periheldrehung der Merkurbahn wird hauptsächlich durch die Raumkrümmung verursacht.}
-        {\footnotesize{Quelle: \href{https://www.researchgate.net/figure/Periheldrehung-der-Merkurbahn-eine-Konsequenz-der-Raumkruemmung-nach-Hoffmann_fig21_233427933}{Link}}}
+        \caption{Die Periheldrehung der Merkurbahn wird auch durch Raumzeitkrümmung verursacht.}
+        {\footnotesize{Quellen: \href{https://www.researchgate.net/figure/Periheldrehung-der-Merkurbahn-eine-Konsequenz-der-Raumkruemmung-nach-Hoffmann_fig21_233427933}{Link} \newline
+        I never understood why planets don’t follow perfect orbits… until now!: \url{https://youtu.be/S78h8zQwQe0?si=UaW3JNNzFQhHuBl7&t=1124}}}
     \end{subfigure}
     \hspace{1em}
     \begin{subfigure}[t]{0.3\textwidth}
@@ -621,15 +625,19 @@ Die allgemeine Relativitätstheorie (ART) ersetzt das Konzept der Gravitations\t
 \begin{example}[Gedankenexperiment: Aufzug]
 Wir betrachten eine Person in einem geschlossenen Aufzug. Die Person hat keine Möglichkeit hinauszusehen.
 
-Wenn der Aufzug abstürzt ist, schwebt die Person im Inneren schwerelos. Gegenstände bleiben an ihrem Ort oder bewegen sich gleichförmig weiter, solange keine Kraft auf sie wirkt. Der Zustand des freien Falls ist also lokal nicht von einem kräftefreien Raum zu unterscheiden. 
+Wenn der Aufzug abstürzt, schwebt die Person im Inneren schwerelos. Gegenstände bleiben an ihrem Ort oder bewegen sich geradlinig mit konstanter Geschwindigkeit weiter, solange keine Kraft auf sie wirkt. Der Zustand des freien Falls ist also lokal nicht von einem kräftefreien Raum zu unterscheiden. 
+
+Diese Beobachtung wird als \href{https://joergresag.hier-im-netz.de/mybkhtml/chap81.htm}{\textbf{starkes Äquivalenzprinzip}} oder \textbf{Einsteinsches Äquivalenzprinzip} bezeichnet:
+\begin{quote}
+Ein frei fallendes Bezugssystem kann lokal (in einer hinreichend kleinen Umgebung) nicht von einem kräftefreien Bezugssystem unterschieden werden. Frei fallende Bezugssysteme sind lokal äquivalent zu Inertialsystemen. In jedem frei fallenden Bezugssystem gelten lokal dieselben physikalischen Gesetze wie in der Speziellen Relativitätstheorie.
+\end{quote}
+
+Es bildet das Fundament der Allgemeinen Relativitätstheorie. Weitere \href{https://www.einstein-online.info/spotlight/aequivalenzprinzip/}{Quelle}.
+
+Global gilt diese Äquivalenz jedoch nicht. Zoomt man weiter heraus, bewegen sich Körper im freien Fall nicht mehr auf Geraden, sondern auf geradest-möglichen Strecken (Kurven), die durch die Gravitation verursacht werden. Beispiel: ein Stift bewegt sich geradlinig mit konstanter Geschwindigkeit in der Schwerelosigkeit der ISS. Weiter herausgezoomt, fällt die ISS um die Erde herum. Global betrachtet bewegt sich der Stift nicht auf einer Geraden.
+\end{example}
 
 Einstein erkannte, dass diese Beobachtung darauf hindeutet, dass die Bewegung von Körpern im Gravitationsfeld nicht durch eine Kraft, sondern durch die Krümmung der Raumzeit bestimmt wird. Körper bewegen sich also entlang von Geraden auf dieser gekrümmten Raumzeit.
-
-Diese Beobachtung lässt sich wie folgt zusammenfassen und wird als \textbf{Äquivalenzprinzip} bezeichnet:
-\begin{quote}
-Ein frei fallendes Bezugssystem kann lokal nicht von einem kräftefreien Inertialsystem unterschieden werden.
-\end{quote}
-\end{example}
 
 Um eine solche Bewegung zu beschreiben, müssen wir klären, was eine \textit{Gerade in einem gekrümmten Raum} bedeutet. Im euklidischen Raum ist sie die kürzeste Verbindung zwischen zwei Punkten. Allgemein gilt:
 \begin{itemize}
@@ -637,7 +645,7 @@ Um eine solche Bewegung zu beschreiben, müssen wir klären, was eine \textit{Ge
     \item Der Tangentialvektor einer Geraden bleibt stets zu sich selbst parallel. Diese Eigenschaft nennt man \textit{Autoparallelität}.
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.2\textwidth]{Gerade.jpg}
 \caption{In blau: eine Gerade im flachen Raum, denn alle Tangentialvektoren sind parallel. In türkis: keine Gerade den mind. zwei Tangentialvektoren sind nicht parallel.}
@@ -646,7 +654,7 @@ Um eine solche Bewegung zu beschreiben, müssen wir klären, was eine \textit{Ge
 
 In gekrümmten Räumen wird diese Vorstellung schwieriger. Auf einer Kugeloberfläche liegt die kürzeste Verbindung zwischen zwei Punkten auf einem Großkreis (Kreis mit maximalem Umfang). Von \underline{außen} betrachtet sind die Tangentialvektoren solcher Großkreise jedoch nicht autoparallel, siehe \cref{fig:parallel}. Für eine Person, die auf der Kugeloberfläche lebt, erscheint die Umgebung lokal flach. Daher sind die Tangentialvektoren für diese Person autoparallel.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.2\textwidth]{Parallel.jpg}
 \caption{Tangentialvektoren auf Großkreisen sind von \underline{außen} betrachtet nicht autoparallel}
@@ -657,7 +665,7 @@ In einem flachen Raum kehrt ein Vektor, der entlang einer geschlossenen Kurve pa
 
 Starten wir mit einem Tangentialvektor auf dem Äquator und verschieben ihn entlang eines Großkreises bis zum Nordpol. Dann folgen wir einem anderen Großkreis zurück zum Äquator und dann entlang des Äquators zurück zum Ausgangspunkt. Obwohl der Vektor auf dem gesamten Weg nur parallel verschoben wurde, kehrt er nicht zur ursprünglichen Richtung zurück, sondern ist gegenüber seiner Anfangsrichtung verdreht. Das zeigt anschaulich, was Raumkrümmung bedeutet.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.4\textwidth]{Parallelversch.jpg}
 \caption{Parallelverschiebung}
@@ -701,7 +709,7 @@ In Newtons Theorie wirkt Gravitation augenblicklich und über beliebig große En
 Eine Person in einem geschlossenen Raumschiff kann nicht unterscheiden, ob sich das Raumschiff
 \begin{itemize}
     \item auf der Erde befindet und die Person die Gewichtskraft des Gravitationsfeldes $F_G = m g$ erfährt (\textit{schwere Masse}),
-    \item oder ob sich das Raumschiff im freien Raum befindet und mit $g$ nach oben beschleunigt wird (\textit{träge Masse}).
+    \item oder ob sich das Raumschiff im Weltraum befindet und mit $g$ nach oben beschleunigt wird (\textit{träge Masse}; Widerstand bei Beschleunigung).
 \end{itemize}
 
 \begin{figure}[H]
@@ -711,17 +719,15 @@ Eine Person in einem geschlossenen Raumschiff kann nicht unterscheiden, ob sich 
   {\footnotesize{Quelle: \url{https://asymptotia.com/wp-images/2008/02/equivalence1.jpg}}}
 \end{figure}
 
-Schwere Masse und träge Masse sind also äquivalent/gleichwertig. Dies bezeichnet man als \textit{Äquivalenzprinzip}.
-
-Bereits Galileo erkannte vor rund 400 Jahren, dass alle Körper im Vakuum unabhängig von ihrer Masse gleich schnell fallen. Er überprüfte diese Idee mit Kugeln auf schiefen Ebenen und zeigte, dass die Fallzeit nicht von der Masse abhängt. Bei der Mondlandung 1971 wurde dies im Vakuum bestätigt: Hammer und Feder trafen gleichzeitig auf der Mondoberfläche auf: \url{https://www.youtube.com/watch?v=Oo8TaPVsn9Y}
-
-Diese Beobachtung liefert den experimentellen Hintergrund für das Äquivalenzprinzip. Wenn alle Körper gleich fallen, dann ist der freie Fall lokal nicht von einem kräftefreien Zustand zu unterscheiden. Ob man sich in einem fallenden Aufzug oder in einer Raumkapsel im All befindet, kann innerhalb des Systems nicht festgestellt werden.
+Schwere Masse und träge Masse sind also lokal äquivalent/gleichwertig. Dies ist eine weitere Formulierung des \textbf{starken Äquivalenzprinzips}.
 
 Einstein führte diesen Gedanken weiter. Wenn Gravitation und Beschleunigung äquivalent sind, dann kann Gravitation nicht als Kraft verstanden werden. Massen verändern stattdessen die Geometrie der Raumzeit. Körper bewegen sich in dieser gekrümmten Raumzeit entlang des kürzesten Wegs zwischen zwei Punkten (Geodäte).
 
 Gravitation ist somit Ausdruck der Raumzeitkrümmung: Sie beschreibt, wie sich die Geodäten in der Nähe von Massen verändern. Bewegung im Gravitationsfeld folgt also nicht einer Kraft, sondern der Struktur der Raumzeit selbst.
 
 In der speziellen Relativitätstheorie ist die Raumzeit flach, in der allgemeinen Relativitätstheorie dagegen gekrümmt.
+
+Die allgemeine Relativitätstheorie sagte auch schwarze Löcher vorher und dass Uhren in der Nähe von großen Massen langsamer ticken.
 
 \begin{figure}[H]
     \centering
@@ -1247,7 +1253,7 @@ Licht breitet sich in jedem Inertialsystem gleich schnell aus, daher gilt für e
 t^2 = x^i x^i \ \Leftrightarrow \ \bar{t}^2 = \bar{x}^i \bar{x}^i
 \end{equation*}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{FindK.jpg}
 \caption{Die Längenquadrate von $t$ und $x$ stimmen in $I$ überein genau dann wenn die Längenquadrate von $\bar{t}$ und $\bar{x}$ in $\bar{I}$ übereinstimmen.}
@@ -1391,7 +1397,7 @@ Durch das negative Vorzeichen der Zeitkomponente kann der Raumzeitabstand positi
     \item $\Delta S^2 > 0$: \textbf{raumartig} – Ereignisse liegen außerhalb des Lichtkegels.
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{Abstandart.jpg}
 \caption{$\Delta S_1^2$ ist zeitartig, $\Delta S_2^2$ ist lichtartig, $\Delta S_3^2$ ist raumartig}
@@ -2522,7 +2528,7 @@ Der \textbf{Doppeldualraum} (auch \textbf{Bidualraum}) eines Vektorraums $(V,\Ga
 V^{\sim\sim} := (V^\sim)^\sim = \{\psi: V^\sim \to \Gamma : \Psi \text{ ist linear}\}
 \end{equation*}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.3\textwidth]{images/Bidualraum1.jpg}
 \end{figure}
@@ -2540,7 +2546,7 @@ wobei das Punktauswertungsfunktional $\Phi_v$ folgendermaßen agiert
 \Phi_v: V^\sim \to \Gamma: \varphi \mapsto \Phi_v(\varphi) := \varphi(v)
 \end{equation}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{images/Bidualraum.jpg}
 \end{figure}
@@ -3443,7 +3449,7 @@ Seien $\tau$ und $\sigma$ Topologien auf einer Menge $X$.
 Gilt $\sigma \subseteq \tau$, so heißt $\tau$ \textbf{feiner} als $\sigma$ (bzw.\ $\sigma$ \textbf{gröber} als $\tau$). \newline
 \end{definition}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{Grob_fein.jpg}
 \caption{$\sigma \subseteq \tau$; feiner: enthält mehr offene Mengen; gröber: enthält weniger offene Mengen}
@@ -3494,7 +3500,7 @@ Sei $(X,\mathfrak{X})$ ein topologischer Raum und $(x_n)_{n\in\mathbb{N}}$ eine 
 Das bedeutet: Eine Folge konvergiert gegen $x$, wenn sich ihre Folgenglieder ab einem gewissen Index, beliebig nahe bei $x$ befinden. In der Topologie wird diese Nähe nicht über einen Abstand, sondern über offene Mengen beschrieben. Wir schreiben $N_\mathcal{O}$, da der Index von der offenen Menge $\mathcal{O}$ abhängt.
 \end{definition}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.3\textwidth]{Konvergieren.jpg}
 \caption{Konvergenz einer Folge $(x_n)_{n\in\mathbb{N}}$ gegen ein $x$.}
@@ -3572,7 +3578,7 @@ Also hängt Stetigkeit ausschließlich von der zugrunde liegenden Topologie ab u
 
 Anmerkung: $f^{-1}(\mathcal{O}') \in \mathfrak{X}$ ist äquivalent zu $f^{-1}(\mathcal{O}') \subseteq X \, \wedge f^{-1}(\mathcal{O}') \text{ offen in } \mathfrak{X}$.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.3\textwidth]{stetig.jpg}
 \caption{Stetigkeit}
@@ -3665,7 +3671,7 @@ Wir zeigen, dass gilt $(g \circ f)^{-1}(C) \subseteq f^{-1}(g^{-1}(C))$ und $(g 
 Obige Richtung "$\Rightarrow$"\ zeigt "$\subseteq$"\ und "$\Leftarrow$"\ zeigt "$\supseteq$".
 \end{proof}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{Zusammensetzung.jpg}
 \caption{Situation von \cref{prop:zusammensetzung}}
@@ -3916,7 +3922,7 @@ topologischen Eigenschaften wie beispielsweise Kompaktheit, Zusammenhang und Tre
 
 Ein Homöomorphismus dehnt, staucht, verbiegt, verzerrt einen Gegenstand so, dass er dennoch die gleichen topologischen Eigenschaften wie zuvor hat. Zerschneiden ist nur erlaubt, wenn die Teile später genau an der Schnittfläche wieder zusammenfügt werden.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.3\textwidth]{donut.jpg}
 \caption{Eine Tasse ist homöomorph zu einem Donut. \newline
@@ -3931,7 +3937,7 @@ Ein Homöomorphismus dehnt, staucht, verbiegt, verzerrt einen Gegenstand so, das
     Also gilt $f^{-1}(\mathfrak{Y})=\mathfrak{X}$ und analog dazu $g^{-1}(\mathfrak{X})=\mathfrak{Y}$. Das heißt, die Topologien stehen in einer 1 zu 1 Beziehung, nicht nur die Punkte aus $X$ und $Y$.
 \end{theorem}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{Homöomorph.jpg}
 \caption{Homöomorphismus $f$ zwischen $(X,\mathfrak{X})$ und $(Y,\mathfrak{Y})$}
@@ -4006,7 +4012,7 @@ Ein topologischer Raum $(X,\mathfrak{X})$ heißt \textbf{$T_0$-Raum} :$\Leftrigh
 Das heißt: die Topologie kann verschiedene Punkte unterscheiden.
 \end{definition}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{T0.jpg}
 \caption{$T_0$}
@@ -4025,7 +4031,7 @@ Ein topologischer Raum $(X,\mathfrak{X})$ heißt \textbf{$T_1$-Raum} :$\Leftrigh
 Das heißt: je zwei verschiedene Punkte können durch offene Mengen getrennt werden. 
 \end{definition}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.25\textwidth]{T1.jpg}
 \caption{$T_1$}
@@ -4041,7 +4047,7 @@ T_1 \Rightarrow T_0
 T_0 \nRightarrow T_1
 \end{equation*}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.2\textwidth]{NotT1.jpg}
 \caption{$T_0$ aber nicht $T_1$}
@@ -4124,7 +4130,7 @@ Ein topologischer Raum $(X,\mathfrak{X})$ heißt \textbf{$T_2$-Raum} oder \textb
 Das heißt: verschiedene einpunktige Mengen lassen sich durch disjunkte offene Mengen trennen.
 \end{definition}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.3\textwidth]{T2.jpg}
 \caption{$T_2$}
@@ -4193,7 +4199,7 @@ Ein topologischer Raum $(X,\mathfrak{X})$ heißt \textbf{$T_3$-Raum} :$\Leftrigh
 Das heißt: Einpunktige und abgeschlossene Mengen lassen sich durch disjunkte offene Mengen trennen.
 \end{definition}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.3\textwidth]{T3.jpg}
 \caption{$T_3$}
@@ -4291,7 +4297,7 @@ d(x,y) &\le d(x,z) + d(z,y) &\text{(Dreiecksungleichung)}
 Ein Raum $(M,d)$, der mit einer Metrik $d$ versehen ist, heißt \textbf{metrischer Raum}.
 \end{definition}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.2\textwidth]{Dreiecksungl.jpg}
 \caption{Dreiecksungleichung}
@@ -4953,7 +4959,7 @@ Zusammen beschreiben diese beiden Karten die gesamte Mannigfaltigkeit $S^2$ und 
 \caption{stereographische Projektion in 2D Ansicht}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[t]{0.6\textwidth}
         \centering
