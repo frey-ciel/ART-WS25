@@ -301,7 +301,7 @@ In einem Inertialsystem wirken also keine Scheinkräfte/Trägheitskräfte. Syste
 Ein Zug bewegt sich mit konstanter Geschwindigkeit auf einer Strecke mit geraden Schienen. Ein Bezugssystem, das sich mit dem Zug bewegt, ist ein Inertialsystem. Sobald der Zug um eine Kurve fährt, müssen sich die äußeren Teile des Zugs beschleunigen, um dieselbe Strecke wie die inneren Teile zurückzulegen. Das mitgeführte Bezugssystem ist kein Inertialsystem mehr. Ebenso wenn der Zug auf der geraden Strecke abbremst oder beschleunigt. Durch die krummlinige Bewegung oder die Beschleunigung/das Abbremsen treten Trägheitskräfte auf.
 \end{example}
 
-\begin{theorem}[Galileisches Relativitätsprinzip]
+\begin{theorem}[Galileisches Relativitätsprinzip]\label{thm:Relativitätsprinzip}
 Alle physikalischen Gesetze sind in allen Inertialsystemen gleich.
 Oder auch: Bewegt sich ein Inertialsystem $I'$ mit konstanter Geschwindigkeit relativ zu einem anderen Inertialsystem $I$, so gelten in beiden dieselben physikalischen Gesetze.
 \end{theorem}
@@ -752,11 +752,17 @@ Die allgemeine Relativitätstheorie sagte auch schwarze Löcher vorher und dass 
 4D Spacetime and Relativity explained simply and visually: \url{https://youtu.be/ZfR1Jc6Zgl} \newline
 Weltlinien und Minkowski-Diagramm - Spezielle Relativitätstheorie (5) | Peter Kroll: \url{https://youtu.be/ef7X9-1qhkA?si=v6eHwvrXmXKqFNKo&t=1339}}}
 
-Der Minkowski-Raum ist die mathematische Grundlage der speziellen Relativitätstheorie. Er beschreibt die Raumzeit als einen vierdimensionalen Raum, in dem drei Raumrichtungen und eine Zeitrichtung gemeinsam betrachtet werden. 
+Der\textbf{Minkowski-Raum} $\mathbb{M}$ ist die mathematische Grundlage der speziellen Relativitätstheorie. Er beschreibt die Raumzeit als einen vierdimensionalen Raum, in dem drei Raumrichtungen und eine Zeitrichtung gemeinsam betrachtet werden. 
 
-Die drei räumlichen Koordinaten beschreiben den gewohnten euklidischen Raum. Die vierte Koordinate steht für die Zeit. Dennoch unterscheidet sich der Minkowski-Raum wesentlich von einem vierdimensionalen euklidischen Raum.
+Die drei räumlichen Koordinaten $x^i$ beschreiben den gewohnten euklidischen Raum. Die vierte Koordinate steht für die Zeit $t$. Sie wird mit der Lichtgeschwindigkeit $c$ multipliziert, damit auf allen Achsen mit Längen gearbeitet werden kann: $ct=\frac{km}{s}\cdot s = km$.
 
-Zur Veranschaulichung verwendet man sogenannte \textit{Minkowski-Diagramme} oder auch \textit{Raumzeit-Diagramme}. Dabei werden die drei Raumdimensionen auf eine oder zwei reduziert, um sie grafisch darstellen zu können. Da es unmöglich ist, vier aufeinander normal stehende Achsen graphisch darzustellen, werden für solche Diagramme die Raumdimensionen von drei auf eine oder zwei reduziert, und eine Zeitachse eingeführt, die meistens nach oben zeigt. Weiters wird die Zeit $t$ mit der Lichtgeschwindigkeit $c$ multipliziert, damit auf allen Achsen mit Längen gearbeitet werden kann: $ct=\frac{km}{s}\cdot s = km$
+Damit ist der Minkowski-Raum
+\begin{equation*}
+\mathbb{M}:=\{(\underbrace{ct}_{=x^0}, x^1, x^2, x^3) \in \mathbb{R}^4\}
+\end{equation*}
+Dennoch unterscheidet sich der Minkowski-Raum wesentlich von einem vierdimensionalen euklidischen Raum.
+
+Zur Veranschaulichung verwendet man sogenannte \textit{Minkowski-Diagramme} oder auch \textit{Raumzeit-Diagramme}. Da es unmöglich ist, vier aufeinander normal stehende Achsen graphisch darzustellen, werden für solche Diagramme die Raumdimensionen von drei auf eine oder zwei reduziert, und eine Zeitachse eingeführt, die meistens nach oben zeigt.
 
 \begin{figure}[H]
     \centering
@@ -769,7 +775,7 @@ Zur Veranschaulichung verwendet man sogenannte \textit{Minkowski-Diagramme} oder
 
 Im Minkowski-Diagramm stellt jeder Punkt ein Teilchen oder auch ein Ereignis dar, also einen Ort zu einem bestimmten Zeitpunkt. Die Bahn eines Teilchens durch die Raumzeit wird durch eine sogenannte \textit{Weltlinie} in diesem Diagramm beschrieben.
 
-Ein Körper, der ruht, wird durch eine vertikale Linie dargestellt, da sich sein Ort in der Zeit nicht ändert. Ein Körper, der sich mit konstanter Geschwindigkeit bewegt, hat eine geneigte Weltlinie. Je größer die Geschwindigkeit, desto flacher verläuft die Linie. Parallele Weltlinien beschreiben Körper, die sich in relativer Ruhe befinden. Auf der \textit{Gleichzeitebene} erfahren alle Teilchen die gleiche Zeit/alle Ereignisse/Events finden zur gleichen Zeit statt.
+Ein Körper, der ruht, wird durch eine vertikale Linie dargestellt, da sich sein Ort in der Zeit nicht ändert. Ein Körper, der sich mit konstanter Geschwindigkeit bewegt, hat eine geneigte Weltlinie. Je größer die Geschwindigkeit, desto flacher verläuft die Linie. Parallele Weltlinien beschreiben Körper, die sich in relativer Ruhe befinden. Auf der \textbf{Gleichzeitebene} erfahren alle Teilchen die gleiche Zeit/alle Ereignisse/Events finden zur gleichen Zeit statt.
 
 \begin{figure}[H]
   \centering
@@ -777,15 +783,15 @@ Ein Körper, der ruht, wird durch eine vertikale Linie dargestellt, da sich sein
   \caption{Weltlinien im Minkowski-Diagramm. $x_1$ \& $x_2$ sind ruhende Körper, $x_3$ \& $x_4$ bewegen sich gleichförmig mit derselben Geschwindigkeit.}
 \end{figure}
 
-Wenn sich $x_3$ nun mit der gleichen Geschwindigkeit $v$ in alle Richtungen bewegt, entsteht ein Kegel, der sogenannte \textit{Gleichgeschwindigkeitskegel}. Der Winkel $\theta$ des Gleichgeschwindigkeitskegels ist also durch die Geschwindigkeit bestimmt. Desto größer die Geschwindigkeit des Teilchens, desto größer der Winkel.
+Wenn sich $x_3$ nun mit der gleichen Geschwindigkeit $v$ in alle Richtungen bewegt, entsteht ein Kegel, der sogenannte \textbf{Gleichgeschwindigkeitskegel}. Der Winkel $\theta$ des Gleichgeschwindigkeitskegels ist also durch die Geschwindigkeit bestimmt. Desto größer die Geschwindigkeit des Teilchens, desto größer der Winkel.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth]{Kegel.jpg}
-  \caption{Gleichgeschwindigkeitskegel. $x_3''$ \dots wenn sich $x_3$ nicht bewegt}
+  \caption{Gleichgeschwindigkeitskegel von $x_3$. Punkt $x_3''$ liegt auf unbewegten Weltlinie von $x_3$.}
 \end{figure}
 
-In der Newton-Mechanik werden Geschwindigkeiten addiert. Also kann eine unendlich große Geschwindigkeit auftreten. Das bedeutet, dass der Winkel eines Gleichgeschwindigkeitskegels $\theta = 90^\circ$ erreichen kann. Die wesentliche Erkenntnis der speziellen Relativitätstheorie ist, dass es eine maximale Geschwindigkeit gibt: die Lichtgeschwindigkeit $c$. Diese ist in allen Bezugssystemen gleich – also eine Invariantengeschwindigkeit. Also kann ein Gleichgeschwindigkeitskegel die $90^\circ$ nur annähern, aber nicht erreichen.
+In der Newton-Mechanik werden Geschwindigkeiten addiert. Also kann eine unendlich große Geschwindigkeit auftreten (deutsche Autobahn). Das bedeutet, dass der Winkel eines Gleichgeschwindigkeitskegels $\theta = 90^\circ$ erreichen kann. Die wesentliche Erkenntnis der speziellen Relativitätstheorie ist, dass es eine maximale Geschwindigkeit gibt: die Lichtgeschwindigkeit $c$. Diese ist in allen Bezugssystemen gleich – also eine Invariantengeschwindigkeit. Also kann ein Gleichgeschwindigkeitskegel die $90^\circ$ nur annähern, aber nicht erreichen.
 
 Skaliere so, dass $v = c$ einem Winkel $\theta = 45^\circ$ entspricht. (Man könnte auch anders wählen; die Idee ist, dass der Winkel zwischen $0^\circ$ und $90^\circ$ liegen muss, wobei $0^\circ$ und $90^\circ$ nicht möglich sind – also nimmt man die Mitte.)
 
@@ -803,7 +809,9 @@ Skaliere so, dass $v = c$ einem Winkel $\theta = 45^\circ$ entspricht. (Man kön
   \caption{Zukunft und Vergangenheit.}
 \end{figure}
 
-\section{Lorentztransformation}
+\pagebreak
+
+\section{Lorentz-Transformation}
 {\footnotesize {gute Videos: \newline
 Lorentz Transformations | Special Relativity Ch. 3: \url{https://www.youtube.com/watch?v=Rh0pYtQG5wI} \newline
 Length Contraction and Time Dilation | Special Relativity Ch. 5: \url{https://www.youtube.com/watch?v=-NN_m2yKAAk} \newline
@@ -811,33 +819,38 @@ Relativistische Längenkontraktion • Garagenparadoxon • Spezielle Relativit�
 
 \subsection{Gleichzeitigkeit, Zeitdilatation und Längenkontraktion}
 
-\begin{wrapfigure}[3]{r}{0.20\textwidth}
-\vspace{-1em}
-\centering
-\includegraphics[width=\linewidth]{Stab.jpg}
-\end{wrapfigure}
+Bei Newton sind Zeit und Längen absolut und unabhängig. Wenn sich ein Teilchen bewegt, nimmt es bei Newton dieselbe Zeit und Länge war, wie ein ruhendes Teilchen. Die Gleichzeitebenen verändern sich nicht. Die spezielle Relativitätstheorie zeigt, dass Gleichzeitigkeit, Zeit und Länge vom Bezugssystem/Beobachter abhängen.
 
-\textbf{Gleichzeitigkeit} hängt vom Bezugssystem/Beobachter ab. Sei ein Stab im Koordinatenursprung platziert. Der Stab bewegt sich gleichmäßig mit Geschwindigkeit $v$ nach rechts. Betrachte zwei Bezugssysteme: ein fixes $I$ und ein mitbewegtes $I'$. Im System $I$ treten die Ereignisse $x_1$ und $x_2$ nicht gleichzeitig ein. Das Licht trifft $x_1$ viel früher ein. Im System $I'$ treten sie gleichzeitig ein: die Linie $x_1 x_2$ ist eine Gleichzeitigkeitsebene in $I'$ (geht durch die Schnittpunkte der Weltlinien von A und E mit dem Lichtkegel). Alle Linien, die parallel dazu sind, sind auch Gleichzeitigkeitsebenen in $I'$.
+
+\begin{minipage}[t]{0.75\textwidth}
+\textbf{Gleichzeitigkeit} hängt vom Bezugssystem/Beobachter ab. Sei ein Stab im Koordinatenursprung platziert. Der Stab bewegt sich gleichmäßig mit Geschwindigkeit $v$ nach rechts. Betrachte zwei Bezugssysteme: ein fixes $I$ und ein mitbewegtes $I'$. Im System $I$ treten die Ereignisse $x_1$ und $x_2$ nicht gleichzeitig ein. Das Licht trifft $x_1$ viel früher. Im System $I'$ treten sie gleichzeitig ein: die Linie $x_1 x_2$ ist eine Gleichzeitigkeitsebene in $I'$ (geht durch die Schnittpunkte der Weltlinien von A und E mit dem Lichtkegel). Alle Linien, die parallel dazu sind, sind auch Gleichzeitigkeitsebenen in $I'$.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.25\textwidth}
+\centering
+\vspace{1em}
+\includegraphics[width=\linewidth]{Stab.jpg}
+\end{minipage}
+
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth]{Lorentztrafo.jpg}
-  \caption{Die Beziehung zwischen $I$ und $I'$ wird durch eine Lorentztransformation beschrieben.}
+  \caption{Die Beziehung zwischen $I$ und $I'$ wird durch eine Lorentz-Transformation beschrieben.}
 \end{figure}
 
-Andere Möglichkeit zur Konstruktion einer Gleichzeitebene in $I'$ \cref{fig:Lorentztrafo2}:
+Zweite Möglichkeit zur Konstruktion einer Gleichzeitebene in $I'$:\newline
+Da wir den Lichtkegel mit 45° einzeichnen, ist der Abstand von $t$ (zeitlicher Abstand) vom Ursprung zu einem Ereignis gleich dem Abstand von $x$ (räumlicher Abstand) von $t$ zum Lichtkegel (siehe \cref{fig:Lorentztrafo2}). Da die Lichtgeschwindigkeit im bewegten System $I'$ ebenso gleich schnell ist, muss auch dort der zeitliche Abstand $t'$ und der räumliche Abstand $x'$ zum Lichtkegel übereinstimmen.
+
 \begin{enumerate}
-    \item Zeichne bewegte Weltlinie ein
-    \item Messe den Abstand zwischen t=0 und einer beliebigen Gleichzeitebene in $I$ mit $t$.
-    \item Trage diesen Abstand auf der bewegten Weltlinien ein: $t'$.
-    \item Messe zu diesem Zeitpunkt $t$ den Abstand $x$ von der ruhenden Weltlinie zum Lichtkegel.
-    \item Trage diesen Abstand zwischen Zeitpunkt $t'$ und Lichtkegel von $x_1$ ein: $x'$
-    \item Gleichzeitebenen in $I'$ sind nun parallel zu $x'$.
+    \item Zeichne bewegte Weltlinie ein.
+    \item Nehme einen beliebigen Punkt auf der bewegten Weltlinie her und trage den Vektor $t'$ ein.
+    \item Trage anschließend, ausgehend von der Spitze vom Vektor $t'$, einen Vektor $x'$ mit derselben Länge von $t'$ so ein, dass dessen Spitze den Lichtkegel trifft.
+    \item Die Gleichzeitebenen im bewegten System $I'$ sind nun diejenigen, die parallel zu $x'$ sind.
 \end{enumerate}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{Lorentztrafo2.jpg}
+    \includegraphics[width=0.7\textwidth]{images/Mindiag.jpg}
     \caption{Konstruktion einer Gleichzeitebene in $I'$ mit nur einer Weltlinie.}
     \label{fig:Lorentztrafo2}
 \end{figure}
@@ -849,6 +862,20 @@ Andere Möglichkeit zur Konstruktion einer Gleichzeitebene in $I'$ \cref{fig:Lor
   \includegraphics[width=0.7\textwidth]{Zeitdilatation.jpg}
   \caption{Zeitdilatation: Aus der Sicht von dem ruhenden $x_1$, läuft die Zeit von sich selbst normal, aber die Zeit vom bewegten $x_2$ um 0,3 s langsamer.}
 \end{figure}
+
+Dies kann auch mit dem Satz des Pythagoras gezeigt werden. In \cref{fig:zeitdil} gilt
+\begin{equation*}
+t^2 < t^2 + x^2 = \bar{t}^2 
+\end{equation*}
+
+Also läuft die Zeit $\bar{t}$ im bewegten System langsamer als im ruhenden.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{images/Zeitdil.jpg}
+\label{fig:zeitdil}
+\caption{}
+\end{figure}
+
 
 Auch \textbf{Länge} ist beobachterabhängig. Die Länge eines Objekts ist der Abstand des Anfangs- und Endpunktes gleichzeitig gemessen. Die Länge bewegter Objekte wird aus der Sicht des ruhenden Beobachters kürzer.
 
@@ -872,54 +899,71 @@ Das heißt, jedes Mal, wenn ein Index zweimal innerhalb eines Terms vorkommt, is
   \sum_{i=1}^{3} a^i b^i \;\; \widehat{=}\;\; a^i b^i \;\; \widehat{=}\;\; \delta_{ij} a^i b^j
 \end{equation*}
 
-\begin{equation*}
-  \varepsilon^{jlm} a^i b^i c^j d^k e^k f^l g^n 
-  \;\; \widehat{=}\;\;
-  \sum_{i=1}^{3} \sum_{j=1}^{3} \sum_{k=1}^{3} \sum_{l=1}^{3}
-  \varepsilon^{jlm} a^i b^i c^j d^k e^k f^l g^n
-  \;\;=\;
-  \sum_{i,j,k,l=1}^{3} 
-  \varepsilon^{jlm} a^i b^i c^j d^k e^k f^l g^n
-\end{equation*}
-
 \textbf{Achtung:}  
 Die Summenkonvention gilt nur, wenn Indizes genau \textit{zweimal} vorkommen und nicht mehrfach!
 
 \begin{equation*}
   a^i b^i c^i \;\neq\; \sum_{i=1}^{3} a^i b^i c^i
 \end{equation*}
-
 \end{definition}
 
-\subsection{Herleitung generelle Lorentztransformation}
-Die bereits im vorherigen Kapitel verwendete Lorentztransformation soll nun in der generellen Form hergeleitet werden.
+\subsection{Herleitung generelle Lorentz-Transformation}
+Die bereits im vorherigen Kapitel verwendete Lorentz-Transformation soll nun in der generellen Form (also mit Bewegung in x-, y- und z-Richtung) aus dem Galileischen Relativitätsprinzip \cref{thm:Relativitätsprinzip} hergeleitet werden, \textbf{ohne} dass die Konstanz der Lichtgeschwindigkeit verwendet wird.
 
-\begin{definition}
-Die generelle Lorentz-Transformation beschreibt eine Koordinatentransformation von einem Inertialsystem $I$ in ein dagegen in $x$-, $y$- und $z$-Richtung mit der Geschwindigkeit $v^i$ (also $\vec v = (v_x, v_y, v_z)$) bewegtes Inertialsystem $\bar{I}$. $I$ hat die Koordinaten $(x^i, t)$, $\bar{I}$ hat die Koordinaten $(\bar{x}^i, \bar{t})$
+Die \textbf{Lorentz-Transformation} beschreibt eine Koordinatentransformation von einem Inertialsystem $I$ in ein dagegen in $x$-, $y$- und $z$-Richtung mit der Geschwindigkeit $v^i$ (also $\vec v = (v_x, v_y, v_z)$) bewegtes Inertialsystem $\bar{I}$. $I$ hat die Koordinaten $(t, x^i)$, $\bar{I}$ hat die Koordinaten $(\bar{t}, \bar{x}^i)$
 
 \begin{equation*}
 \begin{aligned}
-\bar{t} &= \gamma \left( t - \frac{v^i x^i}{c^2} \right) \\[0.5em]
+\bar{t} &= \gamma \left( t - \frac{v^j x^j}{c^2} \right) \\[0.5em]
 \bar{x}^i &= x^i - \gamma v^i t + (\gamma - 1)\frac{v^i v^j x^j}{v^2}
 \end{aligned}
 \qquad
-\text{wobei } \gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}
+\text{wobei } \gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}} > 1
 \end{equation*}
-\end{definition}
 
-Da wir uns in Inertialsystemen befinden, gibt es keine beschleunigten Bewegungen. Teilchen bewegen sich auf geraden Weltlinien. Daher muss die Transformation Geraden auf Geraden abbilden. Mathematisch besagt dies, dass die Transformation linear ist, wobei der Geschwindigkeitsvektor $v^i$ die Richtung vorgibt.
 
-Gesucht ist also eine lineare Transformation der Form:
+Da wir uns in Inertialsystemen befinden, gibt es keine beschleunigten Bewegungen. Teilchen bewegen sich auf geraden Weltlinien. (Eine beschleunigte Bewegung wäre eine gekrümmte Weltlinie). Ein Bezugssystemwechsel muss daher Geraden auf Geraden sowie Ebenen auf Ebenen abbilden. Mathematisch besagt dies, dass die Transformation \textbf{linear} ist.
+
+Nach dem galileischen Relativitätsprinzip gibt es weder ausgezeichnete Orte noch ausgezeichnete Raumrichtungen (Homogenität (an allen Orten gleich) + Isotropie (in alle Richtungen gleich)). Daher darf die einzige ausgezeichnete räumliche Richtung, die in der Transformation auftreten kann, der Relativgeschwindigkeitsvektor $v^i$ zwischen den beiden Inertialsystemen sein. D.h. die Transformation muss \emph{drehinvariant} sein. In einem Bezugssystem, das gegenüber dem anderen verdreht ist, ändert sich die Physik nicht.
+
+Gesucht ist also eine lineare Transformation der Form
 \begin{equation*}
-\begin{aligned}
-\bar{t} &= a\,t + b\,v^i x^i \\
-\bar{x}^i &= d\,v^i t + e\,x^i + f\,v^i(v^j x^j)
-\end{aligned}
+\left(
+\begin{array}{c}
+\bar{t} \\
+\bar{x}^i
+\end{array}
+\right)
+=
+A(v^i) \cdot
+\left(
+\begin{array}{c}
+t \\
+x^j
+\end{array}
+\right)
 \end{equation*}
 
-wobei $a(v),\,b(v),\,d(v),\,e(v),\,f(v)$ zunächst unbekannte Funktionen des Betrags der Relativgeschwindigkeit $v=\sqrt{v^i v^i}$ sind. \newline
+Da $\bar{t}$ ein Skalar ist und $\bar{x}^i$ die Komponenten eines Vektors sind, hat die allgemeinste lineare Form die Gestalt
+\begin{align*}
+\bar{t} &= \alpha\,t + \beta^j x^j\\
+\bar{x}^i &= \gamma^i t + M^{ij}x^j
+\end{align*}
+wobei $\alpha$ ein Skalar, $\beta^j$ ein Vektor, $\gamma^i$ ein Vektor und $M^{ij}$ eine Matrix sind.
 
-Wir können diese Transformation kompakt in Matrixform schreiben:
+Wegen der Drehinvarianz darf $\beta^j$ nur proportional zum einzigen ausgezeichneten Vektor $v^j$ sein, also $\beta^j=b(v)\,v^j$, wobei die Koeffizienten nur vom Betrag $v=\sqrt{v^iv^i}$ abhängen können. Entsprechend setzen wir $\alpha=a(v)$.
+
+Analog folgt für den Vektorterm $\gamma^i=d(v)\,v^i$. Für den Matrixterm ergibt sich ebenso wegen der Drehinvarianz $M^{ij} = e(v)\, \delta^{ij} + f(v) \, v^i v^j$.
+
+Wir erhalten
+\begin{align*}
+\bar{t} &= a\,t + b\,v^j x^j \\
+\bar{x}^i &= d\,v^i t + e\,x^i + f\,v^i(v^j x^j)
+\end{align*}
+
+wobei $a(v),\,b(v),\,d(v),\,e(v),\,f(v)$ zunächst unbekannte Funktionen des Betrags der Relativgeschwindigkeit $v=\sqrt{v^i v^i}$ sind.
+
+Diese Transformation ist dann in Matrixform:
 
 \begin{equation}
 \left(
@@ -953,10 +997,10 @@ wobei $b\,v^j$ ein Zeilenvektor, $d\,v^i$ ein Spaltenvektor und $e\,\delta^{ij} 
 
 Wir verwenden dazu folgende Bedingungen:
 \begin{enumerate}
-    \item Eine Rücktransformation mit $-v^i$ muss wieder dasselbe Bezugssystem liefern, also die Zusammensetzung der beiden Lorentz-Transformationen muss der identischen Abbildung entsprechen:
+    \item Bedingung: Die Transformation soll \textbf{stetig} sein. Weiters soll eine Rücktransformation mit $-v^i$ muss wieder dasselbe Bezugssystem liefern, also die \textbf{Zusammensetzung der beiden Lorentz-Transformationen} muss der \textbf{identischen Abbildung} entsprechen:
 
 \begin{equation*}
-    I \xrightarrow{v^i} \bar{I} \xrightarrow{-v^i} I \quad = id
+    I \xrightarrow{v^i} \bar{I} \xrightarrow{-v^i} I \ = id
 \end{equation*}
 
 Das heißt, die Matrix $A(v^i)$ muss mit $A(-v^i)$ die Einheitsmatrix ergeben $A(-v^i) A(v^i) = E$:
@@ -983,7 +1027,6 @@ d\,v^k & e\,\delta^{kj} + f\,v^k v^j
 \end{equation*}
 
 Ausmultiplizieren der Matrizen ergibt:
-
 \begin{align*}
 \text{(I)} \quad & a^2 - b d\,v^2 = 1 \\[0.4em]
 \text{(II)} \quad & a b\,v^j - b f\,v^2 v^j = b\,v^j(a - e - f v^2) = 0 \\[0.4em]
@@ -1009,9 +1052,9 @@ Erhalte also
 
 
 Aus Gleichung (III') folgt unmittelbar:
-\[
+\begin{equation*}
 e^2 = 1 \quad \Rightarrow \quad e = \pm 1.
-\]
+\end{equation*}
 Für $v = 0$ soll die Transformation in die Identität übergehen:
 
 \begin{equation*}
@@ -1045,8 +1088,9 @@ a - 1 = f v^2
 \label{eq:f}
 \end{equation}
 
-    \item Bewegt sich ein Objekt mit gleichförmiger Geschwindigkeit $v$, können wir in sein Ruhesystem transformieren.
-    Wähle eine Transformation in das Bezugssystem, dass sich mit dem bewegten Körper mitbewegt. In diesem Fall ist dann die Geschwindigkeit des Körpers im neuen Bezugssystem gleich 0. Mit $x^j = v^jt$ (Objekt bewegt sich mit Geschwindigkeit v) gilt (siehe \eqref{eq:transformation} mit $e=1$):
+    \item Bedingung: Ein Körper, der sich gleichförmig mit $v^i$ bewegt, kann durch eine Transformation in Ruhe gebracht werden. 
+    
+    Wähle eine Transformation in das Bezugssystem, dass sich mit dem bewegten Körper mitbewegt. In diesem Fall ist dann die Geschwindigkeit des Körpers im neuen Bezugssystem gleich 0. Mit $x^j = v^jt$ (Körper bewegt sich mit Geschwindigkeit v) gilt (siehe \eqref{eq:transformation} mit $e=1$):
 
 
 \begin{equation}
@@ -1093,7 +1137,7 @@ Setze $d = -a$ in (I') ein und forme auf $b$ um:
 \end{aligned}
 \end{equation*}
 
-Wir haben nun alle Koeffizienten in Abhängigkeit von $a$ und $v$ bestimmt, womit sich die Lorentztransformation anschreiben lässt als:
+Wir haben nun alle Koeffizienten in Abhängigkeit von $a$ und $v$ bestimmt, womit sich die Lorentz-Transformation anschreiben lässt als:
 
 \begin{equation*}
 A(v^i) =
@@ -1107,7 +1151,7 @@ a & \frac{1-a^2}{av^2}v^j \\
 
 Nun muss noch $a$ bestimmt werden.
 
-\item Transitivität: Zwei hintereinander ausgeführte Lorentz-Transformationen mit unterschiedlichen Geschwindigkeiten, aber in dieselbe Richtung, sollen wieder eine Lorentz-Transformation bilden.
+\item Bedingung: \textbf{Transitivität}: Zwei hintereinander ausgeführte Lorentz-Transformationen mit unterschiedlichen Geschwindigkeiten, aber in dieselbe Richtung, sollen wieder eine Lorentz-Transformation bilden.
 
 Betrachte dazu einen Koordinatenwechsel zwischen mehreren Inertialsystemen. Das Inertialsystem $\bar{I}$ bewege sich mit der Geschwindigkeit $ve^i$ relativ zu $I$, und ein weiteres System $\bar{\bar{I}}$ bewege sich mit der Geschwindigkeit $u^i$ relativ zu $\bar{I}$. Somit bewegt sich $\bar{\bar{I}}$ relativ zu $I$ mit der zusammengesetzten Geschwindigkeit $we^i$, wobei wir noch nicht wissen wie $we^i$ aussieht.
 
@@ -1153,7 +1197,6 @@ a_w & \dfrac{1 - a_w^2}{a_w w^{\cancel{2}}} \cancel{w}e^j \\
 \end{equation*}
 
 wobei $a_v = a(v)$, $a_u = a(u)$ und $a_w = a(w)$
-\end{enumerate}
 
 Aus der linken oberen Komponente erhalten wir die Gleichung:
 \begin{equation}
@@ -1233,14 +1276,17 @@ x^j
 \end{equation}
 
 
-Damit haben wir die Form der Lorentz-Transformationen einzig aus dem Relativitätsprinzip bereits bestimmt. Für $K = 0$ ist $a=1$ und wir erhalten die Galilei-Transformation mit einer absoluten Zeit ($t=\bar{t}$). Für $K > 0$ erhalten wir eine endliche Geschwindigkeit, die in allen Inertialsystemen gleich ist. Jetzt müssen wir nur noch K bestimmen.
+Damit haben wir die \textit{Form} der Lorentz-Transformationen einzig aus dem Galileischen Relativitätsprinzip (ging in diversen Schritten implizit ein) bereits bestimmt. Bisher ging die Konstanz der Lichtgeschwindigkeit NICHT ein. Wir erhalten eine Familien von Transformationen abhängig von $K$.
 
-\heading{Bestimmung von $K$ über den Lichtkegel}
+Für $K = 0$ ist $a=1$ und wir erhalten die Galilei-Transformation mit einer absoluten Zeit ($t=\bar{t}$). Für $K > 0$ erhalten wir eine endliche Geschwindigkeit, die in allen Inertialsystemen gleich ist. Jetzt müssen wir nur noch K bestimmen.
+\end{enumerate}
 
-Wir betrachten nun einen Punkt auf dem Lichtkegel. Für diesen gilt im System $I$:
+\underline{Bestimmung von $K$ über den Lichtkegel}\newline
+Das \href{https://de.wikipedia.org/wiki/Michelson-Morley-Experiment}{Michelson–Morley-Experiment} zeigte, dass die Lichtgeschwindigkeit konstant ist. Das kann nun verwendet werden, um den Wert von $K$ zu bestimmen. Wir betrachten nun einen Punkt $s=(t, x^1, x^2, x^3) \in \mathbb{M}$ auf dem Lichtkegel. Da wir ohne Beschränkung der Allgemeinheit so skaliert haben, dass der Winkel des Lichtkegels bei 45° liegt, gilt im System $I$:
 \begin{equation*}
 t^2 = x^i x^i
 \end{equation*}
+D.h. das Längenquadrat der zeitlichen Komponente stimmt mit dem der räumlichen Komponente überein.
 
 Im System $\bar{I}$, das sich mit der Geschwindigkeit $v$ relativ zu $I$ bewegt, gilt ebenso
 \begin{equation*}
@@ -1263,7 +1309,7 @@ Mit der Transformation \eqref{eq:lorentztrafo} gilt daher:
 
 \begin{equation}
 \begin{aligned}
-\bar{t} &= a t - K a v^i x^i \\
+\bar{t} &= a t - K a v^j x^j \\
 \bar{x}^i &= -a v^i t + x^i + \frac{a - 1}{v^2} v^i v^j x^j
 \end{aligned}
 \label{eq:licht}
@@ -1297,24 +1343,24 @@ Setze \eqref{eq:a} ein:
 \textbf{Es folgt die generelle Lorentz-Transformation:} \newline
 Damit kann nun $a$ bestimmt werden:
 \begin{equation*}
-a= \frac{1}{\sqrt{1 - Kv^2}} = \frac{1}{\sqrt{1 - v^2}} \overset{c^2=1}{=} \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}} = \gamma\, \dots \text{ Lorentz-Faktor}
+a= \frac{1}{\sqrt{1 - Kv^2}} = \frac{1}{\sqrt{1 - v^2}} \overset{c^2=1}{=} \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}} =: \gamma\, \dots \text{ Lorentz-Faktor}
 \end{equation*}
 
 Setze $K=1$ und $a=\gamma$ in \eqref{eq:licht} ein und erhalte schließlich:
 \begin{equation*}
 \begin{aligned} 
-& t^{\prime}=\gamma t-\gamma v^i x^i=\gamma\left(t-v^i x^i\right) \overset{c^2=1}{=} \gamma\left(t-\frac{v^i}{c^2} x^i\right) \\ 
-& x^{\prime i}=-\gamma t v^i+x^i+\frac{\gamma-1}{v^2} v^i x^j v^j
+& \bar{t}=\gamma t-\gamma v^j x^j=\gamma\left(t-v^j x^j\right) \overset{c^2=1}{=} \gamma\left(t-\frac{v^jx^j}{c^2} \right) \\ 
+& \bar{x}=-\gamma t v^i+x^i+\frac{\gamma-1}{v^2} v^i x^j v^j
 \end{aligned}
 \end{equation*}
 
 \section{Minkowski-Metrik und Raumzeitabstand}
 
-Wir haben in der Herleitung der Lorentztransformation gesehen, dass für ein Punkt auf dem Lichtkegel in beiden Inertialsystemen $I$ und $\bar{I}$ gilt:
+Wir haben in der Herleitung der Lorentz-Transformation gesehen, dass für ein Punkt auf dem Lichtkegel in beiden Inertialsystemen $I$ und $\bar{I}$ gilt:
 \begin{equation}
 -\,t^2 + x^ix^i = 0
 \quad\Leftrightarrow\quad
--\,\bar{t}^2 + \bar{x}^i\bar{x}^i = 0.
+-\,\bar{t}^2 + \bar{x}^i\bar{x}^i = 0
 \label{eq:lichtkegel_invarianz}
 \end{equation}
 
@@ -1348,16 +1394,16 @@ in allen Inertialsystemen denselben Wert besitzt. Dies gilt unabhängig davon, o
 \medskip
 Das bedeutet: Der 4-dimensionale Abstand $-t^2 + x^2$ ist eine vom Bezugssystem unabhängige Größe – eine \textit{Lorentz-Invariante}. Er ändert sich nicht durch Transformation in ein anderes Inertialsystem.
 
-Diese Invarianz motiviert die Definition des \textit{Raumzeitabstandes} $\Delta S$, dessen Quadrat allgemein lautet:
+Diese Invarianz motiviert die Definition des \textbf{Raumzeitabstandes} $\Delta s$, dessen Quadrat allgemein lautet:
 \begin{equation*}
-\Delta S^2 := -c^2 \Delta t^2 + \Delta x^2 + \Delta y^2 + \Delta z^2
+\Delta s^2 := -c^2 \Delta t^2 + \Delta x^2 + \Delta y^2 + \Delta z^2
 \label{eq:raumzeitabstand}
 \end{equation*}
 
-Mit der sogenannten \textit{Minkowski-Metrik} $\eta_{\mu\nu}$ kann man dies kompakt schreiben:
-\[
-\Delta S^2 = \eta_{\mu\nu}\, \Delta x^{\mu}\, \Delta x^{\nu},
-\]
+Mit der sogenannten \textit{Minkowski-Metrik} $\eta_{\mu\nu}$ kann dies kompakt geschreiben werden:
+\begin{equation*}
+\Delta s^2 = \eta_{\mu\nu}\, \Delta x^{\mu}\, \Delta x^{\nu},
+\end{equation*}
 wobei
 \begin{equation*}
 (\eta_{\mu\nu}) :=
@@ -1369,39 +1415,214 @@ wobei
 0 & 0 & 0 & 1
 \end{array}
 \right)
+=\text{diag}(-1,1,1,1)
 \qquad
-\mu,\nu = 0,1,2,3.
+\mu,\nu = 0,1,2,3
 \end{equation*}
 
-Die Raumzeit-Koordinaten eines Ereignisses lassen sich zu einem Vierervektor zusammenfassen:
+Sie hat die Signatur (-,+,+,+). Der Minkowski-Raum $\mathbb{M}$ ist ein Vektorraum, zusammen mit der Minkowski-Metrik $\eta_{\mu \nu}$.
+
+Die Raumzeit-Koordinaten eines Ereignisses lassen sich also zu einem Vierervektor zusammenfassen, wobei $x^0=ct$ die zeitliche Komponente und $x^i$ die räumlichen Komponenten sind:
 \begin{equation*}
-x^{\mu} =
+v = 
 \left(
 \begin{array}{c}
-t \\
-x^i
+ct \\
+x^1 \\
+x^2 \\
+x^3 \\
 \end{array}
 \right)
+\in \mathbb{M}
 \end{equation*}
 
-Dann gilt allgemein:
+Dann ist das \textbf{Längenquadrat} des Vektors $v$:
 \begin{equation}
-\eta_{\mu\nu} x^{\mu} x^{\nu} = -t^2 + x^2 \dots \text{ 4-dimensionaler Abstand}
+v^2 = \eta_{\mu\nu} v^{\mu} v^{\nu} = -c^2t^2 + \vec x^2 = -c^2 t^2 + (x^1)^2 + (x^2)^2 + (x^3)^2
 \label{eq:eta_form}
 \end{equation}
 
-Durch das negative Vorzeichen der Zeitkomponente kann der Raumzeitabstand positiv, negativ oder null werden:
+wobei jeweils über $\mu\nu$ summiert wird und die Summe weggelassen wurde (Einsteinsche Summenkonvention).
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{images/Abstandsrt.jpg}
+\caption{$v_t=ct$ zeitliche Komponente des Vektors $v$; $v_x=(x^1, x^2, x^3)= \vec x$ räumliche Komponente vom Vektor $v$}
+\end{figure}
+
+Durch das negative Vorzeichen der Zeitkomponente kann der Raumzeitabstand eines Vektors im Minkowski-Raum positiv, negativ oder null werden:
 \begin{itemize}
-    \item $\Delta S^2 < 0$: \textbf{zeitartig} – Ereignisse liegen innerhalb des Lichtkegels.
-    \item $\Delta S^2 = 0$: \textbf{lichtartig} – Ereignisse liegen auf dem Lichtkegel.
-    \item $\Delta S^2 > 0$: \textbf{raumartig} – Ereignisse liegen außerhalb des Lichtkegels.
+    \item $v^2 < 0$: \textbf{zeitartig} – Ereignisse liegen innerhalb des Lichtkegels und werden auch \textit{kausale} Vektoren genannt, da sie die mögliche Zukunft bedeuten.
+    \item $v^2 = 0$: \textbf{lichtartig} – Ereignisse liegen auf dem Lichtkegel.
+    \item $v^2 > 0$: \textbf{raumartig} – Ereignisse liegen außerhalb des Lichtkegels.
 \end{itemize}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{Abstandart.jpg}
-\caption{$\Delta S_1^2$ ist zeitartig, $\Delta S_2^2$ ist lichtartig, $\Delta S_3^2$ ist raumartig}
+\caption{$v$ ist zeitartig, $\tilde{v}$ ist lichtartig, $\tilde{\tilde{v}}$ ist raumartig}
 \end{figure}
+
+\subsection{Mathematische Struktur der Minkowski-Metrik (nicht Teil der VO)}
+Im Folgenden möchte ich die soeben kennengelernte Minkowski-Metrik mathematisch einordnen. Falls folgende Begriffe nicht bekannt sind, diesen Teil der Mitschrift überspringen, sie zu Ende lesen und am Schluss wieder diesen Abschnitt durchlesen. Alle Begriffe werden im Laufe der Mitschrift eingeführt.
+
+\underline{TLDR:} Die Minkowski-Metrik ist keine Metrik im Sinne der Theorie der \href{https://de.wikipedia.org/wiki/Metrischer_Raum#Formale_Definition}{metrischen Räume}, sondern eine symmetrische, nicht entartete Bilinearform, die nicht positiv definit ist. Auf dem Minkowski-Vektorraum $\mathbb{M}$ ist sie ein Pseudo-Skalarprodukt. Auf der flachen Raumzeit, aufgefasst als Mannigfaltigkeit, ist sie eine pseudo-riemannsche Metrik bzw. ein metrischer Tensor. Da sie negative Werte annehmen kann, induziert sie keine Norm, sondern ein Längen\textit{quadrat} $v^2$, welches ebenso negativ sein kann. 
+
+\begin{definition}[reelles Skalarprodukt] \breakafterhead
+
+{\footnotesize Quelle: \url{https://de.wikipedia.org/wiki/Skalarprodukt#Definition_(Axiomatik)}}\newline
+Sei $V$ ein reeller Vektorraum. Eine Abbildung
+\begin{equation*}
+\langle \cdot , \cdot \rangle : V \times V \to \mathbb{R}
+\end{equation*}
+heißt \textbf{Skalarprodukt}, falls es eine positiv definite symmetrische Bilinearform ist, d.h. für alle $x,y,z \in V$ und $\lambda \in \mathbb{R}$
+die folgenden Eigenschaften gelten:
+\begin{enumerate}
+\item \textbf{Bilinear:}
+linear in beiden Argumenten
+\begin{align*}
+\langle x+y,z\rangle = \langle x,z\rangle + \langle y,z\rangle
+\qquad
+\langle \lambda x,y\rangle = \lambda \langle x,y\rangle \\
+\langle x,y+z\rangle = \langle x,y\rangle + \langle x,z\rangle
+\qquad
+\langle x, \lambda y\rangle = \lambda \langle x,y\rangle
+\end{align*}
+
+\item \textbf{Symmetrisch:}
+\begin{equation*}
+\langle x,y\rangle = \langle y,x\rangle
+\end{equation*}
+\item \textbf{Positiv definit:}
+\begin{equation*}
+\langle x,x\rangle \ge 0
+\quad \text{und} \quad
+\langle x,x\rangle = 0 \;\Leftrightarrow\; x = 0
+\end{equation*}
+\end{enumerate}
+\end{definition}
+
+Ein Skalarprodukt liefert Winkelbegriffe/Orthogonalität und induziert durch Wurzelziehen eine Norm $\|x\| := \sqrt{\langle x,x\rangle}$. Die Norm induziert durch Differenzenbildung eine Metrik $d(x,y):= \|x-y\|$.
+
+\begin{remark} \breakafterhead
+
+{\footnotesize Quelle: \url{https://de.wikipedia.org/wiki/Bilinearform#Nicht_ausgeartete_Bilinearform}}\newline
+Aus der positiven Definitheit folgt, dass jedes reelle Skalarprodukt \textbf{nicht entartet}/\textbf{nicht ausgeartet} ist, d.\,h.
+\begin{align*}
+\forall\, x \in V \setminus \{0\}\; \exists\, y \in V \;:\; \langle x,y\rangle \neq 0 \\
+\forall\, y \in V \setminus \{0\}\; \exists\, x \in V \;:\; \langle x,y\rangle \neq 0
+\end{align*}
+
+Nicht entartet heißt: kein Vektor, außer der Nullvektor, ist zu allen anderen Vektoren orthogonal. Aus nicht entartet, folgt allerdings NICHT die positive Definitheit.
+\end{remark}
+
+\begin{definition} \breakafterhead
+
+{\footnotesize Quelle: \url{https://matheplanet.com/default3.html?call=article.php?sid=1516}}
+Sei $V$ ein reeller Vektorraum. Eine Abbildung
+\begin{equation*}
+(\cdot , \cdot ) : V \times V \to \mathbb{R}
+\end{equation*}
+heißt \textbf{Pseudo-Skalarprodukt}, falls es eine nicht entartete symmetrische Bilinearform ist.
+\end{definition}
+
+{\footnotesize Quelle: \url{https://www.thp.uni-koeln.de/~rk/tpI_18.html/vl22.pdf}} \newline
+Bei einem Pseudo-Skalarprodukt ist also $(x,x) < 0$ zugelassen. Somit erhalten wir aus einem Pseudo-Skalarprodukt nur ein "Normquadrat" \ $\|x\|^2$ (genauer: \href{https://de.wikipedia.org/wiki/Quadratische_Form}{quadratische Form} $q(x)$) und keine Norm 
+\begin{equation*}
+q(x) := (x,x)
+\end{equation*}
+Wobei der Name irreführend ist, da die quadratische Form dennoch negativ sein kann. Entsprechend erhalten wir auch keine Metrik, sondern 
+\begin{equation*}
+d(x,y)^2 := q(x-y)^2
+\end{equation*}
+
+\begin{definition}  \breakafterhead
+
+{\footnotesize Quellen: \url{https://de.wikipedia.org/wiki/Riemannsche_Mannigfaltigkeit#Definition}\newline 
+\url{https://de.wikipedia.org/wiki/Pseudo-riemannsche_Mannigfaltigkeit}}\newline
+Sei $M$ eine differenzierbare Mannigfaltigkeit. Ein \textbf{riemannsche Metrik} ist eine Abbildung
+\begin{equation*}
+g : p \mapsto g_p,
+\end{equation*}
+die jedem Punkt $p \in M$ eine positiv definite, symmetrische Bilinearform
+\begin{equation*}
+g_p : T_p M \times T_p M \to \mathbb{R}
+\end{equation*}
+zuordnet. Wobei $T_pM$ der Tangentialraum (Vektorraum) an einem Punkt $p \in M$ ist.
+\end{definition}
+
+{\footnotesize Quelle: \url{https://de.wikipedia.org/wiki/Riemannsche_Mannigfaltigkeit#Riemannsche_Mannigfaltigkeiten_als_metrische_R%C3%A4ume}}\newline
+Die riemannsche Metrik ist keine Metrik im Sinne der Theorie der \href{https://de.wikipedia.org/wiki/Metrischer_Raum#Formale_Definition}{metrischen Räume}, sondern punktweise ein Skalarprodukt
+auf den Tangentialräumen. Wie zuvor erwähnt, induziert es eine Metrik. Somit können riemannsche Mannigfaltigkeiten als metrische Räume verstanden werden. Die riemannsche Metrik legt Längen und Winkel fest.
+
+\begin{definition} \breakafterhead
+
+{\footnotesize Quelle: \url{https://de.wikipedia.org/wiki/Pseudo-riemannsche_Mannigfaltigkeit}}
+Ist die Bilinearform $g_p$ symmetrisch und nicht entartet, jedoch nicht positiv definit, so heißt $g$ ein \textbf{pseudo-riemannsche Metrik}.
+\end{definition}
+
+Die pseudo-riemannsche Metrik ist punktweise ein Pseudo-Skalarprodukt auf den Tangentialräumen.
+
+In der Literatur ist der \textbf{metrische Tensor} nicht eindeutig definiert. Manchmal wird damit die riemannsche Metrik, manchmal die pseudo-riemannsche Metrik bezeichnet. 
+
+\begin{definition} \breakafterhead
+
+{\footnotesize Quellen: \url{http://www.vermessungsseiten.de/erdvermessung/node10.html}\newline
+\url{https://matheplanet.com/default3.html?call=article.php?sid=1516}\newline
+\url{https://www.thp.uni-koeln.de/~rk/tpI_18.html/vl22.pdf}}\newline
+Der \textbf{Minkowski-Raum} $\mathbb{M}:=\{(ct, x^1, x^2, x^3) \in \mathbb{R}^4\} \cong \mathbb{R}^4$ ist ein reeller Vektorraum,
+ausgestattet mit dem Pseudo-Skalarprodukt
+\begin{equation*}
+\eta: \mathbb{M} \times \mathbb{M} \to \mathbb{R}
+\end{equation*}
+mit
+\begin{equation*}
+\eta(x,y) := \underbrace{-c^2t^2}_{=-x^0y^0} + x^1y^1 + x^2y^2 + x^3y^3 := \eta_{\mu\nu} x^\mu y^\nu
+\end{equation*}
+wobei
+\begin{equation*}
+\eta_{\mu\nu} = \mathrm{diag}(-1,1,1,1)
+\end{equation*}
+\end{definition}
+
+{\footnotesize Quelle: \url{https://de.wikipedia.org/wiki/Raumzeit#Minkowski-Raum,_Vierervektoren}}\newline
+Die Matrix $\eta_{\mu\nu}$ ist also auf dem Minkowski-Vektorraum $\mathbb{M}$ ein \textit{Pseudo-Skalarprodukt}. Auf der flachen Raumzeit, aufgefasst als Mannigfaltigkeit (\href{https://de.wikipedia.org/wiki/Lorentzsche_Mannigfaltigkeit}{Lorentzsche Mannigfaltigkeit}), ist sie eine \textit{pseudo-riemannsche Metrik} bzw. ein \textit{metrischer Tensor}. Somit ist sie keine Metrik im Sinne der Theorie der metrischen Räume. Da sie nicht positiv definit ist (indefinit) ist ebenso zugelassen
+\begin{equation*}
+\eta(x,x) < 0
+\end{equation*}
+Somit erhalten ein "Normquadrat" \ $\|x\|^2$ (genauer: \href{https://de.wikipedia.org/wiki/Quadratische_Form}{quadratische Form} $q(x)$) und keine Norm 
+\begin{equation*}
+q(x) := \eta(x,x) = \eta_{\mu\nu} x^\mu x^\nu
+\end{equation*}
+
+Das Normquadrat kann somit negativ sein, womit der Name irreführend ist. Entsprechend erhalten wir auch \textit{keine Metrik}, sondern ein \textit{Längenquadrat/Abstandsquadrat} für $s_1 = (ct, x^1, x^2, x^3),\ s_2=(ct, y^1, y^2, y^3) \in \mathbb{M}$
+\begin{equation*}
+ds^2:=\Delta s^2 := (s_1-s_2)^2 =q(x-y)
+\end{equation*}
+
+Das Längenquadrat kann somit negativ sein. Wir erhalten also negative Längen. Dennoch wird $\eta$ bzw. $\eta_{\mu\nu}$ als \textbf{Minkowski-Metrik} bezeichnet. Sie stellt die Beziehung von Teilchen/Ereignissen in der flachen Raumzeit dar.
+
+Für das Längenquadrat eines Vektors $v \in \mathbb{M}$ schreiben wir
+\begin{equation*}
+v^2= \eta_{\mu\nu}v^\mu v^\nu
+\end{equation*}
+
+Das Längenquadrat $\Delta s^2 := \eta_{\mu\nu}\,\Delta x^\mu \Delta x^\nu$ wird \textbf{Raumzeitabstand} genannt.
+\vspace{1em}
+
+{\footnotesize Quellen: \url{https://matheplanet.com/default3.html?call=article.php?sid=1516}\newline
+\url{https://en.wikipedia.org/wiki/Orthonormal_basis}\newline
+\url{https://en.wikipedia.org/wiki/Orthonormal_basis#Examples}}\newline
+Mit einem Pseudo-Skalarprodukt kann eine Pseudo-Orthonormalbasis definiert werden.
+
+\begin{definition}[Pseudo-Orthonormalbasis]
+Eine Basis $E^\mu$ von $V$ heißt \textbf{pseudo-orthonormal} bezüglich eines Pseudo-Skalarprodukts $(\cdot,\cdot)$, falls
+\begin{equation*}
+(E^\mu,E^\nu) = g_{\mu\nu}
+\end{equation*}
+wobei $(g_{\mu\nu})$ eine diagonale Matrix mit Einträgen $\pm 1$ entsprechend der Signatur des Pseudo-Skalarprodukts ist.\newline
+Siehe später in \cref{ex:pseudoONB}.
+\end{definition}
+
 
 
 \chapter{Multilineare Algebra}
@@ -3129,7 +3350,7 @@ g_{ab}E^a_\alpha E^b_\beta
 Die Tatsache, dass jede nicht-ausgeartete symmetrische Bilinearform durch Wahl einer geeigneten Basis auf eine Diagonalform mit Einträgen $\pm 1$ gebracht werden kann, folgt aus dem \emph{Trägheitssatz von Sylvester}.
 \end{tcolorbox}
 
-\begin{example}[Orthonormalbasis bzgl. der Minkowski-Metrik]
+\begin{example}[Orthonormalbasis bzgl. der Minkowski-Metrik]\label{ex:pseudoONB}
 Betrachte den Minkowski-Raum $(V,\eta)$ mit $\eta_{ab} = \operatorname{diag}(-1,1,1,1)$ und eine orthonormale Basis $(E_\alpha)_{\alpha=0}^3$. 
 Dann gilt
 \begin{equation*}
