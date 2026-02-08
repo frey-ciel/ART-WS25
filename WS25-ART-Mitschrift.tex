@@ -570,14 +570,16 @@ wobei $\gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}$ der Lorentz-Faktor ist.
 
 \heading{Gleichzeitigkeit}
 
-\begin{floatingfigure}[r]{0.15\textwidth}
-\centering
-\includegraphics[width=0.15\textwidth]{Gleichzeit.jpg}
-\end{floatingfigure}
-
+\begin{minipage}[t]{0.85\textwidth}
 Auch Gleichzeitigkeit ist relativ. Eine Person im fahrenden Zug befindet sich in der Mitte und sendet zwei Lichtblitze aus - einen nach vorne, einen nach hinten. Für sie treffen beide gleichzeitig an den Enden des Wagens ein.
 
 Ein außenstehender Beobachter sieht jedoch, dass der Lichtstrahl zuerst am hinteren Ende auftrifft und danach am vorderen, da sich die hintere Wand auf den Strahl zubewegt und die vordere sich wegbewegt.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.15\textwidth}
+\centering
+\vspace{-1em}
+\includegraphics[width=\textwidth]{Gleichzeit.jpg}
+\end{minipage}
 
 \heading{Zusammenfassung}
 
@@ -1631,8 +1633,9 @@ Siehe später in \cref{ex:pseudoONB}.
 Um die allgemeine Relativitätstheorie mathematisch präzise formulieren zu können, benötigen wir Werkzeuge aus der sogenannten multilinearen Algebra. Dieses Kapitel führt die wichtigsten Begriffe ein, auf denen später die Tensorrechnung aufbaut.
 
 \section{Vektorräume}
+\begin{tcolorbox}[noVO]
+\begin{definition}[Nicht Teil der VO] \breakafterhead
 
-\begin{definition}
 Ein \textbf{Körper} ist ein Tupel $(\Gamma, +, \cdot)$, bestehend aus einer Menge $\Gamma$ und zwei inneren zweistelligen Verknüpfungen $+$ und $\cdot$ (Addition und Multiplikation):
 
 \begin{equation*}
@@ -1644,26 +1647,26 @@ Ein \textbf{Körper} ist ein Tupel $(\Gamma, +, \cdot)$, bestehend aus einer Men
 
 Für die Verknüpfungen gleiten die folgenden Axiome:
 
-\textbf{1. Additive Eigenschaften}
+\textbf{1. Addition}
 \vspace{-1em}
 
 \begin{enumerate}
     \item[(1.1)] $\forall a,b,c \in \Gamma: \; a + (b + c) = (a + b) + c$ \hfill (Assoziativgesetz)
     \item[(1.2)] $\forall a,b \in \Gamma: \; a + b = b + a$ \hfill (Kommutativgesetz)
-    \item[(1.3)] $\exists 0 \in \Gamma\; \forall a \in \Gamma: \; 0 + a = a$ \hfill (neutrales Element bzgl. +)
+    \item[(1.3)] $\exists \,0 \in \Gamma\; \forall a \in \Gamma: \; 0 + a = a$ \hfill (neutrales Element bzgl. +)
     \item[(1.4)] $\forall a \in \Gamma\; \exists -a \in \Gamma: \; (-a) + a = 0$ \hfill (additives Inverses)
 \end{enumerate}
 
 Damit ist $(\Gamma, +)$ eine \textit{kommutative/abelsche Gruppe}.
 \vspace{1em}
 
-\textbf{2. Multiplikative Eigenschaften}
+\textbf{2. Multiplikation}
 \vspace{-1em}
 
 \begin{enumerate}
     \item[(2.1)] $\forall a,b,c \in \Gamma: \; a \cdot (b \cdot c) = (a \cdot b) \cdot c$ \hfill (Assoziativgesetz)
     \item[(2.2)] $\forall a,b \in \Gamma: \; a \cdot b = b \cdot a$ \hfill (Kommutativgesetz)
-    \item[(2.3)] $\exists 1 \in \Gamma\; \forall a \in \Gamma: \; 1 \cdot a = a$ \hfill (neutrales Element bzgl. $\cdot$)
+    \item[(2.3)] $\exists \, 1 \in \Gamma\; \forall a \in \Gamma: \; 1 \cdot a = a$ \hfill (neutrales Element bzgl. $\cdot$)
     \item[(2.4)] $\forall a \in \Gamma\setminus\{0\}\; \exists a^{-1} \in \Gamma: \; a^{-1}\cdot a = 1$ \hfill (multiplikatives Inverses)
 \end{enumerate}
 
@@ -1679,11 +1682,11 @@ Damit ist $(\Gamma\setminus\{0\}, \cdot)$ ebenfalls eine kommutative/abelsche Gr
 \end{enumerate}
 
 Beispiele: $(\mathbb{R}, +, \cdot), \ (\mathbb{C}, +, \cdot)$
-
 \end{definition}
+\end{tcolorbox}
 
 \begin{definition}\label{def:Vektorraum}
-Ein \textbf{Vektorraum} über einem Körper $(\Gamma, +, \cdot)$, kurz $\Gamma$, ist ein Tupel $(V, \oplus, \odot)$, bestehend aus einer Menge $V$, einer inneren zweistelligen Verknüpfung $\oplus$ (Vektoraddition) und einer äußeren zweistelligen Verknüpfung $\odot$ (Multiplikation mit Skalaren).
+Ein \textbf{Vektorraum} über einem Körper $(\Gamma, +, \cdot)$, kurz $\Gamma$, ist ein Tupel $(V, \oplus, \odot)$, bestehend aus einer Menge $V$, einer inneren zweistelligen Verknüpfung $\oplus$ (Vektoraddition) und einer äußeren zweistelligen Verknüpfung $\odot$ (Skalarmultiplikation).
 
 \begin{equation*}
 \begin{aligned}
@@ -1700,20 +1703,24 @@ Für die Verknüpfungen gleiten die folgenden Axiome:
 \begin{enumerate}
     \item[(1.1)] $\forall u,v,w\in V:\; u\oplus(v\oplus w)=(u\oplus v)\oplus w$ \hfill (Assoziativgesetz)
     \item[(1.2)] $\forall v,w\in V:\; v\oplus w = w\oplus v$ \hfill (Kommutativgesetz)
-    \item[(1.3)] $\exists 0\in V\;\forall v\in V:\; 0\oplus v=v$ \hfill (neutrales Element bzgl. + (Nullvektor))
+    \item[(1.3)] $\exists \, 0\in V\;\forall v\in V:\; 0\oplus v=v$ \hfill (neutrales Element bzgl. $\oplus$ (Nullvektor))
     \item[(1.4)] $\forall v\in V\;\exists (-v)\in V:\; (-v)\oplus v = 0$ \hfill (additives Inverses)
 \end{enumerate}
 Damit bildet $(V,\oplus)$ eine kommutative/abelsche Gruppe.
 \vspace{1em}
 
-\textbf{2. Multiplikation mit Skalaren}
+\textbf{2. Skalarmultiplikation}
 \vspace{-1em}
 
 \begin{enumerate}
-    \item[(2.1)] $\forall v\in V,\;\lambda,\mu\in\Gamma:\; (\lambda\mu)\odot v = \lambda\odot(\mu\odot v)$ \hfill (Assoziativgesetz)
-    \item[(2.2)] $\exists 1\in\Gamma\;\forall v\in V:\; 1\odot v = v$ \hfill (neutrales Element bzgl. $\cdot$ (Skalar))
-    \item[(2.3)] $\forall u,v\in V,\;\lambda\in\Gamma:\; \lambda\odot(u\oplus v)=(\lambda\odot u)\oplus(\lambda\odot v)$ \hfill (Linksdistributivgesetz)
-    \item[(2.4)] $\forall v\in V,\;\lambda,\mu\in\Gamma:\; (\lambda+\mu)\odot v = (\lambda\odot v)\oplus(\mu\odot v)$ \hfill (Rechtsdistributivgesetz)
+    \item[(2.1)] $\forall v\in V,\;\lambda,\mu\in\Gamma:\; (\lambda\cdot \mu)\odot v = \lambda\odot(\mu\odot v)$ \hfill (Assoziativgesetz)
+    \item[(2.2)] $\exists \, 1\in\Gamma\;\forall v\in V:\; 1\odot v = v$ \hfill (neutrales Element bzgl. $\odot$ (Skalar))
+\end{enumerate}
+
+\textbf{3. Zusammenspiel von Vektoraddition und Skalarmultiplikation}
+\begin{enumerate}
+    \item[(3.1)] $\forall u,v\in V,\;\lambda\in\Gamma:\; \lambda\odot(u\oplus v)=(\lambda\odot u)\oplus(\lambda\odot v)$ \hfill (Linksdistributivgesetz)
+    \item[(3.2)] $\forall v\in V,\;\lambda,\mu\in\Gamma:\; (\lambda+\mu)\odot v = (\lambda\odot v)\oplus(\mu\odot v)$ \hfill (Rechtsdistributivgesetz)
 \end{enumerate}
 
 Beispiele: $(\mathbb{R}^n, +, \cdot)\ \text{über dem Körper } \mathbb{R}, \ (\mathbb{C}^n, +, \cdot)\ \text{über dem Körper } \mathbb{C}, \ n\in\mathbb{N}$
@@ -1759,7 +1766,7 @@ v = \sum_{\alpha\in I}\lambda^\alpha v_\alpha
 Auch hier verwendet der Physiker gerne die Einsteinsche Summenkonvention: $\sum_{\alpha\in I}\lambda^\alpha v_\alpha \equiv \lambda^\alpha v_\alpha$
 
 \begin{remark}
-    Bei der Forderung, dass nur endlich viele $\lambda^\alpha \ne 0$ sein dürfen, geht \cref{cor:zerovec} ein und sie ist notwendig, da rein algebraisch definierte Vektorräume (\cref{def:Vektorraum}) keinen Abstandsbegriff in Form einer Topologie oder Metrik besitzen. Somit existiert kein Konvergenzbegriff für unendliche Summen und Linearkombinationen müssen endlich sein. Man beachte, dass es für jeden Vektorraum mind. eine Topologie gibt, mit diesem er ein topologischer Vektorraum wird, wir hier jedoch ausschließlich die algebraische Definition betrachten. Siehe \hl{später}
+    Bei der Forderung, dass nur endlich viele $\lambda^\alpha \ne 0$ sein dürfen, geht \cref{cor:zerovec} ein und sie ist notwendig, da rein algebraisch definierte Vektorräume (\cref{def:Vektorraum}) keinen Abstandsbegriff in Form einer Topologie oder Metrik besitzen. Somit existiert kein Konvergenzbegriff für unendliche Summen und Linearkombinationen müssen endlich sein. Man beachte, dass es für jeden Vektorraum mind. eine Topologie gibt, mit diesem er ein topologischer Vektorraum wird, wir hier jedoch ausschließlich die algebraische Definition betrachten. Siehe Kapitel \textit{Topologie} \cref{rem:topVR}.
 \end{remark}
 
 \end{definition}
@@ -1772,12 +1779,12 @@ Sei $(V,\Gamma)$ ein Vektorraum und $(v_\alpha)_{\alpha\in I}\subseteq V$ ein Te
         \lambda^\alpha v_\alpha = 0 \quad \Leftrightarrow \quad \forall\alpha\in I: \ \lambda^\alpha = 0
     \end{equation}
 
-    Das heißt: der Nullvektor lässt sich nur mit einer Linearkombination von Vektoren aus $(v_\alpha)_{\alpha\in I}$ darstellen, in der \textit{alle} Koeffizienten $\lambda^\alpha = 0$. Da alle Vektoren unterschiedlich sind, können sie nicht voneinander abgezogen werden sodass $0$ rauskommt. Die Vektoren zeigen in verschiedene Richtungen.
+    Das heißt: der Nullvektor lässt sich nur mit einer Linearkombination von Vektoren aus $(v_\alpha)_{\alpha\in I}$ darstellen, in der \textit{alle} Koeffizienten $\lambda^\alpha = 0$. Da alle Vektoren unterschiedlich sind, können sie nicht voneinander abgezogen werden sodass $0$ rauskommt. Die Vektoren sind nicht parallel.
     
     Bemerkung: die Rückrichtung von \eqref{eq:lu} gilt klarerweise immer.
 \end{itemize}
 
-Sind diese Bedingungen nicht erfüllt, heißt das Teilsystem linear abhängig: 
+Ist diese Bedingung nicht erfüllt, heißt das Teilsystem linear abhängig: 
 
 \begin{itemize}
     \item $(v_\alpha)_{\alpha\in I}$ heißt \textbf{linear abhängig} (kurz l.a.) genau dann wenn
@@ -1795,7 +1802,7 @@ Sind diese Bedingungen nicht erfüllt, heißt das Teilsystem linear abhängig:
         \exists \beta \in I: v_\beta = \sum_{\alpha \in I \backslash \{\beta\}} \lambda^\alpha v_\alpha
     \end{equation*}
 
-Das heißt: mind. ein Vektor des Teilsystems kann durch eine Linearkombination der anderen Vektoren des Teilsystems dargestellt werden. Die Vektoren zeigen in dieselbe oder in die entgegengesetzte Richtung.
+Das heißt: mind. ein Vektor des Teilsystems kann durch eine Linearkombination der anderen Vektoren des Teilsystems dargestellt werden. Die Vektoren sind parallel.
 
 \end{itemize}
 \end{definition}
@@ -1804,9 +1811,9 @@ Das heißt: mind. ein Vektor des Teilsystems kann durch eine Linearkombination d
     Vektorräume $(v_\alpha)_{\alpha\in I}\subseteq V$ sind per Definition linear abhängig: zu jedem Vektor $v_\beta \in V$ ist das additive Inverse $-v_\beta$ ebenso enthalten. Dann kann beispielsweise die Linearkombination gewählt werden $1 \cdot v_\beta + 1 \cdot (-v_\beta ) + \sum_{\alpha \in I \backslash \{\beta\}} 0\cdot v_\alpha =0$.
 \end{remark}
 
-\begin{corollary}\label{cor:eindeutig}
-Sei $(v_\alpha)_{\alpha\in I}\subseteq V$ linear unabhängig. Wenn ein Vektor $v \in V$ durch diese mit einer Linearkombination ($v= \lambda^\alpha v_\alpha$), dann ist die Darstellung eindeutig (d.h. $(\lambda^\alpha)_{\alpha\in I}$ eindeutig).
-\end{corollary}
+\begin{proposition}\label{cor:eindeutig}
+Sei $(v_\alpha)_{\alpha\in I}\subseteq V$ linear unabhängig. Wenn ein Vektor $v \in V$ durch diese Familie mit einer Linearkombination darstellbar ist ($v= \lambda^\alpha v_\alpha$), dann ist die Darstellung eindeutig (d.h. $(\lambda^\alpha)_{\alpha\in I}$ eindeutig).
+\end{proposition}
 
 \begin{proof}
 Annahme: es gibt zwei verschiedene Mengen von Koeffizienten $(\lambda^\alpha)_{\alpha\in I}$ und $(\mu^\alpha)_{\alpha\in I}$ durch die $v \in V$ ebenso darstellbar ist: $v= \lambda^\alpha v_\alpha = \mu^\alpha v_\alpha$.
@@ -2353,7 +2360,7 @@ Der \textbf{Raum der bilinearen Abbildungen} von $V$ nach $\Gamma$ ist definiert
 \mathfrak{Bil}(V,\Gamma) := \{ f : V \times V \to \Gamma \mid f \text{ ist linear in beiden Argumenten} \}.
 \end{equation*}
 
-Das heißt, eine Abbildung $f \in \mathfrak{Bil}(V,\Gamma)$ erfüllt für alle $v,v',w,w'\in V$ und $\lambda \in \Gamma$ die Bedingungen:
+Das heißt, eine Abbildung $f \in \mathfrak{Bil}(V,\Gamma)$, auch \textbf{Bilinearform} genannt, erfüllt für alle $v,v',w,w'\in V$ und $\lambda \in \Gamma$ die Bedingungen:
 \begin{align*}
 f(v+v',w) &= f(v,w) + f(v',w) \\
 f(v,w+w') &= f(v,w) + f(v,w') \\
@@ -3722,7 +3729,7 @@ Damit ist $\mathfrak{X}$ tatsächlich eine Topologie auf $X$. Hier wäre die ind
 
 \section{Konvergenz einer Folge}
 
-Erst durch die Ausstattung einer Menge mit einer Topologie wird es sinnvoll, über die Konvergenz von Folgen zu sprechen. Ohne eine solche zusätzliche Struktur gibt es keinen Begriff von "Nähe" und damit auch keinen Grenzwert.
+Erst durch die Ausstattung einer Menge mit einer Topologie wird es sinnvoll, über die Konvergenz von Folgen zu sprechen. Ohne eine solche zusätzliche Struktur gibt es keinen Begriff von "Nähe" \ und damit auch keinen Grenzwert.
 
 \begin{definition}
 Sei $(X,\mathfrak{X})$ ein topologischer Raum und $(x_n)_{n\in\mathbb{N}}$ eine Folge in $X$. Die Folge $(x_n)$ heißt \textbf{konvergent gegen $x\in X$} (bezüglich der Topologie $\mathfrak{X}$), in Zeichen $x_n \overset{\mathfrak{X}}{\to} x$, falls gilt:
@@ -4713,6 +4720,10 @@ Ein Vektorraum $V$ über dem Körper $\mathbb{K}\in\{\mathbb{R},\mathbb{C}\}$, v
 \end{definition}
 
 \begin{tcolorbox}[noVO]
+\begin{remark}[Nicht Teil der VO]\label{rem:topVR}
+Jeder Vektorraum kann, versehen mit der indiskreten Topologie, zu einem topologischen Vektorraum gemacht werden, da die algebraischen Operationen Vektoraddition und Skalarmultiplikation bzgl. der indiskreten Topologie stetig sind.
+\end{remark}
+
 \begin{remark}[Nicht Teil der VO] \breakafterhead
 
 Sei $(V,\|\cdot\|)$ ein Vektorraum mit einer Norm.
@@ -7032,7 +7043,7 @@ Durch zyklische Permutation der Indizes und Ausnutzung der Symmetrie (folgt aus 
 \begin{equation*}
 C^c_{ab} = C^c_{ba}
 \end{equation*}
-folgt schließlich (Rechenschritte aus Zeitgründen ausgelassen)
+folgt schließlich (Rechenschritte hier aus Zeitgründen ausgelassen)
 \begin{equation*}
 C^c_{ab}
 =
