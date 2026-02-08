@@ -7238,7 +7238,7 @@ So erhalten wir die \textbf{geodätische Deviationsgleichung}
 
 Sie beschreibt, wie sich benachbarte frei fallende Teilchen in einer gekrümmten Raumzeit relativ zueinander bewegen. Die Rolle der zweiten Ableitung des Gravitationspotentials in der Newtonschen Deviationsgleichung wird nun vom Riemann-Krümmungstensor übernommen. Sie macht sichtbar, dass Gravitation in der Allgemeinen Relativitätstheorie durch Raumzeitkrümmung beschrieben wird.
 
-\section{Einsteinsche Feldgleichung}
+\section{Einsteinsche Feldgleichungen}
 Wir vergleichen die Newtonsche und die geodätische Deviationsgleichung.
 
 Einsteins Idee: in schwachen Gravitationsfeldern, also bei wenig Raumzeitkrümmung, gilt (Newton-Limes)
@@ -7268,6 +7268,9 @@ Die Materie-/Energiedichte $\rho_m$ kann mit dem \textbf{Energie-Impuls-Tensors}
 \begin{equation*}
 \rho_m = T_{ab}\,u^a u^b
 \end{equation*}
+
+Der \href{https://en.wikipedia.org/wiki/Stress%E2%80%93energy_tensor}{Energie-Impuls-Tensor} beschreibt die Dichte und den Fluss von Energie und Masse in der Raumzeit. Er ist eine Verallgemeinerung des Stress-Tensors.
+
 Damit ergibt sich als erster Ansatz (Vorstufe Einsteinsche Feldgleichung 1914)
 \begin{equation*}
 R_{ab} = 4\pi\,T_{ab}
@@ -7304,43 +7307,104 @@ Einsteins finaler Ansatz lautet daher
 G_{ab} = 4\pi \alpha\,T_{ab}
 \end{equation*}
 
-Die Konstante $\alpha$ wird durch den Newton-Limes festgelegt; man erhält $\alpha=2$ und somit die endgültige Form der \textbf{Einsteinschen Feldgleichung} (1915):
+Die Konstante $\alpha$ wird durch den Newton-Limes festgelegt; man erhält $\alpha=2$ und somit die endgültige Form der \textbf{Einsteinschen Feldgleichungen} (1915):
 \begin{equation*}
 \boxed{
 G_{ab} = 8\pi\,T_{ab}
 }
 \end{equation*}
 
-Die Einsteinsche Feldgleichung setzt die Materie- und Energieverteilung der Raumzeit (beschrieben durch den Energie-Impuls-Tensor $T_{ab}$) mit ihrer Geometrie (beschrieben durch den Einstein-Tensor $G_{ab}$) in Beziehung. Die Lösung dieser Gleichung liefert die Raumzeitmetrik $g_{ab}$. Erst durch $g_{ab}$ erhalten Begriffe wie zeitartig, raumartig oder lichtartig überhaupt eine Bedeutung, da sie von der Metrik abhängen.
+Die Einsteinsche Feldgleichung beschreibt die Wechselwirkung zwischen Materie (Masse) bzw. Energie (mit Energie-Impuls-Tensor $T_{ab}$) und der Geometrie der Raumzeit (mit Einstein-Tensor $G_{ab}$), wobei Materie die Raumzeit krümmt und diese Krümmung die Bewegung von Objekten (wie Planeten oder Licht) bestimmt. Es ist ein dynamisches Rückkopplungssystem. 
 
-Um die Gleichung zu lösen, könnte man meinen, zunächst eine Materieverteilung $T_{ab}$ vorzugeben und anschließend die Feldgleichungen nach $g_{ab}$ lösen. Dies ist jedoch irreführend: Aus den Einsteingleichungen folgt notwendigerweise die lokale Energie-Impuls-Erhaltung
-\begin{equation*}
-\nabla^a T_{ab} = 0,
-\end{equation*}
-wobei $\nabla$ die Levi-Civita-Ableitung der gesuchten Metrik ist. Damit kann erst \emph{nach} Kenntnis der Metrik entschieden werden, ob eine gegebene Quelle $T_{ab}$ überhaupt zulässig ist. 
+Die Lösung dieser Gleichung liefert die Raumzeitmetrik $g_{ab}$. Erst durch $g_{ab}$ erhalten Begriffe wie zeitartig, raumartig oder lichtartig überhaupt eine Bedeutung, da sie von der Metrik abhängen.
 
-Eine andere Idee wäre es, eine Metrik $g_{ab}$ vorgeben, daraus $G_{ab}$ berechnen und anschließend den Energie-Impuls-Tensor formal zu definieren als
+Der Physiker John Archibald Wheeler brachte es knapp auf den Punkt: 
+\begin{quote}
+“Materie sagt dem Raum, wie er sich krümmen soll. Der Raum sagt der Materie, wie sie sich bewegen soll.“
+\end{quote}
+
+\heading{Lösen der Gleichung}
+
+{\footnotesize gute Links: \url{https://en.wikipedia.org/wiki/Einstein_field_equations#Mathematical_form}\newline
+\url{https://profoundphysics.com/einstein-field-equations-fully-written-out-what-do-they-look-like-expanded/}}\newline
+$G_{ab}$ und $T_{ab}$ sind Tensoren zweiter Stufe mit Indizes $a,b=0,1,2,3$. Das heißt, es sind $4\times4$ Matrizen. Für jedes Indexpaar $(a,b)$ gibt es eine Gleichung, also insgesamt $16$ Gleichungen. Aufgrund der Symmetrie $G_{ab}=G_{ba}$ bzw. $T_{ab}=T_{ba}$ bleiben nur $10$ Gleichungen übrig. Mit der (kontrahierten) Bianchi-Identität kann die Zahl der unabhängigen Gleichungen weiter auf $6$ reduziert werden.
+
+Die Einsteinschen Feldgleichungen sind gekoppelte nichtlineare partielle Differentialgleichungen zweiter Ordnung. Die partiellen Ableitungen stecken in $G_{ab}$. 
+
+\underline{Idee: Masse/Materieverteilung vorgeben}\newline
+Um die Gleichung zu lösen, könnte man meinen, zunächst eine Materieverteilung $T_{ab}$ vorzugeben und anschließend die Feldgleichungen nach $g_{ab}$ lösen. Allerdings muss für die gewählte Materieverteilung $\nabla^a T_{ab} = 0$ gelten. Die Levi-Civita-Ableitung $\nabla^a$ hängt von der gesuchten Metrik $g_{ab}$ ab, daher kann erst nachdem die Metrik bestimmt wurde, geprüft werden, ob die zuvor gewählte Materieverteilung eine physikalisch zulässige war. Diese Methode ist sehr ineffizient.
+
+\underline{Idee: Metrik vorgeben}\newline
+Eine andere Idee wäre es, eine Metrik $g_{ab}$ vorgeben, daraus $G_{ab}$ zu berechnen und anschließend den Energie-Impuls-Tensor zu bestimmen mit
 \begin{equation*}
-T_{ab} := \frac{1}{8\pi}G_{ab}
+T_{ab} = \frac{1}{8\pi}G_{ab}
 \end{equation*}
-Physikalisch ist dieses Vorgehen jedoch nicht ausreichend, da nicht jede so konstruierte Quelle sinnvoll ist. Es muss z.B. für alle Beobachter eine nichtnegative (Energie-)Dichte gemessen werden (\textbf{schwache Energiebedingung}), d.h.
+Allerdings sind auch hier wieder nicht alle Ergebnisse für $T_{ab}$ physikalisch zulässig, da die Materie-/Energiedichte für alle Beobachter positiv sein muss (\href{https://de.wikipedia.org/wiki/Energiebedingung#Die_schwache_Energiebedingung}{schwache Energiebedingung}) d.h.
 \begin{equation*}
-\rho(u) = T_{ab}u^a u^b \ge 0 
+\rho_m = T_{ab}u^a u^b \ge 0 
 \qquad
-\text{für alle zeitartigen }u^a\text{ mit } g_{ab}u^a u^b=-1
+\forall \text{ zeitartigen }u^a
 \end{equation*}
+Diese Methode ist ebenso sehr ineffizient.
 
-Viele rein mathematisch konstruierte Lösungen verletzen diese Positivitätsbedingung und führen zu unphysikalischen Effekten. Daher sind Energiebedingungen (neben $\nabla^aT_{ab}=0$) wichtige Zusatzkriterien bei der Auswahl physikalisch sinnvoller Lösungen.
+\heading{Vakuumlösung}
 
-Ein besonders wichtiger Spezialfall ist das \textbf{Vakuum}, für das
+Ein Spezialfall ist das \textbf{Vakuum}, in dem es keine Materie gibt, also ist der Energie-Impuls Tensor (Materieverteilung)
 \begin{equation*}
 T_{ab} = 0
 \end{equation*}
-gilt. Dann folgt $G_{ab}=0$ bzw. $R_{ab}=0$. Der Riemann-Krümmungstensor kann weiterhin von Null verschieden sein (Raumzeit nicht flach). Karl Schwarzschild fand 1916 eine \textbf{Vakuumlösung} der Feldgleichungen. Ihre spätere Interpretation zeigte, dass sie ein schwarzes Loch beschreibt, mit Ereignishorizont und einer Region unbeschränkt wachsender Raumzeitkrümmung.
+Dann folgt $G_{ab}=0$ bzw. $R_{ab}=0$. Der Riemann-Krümmungstensor kann weiterhin von Null verschieden sein (Raumzeit nicht flach). Karl Schwarzschild fand 1916 eine \textbf{Vakuumlösung} der Feldgleichungen. Ihre spätere Interpretation zeigte, dass sie ein schwarzes Loch beschreibt, mit Ereignishorizont und einer Region unbeschränkt wachsender Raumzeitkrümmung.
 
-\medskip
+\heading{Kosmologische Lösungen und kosmologische Konstante}
+
+{\footnotesize guter Link: \url{https://en.wikipedia.org/wiki/Einstein_field_equations#Cosmological_constant}}\newline
+Mit der Annahme des \textbf{kopernikanischen Prinzips} existieren Lösungen der Einsteinschen Feldgleichungen, die das Universum auf großen Skalen (Galaxiehaufen, Supercluster) beschreiben. Es lautet:
+\begin{itemize}
+\item \textbf{Homogenität:} Auf hinreichend großen Skalen sind physikalische Größen (z.B. Ladungsdichte, Materiedichte) auf Gleichzeitflächen ortsunabhängig.
+\item \textbf{Isotropie:} Auf hinreichend großen Skalen gibt es keine ausgezeichneten Raumrichtungen. Das Universum schaut auf hinreichend großen Skalen in alle Richtungen gleich aus.
+\end{itemize}
+Unter diesen Annahmen vereinfachen sich die Einsteinschen Feldgleichungen stark und bilden ein dynamisches System von einem Freiheitsgrad. Dieser ist der \textbf{Skalenfaktor} $a(t)$. Das Universum kann sich daher insgesamt nur ausdehnen oder zusammenziehen.
+
+Einstein stellte fest, dass die Einsteinschen Feldgleichungen unter diesen Annahmen \emph{kein statisches Universum} zulassen, sondern notwendigerweise ein dynamisches. Um dennoch ein statisches Universum zu ermöglichen, fügte er einen zusätzlichen Term hinzu:
+\begin{equation*}
+G_{ab} + \Lambda g_{ab} = 8\pi\,T_{ab}
+\end{equation*}
+wobei $\Lambda$ die \textbf{kosmologische Konstante} ist.
+
+Dieser Zusatzterm ist mathematisch konsistent, da sowohl der Einstein-Tensor $G_{ab}$ als auch der metrische Tensor $g_{ab}$ kovariant divergenzfrei sind:
+\begin{equation*}
+\nabla^a G_{ab} = 0,
+\qquad
+\nabla^a g_{ab} = 0.
+\end{equation*}
+Die Forderung der lokalen Energie-Impuls-Erhaltung $\nabla^aT_{ab}=0$ bleibt somit erhalten.
+
+Spätere Beobachtungen (insbesondere die Rotverschiebung ferner Galaxien durch Edwin Hubble) zeigten jedoch, dass sich das Universum tatsächlich ausdehnt. Einstein verwarf daraufhin die kosmologische Konstante und bezeichnete ihre Einführung später als seine \glqq größte Eselei\grqq.
+
+Heute spielt die kosmologische Konstante erneut eine Rolle: Aktuelle kosmologische Beobachtungen deuten auf eine beschleunigte Expansion des Universums hin, die durch eine positive kosmologische Konstante erklärt werden kann. In diesem Kontext kann $\Lambda$ als Energie des Vakuums interpretiert werden (vgl. dunkle Energie). 
+
+Auf der Skala von Galaxien oder kleineren Systemen ist der Einfluss der kosmologischen Konstante vernachlässigbar.
+\vspace{1em}
+
+\begin{tcolorbox}[noVO]
+\begin{remark}[nicht Teil der VO]\breakafterhead
+
+{\footnotesize Quelle: \url{https://en.wikipedia.org/wiki/Einstein_field_equations#Mathematical_form}}
+
+Die Einsteinschen Feldgleichungen lauten in SI-Einheiten
+\begin{equation*}
+G_{ab} + \Lambda g_{ab}
+= \kappa\, T_{ab}
+\end{equation*}
+wobei $\kappa= \frac{8\pi G}{c^4}$ die \textbf{einsteinsche Gravitationskonstante} oder \textbf{Einsteinkonstante} mit der Newtonschen Gravitationskonstante $G$ und der Lichtgeschwindigkeit $c$ ist. In der Vorlesung wird $c=G=1$ verwendet.
+\end{remark}
+\end{tcolorbox}
+
+
+\heading{Fazit}
 
 Die \textbf{zentrale Aussage der Allgemeinen Relativitätstheorie} lautet: Gravitation ist keine Kraft, sondern eine Konsequenz der Raumzeitkrümmung. Objekte bewegen sich unter Einfluss der Gravitation auf geradest möglichen Bahnen (Geodäten). Die Raumzeitmetrik $g_{ab}$ entsteht aus dem Wechselspiel zwischen Geometrie und Materie.
+
 
 % --- Back matter ---
 \backmatter
