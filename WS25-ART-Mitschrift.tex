@@ -1843,8 +1843,7 @@ Dann heißt
 \end{equation*}
 die \textbf{lineare Hülle} von $U$. Andere Schreibweisen sind: $[U], \ \langle U \rangle$
 
-
-$\mathrm{span}(U)$ ist die Menge aller Linearkombinationen der Vektoren $v_\alpha$. Sie ist der kleinste lineare Teilraum, der U enthält (also $U \subseteq \mathrm{span}(U)$). Wenn U ein linearer Teilraum ist, dann gilt: $U = \mathrm{span}(U)$.
+$\mathrm{span}(U)$ ist die Menge aller Linearkombinationen der Vektoren $v_\alpha$. Es gilt $U \subseteq \mathrm{span}(U)$). Wenn U ein linearer Teilraum ist, dann gilt: $U = \mathrm{span}(U)$.
 
 $U$ heißt \textbf{Erzeugendensystem} von $V$, wenn gilt:
 \begin{equation*}
@@ -1856,10 +1855,10 @@ Das bedeutet: $U$ \textit{spannt den gesamten Raum $V$ auf}. Jeder Vektor $v \in
 \end{definition}
 
 \begin{definition}[nicht Teil der VO]
-Sei $(V,\Gamma)$ ein Vektorraum und $B \subseteq V$ ein Teilsystem von Vektoren.
+Sei $(V,\Gamma)$ ein Vektorraum und $\mathcal{B} \subseteq V$ ein Teilsystem von Vektoren.
 
 $\mathcal{B}$ heißt \textbf{Basis} des Vektorraums $V$ wenn $\mathcal{B}$ ein linear unabhängiges Erzeugendensystem von $V$ ist. \newline
-Das bedeutet: Jeder Vektor in $V$ lässt sich als Linearkombination von Vektoren aus $B$ darstellen und die Vektoren von $B$ sind linear unabhängig.
+Das bedeutet: Jeder Vektor in $V$ lässt sich als Linearkombination von Vektoren aus $\mathcal{B}$ darstellen und die Vektoren von $\mathcal{B}$ sind linear unabhängig.
 \end{definition}
 
 \begin{remark}
@@ -1899,7 +1898,7 @@ Basen eines Vektorraums sind nicht eindeutig.
 Nun stellt sich die Frage: Hat jeder Vektorraum eine Basis? Um das zu beantworten, benötigen wir erst mal weitere Definitionen.
 
 \begin{definition}
-Eine Relation $\leq \subseteq M^2$ auf einer Menge $M$ heißt \textbf{Totale Ordnung} oder \textbf{lineare Ordnung} $(M, \leq)$, wenn für alle $x,y,z \in M$ gilt:
+Eine Relation $\leq \,\subseteq M^2$ auf einer Menge $M$ heißt \textbf{Totale Ordnung} oder \textbf{lineare Ordnung} $(M, \leq)$, wenn für alle $x,y,z \in M$ gilt:
 \begin{enumerate}
     \item $x \leq x$ \hfill (Reflexivität)
     \item $x \leq y \;\wedge\; y \leq x \;\Rightarrow\; x = y$ \hfill (Antisymmetrie)
@@ -1910,7 +1909,7 @@ Die Bedingung 4. bedeutet, dass alle Elemente der Menge $M$ paarweise vergleichb
 \end{definition}
 
 \begin{definition}
-Eine Relation $\leq \subseteq M^2$ auf einer Menge $M$ heißt \textbf{Halbordnung} oder \textbf{partielle Ordnung} $(M, \leq)$, wenn für alle $x,y,z \in M$ obige Bedingungen 1., 2. und 3. erfüllt sind. Es fehlt also die Vergleichbarkeit aller Elemente aus $M$ bzgl. $\leq$.
+Eine Relation $\leq \, \subseteq M^2$ auf einer Menge $M$ heißt \textbf{Halbordnung} oder \textbf{partielle Ordnung} $(M, \leq)$, wenn für alle $x,y,z \in M$ obige Bedingungen 1., 2. und 3. erfüllt sind. Es fehlt also die Vergleichbarkeit aller Elemente aus $M$ bzgl. $\leq$.
 \end{definition}
 
 \begin{tcolorbox}[noVO]
@@ -1920,7 +1919,7 @@ Eine Relation $\leq \subseteq M^2$ auf einer Menge $M$ heißt \textbf{Halbordnun
     Auch die leere Menge $(\varnothing, \prec)$ ist mit der leeren Ordnung totalgeordnet (trivialerweise, da es keine Elemente gibt, die nicht vergleichbar wären).
     \item Ein weiteres Beispiel ist $(\mathbb{C}, \leq_{\mathrm{lex}})$, wenn man $\mathbb{C}$ als $\mathbb{R} \times \mathbb{R}$ auffasst und die \textit{lexikographische Ordnung} verwendet:
     \begin{equation*}
-    (a,b) \leq_{\mathrm{lex}} (c,d) \quad :\Leftrightarrow \quad (a < c) \;\text{ oder }\; (a = c \wedge b \leq d).
+    (a,b) \leq_{\mathrm{lex}} (c,d) \quad :\Leftrightarrow \quad (a < c) \;\text{ oder }\; (a = c \wedge b \leq d)
     \end{equation*}
 \end{itemize}
 \end{example}
@@ -1935,7 +1934,7 @@ Eine Relation $\leq \subseteq M^2$ auf einer Menge $M$ heißt \textbf{Halbordnun
     mit der Inklusionsrelation $\subseteq$.  
     Dann ist $(\mathcal{P}(\{1,2,3\}), \subseteq)$ eine Halbordnung, aber keine Totalordnung, da z.\,B.
     \begin{equation*}
-    \{1\} \not\subseteq \{2\} \quad \text{und} \quad \{2\} \not\subseteq \{1\}.
+    \{1\} \not\subseteq \{2\} \quad \text{und} \quad \{2\} \not\subseteq \{1\}
     \end{equation*}
     Diese beiden Mengen sind also \textit{nicht vergleichbar}.
     
@@ -1967,7 +1966,7 @@ Ein Element $m \in M$ einer halbgeordneten Menge $(M, \leq)$ heißt \textbf{maxi
 \begin{equation*}
 \forall x \in M: \; m \leq x \;\Rightarrow\; x = m
 \end{equation*}
-Das heißt: es gibt kein Element $x \in M$, das echt größer als $m$ ist. Es kann mehrere Maximale Elemente in M geben. Diese sind nicht vergleichbar, da sonst eines größer wäre als das andere.
+Das heißt: es gibt kein Element $x \in M$, das echt größer als $m$ ist. Es kann mehrere maximale Elemente in M geben. Diese sind nicht vergleichbar, da sonst eines größer wäre als das andere.
 \end{definition}
 
 
@@ -1991,7 +1990,7 @@ Das Lemma von Zorn ist ein fundamentales Hilfsmittel in der linearen Algebra und
 Dann hat $A$ maximale Elemente bzgl. "$\leq$".
 \end{theorem}
 
-Wir verwenden nun das Lemma von Zorn zu zeigen, dass jeder Vektorraum maximal linear unabhängige Teilsysteme besitzt und zeigen anschließend mit \cref{thm:erzeugen}, dass ein maximal linear unabhängiges Teilsystem eine Basis ist. Insgesamt also, dass jeder Vektorraum eine Basis besitzt.
+Wir verwenden nun das Lemma von Zorn, um zu zeigen, dass jeder Vektorraum maximal linear unabhängige Teilsysteme besitzt und zeigen anschließend mit \cref{thm:erzeugen}, dass ein maximal linear unabhängiges Teilsystem eine Basis ist. Insgesamt also, dass jeder Vektorraum eine Basis besitzt.
 
 \begin{theorem}\label{thm:maximal}
     Jeder Vektorraum besitzt maximal linear unabhängige Teilsysteme.
@@ -2000,7 +1999,7 @@ Wir verwenden nun das Lemma von Zorn zu zeigen, dass jeder Vektorraum maximal li
 \begin{proof}
 Sei $(V,\Gamma)$ ein Vektorraum. Wir betrachten die Menge $\mathcal{L}$ aller Teilmengen von $V$, die linear unabhängig sind:
 \begin{equation*}
-\mathcal{L} = \{ L \subseteq V \mid L \text{ ist linear unabhängig} \}.
+\mathcal{L} = \{ L \subseteq V \mid L \text{ ist linear unabhängig} \}
 \end{equation*}
 
 Auf $\mathcal{L}$ definieren wir eine Ordnungsrelation durch Inklusion:
@@ -2023,13 +2022,15 @@ L^* = \bigcup_{\alpha \in I} L_\alpha
 \centering
 \vspace{-3em}
 \includegraphics[width=\textwidth]{Kette.jpg}\\[0.3em]
-\small Die Kette $\mathcal{K}$
+\small Kette $\mathcal{K}$
 \end{minipage}
 
 Also muss noch gezeigt werden, dass $L^* \in \mathcal{L}$. Das heißt, es muss gezeigt werden, dass $L^*$ linear unabhängig ist.
 
-Sei $L^* = (v_\beta)_{\beta \in J }$. Für lineare Unabhängigkeit muss gezeigt werden: \newline
-$\lambda^\beta v_\beta = 0 \ \Rightarrow \ \forall\beta\in J: \ \lambda^\beta = 0 $
+Sei $L^* = (v_\beta)_{\beta \in J }$. Für lineare Unabhängigkeit muss gezeigt werden:
+\begin{equation*}
+\lambda^\beta v_\beta = 0 \ \Rightarrow \ \forall\beta\in J: \ \lambda^\beta = 0
+\end{equation*}
 
 Sei also $\lambda^\beta v_\beta = 0$, wobei nach der Definition der Linearkombination nur endlich viele $\lambda^\beta \neq 0$ sein können. Seien diese die $\lambda^{\beta_1}, \ \lambda^{\beta_2}, \dots, \ \lambda^{\beta_n}$. Betrachte die zugehörigen $v_{\beta_i}$. 
 
@@ -2052,13 +2053,16 @@ Nun kann das Lemma von Zorn angewandt werden: $\mathcal{L}$ hat maximale Element
 Da $\mathcal{L}$ aus linear unabhängigen Teilsystemen besteht, gibt es also maximal linear unabhängige Teilsysteme $M\subseteq V$.
 \end{proof}
 
-\begin{remark}
+\begin{tcolorbox}[noVO]
+\begin{remark}[Nicht Teil der VO] \breakafterhead
+
 Neben der bereits genannten Definition für \textit{Maximalität}, ist die folgende etwas intuitiver: eine l.u. Menge von Vektoren heißt \textit{maximal}, wenn durch Hinzufügen eines weiteren Vektors die Menge linear abhängig wird.
 \end{remark}
+\end{tcolorbox}
 
 \begin{theorem}\label{thm:erzeugen}
 Sei $M=(v_\alpha)_{\alpha \in I}$ eine maximale linear unabhängige Teilmenge des Vektorraums $V$.  
-Dann lässt sich jeder Vektor $v \in V$ eindeutig als Linearkombination der Basisvektoren darstellen:
+Dann lässt sich jeder Vektor $v \in V$ eindeutig als Linearkombination der Vektoren darstellen:
 \begin{equation*}
 v = \lambda^\alpha v_\alpha
 \end{equation*}
@@ -2067,10 +2071,12 @@ Das heißt: $M$ ist ein linear unabhängiges Erzeugendensystem von $V$ und somit
 \end{theorem}
 
 \begin{proof}
+1) Wir zeigen zuerst, dass $v$ darstellbar ist mit $v_\alpha \in M$, $\lambda^\alpha \in \Gamma$.
+
 Dazu unterscheiden wir zwei Fälle.
 
 \textbf{Fall 1:} $v \in M$.  
-Da $M$ per Definition linear unabhängig ist, ist $v$ nur über nur einen einzigen Vektor aus dem System $(v_\alpha)_{\alpha \in I}$ darstellbar: sich selbst.  
+Da $M$ per Definition linear unabhängig ist, ist $v$ nur über einen einzigen Vektor aus dem System $(v_\alpha)_{\alpha \in I}$ darstellbar: sich selbst.  
 \begin{equation*}
 v = v_{\alpha_0} = \lambda^{\alpha_0} v_{\alpha_0} + \lambda^{\alpha_i} v_{\alpha_i},
 \end{equation*}
@@ -2099,7 +2105,7 @@ Nun unterscheiden wir wieder zwei Möglichkeiten:
     Damit ist $v$ als Linearkombination der Vektoren $v_\alpha \in M$ darstellbar.  
 \end{itemize}
 
-Mit \cref{cor:eindeutig} folgt die Eindeutigkeit.
+2) Mit \cref{cor:eindeutig} folgt die Eindeutigkeit.
 \end{proof}
 
 \begin{remark}
