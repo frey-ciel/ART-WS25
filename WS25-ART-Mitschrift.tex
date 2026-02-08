@@ -202,9 +202,9 @@
 \chapter*{Vorwort}
 Diese Mitschrift ergänzt die bereits vorhandenen Mitschriften von Robert Berndl-Forstner (WS20/21) und Florian Lindenbauer (WS18/19), die hier zu finden sind: \newline
 \url{https://forum.fstph.at/t/einf-i-d-allgemeine-relativitaetstheorie-mitschrift-ws2018/3734} \newline
-\url{https://forum.fstph.at/t/latex-skriptum-allg-relativitaetstheorie/4021} \par
+\url{https://forum.fstph.at/t/latex-skriptum-allg-relativitaetstheorie/4021}
 
-Zuerst gibt es eine kurze Einführung, wie es zur speziellen und allgemeinen Relativitätstheorie (kurz SRT und ART) kam. Anschließend wird SRT mit Raumzeit-Diagrammen und dem Minkowski-Raum beschrieben. In den darauffolgenden Kapiteln werden die mathematischen Tools vorgestellt, die für das Verständnis von ART benötigt werden. Zum Schluss folgt die Einsteingleichung. Einen tieferen Einblick in ART gewährt die im Sommersemester anschließende VO 136.002 Geometrie und Gravitation I. \par
+Zuerst gibt es eine kurze Einführung, wie es zur speziellen und allgemeinen Relativitätstheorie (kurz SRT und ART) kam. Anschließend wird SRT mit Raumzeit-Diagrammen und dem Minkowski-Raum beschrieben. In den darauffolgenden Kapiteln werden die mathematischen Tools vorgestellt, die für das Verständnis von ART benötigt werden. Zum Schluss folgt die Einsteingleichung. Einen tieferen Einblick in ART gewährt die im Sommersemester anschließende VO 136.002 Geometrie und Gravitation I.
 
 An einigen Stellen habe ich zusätzliche Passagen eingefügt, die zwar nicht Teil der Vorlesung waren, mir aber beim Verständnis geholfen haben. Diese sind entsprechend mit \textit{„nicht Teil der VO“} oder durch einen grauen Strich am linken Rand markiert.
 
@@ -924,7 +924,7 @@ Die \textbf{Lorentz-Transformation} beschreibt eine Koordinatentransformation vo
 
 Da wir uns in Inertialsystemen befinden, gibt es keine beschleunigten Bewegungen. Teilchen bewegen sich auf geraden Weltlinien. (Eine beschleunigte Bewegung wäre eine gekrümmte Weltlinie). Ein Bezugssystemwechsel muss daher Geraden auf Geraden sowie Ebenen auf Ebenen abbilden. Mathematisch besagt dies, dass die Transformation \textbf{linear} ist.
 
-Nach dem galileischen Relativitätsprinzip gibt es weder ausgezeichnete Orte noch ausgezeichnete Raumrichtungen (Homogenität (an allen Orten gleich) + Isotropie (in alle Richtungen gleich)). Daher darf die einzige ausgezeichnete räumliche Richtung, die in der Transformation auftreten kann, der Relativgeschwindigkeitsvektor $v^i$ zwischen den beiden Inertialsystemen sein. D.h. die Transformation muss \emph{drehinvariant} sein. In einem Bezugssystem, das gegenüber dem anderen verdreht ist, ändert sich die Physik nicht.
+Nach dem galileischen Relativitätsprinzip gibt es weder ausgezeichnete Orte noch ausgezeichnete Raumrichtungen (Homogenität (an allen Orten gleich) + Isotropie (in alle Richtungen gleich)). Daher darf die einzige ausgezeichnete räumliche Richtung, die in der Transformation auftreten kann, der Relativgeschwindigkeitsvektor $v^i$. D.h. die Transformation muss \emph{drehinvariant} sein. In einem Bezugssystem, das gegenüber dem anderen verdreht ist, ändert sich die Physik nicht.
 
 Gesucht ist also eine lineare Transformation der Form
 \begin{equation*}
@@ -1394,7 +1394,7 @@ in allen Inertialsystemen denselben Wert besitzt. Dies gilt unabhängig davon, o
 \medskip
 Das bedeutet: Der 4-dimensionale Abstand $-t^2 + x^2$ ist eine vom Bezugssystem unabhängige Größe – eine \textit{Lorentz-Invariante}. Er ändert sich nicht durch Transformation in ein anderes Inertialsystem.
 
-Diese Invarianz motiviert die Definition des \textbf{Raumzeitabstandes} $\Delta s$, dessen Quadrat allgemein lautet:
+Diese Invarianz motiviert die Definition des \textbf{Raumzeitabstandes} $\Delta s^2$:
 \begin{equation*}
 \Delta s^2 := -c^2 \Delta t^2 + \Delta x^2 + \Delta y^2 + \Delta z^2
 \label{eq:raumzeitabstand}
@@ -1541,7 +1541,7 @@ d(x,y)^2 := q(x-y)^2
 \url{https://de.wikipedia.org/wiki/Pseudo-riemannsche_Mannigfaltigkeit}}\newline
 Sei $M$ eine differenzierbare Mannigfaltigkeit. Ein \textbf{riemannsche Metrik} ist eine Abbildung
 \begin{equation*}
-g : p \mapsto g_p,
+g : M \to \mathfrak{Bil}(T_pM,\ \mathbb{R}): \ p \mapsto g_p
 \end{equation*}
 die jedem Punkt $p \in M$ eine positiv definite, symmetrische Bilinearform
 \begin{equation*}
@@ -1550,13 +1550,15 @@ g_p : T_p M \times T_p M \to \mathbb{R}
 zuordnet. Wobei $T_pM$ der Tangentialraum (Vektorraum) an einem Punkt $p \in M$ ist.
 \end{definition}
 
+Das heißt die riemannsche Metrik ist ein (0,2)-Tensorfeld $g \in \mathcal{T}_2^0(M)$.
+
 {\footnotesize Quelle: \url{https://de.wikipedia.org/wiki/Riemannsche_Mannigfaltigkeit#Riemannsche_Mannigfaltigkeiten_als_metrische_R%C3%A4ume}}\newline
 Die riemannsche Metrik ist keine Metrik im Sinne der Theorie der \href{https://de.wikipedia.org/wiki/Metrischer_Raum#Formale_Definition}{metrischen Räume}, sondern punktweise ein Skalarprodukt
 auf den Tangentialräumen. Wie zuvor erwähnt, induziert es eine Metrik. Somit können riemannsche Mannigfaltigkeiten als metrische Räume verstanden werden. Die riemannsche Metrik legt Längen und Winkel fest.
 
 \begin{definition} \breakafterhead
 
-{\footnotesize Quelle: \url{https://de.wikipedia.org/wiki/Pseudo-riemannsche_Mannigfaltigkeit}}
+{\footnotesize Quelle: \url{https://de.wikipedia.org/wiki/Pseudo-riemannsche_Mannigfaltigkeit}}\newline
 Ist die Bilinearform $g_p$ symmetrisch und nicht entartet, jedoch nicht positiv definit, so heißt $g$ ein \textbf{pseudo-riemannsche Metrik}.
 \end{definition}
 
@@ -1619,7 +1621,7 @@ Eine Basis $E^\mu$ von $V$ heißt \textbf{pseudo-orthonormal} bezüglich eines P
 \begin{equation*}
 (E^\mu,E^\nu) = g_{\mu\nu}
 \end{equation*}
-wobei $(g_{\mu\nu})$ eine diagonale Matrix mit Einträgen $\pm 1$ entsprechend der Signatur des Pseudo-Skalarprodukts ist.\newline
+wobei $g_{\mu\nu}$ eine diagonale Matrix mit Einträgen $\pm 1$ entsprechend der Signatur des Pseudo-Skalarprodukts ist.\newline
 Siehe später in \cref{ex:pseudoONB}.
 \end{definition}
 
@@ -3240,7 +3242,7 @@ Die Zählindizes $\alpha, \beta$, über die summiert wird, sind verschieden, abe
 {\footnotesize Quelle: \url{https://en.wikipedia.org/wiki/Metric_tensor_(general_relativity)#Definition}}
 \vspace{1em}
 
-Ein \textbf{metrischer Tensor} (z.B. die Minkowski-Metrik) auf einem Vektorraum $V$ ist ein Tensor vom Typ $(0,2)$ (kovarianter Tensor zweiter Stufe), der symmetrisch und nicht-degeneriert ist. In unserer Notation schreiben wir
+Ein \textbf{metrischer Tensor} (z.B. die Minkowski-Metrik) auf einem Vektorraum $V$ ist ein Tensor vom Typ $(0,2)$ (kovarianter Tensor zweiter Stufe), der symmetrisch und nicht-entartet ist. In unserer Notation schreiben wir
 \begin{equation*}
 g_{ab} \in \bigotimes\nolimits^0_2 V =\mathfrak{Bil}(V, \Gamma)
 \end{equation*}
@@ -3316,7 +3318,7 @@ Hier wurde die Metrik noch nicht als Längenbegriff eingeführt.
 
 \begin{tcolorbox}[noVO]
 \begin{definition}[Nicht Teil der VO]
-Sei $(V,\langle \cdot,\cdot\rangle)$ ein Skalarproduktraum, wobei das Skalarprodukt eine positiv definite Bilinearform ist. Ein System von Vektoren $(E_\alpha)_{\alpha \in I} \subset V$ heißt \textbf{Orthonormalsystem} (ONS), wenn gilt
+Sei $(V,\langle \cdot,\cdot\rangle)$ ein Skalarproduktraum, wobei das Skalarprodukt eine positiv definite symmetrische Bilinearform ist. Ein System von Vektoren $(E_\alpha)_{\alpha \in I} \subset V$ heißt \textbf{Orthonormalsystem} (ONS), wenn gilt
 \begin{equation*}
 \langle E_\alpha, E_\beta \rangle
 =
@@ -3332,11 +3334,23 @@ Das heißt: alle Vektoren in $(E_\alpha)_{\alpha \in I}$ sind normiert und paarw
 Ein Orthonormalsystem $M = (E_\alpha)_{\alpha \in I}$ heißt \textbf{Orthonormalbasis} (ONB) $\Leftrightarrow \ \overline{\operatorname{span} M} = V$.
 \end{definition}
 
-Sei $(V,g)$ ein endlichdimensionaler Vektorraum mit einem metrischen Tensor $g$ und $(E_\alpha)_{\alpha \in I} \subset V$ eine ONB. Dann kann $g$ damit dargestellt werden:
+\begin{definition}[Nicht Teil der VO]
+Sei $(V,( \cdot,\cdot))$ ein Pseudo-Skalarproduktraum, wobei das Pseudo-Skalarprodukt eine indefinite symmetrische nicht-entartete Bilinearform ist. Ein System von Vektoren $(E_\alpha)_{\alpha \in I} \subset V$ heißt \textbf{Pseudo-Orthonormalsystem} (ONS), wenn gilt
+\begin{equation*}
+(E_\alpha, E_\beta )
+=
+\begin{cases}
+\pm1, & \text{falls } \alpha = \beta \\
+0, & \text{falls } \alpha \neq \beta
+\end{cases}
+\end{equation*}
+\end{definition}
+
+Sei $(V,g)$ ein endlichdimensionaler Vektorraum mit einem metrischen Tensor $g$ und $(E_\alpha)_{\alpha \in I} \subset V$ eine Pseudo-ONB. Dann kann $g$ damit dargestellt werden:
 \begin{equation*}
     g(E_\alpha, E_\beta) = g_{ab}E^a_\alpha E^b_\beta = g_{\alpha\beta}
 \end{equation*}
-wobei $g_{\alpha\beta}$ die Komponenten der Metrik in dieser ONB bezeichnet. Obiges beschreibt die Transformation des metrischen Tensors durch eine ONB in eine Diagonalmatrix, da 
+wobei $g_{\alpha\beta}$ die Komponenten der Metrik in dieser Pseudo-ONB bezeichnet. Obiges beschreibt die Transformation des metrischen Tensors durch eine Pseudo-ONB in eine Diagonalmatrix, da 
 
 \begin{equation*}
 g_{ab}E^a_\alpha E^b_\beta
@@ -3351,12 +3365,12 @@ Die Tatsache, dass jede nicht-ausgeartete symmetrische Bilinearform durch Wahl e
 \end{tcolorbox}
 
 \begin{example}[Orthonormalbasis bzgl. der Minkowski-Metrik]\label{ex:pseudoONB}
-Betrachte den Minkowski-Raum $(V,\eta)$ mit $\eta_{ab} = \operatorname{diag}(-1,1,1,1)$ und eine orthonormale Basis $(E_\alpha)_{\alpha=0}^3$. 
+Betrachte den Minkowski-Raum $(\mathbb{M},\eta)$ mit $\eta_{ab} = \operatorname{diag}(-1,1,1,1)$ und eine Pseudo-ONB $(E_\alpha)_{\alpha=0}^3$. 
 Dann gilt
 \begin{equation*}
     \eta(E_\alpha, E_\beta)
     = \eta_{ab} E^a_\alpha E^b_\beta
-    = \eta_{\alpha\beta}.
+    = \eta_{\alpha\beta}
 \end{equation*}
 
 Insbesondere:
@@ -3370,7 +3384,7 @@ Für die räumlichen Basisvektoren ($i=1,2,3$) gilt:
 \qquad
 \eta_{ab} E^a_2 E^b_2 = \eta_{22} = +1,
 \qquad
-\eta_{ab} E^a_3 E^b_3 = \eta_{33} = +1.
+\eta_{ab} E^a_3 E^b_3 = \eta_{33} = +1
 \end{equation*}
 
 \underline{\textit{Dualbasis}}
@@ -3384,7 +3398,7 @@ folgt, dass es Koeffizienten $\lambda_\alpha$ gibt mit
 \eta_{ab} E^a_\beta
 = E_{\beta b}
 = \lambda_\alpha\, e^\alpha_b,
-\qquad \beta = 0,1,2,3.
+\qquad \beta = 0,1,2,3
 \end{equation*}
 
 Für den Zeitanteil ($\beta = 0$) gilt:
@@ -3392,16 +3406,16 @@ Für den Zeitanteil ($\beta = 0$) gilt:
 -1 
 = \eta_{ab} E^a_0 E^b_0
 = \lambda_\alpha\, \underbrace{e^\alpha_a E^a_0}_{= \delta^\alpha_a}
-= \lambda_0,
+= \lambda_0
 \end{equation*}
 somit
 \begin{equation*}
-e^0_a = - E_{0a}.
+e^0_a = - E_{0a}
 \end{equation*}
 
 Ganz analog für die räumlichen Komponenten:
 \begin{equation*}
-e^i_a = + E_{ia}, \qquad i = 1,2,3.
+e^i_a = + E_{ia}, \qquad i = 1,2,3
 \end{equation*}
 
 \underline{\textit{Indextransport}}
@@ -3420,7 +3434,7 @@ v_b = \eta_{ba} v^a = v_\beta e_b^\beta = \eta_{ab} v^\alpha E^\alpha_\beta
 Dies liefert den Zusammenhang zwischen Kovariant- und Kontravariantkomponenten:
 \begin{align*}
 \text{zeitartig:} \qquad & v_0 = -v^0 \\
-\text{räumlich:}  \qquad & v_i = v^i \quad (i=1,2,3).
+\text{räumlich:}  \qquad & v_i = v^i \quad (i=1,2,3)
 \end{align*}
 
 Da Komponenten reine Zahlen sind, können sie gleichgesetzt werden, obwohl die Vektoren selbst in unterschiedlichen Räumen liegen.
@@ -3443,7 +3457,7 @@ E^b_\gamma E^a_\alpha \eta_{ba}
 
 Damit folgt schließlich
 \begin{equation*}
-    E_{\alpha b} = \eta_{\alpha\beta} e^\beta_b.
+    E_{\alpha b} = \eta_{\alpha\beta} e^\beta_b
 \end{equation*}
 
 Die in den Dualraum transportierten Basisvektoren $E_{\alpha b}$ stimmen also mit den dualen Basisvektoren $e^\alpha_b$ überein, bis auf das charakteristische Minuszeichen im zeitartigen Anteil.
@@ -3627,7 +3641,7 @@ Antwort: Ich muss mich zuerst fragen, bezüglich welcher Topologie ich die Offen
 \end{tcolorbox}
 
 \begin{example}
-Sei $X$ eine beliebige Grundmenge und $\mathfrak{Y} = \{ \emptyset, X \}$ die sogenannte \textbf{indiskrete Topologie}, wobei $\mathfrak{Y}$ "Kurrent Y"\ ausgesprochen wird. Dann ist $(X, \mathfrak{Y})$ der indiskrete topologische Raum. Dies ist die kleinstmögliche Topologie auf $X$.
+Sei $X$ eine beliebige Grundmenge und $\mathfrak{Y} = \{ \emptyset, X \}$ die sogenannte \textbf{indiskrete Topologie/Klumpentopologie}, wobei $\mathfrak{Y}$ "Kurrent Y"\ ausgesprochen wird. Dann ist $(X, \mathfrak{Y})$ der indiskrete topologische Raum. Dies ist die kleinstmögliche Topologie auf $X$.
 
 Wir überprüfen, ob es sich wirklich um eine Topologie handelt:
 \begin{itemize}
@@ -5612,7 +5626,7 @@ v^a = v^i(x^k)\,\partial_i^a\big|_{x_0^m}
 \end{equation*}
 wobei die \textbf{numerischen Funktionen/Vektorfelder (Komponenten des Vektorfelds)}
 \begin{equation*}
-v^i: v^a \circ \phi^{-1} : \phi(\mathcal{O}) \subseteq \mathbb{R}^n \to \mathbb{R}
+v^i: v^a \circ (\phi^i)^{-1} : \phi^i(\mathcal{O}) \subseteq \mathbb{R}^n \to \mathbb{R}
 \end{equation*}
 $k$-mal stetig differenzierbar sind.
 \end{definition}
@@ -5891,7 +5905,7 @@ Insbesondere gilt:
 
 \chapter{Differentialgeometrie und Einsteingleichungen}\label{chap:Differentialgeometrie und Einsteingleichungen}
 \section{Kovariante Ableitung}
-Im flachen Raum $\mathbb{R}^n$ (euklidische Geometrie) wird ein Vektor $v^a = v^i\,\partial_i^a$ entlang einer Kurve $\gamma(t)$ mit Koordinaten $x^i(t)$ als \emph{parallel} betrachtet, wenn er sich entlang der Kurve nicht ändert. Da die Basisvektoren $\partial_i^a$ im $\mathbb{R}^n$ ortsunabhängig sind, reduziert sich diese Bedingung auf die Konstanz der Komponenten:
+Im flachen Raum $\mathbb{R}^n$ (euklidische Geometrie) wird ein Vektor $v^a = v^i\,\partial_i^a$ entlang einer Kurve $\gamma(t)$ mit Koordinaten $\gamma^i(t)=x^i(t)$ als \emph{parallel} betrachtet, wenn er sich entlang der Kurve nicht ändert. Da die Basisvektoren $\partial_i^a$ im $\mathbb{R}^n$ ortsunabhängig sind, reduziert sich diese Bedingung auf die Konstanz der Komponenten:
 \begin{equation*}
 \frac{d}{dt} v^i(x^m(t)) = 0
 \end{equation*}
@@ -6080,7 +6094,7 @@ Zusammengefasst erhalten wir:
 \end{itemize}
 
 \begin{remark}
-Das Christoffel-Symbol $\Gamma^a_{cb}$ ist ein lokal im Kartenüberlapp definierter Ausdruck, der vom Kartenwechsel abhängt. Er beschreibt die Differenz zweier Ableitungsoperatoren \eqref{eq:difftensor}, von denen mindestens einer eine koordinatenkovariante Ableitung ist. Das Christoffel-Symbol zwar "Tensor-artig" aber tatsächlich kein Tensor, da es, vereinfacht gesagt, nicht wie ein Tensor transformiert. Erst die Differenz \eqref{eq:difftensor} ist ein Tensor, der sogenannte \textbf{Differenzentensor}, da dabei die auftretenden nicht-tensoriellen Anteile wegfallen. \href{https://en.wikipedia.org/wiki/Christoffel_symbols#Transformation_law_under_change_of_variable}{Quelle}
+Das Christoffel-Symbol $\Gamma^a_{cb}$ ist ein lokal im Kartenüberlapp definierter Ausdruck, der vom Kartenwechsel abhängt. Er beschreibt die Differenz zweier Ableitungsoperatoren \eqref{eq:difftensor}, von denen mindestens einer eine koordinatenkovariante Ableitung ist. Das Christoffel-Symbol ist nur \textit{lokal} ein Tensor. Global gesehen, ist es kein Tensor da es bzgl. dem Kartenwechsel nicht wie ein Tensor transformiert. Erst die Differenz \eqref{eq:difftensor} ist (global) ein Tensor, der sogenannte \textbf{Differenzentensor}, da dabei die auftretenden nicht-tensoriellen Anteile wegfallen. \href{https://en.wikipedia.org/wiki/Christoffel_symbols#Transformation_law_under_change_of_variable}{Quelle}
 \end{remark}
 
 
@@ -6205,21 +6219,1134 @@ Obwohl der Raum selbst flach ist, treten diese Terme aufgrund der nichtlinearen 
 Im $\mathbb{R}^n$ gibt es nicht \underline{den} Gradienten, sondern jedes Koordinatensystem definiert seinen eigenen Gradienten in dessen Koordinaten.
 
 \subsection{Von der koordinatenkovarianten Ableitung zur kovarianten Ableitung}
+Ausgehend von der koordinatenkovarianten Ableitung definieren wir nun den Begriff der kovarianten Ableitung.
+Sie soll in koordinatenunabhängiger Weise beschreiben, wie Tensorfelder auf einer Mannigfaltigkeit parallel verschoben bzw. differenziert werden. Wie bereits bei der koordinatenkovarianten Ableitung erhöht auch die kovariante Ableitung
+den kovarianten Grad eines Tensorfeldes um eins, worin sich die Namensgebung begründet.
+
+\begin{definition}
+Sei $(M,\mathfrak{M})$ eine glatte Mannigfaltigkeit. Eine \textbf{kovariante Ableitung} ist eine Abbildung
+\begin{equation*}
+\nabla_a : \mathcal T^r_s(M) \longrightarrow \mathcal T^r_{s+1}(M):
+t^{b_1\ldots b_r}_{c_1\ldots c_s}
+\mapsto
+\nabla_a t^{b_1\ldots b_r}_{c_1\ldots c_s}
+\end{equation*}
+mit folgenden Eigenschaften:
+\begin{itemize}
+\item[\textbf{(K1)}] $\nabla_a$ ist linear:
+\begin{equation*}
+\nabla_a\ ( t^{b_1\ldots b_r}_{c_1\ldots c_s} + \tilde{t}^{b_1\ldots b_r}_{c_1\ldots c_s} )
+= \nabla_a t^{b_1\ldots b_r}_{c_1\ldots c_s} + \nabla_a \tilde{t}^{b_1\ldots b_r}_{c_1\ldots c_s}
+\end{equation*}
+sowie
+\begin{equation*}
+\nabla_a\ (\lambda \cdot t^{b_1\ldots b_r}_{c_1\ldots c_s})
+=\lambda \cdot \nabla_a t^{b_1\ldots c_r}_{c_1\ldots c_s},
+\qquad
+\lambda \in \mathbb{R}
+\end{equation*}
+
+\item[\textbf{(K2)}] $\nabla_a$ erfüllt die Leibniz-Regel (Produktregel):
+\begin{equation*}
+\nabla_a
+(t^{b_1\ldots b_p}_{c_1\ldots c_q} \otimes \tilde{t}^{d_1\ldots d_r}_{e_1\ldots e_s})
+= (\nabla_a t^{b_1\ldots b_p}_{c_1\ldots c_q}) \otimes \tilde{t}^{d_1\ldots d_r}_{e_1\ldots e_s} + t^{b_1\ldots b_p}_{c_1\ldots c_q}
+\otimes (\nabla_a \tilde{t}^{d_1\ldots d_r}_{e_1\ldots e_s})
+\end{equation*}
+
+\item[\textbf{(K3)}] $\nabla_a$ stimmt auf Skalarfeldern lokal (d.h. nach Wahl einer Karte) mit der koordinatenkovarianten Ableitung überein:
+\begin{equation*}
+\nabla_a f = \underbrace{\partial_a f,}_{\substack{\text{lokal} \\ \text{definiert}}}
+\qquad
+\forall f \in \underbrace{C^\infty(M)}_{\substack{= \mathcal{T}^0_0(M) \\ \text{ (Skalarfelder)}}}
+\end{equation*}
+
+$\nabla_a$ ist auf der ganzen Mannigfaltigkeit definiert (global). $\partial_a$ ist nur lokal definiert (erst nach Wahl einer Karte). Sobald eine Karte gewählt wird, dürfen sich beide Ableitungen auf Skalarfeldern nicht unterscheiden. 
+
+Es ist egal, ob man zuerst mit $\nabla_a$ ableitet und dann eine Karte wählt oder ob zuerst eine Karte gewählt wird und dann mit $\partial_a$ abgeleitet wird.
+
+\item[\textbf{(K4)}] Satz von Schwarz (Torsionsfreiheit/Symmetrie):
+\begin{equation*}
+\nabla_a \nabla_b f = \nabla_b \nabla_a f,
+\qquad
+\forall f \in C^\infty(M)
+\end{equation*}
+\end{itemize}
+\end{definition}
+
+Jede koordinatenkovariante Ableitung ist eine Kovariante Ableitung, die Umkehrung gilt im Allgemeinen nicht. Die kovariante Ableitung liefert uns einen globalen Ableitungsbegriff im Gegensatz zur koordinatenkovariante Ableitung.
+
+Die kovariante Ableitung ist nicht kanonisch (geht nicht aus der Struktur der Mannigfaltigkeit hervor). Sie ist basisabhängig/kartenabhängig. Daher gibt es viele verschiedene kovariante Ableitungen auf derselben Mannigfaltigkeit. 
+
+\begin{definition}
+Seien $\nabla_a$ und $\tilde{\nabla}_a$ zwei kovariante Ableitungen auf einer Mannigfaltigkeit $M$ und ein Vektorfeld $v^b \in \mathcal{T}^1_0(M)$. Der Unterschied zwischen den beiden definiert den \textbf{Differenzentensor}
+\begin{equation*}
+C^b_{ca}v^c := (\tilde{\nabla}_a - \nabla_a) v^b = \tilde{\nabla}_a v^b - \nabla_a v^b
+\end{equation*}
+\end{definition}
+
+Also reicht es bereits aus, eine kovariante Ableitung zu kennen, um für ein Vektorfeld $v^b$ alle anderen von der Mannigfaltigkeit zu erhalten mit
+\begin{equation}\label{eq:vektorkovar}
+\boxed{
+\tilde{\nabla}_a v^b = \nabla_a v^b + C^b_{ca}v^c
+}
+\end{equation}
+
+Wir werden später nachweisen, dass es sich bei $C^b_{ca}v^c$ tatsächlich um einen Tensor handelt.
+
+\begin{lemma}
+Seien $\nabla_a$ und $\tilde{\nabla}_a$ zwei kovariante Ableitungen auf einer Mannigfaltigkeit $M$ und ein Vektorfeld $v^b \in \mathcal{T}^1_0(M)$.
+
+Dann können Skalarfelder $f \in C^\infty(M)$ aus der Wirkung des Differenzentensors herausgezogen werden
+\begin{equation}\label{eq:skalarheraus}
+C^b_{ca}(fv^c) = (\tilde{\nabla}_a - \nabla_a) (fv^b) = f \cdot (\tilde{\nabla}_a - \nabla_a) v^b = f \cdot C^b_{ca}v^c
+\end{equation}
+
+Man sagt der Differenzentensor ist \emph{$C^\infty(M)$-linear}.
+\end{lemma}
+
+\begin{proof}
+\begin{equation}\label{eq:skalarzero}
+(\tilde{\nabla}_a - \nabla_a) f \overset{K3}{=} (\tilde{\partial}_a - \partial_a) f
+= \tilde{\partial}_af - \partial_a f \overset{\substack{\eqref{eq:skalartrafo} \\ \text{stimmen auf} \\ \text{Überlapp} \\ \text{überein}}}{=}0
+\end{equation}
+Thus
+\begin{equation*}
+(\tilde{\nabla}_a - \nabla_a) (fv^b) \overset{K2}{=} 
+\underbrace{(\tilde{\nabla}_a - \nabla_a) f}_{=0} \cdot v^b + f \cdot (\tilde{\nabla}_a - \nabla_a) v^b =
+f \cdot (\tilde{\nabla}_a - \nabla_a) v^b
+\end{equation*}
+\end{proof}
+
+\begin{remark}
+Beachte allerdings, dass Skalarfelder aus der kovariante Ableitungen nicht herausgezogen werden können
+\begin{equation*}
+\nabla_a (fv^b) \overset{K2}{=} \nabla_a f \cdot v^b + f \cdot \nabla_a  v^b
+\end{equation*}
+\end{remark}
+
+\medskip
+
+Wir leiten nun die \textbf{Koordinatendarstellung des Differenzentensors} her.
+\begin{align*}
+C^b_{ca}v^c = (\tilde{\nabla}_a - \nabla_a) v^b & = (\tilde{\nabla}_a - \nabla_a) (v^i\partial^b_i) \\
+&\overset{\eqref{eq:skalarheraus}}{=} \underbrace{v^i}_{\substack{=v^i \delta^i_j=  v^i\partial^c_jdx^i_c \\ =v^cdx^i_c}}(\tilde{\nabla}_a - \nabla_a) \partial^b_i \\
+& = dx_c^i(\tilde{\nabla}_a - \nabla_a) \partial^b_i \ v^c
+\end{align*}
+Damit folgt die koordinatenabhängige Definition des Differenzentensors in der Karte $x^i$
+\begin{equation}
+C^b_{ca} = \underbrace{dx_c^i}_{\substack{\text{lokal} \\ \text{definiert}}} (\tilde{\nabla}_a - \nabla_a) \underbrace{\partial^b_i}_{\substack{\text{lokal} \\ \text{definiert}}}
+\end{equation}
+
+\begin{proposition}
+$C^b_{ca}$ ist unabhängig von der Wahl der Karte und somit global definiert. Insbesondere ist $C^b_{ca}$ tatsächlich ein (1,2)-Tensorfeld.
+\end{proposition}
+
+\begin{proof}
+Wähle eine Karte $\hat{x}^i = \hat{x}^i(x^k)$. 
+\begin{equation*}
+\text{zz}: \ \hat{C}^b_{ca} = C^b_{ca}
+\end{equation*}
+
+Es gilt
+\begin{align*}
+\hat{C}^b_{ca} &= d\hat{x}^i_c \, (\tilde{\nabla}_a - \nabla_a)\underbrace{\hat{\partial}_i^{\,b}}_{\overset{\substack{\text{Basis} \\ \text{trafo}}}{=} \hat{\partial}_i x^k \, \partial_k^b} \\
+&= d\hat{x}^i_c \, (\tilde{\nabla}_a - \nabla_a) (\underbrace{\hat{\partial}_i x^k}_{\in C^\infty(M)} \, \partial_k^b) \\
+&\overset{\eqref{eq:skalarheraus}}{=} 
+\underbrace{\hat{\partial}_i x^k \, d\hat{x}^i_c}_{\overset{\substack{\text{Basis} \\ \text{trafo}}}{=} dx_c^k} \, (\tilde{\nabla}_a - \nabla_a)\partial_k^b \\
+&= dx^k_c \, (\tilde{\nabla}_a - \nabla_a)\partial_k^b \\
+&= C^b_{ca}
+\end{align*}
+\end{proof}
+
+\begin{lemma}[Wirkung kovariante Ableitung auf Kovektorfeld]
+Seien $\nabla_a$ und $\tilde{\nabla}_a$ zwei kovariante Ableitungen und
+$\omega_b \in \mathcal T^0_1(M)$ ein Kovektorfeld.
+Dann gilt
+\begin{equation*}\label{eq:kovekdiff}
+(\tilde{\nabla}_a - \nabla_a)\,\omega_b =- C^c_{ba}\,\omega_c
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+Seien $\omega_b \in \mathcal T^0_1(M)$ und $v^b \in \mathcal T^1_0(M)$ beliebig. Dann ist
+\begin{equation*}
+(\tilde{\nabla}_a - \nabla_a)(\underbrace{\omega_b v^b}_{\in T^0_0(M)}) \overset{\eqref{eq:skalarzero}}{=} 0
+\end{equation*}
+Mit der Leibniz-Regel ergibt sich andererseits auch
+\begin{align*}
+& 0 =(\tilde{\nabla}_a - \nabla_a)(\omega_b v^b) = (\tilde{\nabla}_a - \nabla_a)\omega_b \cdot v^b
++ \omega_b \cdot \underbrace{(\tilde{\nabla}_a - \nabla_a)v^b}_{=C^c_{ba}\,v^b} \\
+&\Leftrightarrow  (\tilde{\nabla}_a - \nabla_a)\omega_b \cdot v^b = - \omega_b C^c_{ba}\,v^b
+\end{align*}
+
+Da diese Gleichung für alle Vektorfelder $v^b$ gilt, folgt
+\begin{equation*}
+(\tilde{\nabla}_a - \nabla_a)\,\omega_b =- C^c_{ba}\,\omega_c
+\end{equation*}
+\end{proof}
+
+Wir erhalten also nun auch alle anderen kovarianten Ableitungen, die auf einen Kovektor wirken, mit der Transformation
+\begin{equation*}
+\boxed{
+\tilde{\nabla}_a\omega_b = \nabla_a \omega_b - C^c_{ba} \omega_c
+}
+\end{equation*}
+(vgl. \eqref{eq:vektorkovar})
+
+\begin{proposition}
+Der Differenztensor ist in den unteren Indizes symmetrisch:
+\begin{equation*}
+C^c_{ab} = C^c_{ba}
+\end{equation*}
+\end{proposition}
+
+\begin{proof}
+Sei $f \in C^\infty(M)$.
+Aus der Torsionsfreiheit (K4) folgt
+\begin{equation*}
+\nabla_a \nabla_b f = \nabla_b \nabla_a f
+\quad\text{und}\quad
+\tilde{\nabla}_a \tilde{\nabla}_b f = \tilde{\nabla}_b \tilde{\nabla}_a f
+\end{equation*}
+
+Also ist 
+\begin{equation*}
+\nabla_a \nabla_b f - \nabla_b \nabla_a f = \tilde{\nabla}_a \tilde{\nabla}_b f - \tilde{\nabla}_b \tilde{\nabla}_a f
+\end{equation*}
+
+Umordnen ergibt
+\begin{align*}
+&\underbrace{(\tilde{\nabla}_a - \nabla_a)\nabla_b f }_{\overset{\eqref{eq:kovekdiff}}{=} - C^c_{ba}\,\nabla_c f}
+= \underbrace{(\tilde{\nabla}_b - \nabla_b)\nabla_a f}_{\overset{\eqref{eq:kovekdiff}}{=} - C^c_{ab}\,\nabla_c f}\\
+&\Leftrightarrow -C^c_{ba}\nabla_c f = -C^c_{ab} \nabla_c f
+\end{align*}
+Da diese Gleichung für alle Kovektorfelder $\nabla_c f$ gilt, folgt
+\begin{equation*}
+C^c_{ab} = C^c_{ba}
+\end{equation*}
+\end{proof}
+
+\heading{Abschließender Überblick}\newline
+Die kovarianten Ableitungen $\nabla_a$ sind auf der gesamten Mannigfaltigkeit (d.h. global) definiert und somit unabhängig von der Wahl einer Karte. Sie sind jedoch \textbf{nicht} eindeutig. Die koordinatenkovarianten Ableitungen $\partial_a$ sind bezüglich einer gewählten Karte (d.h. lokal) definiert. $\nabla_a$ angewandt auf ein Skalarfeld stimmt lokal (nach Wahl einer Karte) mit $\partial_a$ überein.
+
+Die Differenz zweier kovarianter Ableitungen
+\begin{equation*}
+C^b_{ca} v^c = (\tilde{\nabla}_a - \nabla_a) v^b
+\end{equation*}
+ist global definiert, während die Koordinatendarstellung
+\begin{equation*}
+C^b_{ca} = dx^i_c \, (\tilde{\nabla}_a - \nabla_a)\partial_i^{\,b}
+\end{equation*}
+nur lokal bezüglich der gewählten $x^i$-Karte existiert.
+
+Damit sind kovariante Ableitungen leicht zu konstruieren: Kennt man eine kovariante Ableitung $\nabla_a$, so erhält man alle anderen mit dem Differenzentensor $C^b_{ca}$:
+\begin{equation*}
+\tilde{\nabla}_a v^b = \nabla_a v^b + C^b_{ca} v^c,
+\qquad
+\tilde{\nabla}_a \omega_b = \nabla_a \omega_b - C^c_{ba}\,\omega_c
+\end{equation*}
+
+\begin{remark}
+Die Menge der kovarianten Ableitungen bildet einen affinen Raum. Wählt man eine kovariante Ableitung als Ursprung, so entsprechen die Tensorfelder $C^b_{ca}$ den Verbindungsvektoren, mit deren Hilfe alle anderen kovarianten Ableitungen erreicht werden.
+\end{remark}
+
+\section{Derivationen und Kommutator}
+\begin{definition}
+Eine \textbf{Algebra} $(A,\cdot)$ ist ein Vektorraum $A$ zusammen mit einer Abbildung,
+\begin{equation*}
+\cdot : A \times A \to A,
+\qquad
+(a,b) \mapsto a \cdot b
+\end{equation*}
+die bilinear ist, d.h. für alle $v,v_1,v_2,w,w_1,w_2 \in A$ und alle $\lambda \in \mathbb{R}$ gilt:
+\begin{equation*}
+(v_1+v_2)\cdot w = v_1\cdot w + v_2\cdot w
+\end{equation*}
+\begin{equation*}
+v\cdot (w_1+w_2) = v\cdot w_1 + v\cdot w_2
+\end{equation*}
+\begin{equation*}
+(\lambda v)\cdot w = \lambda (v\cdot w) = v\cdot (\lambda w)
+\end{equation*}
+\end{definition}
+
+\begin{example}
+Beispiele sind die Tensoralgebra mit dem Tensorprodukt, Polynomalgebren mit dem Cauchyprodukt oder der $\mathbb{R}^3$ mit dem Kreuzprodukt.
+\end{example}
+
+\begin{definition}
+Eine \textbf{Derivation} auf einer Algebra $A$ ist eine lineare Abbildung
+\begin{equation*}
+D : A \to A,
+\end{equation*}
+die die Leibniz-Regel erfüllt:
+\begin{equation*}
+\forall a,b \in A: \ D(a \cdot b) = Da\cdot b + a \cdot Db
+\end{equation*}
+Die Menge aller Derivationen wird mit $\mathrm{Der}(A)$ bezeichnet.
+\end{definition}
+
+\begin{example}
+Die koordinatenkovariante Ableitung und kovariante Ableitung sind Derivationen.
+\end{example}
+
+\begin{proposition}
+Die Menge aller Derivationen $\mathrm{Der}(A)$ bildet einen Vektorraum.
+\end{proposition}
+
+Die Komposition von Derivationen $D_1 \circ D_2$ ist im Allgemeinen keine Derivation, da zusätzliche Terme auftreten. Beim anschließend definierten Kommutator fallen diese zusätzlichen Terme weg. 
+
+\begin{definition}
+Die bilineare Abbildung
+\begin{equation*}
+* : \mathrm{Der}(A) \times \mathrm{Der}(A) \to \mathrm{Der}(A),
+\qquad
+D_1 * D_2 := [D_1,D_2] := D_1 \circ D_2 - D_2 \circ D_1
+\end{equation*}
+heißt der \textbf{Kommutator}. Damit wird $(\mathrm{Der}(A),*)$ zu einer Algebra.
+\end{definition}
+
+Wir kürzen ab jetzt ab mit $D_1 \circ D_2 = D_1D_2$.
+
+\begin{proof}
+Wir müssen zeigen, dass diese Definition wohldefiniert ist. Die Bilinearität folgt aus der Bilinearität der Derivation.
+
+Also bleibt zz: Der Kommutator zweier Derivationen ist wieder eine Derivation. 
+
+Seien $D_1,D_2 \in \mathrm{Der}(A)$ und $a,b\in A$.
+
+zz: der Kommutator erfüllt die Leibniz-Regel: 
+\begin{equation*}
+[D_1,D_2](a\cdot b) = [D_1,D_2]a\cdot b + a\cdot [D_1,D_2]b
+\end{equation*}
+
+\begin{itemize}
+    \item Betrachte die linke Seite
+    \begin{equation*}
+     [D_1,D_2](a\cdot b) = (D_1 D_2 - D_2 D_1) (a \cdot b) = (D_1 D_2)(a \cdot b) - (D_2 D_1) (a \cdot b) = 
+     D_1(D_2(a \cdot b)) - D_2(D_1(a \cdot b))
+    \end{equation*}
+
+Dann ist
+\begin{equation*}
+D_1(D_2(a \cdot b)) = D_1(D_2a\cdot b + a\cdot D_2b) = D_1D_2a\cdot b + D_2a\cdot D_1b + D_1a\cdot D_2b + a\cdot D_1D_2b
+\end{equation*}
+Analog erhält man
+\begin{equation*}
+D_2(D_1(a\cdot b)) = D_2D_1a\cdot b + D_1a\cdot D_2b + D_2a\cdot D_1b + a\cdot D_2D_1b
+\end{equation*}
+Die Komposition $D_1 D_2$ ist daher im Allgemeinen \emph{keine} Derivation, da im Vergleich zur Leibniz-Regel zwei zusätzliche Terme auftreten.
+\begin{equation*}
+[D_1,D_2](a\cdot b) = D_1(D_2(a \cdot b)) - D_2(D_1(a \cdot b)) = D_1D_2a\cdot b - D_2D_1a\cdot b + a\cdot D_1D_2b - a\cdot D_2D_1b
+\end{equation*}
+
+\item Betrachte die rechte Seite
+    \begin{align*}
+     [D_1,D_2]a\cdot b + a\cdot [D_1,D_2]b &= (D_1 D_2 - D_2 D_1)a \cdot b + a \cdot (D_1 D_2 - D_2 D_1)b \\
+     &= D_1 D_2a \cdot b - D_2 D_1a \cdot b + a \cdot D_1 D_2 b - a \cdot D_2 D_1b
+    \end{align*}
+\end{itemize}
+Also ist die linke Seite gleich der rechten Seite und die Behauptung folgt.
+\end{proof}
+
+\begin{definition}
+Fixiere $D \in \mathrm{Der}(A)$. Wir definieren eine neue Abbildung
+\begin{equation*}
+\mathcal{D} : \mathrm{Der}(A) \to \mathrm{Der}(A),
+\qquad
+\mathcal{D}(D_1) := [D,D_1]
+\end{equation*}
+Diese Abbildung ist selbst eine Derivation auf der Algebra $\mathrm{Der}(A)$
+(\emph{Derivation auf Derivationen}).
+\end{definition}
+
+Insbesondere gilt für den Kommutator die Leibniz-Regel
+\begin{equation*}
+\mathcal{D}(D_1 * D_2)
+=
+\mathcal{D}(D_1) * D_2 + D_1 * \mathcal{D}(D_2)
+\end{equation*}
+beziehungsweise ausgeschrieben
+\begin{equation*}
+[D,[D_1,D_2]] = [[D,D_1],D_2] + [D_1,[D,D_2]]
+\end{equation*}
+
+Aus dieser Leibniz-Regel folgt unmittelbar mit $[A,B]=-[B,A]$ die \textbf{Jacobi-Identität}:
+\begin{equation*}
+[D_1,[D_2,D_3]] + [D_2,[D_3,D_1]] + [D_3,[D_1,D_2]] = 0
+\end{equation*}
+
+Also ist die Jacobi-Identität ein Spezialfall der Leibniz-Regel.
+
+\begin{remark}
+Die geschlungene Derivation $\mathcal{D}$ wird hier nur zur Motivation eingeführt. Sie erklärt, warum die Jacobi-Identität aus der Leibniz-Regel folgt, und dient als Vorbereitung für die Lie-Algebra der Derivationen, die in der anschließenden Vorlesung \href{https://tiss.tuwien.ac.at/course/courseDetails.xhtml?dswid=9420&dsrid=973}{Geometrie und Gravitation I} eine wichtige Rolle spielt.
+\end{remark}
+
 
 \section{Riemanntensor}
 
+Da die Allgemeine Relativitätstheorie gekrümmte Räume betrachtet, benötigen wir ein Maß für diese Krümmung. Dieses Maß ist der sogenannte \textbf{Riemanntensor} oder \textbf{Riemannsche Krümmungstensor}.
+
+\begin{definition}
+Der \textbf{Riemanntensor} ist definiert durch die Wirkung des Kommutators zweier kovarianter Ableitungen auf ein Vektorfeld:
+\begin{equation*}
+R^c_{dab}\, v^d := [\nabla_a,\nabla_b]\, v^c
+\end{equation*}
+Dabei bezeichnen die eckigen Klammern den \textbf{Kommutator} der kovarianten Ableitungen
+\begin{equation*}
+[\nabla_a,\nabla_b] := \nabla_a \nabla_b - \nabla_b \nabla_a 
+\end{equation*}
+\end{definition}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{images/Riemanntensor1.jpg}
+\caption{Der Riemanntensor beschreibt den Unterschied zwischen der Ableitung $\nabla_b$ von $v^c$ in Richtung $b$ und der anschließenden Ableitung $\nabla_a$ dieses Ergebnisses in Richtung $a$ vs. der Ableitung $\nabla_a$ von $v^c$ in Richtung $a$ und der anschließenden Ableitung $\nabla_b$ dieses Ergebnisses in Richtung $b$. \newline
+Anders formuliert: er beschreibt den Unterschied von der infinitesimalen Bewegung von $v^c$ zuerst in Richtung $b$ und dann in Richtung $a$ vs zuerst in Richtung $a$ und dann in Richtung $b$. Wenn es keinen Unterschied gibt, ist der Raum flach. In diesem Sinn ist der Riemanntensor ein Maß für die Krümmung. \href{https://profoundphysics.com/general-relativity-for-dummies/}{Quelle}}
+\end{figure}
+Der Riemanntensor misst somit die Veränderung der kovarianten Ableitung in Bezug auf sich selbst und charaketerisiert sie so.
+
+
+\begin{proposition}
+    Kommutator der kovarianten Ableitungen ist \emph{$C^\infty(M)$-linear}, d.h. Skalarfelder können herausgezogen werden
+    \begin{equation}\label{eq:skalarheraus1}
+    [\nabla_a,\nabla_b](f v^c) = f \cdot [\nabla_a,\nabla_b]v^c 
+    \end{equation}
+\end{proposition}
+\begin{proof}
+Nach der vierten Eigenschaft der kovarianten Ableitung (Torsionsfreiheit / Satz von Schwarz) gilt für alle Skalarfelder $f \in C^\infty(M)$:
+\begin{align*}
+& \nabla_a \nabla_b f = \nabla_b \nabla_a f \\
+\Leftrightarrow  \ & (\nabla_a \nabla_b - \nabla_b \nabla_a) f = 0 \\ 
+\Leftrightarrow  \ & [\nabla_a,\nabla_b]\, f = 0 
+\end{align*}
+
+Damit erhalten wir für ein Vektorfeld $v^c$ und ein Skalarfeld $f$:
+\begin{equation*}
+[\nabla_a,\nabla_b](f v^c) = \underbrace{[\nabla_a,\nabla_b]f}_{=0} \cdot v^c + f \cdot [\nabla_a,\nabla_b]v^c = f \cdot [\nabla_a,\nabla_b]v^c 
+\end{equation*}
+\end{proof}
+
+\medskip
+Wir leiten nun die \textbf{Koordinatendarstellung des Riemanntensors} her.
+\begin{align*}
+R^c_{dab} v^d = [\nabla_a,\nabla_b] v^c & = [\nabla_a,\nabla_b] (v^i\partial^c_i) \\
+&\overset{\eqref{eq:skalarheraus1}}{=} \underbrace{v^i}_{\substack{=v^i \delta^i_j=  v^i\partial^d_jdx^i_d \\ =v^ddx^i_d}}[\nabla_a,\nabla_b] \partial^c_i \\
+& = dx_d^i[\nabla_a,\nabla_b] \partial^c_i \ v^d
+\end{align*}
+Damit folgt die koordinatenabhängige Definition des Differenzentensors in der Karte $x^i$
+\begin{equation}
+R^c_{dab} = \underbrace{dx_d^i}_{\substack{\text{lokal} \\ \text{definiert}}} [\nabla_a,\nabla_b] \underbrace{\partial^c_i}_{\substack{\text{lokal} \\ \text{definiert}}}
+\end{equation}
+
+\begin{proposition}
+$R^c_{dab}$ ist unabhängig von der Wahl der Karte und somit global definiert. Insbesondere ist $R^c_{dab}$ tatsächlich ein (1,3)-Tensorfeld.
+\end{proposition}
+
+\begin{proof}
+Wähle eine Karte $\hat{x}^i = \hat{x}^i(x^k)$. 
+\begin{equation*}
+\text{zz}: \ \hat{R}^c_{dab} = R^c_{dab}
+\end{equation*}
+
+Es gilt
+\begin{align*}
+\hat{R}^c_{dab} &= d\hat{x}^i_d \, [\nabla_a,\nabla_b]\underbrace{\hat{\partial}_i^{\,c}}_{\overset{\substack{\text{Basis} \\ \text{trafo}}}{=} \hat{\partial}_i x^k \, \partial_k^c} \\
+&= d\hat{x}^i_d \, [\nabla_a,\nabla_b] (\underbrace{\hat{\partial}_i x^k}_{\in C^\infty(M)} \, \partial_k^c) \\
+&\overset{\eqref{eq:skalarheraus1}}{=} 
+\underbrace{\hat{\partial}_i x^k \, d\hat{x}^i_d}_{\overset{\substack{\text{Basis} \\ \text{trafo}}}{=} dx_d^k} \, [\nabla_a,\nabla_b]\partial_k^c \\
+&= dx^k_d \, [\nabla_a,\nabla_b]\partial_k^c \\
+&= R^c_{dab}
+\end{align*}
+\end{proof}
+
+Da die lokalen Darstellungen auf Überlappungsgebieten übereinstimmen, definiert $R^c_{dab}$ ein globales Tensorfeld. 
+
+\begin{definition}
+    Der \textbf{Ricci-Tensor} ist die Spur des Riemanntensors
+    \begin{equation*}
+    R_{ab} := R^c_{acb}
+    \end{equation*}
+\end{definition}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{images/Riemanntensor.jpg}
+\caption{Der Riemanntensor scheint also unser Dilemma aus Kapitel 1 mit der Parallelverschiebung im gekrümmten Raum zu lösen. Mehr dazu im nächsten Kapitel.}
+\end{figure}
+
 \section{Parallelverschiebung}
+Die folgenden Kapitel wurden im WS25/26 in der letzten Vorlesung im Schnelldurchlauf durchgemacht und sind daher hier nicht detailliert ausgeführt. Genauer sind sie in den Mitschriften von Robert Berndl-Forstner (WS20/21) und Florian Lindenbauer (WS18/19), zu finden: \newline
+\url{https://forum.fstph.at/t/einf-i-d-allgemeine-relativitaetstheorie-mitschrift-ws2018} \newline
+\url{https://forum.fstph.at/t/latex-skriptum-allg-relativitaetstheorie}
 
-\section{Metrik}
+Da wir nun die kovariante Ableitung eingeführt haben, können wir sie verwenden, um zu definieren, wie Parallelität im gekrümmten Raum zu verstehen ist.
 
-\section{Newton-Deviationsgleichung}
+\subsection{Situation im \texorpdfstring{$\mathbb{R}^n$}{Rn}}
+Wir führen das zu Beginn des Kapitels motivierte Konzept der Parallelverschiebung nun genauer ein.
 
-\section{Lie-Ableitung}
+Sei eine parametrisierte Kurve
+\begin{equation*}
+\gamma : [0,1] \to \mathbb{R}^n
+\end{equation*}
+mit Koordinaten $\gamma(t)=x^m(t)$ und $v^b = v^i \partial_i^b$ ein Vektorfeld, welches wir mit $v^b(x^m(t))=v^i(x^m(t))\, \partial_i^{\,b}\big|_{x^m(t)}$ entlang der Kurve betrachten. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{images/Vfparallel.jpg}
+\end{figure}
+
+Das Vektorfeld heißt \textbf{parallel entlang der Kurve}, wenn es ausgewertet entlang der Kurve überall in dieselbe Richtung zeigt und denselben Betrag hat. Das heißt, wenn es sich entlang der Kurve nicht ändert. Also
+\begin{equation*}
+\frac{d}{dt}\bigl(v^b(x^m(t))\bigr) = 0
+\end{equation*}
+
+Da die Basisvektoren $\partial_i^b$ im $\mathbb{R}^n$ ortsunabhängig sind, reduziert sich diese Bedingung auf die Konstanz der Komponenten:
+\begin{equation*}
+\frac{d}{dt} v^i(x^m(t)) = 0
+\end{equation*}
+Die gewöhnliche Ableitung misst in diesem Fall genau die Abweichung von der Parallelität.
+
+Mit der Kettenregel erhalten wir andererseits
+\begin{equation}\label{eq:rn_chain_rule}
+0 = \frac{d}{dt}\bigl(v^i(x^m(t))\bigr)
+= \dot{x}^j(t) \, \partial_j v^i(x^m(t))
+\end{equation}
+wobei $\dot{x}^j(t)$ die Komponenten des Tangentialvektors $\dot\gamma(t)$ in der gewählten Karte sind.
+
+\textbf{Parallelverschiebung} entlang einer Kurve im $\mathbb{R}^n$ bedeutet also, dass ein Vektor, der verschoben wurde, weiterhin in dieselbe Richtung zeigt und denselben Betrag hat.
+
+
+\subsection{Verallgemeinerung auf Mannigfaltigkeiten}
+Sei $\gamma:[0,1]\to M$ eine Kurve auf einer Mannigfaltigkeit.
+
+Wir erinnern uns: ein Vektorfeld auf einer Mannigfaltigkeit ist definiert als eine Abbildung, die jedem Punkt $p\in M$ einen Tangentialvektor $v^a(p)\in T_pM$ zuordnet. Wenn wir dieses nun entlang einer Kurve $\gamma$ und abgebildet mit einer Karte betrachten, hat es die folgende Darstellung
+\begin{equation*}
+v^a(x^m(t)) = v^i(x^m(t))\,\partial_i^a\big|_{x^m(t)}
+\end{equation*}
+
+Bei einer Ableitung nach dem Kurvenparameter $t$ ändern sich nun nicht nur die Komponenten $v^i(x^m(t))$, sondern auch die Basisvektoren $\partial_i^a\big|_{x^m(t)}$ selbst, da diese vom Punkt $p=\gamma(t)\in M$ via $\phi^i(\gamma(t))=x^i(t)$ abhängen.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{images/Vfparallelman.jpg}
+\end{figure}
+
+Die gewöhnliche Ableitung misst daher nicht ausschließlich eine tatsächliche geometrische Änderung des Vektors, sondern enthält zusätzliche Beiträge, die durch den Wechsel der lokalen Basis entstehen. Eine verschwindende gewöhnliche Ableitung ist somit im Allgemeinen nicht gleichbedeutend mit Parallelität.
+
+Plan: die partielle Ableitung durch die kovariante Ableitung ersetzen.
+
+Im $\mathbb{R}^n$ ist der Tangentialvektor der Kurve $\gamma$
+\begin{equation}\label{eq:tangent_vector_def}
+u^a(t) \coloneqq \dot\gamma^i(t)\,\partial_i^a = \dot x^i(t)\,\partial_i^a
+\end{equation}
+
+Damit kann \eqref{eq:rn_chain_rule} angeschrieben werden
+\begin{equation}
+\begin{aligned}\label{eq:paralleltang}
+0 &= \frac{d}{dt}v^i(x^m(t)) \, \partial_i^b\\
+&= \dot{x}^j \, \partial_j v^i \, \partial_i^b\\
+&= \dot{x}^i \, \underbrace{\delta_i^j}_{=\partial_i^adx_a^j} \, \partial_j v^i \, \partial_i^b\\
+&= \dot{x}^i \, \partial_i^a dx_a^j \, \partial_j v^i \, \partial_i^b\\
+&= \underbrace{\dot{x}^i \partial_i^a}_{=u^a} \, \underbrace{\partial_j v^i dx_a^j \partial_i^b}_{=\partial_av^b}\\
+&= u^a \partial_av^b
+\end{aligned}
+\end{equation}
+
+Damit erhalten wir für Parallelität im flachen Raum eine Äquivalenz bzgl. der koordinatenkovarianten Ableitung des Vektorfelds
+\begin{equation}\label{eq:parallelflach}
+\frac{d}{dt}\bigl(v^i(x^m(t))\bigr)=0
+\quad\Leftrightarrow\quad
+u^a\,\partial_a v^b = 0
+\end{equation}
+
+Die koordinatenkovariante Ableitung ist lokal definiert. Nun globalisieren wir das ganze mit der kovarianten Ableitung.
+
+\begin{definition}
+Sei $\gamma:[0,1]\to M$ eine Kurve auf einer Mannigfaltigkeit mit Tangentialvektor \\
+$u^a(t) := \dot\gamma^a(t) \in T_{\gamma(t)}M$ bzw. in Koordinaten $u^a(t) = \dot x^i(t)\,\partial_i^a$. Ein Vektorfeld $v^b$ heißt \textbf{$\nabla$-parallel} entlang $\gamma$, falls
+\begin{equation}
+(u^a\,\nabla_a) v^b = 0
+\end{equation}
+\end{definition}
+
+Zur Vereinfachung verwenden wir die Kurzschreibweise
+\begin{equation*}
+(u \nabla) := (u^a \nabla_a)
+\end{equation*}
+
+Existieren $\nabla$-parallele Vektorfelder überhaupt?\newline
+Ja! Wir konstruieren nun eines.
+
+\subsection{Konstruktion \texorpdfstring{$\nabla$}{nabla}-paralleles Vektorfeld}
+Wir fixieren nun eine Karte $(\mathcal O,\phi)$, in der das betrachtete Kurvenstück $\gamma$ liegt. 
+
+\begin{definition}
+Sei $(\mathcal O,\phi)$ eine Karte. Die Differenz der global definierten kovarianten Ableitung $\nabla_a$, ausgewertet bzgl. dieser Karte und der lokal definierten koordinatenkovariante Ableitung $\partial_a$ bzgl. dieser Karte ist der lokal definierte \textbf{Differenzentensor} $\Gamma^b_{ca}$
+\begin{equation}\label{eq:Gamma_def}
+\Gamma^b_{ca}\,v^c := (\nabla_a-\partial_a)\,v^b
+\qquad
+\forall v^b\in\mathcal T^1_0(\mathcal O)
+\end{equation}
+Ist $\nabla$ die Levi-Civita-Ableitung, so ist $\Gamma^b_{ca}$ das Christoffel-Symbol.
+In Koordinaten
+\begin{equation*}
+\Gamma^b_{ca} = \Gamma^i_{jk}\,\partial^b_i dx^j_c dx_a^k
+\end{equation*}
+\end{definition}
+
+Damit kann die globale kovariante Ableitung ausgewertet bzgl. der fixierten Karte durch die zugehörige lokale koordinatenkovariante Ableitung plus Zusatzterm geschrieben werden
+\begin{align*}
+0= (u \nabla) v^b = (u^a \nabla_a) v^b &= \underbrace{(u^a \partial_a) v^b}_{\overset{\eqref{eq:paralleltang}}{=} \frac{d}{dt}v^k(t) \, \partial_k^b} + \overset{\text{Zusatzterm}}{\underbrace{u^a \Gamma^b_{ca}\,v^c}_{= \dot x^l \Gamma^k_{jl} v^j \, \partial_k^b}} \\ 
+&= \left(\frac{d}{dt}v^k(t) + \Gamma^k_{jl} \, \dot x^l v^j \right) \partial^b_k
+\end{align*}
+Dieser Ausdruck ist aufgrund der linearen Unabhängigkeit der Basisvektoren nur dann null, wenn alle Komponenten gleich null sind. D.h.
+\begin{equation}\label{eq:paralleltrans}
+\frac{d}{dt}v^k(t) + \underbrace{\Gamma^k_{jl}(x^m(t)) \, \dot x^l(t)}_{=H^k_j(t)} \, v^j(t) = 0
+\end{equation}
+\begin{equation}\label{eq:parallel_transport_H}
+\dot v^k(t) + H^k_j(t) \, v^j(t) = 0
+\end{equation}
+Diese Gleichung erinnert an die zeitabhängige Schrödingergleichung mit dem zeitabhängigen Hamiltonoperator $H^k_j(t)$. Wenn wir diese lösen, erhalten wir ein Vektorfeld $v^a$, das entlang der Kurve $\nabla$-parallel ist (ein parallel verschobenes Vektorfeld). Man sagt auch, das Vektorfeld ist zu sich selbst parallel.
+
+\begin{minipage}[t]{0.75\textwidth}
+Die Gleichung kann mit einem \textbf{Zeitentwicklungsoperator/Parallelverschieber} $U$ gelöst werden. Wir schreiben die Lösung von \eqref{eq:parallel_transport_H} in der Form
+\begin{equation}\label{eq:U_def}
+v^i(t) := U^i_j(t)\,v^j(0)
+\end{equation}
+wobei $v^j(0)$ der Anfangsvektor am Startpunkt der Kurve ist und $U^i_j(t)$ der Parallelverschieber entlang $\gamma$.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.25\textwidth}
+\centering
+\vspace{-1em}
+\includegraphics[width=\textwidth]{images/Parallelverschieber.jpg}
+\end{minipage}
+
+
+Setzen wir \eqref{eq:U_def} in \eqref{eq:parallel_transport_H} ein, so erhalten wir
+\begin{align*}
+0 &= \frac{d}{dt}\bigl(U^k_i(t)\,v^i(0)\bigr) + H^k_j(t)\,U^j_i(t)\,v^i(0)\\
+&= \dot U^k_j(t)\,v^j(0) + U^k_j(t)\, \underbrace{\frac{d}{dt} v^j(0)}_{=0} + H^k_j(t)\,U^j_i(t)\,v^i(0) \\
+&= \left(\dot U^k_i(t) + H^k_j(t)\,U^j_i(t)\right)v^i(0)
+\end{align*}
+Da der Anfangsvektor $v^i(0)$ beliebig ist, folgt die Differentialgleichung für den Parallelverschieber:
+\begin{equation}\label{eq:U_ode}
+\dot U^k_i(t) + H^k_j(t)\,U^j_i(t) = 0
+\end{equation}
+Als Anfangsbedingung gilt
+\begin{equation}\label{eq:U_initial}
+v^i(0)=U^i_j(0)v^j(0) \Rightarrow U^i_{\,j}(0) = \delta^i_j
+\end{equation}
+da bei $t=0$ keine Verschiebung stattfindet, muss der Vektor derselbe bleiben.
+
+Wenn wir Gleichung \eqref{eq:U_ode} lösen, so erhalten wir den Parallelverschieber $U(t)$. Anschließend können wir mit \eqref{eq:U_def} ein Vektorfeld konstruieren, das entlang $\gamma$ $\nabla$-parallel ist ($\nabla$-konstant ist).
+
+\begin{remark}
+Der Parallelverschieber $U(t)$ definiert eine lineare Abbildung zwischen Tangentialräumen:
+\begin{equation}
+U(t) : T_{\gamma(0)}M \to T_{\gamma(t)}M
+\end{equation}
+Er erlaubt es, Vektoren in verschiedenen Tangentialräumen entlang einer gegebenen Kurve miteinander zu identifizieren
+und als „parallel“ zu vergleichen.
+\end{remark}
+
+\subsection{Autoparallele Kurven und Geodätengleichung}
+\begin{definition}
+Eine Kurve $\gamma:I \to M$ heißt \textbf{autoparallel} (bezüglich $\nabla$), wenn das Vektorfeld, bestehend aus ihren Tangentenvektoren $u^a = \dot{\gamma}^a(t)$ (in Koordinaten $u^a = \dot{x}^i(t)\, \partial_i^a$), $\nabla$-parallel entlang der Kurve ist, d.h.
+\begin{equation}\label{eq:autoparallel_condition}
+(u^a\nabla_a)u^b = 0
+\end{equation}
+gilt.
+\end{definition}
+
+In Komponentenform mit $u^i=\dot{x}^i(t)$ ergibt sich aus \eqref{eq:autoparallel_condition} bzw. \eqref{eq:paralleltrans}
+\begin{equation}\label{eq:geodesic_equation}
+\boxed{
+\ddot{x}^i(t) + \Gamma^i_{jk}(x(t))\,\dot{x}^j(t)\,\dot{x}^k(t) = 0
+}
+\end{equation}
+Diese Gleichung heißt \textbf{Geodätengleichung}. Sie ist die Bewegungsgleichung eines Teilchens im Gravitationsfeld.
+
+Im flachen Raum gilt $\Gamma^i_{jk} = 0$, sodass sich die Gleichung \eqref{eq:geodesic_equation} vereinfacht zu
+\begin{equation*}
+\frac{d}{dt}\bigl(u^i(t)\bigr) = \ddot{x}^i(t) = 0
+\end{equation*}
+also zu einer Geraden $x(t)=x_0+ \dot x_0t$. 
+
+Autoparallele Kurven sind daher die Verallgemeinerung von Geraden auf gekrümmte Räume. 
+
+\section{Metrik und Levi-Civita-Ableitung}
+Um Geodäten als kürzeste Verbindung zwischen zwei Punkten im gekrümmten Raum zu beschreiben, brauchen wir einen Abstandsbegriff.
+
+\begin{definition}
+Eine \textbf{Metrik} (genauer: \textbf{metrischer Tensor/pseudo-riemannsche Metrik}) auf einer Mannigfaltigkeit $M$ ist ein (0,2)-Tensorfeld
+\begin{equation*}
+g_{ab} \in \mathcal T^0_2(M)
+\end{equation*}
+d.h.
+\begin{equation*}
+\forall \, p \in M:\quad g_{ab}: 
+\begin{cases}
+\ M \to \bigotimes^0_2 T_pM \;\cong\;\mathfrak{Bil}(T_pM,\mathbb R) \\
+\ p \mapsto g_{ab}(p)
+\end{cases}
+\end{equation*}
+wobei $g_{ab}(p)$ eine nicht-entartete, symmetrische, indefinite Bilinearform ist, mit
+\begin{equation*}
+g_{ab}(p) : T_pM \times T_pM \to \mathbb R
+\end{equation*}
+\end{definition}
+
+Mit symmetrisch meinen wir
+\begin{equation*}
+g_{ab}(p) = g_{ba}(p)
+\end{equation*}
+
+Damit ist $g_{ab}(p)$ ein \textbf{Pseudo-Skalarprodukt} auf dem Tangentialraum $T_pM$.
+
+
+In jedem Punkt $p \in M$ gibt es eine geeignete Basis $E_\alpha^a$ von $T_pM$, sodass $g_{ab}(p)$ in dieser Basis Diagonalgestalt annimmt:
+\begin{equation*}
+g_{ab}(p)(E_\alpha,E_\beta) = g_{ab} E_\alpha^a E_\beta^b =
+\begin{cases}
+\pm 1 & \alpha=\beta,\\
+0 & \alpha\neq\beta,
+\end{cases}
+\quad = g_{\alpha\beta} = \mathrm{diag}(\pm 1,\ldots,\pm 1)
+\end{equation*}
+
+Mit einer geeigneten Basis kann also in jedem $T_pM$ der metrische Tensor $g_{ab}$ zur Minkowksi-Metrik transformiert werden 
+\begin{equation*}
+g_{ab} E_\alpha^a E_\beta^b = \eta_{\alpha\beta}=\mathrm{diag}(-1,1,1,1)
+\end{equation*}
+
+Damit haben wir auf der Mannigfaltigkeit $M$ ein Tensorfeld $g_{ab}$ definiert, das in jedem Tangentialraum $T_pM$ eine Minkowski-Metrik induziert. Jeder Tangentialraum wird somit zu einem Minkowski-Raum $\mathbb{M}$. Die Raumzeit ist lokal flach (Minkowski-Raum), aber global gekrümmt.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{images/Minkoman.jpg}
+\end{figure}
+
+Die einzelnen Minkowski-Räume sind jedoch zunächst unabhängig voneinander. Wir möchten sie mit dem Paralleltransport in Verbindung bringen.
+
+Wir betrachten eine Kurve $\gamma$ mit Tangentenvektor in Koordinaten bzgl. einer Karte $(\mathcal{O}, \phi)$
+\begin{equation}\label{eq:parallelvw}
+u^a = \dot{x}^i(t)\partial^a_i
+\end{equation}
+sowie zwei Vektorfelder $v^a$ und $w^a$, die entlang der Kurve $\nabla$-parallel sind:
+\begin{equation*}
+(u\nabla) v^a = 0,
+\qquad
+(u\nabla) w^a = 0
+\end{equation*}
+
+wobei
+\begin{equation*}
+(u\nabla) := u^c \nabla_c
+\end{equation*}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{images/Pseudoprod.jpg}
+\end{figure}
+
+Wir fordern nun außerdem, dass sich auch das innere Produkt (genauer: dessen Pseudo-Skalarprodukt) $g_{ab}(p)(v^a, w^a)= g_{ab}v^aw^a \in \mathbb{R}$ entlang der Kurve nicht ändert. Dies ist skalar und repräsentiert den Winkel zwischen den beiden Vektoren. D.h. wir fordern, dass sich der Winkel zweier Vektoren bei Parallelverschiebung entlang einer Kurve nicht ändert.
+
+Das heißt wir fordern
+\begin{equation*}
+(u\nabla) (g_{ab} v^a w^b) = 0
+\end{equation*}
+
+Wendet man die Leibniz-Regel an und benutzt die Parallelität von $v^a$ und $w^a$,
+\begin{align*}
+0 &= (u\nabla) (g_{ab} v^a w^b) = u^c\nabla_c(g_{ab}v^a w^b) \\
+&= u^c\, \nabla_c g_{ab} \, v^a w^b
++ g_{ab}\,u^c\nabla_c v^a\,w^b
++ g_{ab}\,v^a\,u^c\nabla_c w^b
+\end{align*}
+Die letzten beiden Terme verschwinden wegen \eqref{eq:parallelvw}. Übrig bleibt
+\begin{equation}
+u^c \nabla_c g_{ab} v^a w^b = 0
+\end{equation}
+
+Für $u^a(0)$, $v^a(0)$ und $w^a(0)$ folgt $\nabla_ag_{bc}(0)=0$. Da Anfangswerte beliebig gewählt werden können und diese Beziehung für \textit{alle} gelten soll, muss
+\begin{equation}\label{eq:metrischkomp}
+\nabla_c g_{ab} = 0
+\end{equation}
+
+Das heißt, der metrische Tensor ist bezüglich dieser kovarianten Ableitung konstant. Eine kovariante Ableitung $\nabla_a$ die \eqref{eq:metrischkomp} erfüllt wird \textbf{metrisch kompatibel} genannt.
+
+\begin{definition}
+Eine kovariante Ableitung $\nabla_a$ heißt \textbf{Levi-Civita Ableitung} relativ zu $g_{ab}$ $:\Leftrightarrow \ \nabla_c g_{ab} = 0$
+\end{definition}
+
+Diese Bedingung wählt also eine ganz bestimmte kovariante Ableitung aus. Das ist die Ableitung, die in der Allgemeinen Relativitätstheorie verwendet wird.
+
+\subsection{Eindeutigkeit der Levi-Civita Ableitung}
+
+Seien $\nabla$ und $\tilde{\nabla}$ zwei Levi-Civita Ableitungen.
+Ihre Differenz ist ein Tensor
+\begin{equation*}
+C^c_{ab} := (\tilde \nabla_a - \nabla_a)
+\end{equation*}
+
+Für Kovektoren gilt dann
+\begin{equation}\label{eq:nabla_vs_tildenabla_covector}
+\nabla_a \omega_b = \tilde\nabla_a \omega_b - C^c_{ab}\,\omega_c
+\end{equation}
+
+Somit gilt bem metrischen Tensor:
+\begin{equation*}
+0 = \nabla_a g_{bc}
+= \tilde{\nabla}_a g_{bc}
+- C^m_{ba} g_{mc}
+- C^m_{ca} g_{bm}
+\end{equation*}
+
+Mit Index-Transport erhalten wir
+\begin{equation*}
+\tilde{\nabla}_a g_{bc} = C_{cba} + C_{bca}
+\end{equation*}
+
+Durch zyklische Permutation der Indizes und Ausnutzung der Symmetrie (folgt aus Torsionsfeiheit der kovarianten Ableitung)
+\begin{equation*}
+C^c_{ab} = C^c_{ba}
+\end{equation*}
+folgt schließlich
+\begin{equation*}
+C^c_{ab}
+=
+\frac{1}{2} g^{cd}
+\bigl(
+\tilde{\nabla}_a g_{bd}
++ \tilde{\nabla}_b g_{ad}
+- \tilde{\nabla}_d g_{ab}
+\bigr)
+\end{equation*}
+
+\begin{definition}
+Sei $(M,g_{ab})$ eine pseudo-riemannsche Mannigfaltigkeit und $\nabla_a$ die zu $g_{ab}$ gehörige Levi-Civita-Ableitung.
+Eine Kurve $\gamma$ heißt \textbf{Geodäte}, wenn sie autoparallel bezüglich $\nabla_a$ ist, d.h.
+\begin{equation*}
+(u^b \nabla_b) u^a = 0
+\end{equation*}
+\end{definition}
+Geodäten sind damit die Verallgemeinerung von Geraden auf gekrümmte Räume. Sie sind der kürzeste Weg zwischen zwei Punkten auf einer gekrümmten Mannigfaltigkeit.
+
+\begin{remark}
+Mit der Levi-Civita-Ableitung haben wir nun ein geometrisches Werkzeug, das die zuvor mit $T_pM$ unabhängig voneinander definierten lokalen Minkowski-Räume $\mathbb{M}$ miteinander in Beziehung setzt. Sie definiert einen Paralleltransport entlang von Kurven, der das Pseudo-Skalarprodukt und somit Winkel erhält. Auf diese Weise können Vektoren in verschiedenen Tangentialräumen sinnvoll miteinander verglichen werden. Die Levi-Civita-Ableitung wird daher auch als \textbf{Levi-Civita-Zusammenhang} bezeichnet.
+\end{remark}
+
+\section{Newtonsche Deviationsgleichung}
+Wir betrachten eine Familie von frei fallenden Objekten im Gravitationsfeld, die (nebeneinander) in Richtung Erdoberfläche fallen. Sie fallen alle in Richtung Erdmittelpunkt, daher verlaufen die Bahnlinien nicht nur „parallel nach unten“, sondern die Körper bewegen sich während des Falls auch aufeinander zu.
+
+Die Teilchenbahnen hängen von zwei Parametern ab:
+\begin{itemize}
+\item $t$: Zeitparameter entlang einer Bahn
+\item $s$: Selektorparameter, der angibt, welche Freifallkurve betrachtet wird
+\end{itemize}
+
+Die Bahnen werden beschrieben durch
+\begin{equation*}
+x^i = x^i(t,s)
+\end{equation*}
+
+Die Kurve $s=0$ dient als Referenzkurve.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{images/Freifallkurven.jpg}
+\end{figure}
+
+Nach dem zweiten Newtonschen Axiom gilt für ein Teilchen der Masse $m(s)$
+\begin{equation*}
+m(s)\,\ddot{x}^i(t,s) = F^i(x(t,s))
+\end{equation*}
+
+Somit gilt für ein Teilchen newtonschen Gravitationsfeld 
+\begin{equation*}
+m(s)\,\ddot{x}^i(t,s) = -m(s)\,\partial_i \Phi\bigl(x^m(t,s)\bigr)
+\end{equation*}
+
+Die Masse kürzt sich heraus, sodass die Bahnkurve unabhängig von der Masse des Teilchens ist:
+\begin{equation}\label{eq:newtonbeweg}
+\ddot{x}^i(t,s) = - \partial_i \Phi(x^m(t,s))
+\end{equation}
+
+Um zu beschreiben, wie sich benachbarte Freifallkurven relativ zueinander bewegen, definieren wir das \textbf{Zeigerfeld}
+\begin{equation*}
+\xi^i(t) := \left.\frac{\partial x^i(t,s)}{\partial s}\right|_{s=0}
+\end{equation*}
+
+Dieses Vektorfeld ist bzgl. der Referenzkurve $(s=0)$ definiert und zeigt zur nächsten Freifallkurve. Es beschreibt, wie stark und in welche Richtung das Teilchen $x^i(t,0)$ aufgrund der Gravitation abgelenkt wird.
+
+Wir differenzieren die Bewegungsgleichung \eqref{eq:newtonbeweg} nach $s$ und werten sie bei $s=0$ aus:
+\begin{align*}
+& \left.\frac{\partial}{\partial s}\right|_{s=0}
+\left(
+\ddot{x}^i(t,s) + \partial_i \Phi(x^m(t,s))
+\right) = 0 \\
+&\Leftrightarrow \ \left.\frac{\partial^3 x^i(t,s)}{\partial s \,\partial t^2 }\right|_{s=0} + \left.\frac{\partial}{\partial s}\right|_{s=0} \bigl(\partial_i \Phi(x^m(t,s))\bigr) = 0 \\
+\end{align*}
+
+Da die Ableitungen nach $t$ und $s$ vertauschen, erhalten wir
+\begin{equation*}
+\left.\frac{\partial^3 x^i(t,s)}{\partial t^2 \,\partial s }\right|_{s=0} = \ddot{\xi}^i(t)
+\end{equation*}
+
+Mit der Kettenregel folgt
+\begin{align*}
+\left.\frac{\partial}{\partial s}\right|_{s=0}
+\bigl(\partial_i \Phi(x^m(t,s))\bigr)
+&=
+\left. \frac{\partial \partial_i \Phi(x^m(t))}{\partial x^j}
+\frac{\partial x^j(t,s)}{\partial s}
+\right|_{s=0} \\
+&=
+\partial_j \partial_i \Phi(x^m(t))\,\xi^j(t)
+\end{align*}
+Damit ergibt sich die \textbf{Newtonsche Deviationsgleichung}:
+\begin{equation}\label{eq:newtondevgl}
+\boxed{
+\ddot{\xi}^i(t)
++ \partial_j \partial_i \Phi(x^m(t))\,\xi^j(t) = 0
+}
+\end{equation}
+
+Die Gleichung beschreibt die relative Beschleunigung aufgrund der Gravitation zweier benachbarter, frei fallender Teilchen. Also die Ablenkung, welche ein Teilchen unter Einwirkung des Gravitationsfeldes erfährt.
+
+\begin{itemize}
+\item $\Phi$: Gravitationspotential (Skalarfeld)
+\item $\partial_i \Phi$: Gradient des Gravitationspotentials: Gravitationsfeld/newtonsche Gravitationsfeldstärke (Vektorfeld)
+\item $\partial_i \partial_j \Phi$: räumliche Änderung des Gravitationsfelds
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{earth-moon-gravitational-potential-3d.png}
+\caption{Gravitationspotential und Gravitationsfeld von Erde und Mond in 3D dargestellt. Der skalare Wert gibt die Höhe an, die Pfeile geben die Richtung an.}
+{\footnotesize Quelle: \url{https://physikbuch.schule/work-in-the-gravitational-field.html}}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{gravfeld.png}
+\caption{Gravitationsfeld von Erde und Mond}
+{\footnotesize Quelle: \url{https://physikbuch.schule/work-in-the-gravitational-field.html}}
+\end{figure}
+
+Ist das Gravitationsfeld $\partial_i \Phi$ lokal konstant/homogen, so verschwindet dort $\partial_i \partial_j \Phi$ und benachbarte Freifallkurven bleiben parallel (wenn wir beispielsweise zwei Gegenstände im Vakuum dicht nebeneinander fallen lassen). In inhomogenen Gravitationsfeldern hingegen beschreibt die Deviationsgleichung die \emph{\href{https://de.wikipedia.org/wiki/Gezeitenkraft}{Gezeitenkräfte}}.
+
+Diese Gleichung stellt das Newtonsche Analogon zur \emph{Geodäten-Deviationsgleichung} der Allgemeinen Relativitätstheorie dar.
 
 \section{Geodätische Deviationsgleichung}
+Wir betrachten nun die Freifallkurven im Kontext der allgemeinen Relativitätstheorie. Hier bewegen sich frei fallende Körper auf kürzesten Wegen durch die gekrümmte Raumzeit, also auf \textit{Geodäten} bzw. \textit{autoparallelen Kurven}.
 
-\section{Einsteingleichung}
-{\footnotesize Source: \href{https://www.youtube.com/watch?v=bV7KeKAPBQc}{I finally understood Einstein's Metric Tensor! (Boy, my mind is blown)}}
+Seien die autoparallelen Kurven (Freifallkurven) wieder parametrisiert mit 
+\begin{itemize}
+\item $t$: Zeitparameter entlang einer Bahn (Eigenzeit der Teilchen)
+\item $s$: Selektorparameter, der angibt, welche Freifallkurve betrachtet wird
+\end{itemize}
+
+Sei wieder das Zeigervektorfeld zwischen benachbarten Geodäten definiert als
+\begin{equation*}
+\xi^i(t) := \left.\frac{\partial x^i(t,s)}{\partial s}\right|_{s=0}
+\end{equation*}
+
+und das Tangentialvektorfeld der jeweiligen Freifallkurve
+\begin{equation*}
+u^i(t,s) = \frac{d x^i(t,s)}{d t}
+\end{equation*}
+wobei $u^a$ zeitartig ist mit Längenquadrat
+\begin{equation*}
+u^2 := g_{ab}u^a u^b < 0
+\end{equation*}
+
+Wir normieren das Tangentialvektorfeld sodass
+\begin{equation*}
+u^2 = -1
+\end{equation*}
+
+Da die Freifallkurven autoparallel sind, gilt (Tangentialvektorfeld ist $\nabla$-konstant)
+\begin{equation}\label{eq:autoparallel}
+(u\nabla)u^a = 0
+\end{equation}
+wobei $\nabla$ die Levi-Civita Ableitung ist. 
+
+Wir erinnern uns, dass der metrische Tensor $g_{ab}$ invariant bzgl. der Levi-Civita Ableitung ist ($\nabla_c g_{ab}=0$). Daher und wegen der Autoparallelität der Kurve verändert sich das Längenquadrat von $u^a$ entlang der Kurve nicht:
+\begin{equation*}
+(u\nabla)(u^2)
+= (u\nabla)(g_{ab}u^a u^b) = \underbrace{(u\nabla)g_{ab}}_{=0} \, u^a u^b + g_{ab} \underbrace{(u\nabla) u^a}_{=0} u^b +  g_{ab}u^a \underbrace{(u\nabla) u^b}_{=0} =0
+\end{equation*}
+Damit bleibt ein zu Beginn zeitartiger Tangentenvektor entlang der gesamten Freifallkurve zeitartig. Paralleltransport ändert also keine Längen- oder Kausalstruktur.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{images/Freifallkurven1.jpg}
+\end{figure}
+
+$u^a$ ist ein Strömungsfeld, entlang dessen die Teilchen auf den Freifallkurven transportiert werden. Die Änderung des Strömungsfeldes durch das Zeigervektorfeld $\xi^a$ wird durch die sogenannte \textbf{konvektive Ableitung} bzw. \textbf{Lie-Ableitung} beschrieben 
+\begin{equation*}
+L_u \xi^a = \underbrace{(u\nabla)\xi^a}_{\substack{\text{Änderung des Vektorfelds }\xi^a \\ \text{entlang von } u^a}} - \underbrace{(\xi\nabla)u^a}_{\substack{\text{Änderung des Vektorfelds }u^a \\ \text{entlang von } \xi^a}}
+\end{equation*}
+
+\textit{In WS25/26 hatten wir keine Zeit die Lie-Ableitung genauer einzuführen.}
+
+Wir fordern, dass das Zeigervektorfeld $\xi^a$ mit der Strömung $u^a$ mitgeführt wird, d.h. sich relativ zur Strömung nicht ändert:
+\begin{equation*}
+L_u \xi^a = 0
+\end{equation*}
+beziehungsweise 
+\begin{equation}\label{eq:lie_condition}
+(u\nabla)\xi^a = (\xi\nabla)u^a
+\end{equation}
+
+Da wir das relativistische Analogon zur Newton-Deviationsgleichung \eqref{eq:newtondevgl} herleiten wollen und in dieser die zweite Ableitung von $\xi$ auftritt, bestimmen wir nun die zweite Ableitung des Zeigervektorfelds entlang der Weltlinie, d.h. $(u\nabla)^2\xi^a$.
+
+Mit \eqref{eq:lie_condition} schreiben wir
+\begin{align*}
+(u\nabla)^2 \xi^a
+&= (u\nabla)\bigl((\xi\nabla)u^a\bigr)
+\end{align*}
+\begin{equation}\label{eq:zweitterm}
+= (u\nabla)\xi^c\,\nabla_c u^a + \xi^c \underbrace{(u\nabla)}_{=u^d\nabla_d}\nabla_c u^a
+\end{equation}
+
+Nach der Definition des Riemann-Tensors gilt
+\begin{equation*}
+[\nabla_a, \nabla_b] v^c = (\nabla_a \nabla_b - \nabla_b \nabla_a) v^c = R^c_{dab}v^d
+\end{equation*}
+Dies können wir auf den zweiten Term von \eqref{eq:zweitterm} anwenden und die Ableitungen $\nabla_d \nabla_c$ vertauschen
+\begin{align*}
+&u^d \, \nabla_d\nabla_cu^a - \, u^d\nabla_c \nabla_du^a = u^d \, R^a_{bdc} u^b \\
+&\Leftrightarrow u^d \, \nabla_d\nabla_cu^a = u^d\nabla_c \nabla_du^a + u^d \, R^a_{bdc}u^b
+\end{align*}
+Somit ist
+\begin{align*}
+\eqref{eq:zweitterm} &= (u\nabla)\xi^c\,\nabla_c u^a + \xi^c \underbrace{u^d \, \nabla_d\nabla_cu^a}_{\overset{\text{Leibniz}}{=} 
+\nabla_c(\underbrace{u^d\nabla_du^a}_{\overset{\eqref{eq:autoparallel}}{=}0}) - \nabla_c u^d \nabla_d u^a} + \xi^c \,u^d R^a_{bdc} u^b \\
+&\Leftrightarrow (u\nabla)\xi^c\,\nabla_c u^a - \underbrace{\xi^c \nabla_c}_{=(\xi \nabla)} u^d \nabla_d u^a + \xi^c \,u^d R^a_{bdc} u^b \\
+&\Leftrightarrow \underbrace{\left((u\nabla)\xi^d - (\xi \nabla) u^d \right)}_{\overset{\eqref{eq:lie_condition}}{=}0} \nabla_d u^a +  R^a_{bdc} u^b u^d \xi^c
+\end{align*}
+
+Es folgt somit
+\begin{equation*}
+(u\nabla)^2 \xi^a = \underbrace{R^a_{bdc}}_{=-R^a_{bcd}} u^b u^d \xi^c
+\end{equation*}
+
+So erhalten wir die \textbf{geodätische Deviationsgleichung}
+\begin{equation*}
+\boxed{
+(u\nabla)^2 \xi^a + R^a_{bcd}\,u^b u^d \xi^c = 0
+}
+\end{equation*}
+
+Sie beschreibt, wie sich benachbarte frei fallende Teilchen in einer gekrümmten Raumzeit relativ zueinander bewegen. Die Rolle der zweiten Ableitung des Gravitationspotentials in der Newtonschen Deviationsgleichung wird nun vom Riemann-Krümmungstensor übernommen. Sie macht sichtbar, dass Gravitation in der Allgemeinen Relativitätstheorie durch Raumzeitkrümmung beschrieben wird.
+
+\section{Einsteinsche Feldgleichung}
+Wir vergleichen die Newtonsche und die geodätische Deviationsgleichung.
+
+Einsteins Idee: in schwachen Gravitationsfeldern, also bei wenig Raumzeitkrümmung, gilt (Newton-Limes)
+\begin{equation}\label{eq:newtalbert}
+R^a_{bcd}\,u^b u^d = \partial^a \partial_c \Phi
+\end{equation}
+wobei wir die Indizes $a,c$ anstelle von $i,j$ verwenden, da wir die Newtonsche Deviationsgleichung in eine raumzeitliche Form überführen.
+
+Aus der Newton-Mechanik folgt im Gravitationspotential $\Phi$ (für Einheitsmasse) die Poisson-Gleichung
+\begin{equation}
+\partial^2 \Phi = \Delta \Phi = 4\pi\,\rho_m
+\end{equation}
+wobei $\rho_m$ die \textbf{Materie-/Energiedichte} bezeichnet und $\Delta$ der Laplace Operator.
+
+Um in \eqref{eq:newtalbert} auf die zweite Ableitung zu kommen, müssen wir aus dem Krümmungstensor ein Objekt zweiter Stufe bauen. Dazu kontrahieren wir die Indizes $a$ und $c$ (Spurbildung):
+\begin{equation}
+R_{bd} := R^a_{bad}
+\end{equation}
+$R_{bd}$ wird Ricci-Tensor genannt.
+
+Damit gilt
+\begin{equation*}
+R^a_{bab} u^b u^d =R_{bd}\,u^b u^d = \partial^2 \Phi = \Delta \Phi = 4\pi\,\rho_m
+\end{equation*}
+
+Die Materie-/Energiedichte $\rho_m$ kann mit dem \textbf{Energie-Impuls-Tensors} $T_{ab}$ geschrieben werden als
+\begin{equation*}
+\rho_m = T_{ab}\,u^a u^b
+\end{equation*}
+Damit ergibt sich als erster Ansatz (Vorstufe Einsteinsche Feldgleichung 1914)
+\begin{equation*}
+R_{ab} = 4\pi\,T_{ab}
+\end{equation*}
+
+Warum stimmt diese Gleichung nicht?
+
+Physikalisch gilt lokale Energie-Impuls-Erhaltung (Energie-Impuls-Tensor ist divergenzfrei):
+\begin{equation*}
+\nabla^a T_{ab} = 0
+\end{equation*}
+
+Nähmen wir $R_{ab}=4\pi T_{ab}$, müsste also auch $\nabla^a R_{ab}=0$ gelten.
+Aus der (kontrahierten) Bianchi-Identität folgt jedoch
+\begin{equation}\label{eq:bianci}
+\nabla^a R_{ab} = \frac{1}{2}\,\nabla_b R
+\end{equation}
+wobei $R := g^{ab}R_{ab}$ der Krümmungsskalar, der im Allgemeinen nicht konstant ist, und daher $\nabla_b R \neq 0$, also $\nabla^a R_{ab} \neq 0$.
+
+Einstein betrachtete daher den Ausdruck
+\begin{align*}
+\nabla^a\!\left(R_{ab}-\frac{1}{2}  g_{ab}R\right) &= \nabla^a R_{ab}-\tfrac12 \underbrace{\nabla^a(g_{ab}R)}_{=\underbrace{\nabla^ag_{ab}}_{\overset{\substack{\text{Levi-Civita} \\ \text{Ableitung}}}{=}0}R+g_{ab}\nabla^aR} = \nabla^aR_{ab} - \frac{1}{2} g_{ab}\underbrace{\nabla^a}_{=g^{ab}\nabla_c}R \\
+&= \nabla^aR_{ab} - \frac{1}{2}\underbrace{g_{ab}g^{ac}}_{=\delta_b^c} \nabla_cR = \nabla^aR_{ab} - \frac{1}{2}\nabla_bR \overset{\eqref{eq:bianci}}{=} 0
+\end{align*}
+
+Somit ist der sogenannte \textbf{Einstein-Tensor}
+\begin{equation*}
+G_{ab}:=R_{ab}-\frac{1}{2} g_{ab}R
+\end{equation*}
+divergenzfrei.
+
+Einsteins finaler Ansatz lautet daher
+\begin{equation*}
+G_{ab} = 4\pi \alpha\,T_{ab}
+\end{equation*}
+
+Die Konstante $\alpha$ wird durch den Newton-Limes festgelegt; man erhält $\alpha=2$ und somit die endgültige Form der \textbf{Einsteinschen Feldgleichung} (1915):
+\begin{equation*}
+\boxed{
+G_{ab} = 8\pi\,T_{ab}
+}
+\end{equation*}
+
+Die Einsteinsche Feldgleichung setzt die Materie- und Energieverteilung der Raumzeit (beschrieben durch den Energie-Impuls-Tensor $T_{ab}$) mit ihrer Geometrie (beschrieben durch den Einstein-Tensor $G_{ab}$) in Beziehung. Die Lösung dieser Gleichung liefert die Raumzeitmetrik $g_{ab}$. Erst durch $g_{ab}$ erhalten Begriffe wie zeitartig, raumartig oder lichtartig überhaupt eine Bedeutung, da sie von der Metrik abhängen.
+
+Um die Gleichung zu lösen, könnte man meinen, zunächst eine Materieverteilung $T_{ab}$ vorzugeben und anschließend die Feldgleichungen nach $g_{ab}$ lösen. Dies ist jedoch irreführend: Aus den Einsteingleichungen folgt notwendigerweise die lokale Energie-Impuls-Erhaltung
+\begin{equation*}
+\nabla^a T_{ab} = 0,
+\end{equation*}
+wobei $\nabla$ die Levi-Civita-Ableitung der gesuchten Metrik ist. Damit kann erst \emph{nach} Kenntnis der Metrik entschieden werden, ob eine gegebene Quelle $T_{ab}$ überhaupt zulässig ist. 
+
+Eine andere Idee wäre es, eine Metrik $g_{ab}$ vorgeben, daraus $G_{ab}$ berechnen und anschließend den Energie-Impuls-Tensor formal zu definieren als
+\begin{equation*}
+T_{ab} := \frac{1}{8\pi}G_{ab}
+\end{equation*}
+Physikalisch ist dieses Vorgehen jedoch nicht ausreichend, da nicht jede so konstruierte Quelle sinnvoll ist. Es muss z.B. für alle Beobachter eine nichtnegative (Energie-)Dichte gemessen werden (\textbf{schwache Energiebedingung}), d.h.
+\begin{equation*}
+\rho(u) = T_{ab}u^a u^b \ge 0 
+\qquad
+\text{für alle zeitartigen }u^a\text{ mit } g_{ab}u^a u^b=-1
+\end{equation*}
+
+Viele rein mathematisch konstruierte Lösungen verletzen diese Positivitätsbedingung und führen zu unphysikalischen Effekten. Daher sind Energiebedingungen (neben $\nabla^aT_{ab}=0$) wichtige Zusatzkriterien bei der Auswahl physikalisch sinnvoller Lösungen.
+
+Ein besonders wichtiger Spezialfall ist das \textbf{Vakuum}, für das
+\begin{equation*}
+T_{ab} = 0
+\end{equation*}
+gilt. Dann folgt $G_{ab}=0$ bzw. $R_{ab}=0$. Der Riemann-Krümmungstensor kann weiterhin von Null verschieden sein (Raumzeit nicht flach). Karl Schwarzschild fand 1916 eine \textbf{Vakuumlösung} der Feldgleichungen. Ihre spätere Interpretation zeigte, dass sie ein schwarzes Loch beschreibt, mit Ereignishorizont und einer Region unbeschränkt wachsender Raumzeitkrümmung.
+
+\medskip
+
+Die \textbf{zentrale Aussage der Allgemeinen Relativitätstheorie} lautet: Gravitation ist keine Kraft, sondern eine Konsequenz der Raumzeitkrümmung. Objekte bewegen sich unter Einfluss der Gravitation auf geradest möglichen Bahnen (Geodäten). Die Raumzeitmetrik $g_{ab}$ entsteht aus dem Wechselspiel zwischen Geometrie und Materie.
 
 % --- Back matter ---
 \backmatter
