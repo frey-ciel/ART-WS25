@@ -6272,31 +6272,16 @@ Jede koordinatenkovariante Ableitung ist eine Kovariante Ableitung, die Umkehrun
 
 Die kovariante Ableitung ist nicht kanonisch (geht nicht aus der Struktur der Mannigfaltigkeit hervor). Sie ist basisabhängig/kartenabhängig. Daher gibt es viele verschiedene kovariante Ableitungen auf derselben Mannigfaltigkeit. 
 
-\begin{definition}
-Seien $\nabla_a$ und $\tilde{\nabla}_a$ zwei kovariante Ableitungen auf einer Mannigfaltigkeit $M$ und ein Vektorfeld $v^b \in \mathcal{T}^1_0(M)$. Der Unterschied zwischen den beiden definiert den \textbf{Differenzentensor}
-\begin{equation*}
-C^b_{ca}v^c := (\tilde{\nabla}_a - \nabla_a) v^b = \tilde{\nabla}_a v^b - \nabla_a v^b
-\end{equation*}
-\end{definition}
-
-Also reicht es bereits aus, eine kovariante Ableitung zu kennen, um für ein Vektorfeld $v^b$ alle anderen von der Mannigfaltigkeit zu erhalten mit
-\begin{equation}\label{eq:vektorkovar}
-\boxed{
-\tilde{\nabla}_a v^b = \nabla_a v^b + C^b_{ca}v^c
-}
-\end{equation}
-
-Wir werden später nachweisen, dass es sich bei $C^b_{ca}v^c$ tatsächlich um einen Tensor handelt.
-
+Wie sieht die Differenz von zwei kovarianten Ableitungen aus? Wir betrachten dafür zuerst, wie sie auf Skalarfelder wirkt.
 \begin{lemma}
 Seien $\nabla_a$ und $\tilde{\nabla}_a$ zwei kovariante Ableitungen auf einer Mannigfaltigkeit $M$ und ein Vektorfeld $v^b \in \mathcal{T}^1_0(M)$.
 
-Dann können Skalarfelder $f \in C^\infty(M)$ aus der Wirkung des Differenzentensors herausgezogen werden
+Dann können Skalarfelder $f \in C^\infty(M)$ aus der Wirkung der Differenz der kovarianten Ableitungen herausgezogen werden
 \begin{equation}\label{eq:skalarheraus}
-C^b_{ca}(fv^c) = (\tilde{\nabla}_a - \nabla_a) (fv^b) = f \cdot (\tilde{\nabla}_a - \nabla_a) v^b = f \cdot C^b_{ca}v^c
+(\tilde{\nabla}_a - \nabla_a) (fv^b) = f \cdot (\tilde{\nabla}_a - \nabla_a) v^b
 \end{equation}
 
-Man sagt der Differenzentensor ist \emph{$C^\infty(M)$-linear}.
+D.h. die Differenz der kovarianten Ableitungen ist \emph{$C^\infty(M)$-linear}.
 \end{lemma}
 
 \begin{proof}
@@ -6319,15 +6304,13 @@ Beachte allerdings, dass Skalarfelder aus der kovariante Ableitungen nicht herau
 \end{equation*}
 \end{remark}
 
-\medskip
-
-Wir leiten nun die \textbf{Koordinatendarstellung des Differenzentensors} her.
+Betrachte nun die Differenz in Koordinaten/in einer Karte
 \begin{align*}
-C^b_{ca}v^c = (\tilde{\nabla}_a - \nabla_a) v^b & = (\tilde{\nabla}_a - \nabla_a) (v^i\partial^b_i) \\
+(\tilde{\nabla}_a - \nabla_a) v^b & = (\tilde{\nabla}_a - \nabla_a) (v^i\partial^b_i) \\
 &\overset{\eqref{eq:skalarheraus}}{=} \underbrace{v^i}_{\substack{=v^i \delta^i_j=  v^i\partial^c_jdx^i_c \\ =v^cdx^i_c}}(\tilde{\nabla}_a - \nabla_a) \partial^b_i \\
-& = dx_c^i(\tilde{\nabla}_a - \nabla_a) \partial^b_i \ v^c
+& = dx_c^i(\tilde{\nabla}_a - \nabla_a) \partial^b_i \ v^c =: C^b_{ca}v^c
 \end{align*}
-Damit folgt die koordinatenabhängige Definition des Differenzentensors in der Karte $x^i$
+Das heißt, in Koordinaten (lokal) ist die Differenz ein Tensor $C^b_{ca}$. Damit folgt die koordinatenabhängige Definition des \textbf{Differenzentensors} in der Karte $x^i$
 \begin{equation}
 C^b_{ca} = \underbrace{dx_c^i}_{\substack{\text{lokal} \\ \text{definiert}}} (\tilde{\nabla}_a - \nabla_a) \underbrace{\partial^b_i}_{\substack{\text{lokal} \\ \text{definiert}}}
 \end{equation}
@@ -6352,6 +6335,23 @@ Es gilt
 &= C^b_{ca}
 \end{align*}
 \end{proof}
+
+Damit können wir nun definieren
+\begin{definition}
+Seien $\nabla_a$ und $\tilde{\nabla}_a$ zwei kovariante Ableitungen auf einer Mannigfaltigkeit $M$ und ein Vektorfeld $v^b \in \mathcal{T}^1_0(M)$. Der Unterschied zwischen den beiden definiert den \textbf{Differenzentensor}
+\begin{equation*}
+C^b_{ca}v^c := (\tilde{\nabla}_a - \nabla_a) v^b = \tilde{\nabla}_a v^b - \nabla_a v^b
+\end{equation*}
+\end{definition}
+
+Also reicht es bereits aus, eine kovariante Ableitung zu kennen, um für ein Vektorfeld $v^b$ alle anderen von der Mannigfaltigkeit zu erhalten mit
+\begin{equation}\label{eq:vektorkovar}
+\boxed{
+\tilde{\nabla}_a v^b = \nabla_a v^b + C^b_{ca}v^c
+}
+\end{equation}
+
+Wir werden später nachweisen, dass es sich bei $C^b_{ca}v^c$ tatsächlich um einen Tensor handelt.
 
 \begin{lemma}[Wirkung kovariante Ableitung auf Kovektorfeld]
 Seien $\nabla_a$ und $\tilde{\nabla}_a$ zwei kovariante Ableitungen und
@@ -6629,7 +6629,7 @@ R^c_{dab} v^d = [\nabla_a,\nabla_b] v^c & = [\nabla_a,\nabla_b] (v^i\partial^c_i
 &\overset{\eqref{eq:skalarheraus1}}{=} \underbrace{v^i}_{\substack{=v^i \delta^i_j=  v^i\partial^d_jdx^i_d \\ =v^ddx^i_d}}[\nabla_a,\nabla_b] \partial^c_i \\
 & = dx_d^i[\nabla_a,\nabla_b] \partial^c_i \ v^d
 \end{align*}
-Damit folgt die koordinatenabhängige Definition des Differenzentensors in der Karte $x^i$
+Damit folgt die koordinatenabhängige Definition des Riemanntensors in der Karte $x^i$
 \begin{equation}
 R^c_{dab} = \underbrace{dx_d^i}_{\substack{\text{lokal} \\ \text{definiert}}} [\nabla_a,\nabla_b] \underbrace{\partial^c_i}_{\substack{\text{lokal} \\ \text{definiert}}}
 \end{equation}
@@ -6770,6 +6770,30 @@ Zur Vereinfachung verwenden wir die Kurzschreibweise
 (u \nabla) := (u^a \nabla_a)
 \end{equation*}
 
+\begin{tcolorbox}[noVO]
+\begin{remark}[Nicht Teil der VO] \breakafterhead
+
+{\footnotesize Quelle: \url{https://de.wikipedia.org/wiki/Substantielle_Ableitung#Herleitung}}\newline
+Sei $\vec x = (x,y,z)$ ein Ortsvektor, $\vec u=(u_x,u_y,u_z)=(\dot x, \dot y, \dot z)$ ein Geschwindigkeitsvektor und $\vec\Phi(\vec x,t)=(\Phi_x,\Phi_y,\Phi_z)$ ein Vektorfeld. Die \textbf{konvektive Ableitung} ist der Operator
+\begin{equation*}
+(\vec u\cdot\nabla)
+= u_x\frac{\partial}{\partial x} + u_y\frac{\partial}{\partial y} + u_z\frac{\partial}{\partial z} = \dot x\ \frac{\partial}{\partial x} + \dot y\ \frac{\partial}{\partial y} + \dot z\ \frac{\partial}{\partial z}
+\end{equation*}
+wirkt auf das Vektorfeld $\vec\Phi$  komponentenweise:
+\begin{equation*}
+(\vec u\cdot\nabla)\vec\Phi
+=
+\begin{pmatrix}
+u_x \frac{\partial\Phi_x}{\partial x} + u_y \frac{\partial\Phi_x}{\partial y} + u_z \frac{\partial\Phi_x}{\partial z} \\
+u_x \frac{\partial\Phi_y}{\partial x} + u_y \frac{\partial\Phi_y}{\partial y} + u_z \frac{\partial\Phi_y}{\partial z}  \\
+u_x \frac{\partial\Phi_z}{\partial x} + u_y \frac{\partial\Phi_z}{\partial y} + u_z \frac{\partial\Phi_z}{\partial z} 
+\end{pmatrix}
+\end{equation*}
+Dies ist eine räumliche Ableitung ohne Zeitanteil. Sie beschreibt die Änderung des Vektorfeldes $\vec\Phi$ entlang der Richtung $\vec u$. 
+\end{remark}
+\end{tcolorbox}
+\vspace{1em}
+
 Existieren $\nabla$-parallele Vektorfelder überhaupt?\newline
 Ja! Wir konstruieren nun eines.
 
@@ -6871,6 +6895,7 @@ also zu einer Geraden $x(t)=x_0+ \dot x_0t$.
 Autoparallele Kurven sind daher die Verallgemeinerung von Geraden auf gekrümmte Räume. 
 
 \section{Metrik und Levi-Civita-Ableitung}
+{\footnotesize gutes Video: I finally understood Einstein's Metric Tensor! \url{https://www.youtube.com/watch?v=bV7KeKAPBQc}}\newline
 Um Geodäten als kürzeste Verbindung zwischen zwei Punkten im gekrümmten Raum zu beschreiben, brauchen wir einen Abstandsbegriff.
 
 \begin{definition}
@@ -6990,7 +7015,7 @@ Für Kovektoren gilt dann
 \nabla_a \omega_b = \tilde\nabla_a \omega_b - C^c_{ab}\,\omega_c
 \end{equation}
 
-Somit gilt bem metrischen Tensor:
+Dies kann auf beliebig viele kovariante Indizes fortgeführt werden. Somit gilt beim metrischen Tensor:
 \begin{equation*}
 0 = \nabla_a g_{bc}
 = \tilde{\nabla}_a g_{bc}
@@ -7007,7 +7032,7 @@ Durch zyklische Permutation der Indizes und Ausnutzung der Symmetrie (folgt aus 
 \begin{equation*}
 C^c_{ab} = C^c_{ba}
 \end{equation*}
-folgt schließlich
+folgt schließlich (Rechenschritte aus Zeitgründen ausgelassen)
 \begin{equation*}
 C^c_{ab}
 =
@@ -7257,7 +7282,7 @@ Um in \eqref{eq:newtalbert} auf die zweite Ableitung zu kommen, müssen wir aus 
 \begin{equation}
 R_{bd} := R^a_{bad}
 \end{equation}
-$R_{bd}$ wird Ricci-Tensor genannt.
+$R_{bd}$ wird \textbf{Ricci-Tensor} genannt.
 
 Damit gilt
 \begin{equation*}
@@ -7269,7 +7294,7 @@ Die Materie-/Energiedichte $\rho_m$ kann mit dem \textbf{Energie-Impuls-Tensors}
 \rho_m = T_{ab}\,u^a u^b
 \end{equation*}
 
-Der \href{https://en.wikipedia.org/wiki/Stress%E2%80%93energy_tensor}{Energie-Impuls-Tensor} beschreibt die Dichte und den Fluss von Energie und Masse in der Raumzeit. Er ist eine Verallgemeinerung des Stress-Tensors.
+Der \href{https://en.wikipedia.org/wiki/Stress%E2%80%93energy_tensor}{Energie-Impuls-Tensor} beschreibt die Dichte und den Fluss von Energie und Masse in der Raumzeit. Salopp gesagt die Materie- und Energieverteilung in der Raumzeit. Er ist eine Verallgemeinerung des Stress-Tensors.
 
 Damit ergibt sich als erster Ansatz (Vorstufe Einsteinsche Feldgleichung 1914)
 \begin{equation*}
@@ -7288,7 +7313,7 @@ Aus der (kontrahierten) Bianchi-Identität folgt jedoch
 \begin{equation}\label{eq:bianci}
 \nabla^a R_{ab} = \frac{1}{2}\,\nabla_b R
 \end{equation}
-wobei $R := g^{ab}R_{ab}$ der Krümmungsskalar, der im Allgemeinen nicht konstant ist, und daher $\nabla_b R \neq 0$, also $\nabla^a R_{ab} \neq 0$.
+wobei $R := g^{ab}R_{ab}$ der \textbf{Krümmungsskalar}, der im Allgemeinen nicht konstant ist, und daher $\nabla_b R \neq 0$, also $\nabla^a R_{ab} \neq 0$.
 
 Einstein betrachtete daher den Ausdruck
 \begin{align*}
@@ -7379,9 +7404,9 @@ Dieser Zusatzterm ist mathematisch konsistent, da sowohl der Einstein-Tensor $G_
 \end{equation*}
 Die Forderung der lokalen Energie-Impuls-Erhaltung $\nabla^aT_{ab}=0$ bleibt somit erhalten.
 
-Spätere Beobachtungen (insbesondere die Rotverschiebung ferner Galaxien durch Edwin Hubble) zeigten jedoch, dass sich das Universum tatsächlich ausdehnt. Einstein verwarf daraufhin die kosmologische Konstante und bezeichnete ihre Einführung später als seine \glqq größte Eselei\grqq.
+Spätere Beobachtungen (insbesondere die \href{https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-cosmological-redshift/}{Rotverschiebung} ferner Galaxien durch Edwin Hubble, 1929) zeigten jedoch, dass sich das Universum tatsächlich ausdehnt. Einstein verwarf daraufhin die kosmologische Konstante und bezeichnete ihre Einführung später als seine \glqq größte Eselei\grqq.
 
-Heute spielt die kosmologische Konstante erneut eine Rolle: Aktuelle kosmologische Beobachtungen deuten auf eine beschleunigte Expansion des Universums hin, die durch eine positive kosmologische Konstante erklärt werden kann. In diesem Kontext kann $\Lambda$ als Energie des Vakuums interpretiert werden (vgl. dunkle Energie). 
+Heute spielt die kosmologische Konstante erneut eine Rolle: kosmologische Beobachtungen Mitte der 1990ern deuten auf eine beschleunigte Expansion des Universums hin, die durch eine positive kosmologische Konstante erklärt werden kann. In diesem Kontext kann $\Lambda$ als Energie des Vakuums interpretiert werden (vgl. dunkle Energie). 
 
 Auf der Skala von Galaxien oder kleineren Systemen ist der Einfluss der kosmologischen Konstante vernachlässigbar.
 \vspace{1em}
@@ -7404,7 +7429,7 @@ wobei $\kappa= \frac{8\pi G}{c^4}$ die \textbf{einsteinsche Gravitationskonstant
 
 \heading{Fazit}
 
-Die \textbf{zentrale Aussage der Allgemeinen Relativitätstheorie} lautet: Gravitation ist keine Kraft, sondern eine Konsequenz der Raumzeitkrümmung. Objekte bewegen sich unter Einfluss der Gravitation auf geradest möglichen Bahnen (Geodäten). Die Raumzeitmetrik $g_{ab}$ entsteht aus dem Wechselspiel zwischen Geometrie und Materie.
+Die \textbf{zentrale Aussage der Allgemeinen Relativitätstheorie} lautet: Gravitation ist keine Kraft, sondern eine Konsequenz der Raumzeitkrümmung. Frei fallende Objekte bewegen sich unter Einfluss der Gravitation auf geradest möglichen Bahnen (Geodäten). Die Raumzeitmetrik $g_{ab}$ entsteht aus dem Wechselspiel zwischen Geometrie und Materie.
 
 
 % --- Back matter ---
