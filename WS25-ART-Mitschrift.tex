@@ -1732,7 +1732,7 @@ Beispiele: $(\mathbb{R}^n, +, \cdot)\ \text{über dem Körper } \mathbb{R}, \ (\
     Wir verwenden ab jetzt für Körperaddition \& Vektoraddition $+$ und Körpermultiplikation \& Skalarmultiplikation $\cdot$, um die Notation zu vereinfachen. 
 \end{remark}
 
-Es folgt bereits und muss somit nicht extra gefordert werden:
+Es folgt bereits die Existenz des Nullvektors und muss somit nicht extra gefordert werden:
 \vspace{-1em}
 
 
@@ -1821,7 +1821,7 @@ Annahme: es gibt zwei verschiedene Mengen von Koeffizienten $(\lambda^\alpha)_{\
 Dann ist
 \begin{equation*}
 \begin{aligned}
-0 & = v - v = \lambda^\alpha v_\alpha - \mu^\alpha v_\alpha \overset{\text{Distr.ges.}}{=} (\lambda^\alpha-\mu^\alpha)v_\alpha \\
+0 & \overset{\substack{\text{additives} \\ \text{Inverses}}}{=} v - v = \lambda^\alpha v_\alpha - \mu^\alpha v_\alpha \overset{\text{Distr.ges.}}{=} (\lambda^\alpha-\mu^\alpha)v_\alpha \\
 & \overset{v_\alpha \text{ l.u.}}{\Rightarrow} \lambda ^\alpha - \mu ^\alpha = 0 \ \Rightarrow \ \lambda^\alpha = \mu^\alpha, \ \forall \alpha \in I
 \end{aligned}
 \end{equation*}
@@ -1938,8 +1938,7 @@ Eine Relation $\leq \, \subseteq M^2$ auf einer Menge $M$ heißt \textbf{Halbord
     \end{equation*}
     Diese beiden Mengen sind also \textit{nicht vergleichbar}.
     
-    \item (nicht Teil der VO) Betrachte $(\mathbb{C}, \leq)$, wobei $\mathbb{C}$ als Menge aufgefasst wird.  
-    Dann gilt:
+    \item (nicht Teil der VO) Betrachte $(\mathbb{C}, \leq)$, wobei $\mathbb{C}$ als Menge aufgefasst wird. Dann gilt
     \begin{equation*}
     1 + 0 \cdot i = 1 \leq 2 = 2 + i \cdot 0, \qquad 0 + 1 \cdot i = i \leq 2 \cdot i = 0 + 2 \cdot i 
     \end{equation*}
@@ -2095,7 +2094,7 @@ Also gilt:
 Nun unterscheiden wir wieder zwei Möglichkeiten:
 
 \begin{itemize}
-    \item Wenn $\lambda = 0$, folgt mit \eqref{eq:linabh}, dass $\lambda^{\alpha} v_\alpha = 0$. Da $(v_\alpha)_{\alpha \in I}$ l.u. muss also $\lambda^{\alpha} = 0$ für alle $\alpha \in I$. Das steht jedoch im Widerspruch zur Annahme, dass $(\lambda^{\alpha})_{\alpha \in I} \neq (0)_{\alpha \in I}$. Dieser Fall kann nicht eintreten.
+    \item Wenn $\lambda = 0$, folgt mit \eqref{eq:linabh}, dass $\lambda^{\alpha} v_\alpha = 0$ und somit eine nichttriviale Darstellung der Null. Da aber $(v_\alpha)_{\alpha \in I}$ l.u. sind, führt das zu einem Widerspruch. Dieser Fall kann nicht eintreten.
     \item Wenn $\lambda \neq 0$, dann gilt:
     \begin{equation*}
     \lambda v = - \lambda^{\alpha} v_\alpha
@@ -2202,7 +2201,7 @@ V^\sim := L(V, \Gamma)
 \end{equation*}
 \end{definition}
 
-Jeder Vektorraum hat genau einen Dualraum.
+Jeder Vektorraum hat genau einen Dualraum. Die Elemente aus $V^\sim$ werden auch \textbf{Linearform} genannt.
 
 \begin{lemma}\label{lem:DualerVR}
 $V^\sim$ ist ein Vektorraum über dem Körper $\Gamma$.
@@ -2260,6 +2259,9 @@ Sei $(V,\Gamma)$ ein Vektorraum mit einer Basis $(E_\alpha)_{\alpha\in I}$. Für
   \varphi_\alpha \coloneqq \varphi(E_\alpha) \in \Gamma, \quad \alpha\in I
 \end{equation*}
 
+Jede lineare Abbildung ist durch die Bilder von Basisvektoren eindeutig bestimmt:
+\vspace{-1em}
+
 \begin{theorem}\label{thm:lineareAbbEindeutig}
 Sei $(V,\Gamma)$ ein Vektorraum mit einer Basis $(E_\alpha)_{\alpha \in I}$.  
 Für jede Familie $(\varphi_\alpha)_{\alpha \in I}$ von Skalaren aus $\Gamma$ existiert genau eine lineare Abbildung
@@ -2268,10 +2270,10 @@ Für jede Familie $(\varphi_\alpha)_{\alpha \in I}$ von Skalaren aus $\Gamma$ ex
 \end{equation*}
 mit
 \begin{equation}\label{eq:phi}
-\varphi(E_\alpha) = \varphi_\alpha \qquad \forall\, \alpha \in I.
+\varphi(E_\alpha) = \varphi_\alpha, \qquad \forall\, \alpha \in I
 \end{equation}
 
-Das heißt $\varphi \in V^\sim$ wird eindeutig durch $(\varphi_\alpha)_{\alpha\in I}$ bestimmt.
+Das heißt $\varphi \in V^\sim$ wird eindeutig durch $(\varphi_\alpha)_{\alpha\in I}$ bestimmt. 
 \end{theorem}
 
 \begin{proof} \breakafterhead
@@ -2282,7 +2284,7 @@ Das heißt $\varphi \in V^\sim$ wird eindeutig durch $(\varphi_\alpha)_{\alpha\i
     \begin{equation*}
       \varphi(v) = \varphi(v^\alpha E_\alpha)
       \overset{\varphi \text{ linear}}{=} v^\alpha \varphi(E_\alpha)
-      \overset{\eqref{eq:phi}}{=} v^\alpha \varphi_\alpha.
+      \overset{\eqref{eq:phi}}{=} v^\alpha \varphi_\alpha
     \end{equation*}
     \item zz: $\varphi$ ist eindeutig \newline
     Seien $\varphi,\psi\in V^\sim$ mit $\varphi(E_\alpha)=\psi(E_\alpha)$ für alle $\alpha$, so folgt für jedes $v=v^\alpha E_\alpha \in V$
@@ -2348,12 +2350,12 @@ Sei $(E_\alpha)_{\alpha \in I}$ eine Basis von $V$ und $(e^\alpha)_{\alpha \in I
 
 Dann kann gezeigt werden, dass die Abbildung
 \begin{equation*}
-    \Phi : V \to V^\sim, \qquad \Phi(v^\alpha E_\alpha) = v^\alpha e^\alpha
+    \Phi : V \to V^\sim, \qquad \Phi(v^\alpha E_\alpha) = v_\alpha e^\alpha
 \end{equation*}
 
 ein Isomorphismus ist. Wird eine andere Basis gewählt, so erhält man einen \emph{anderen} Isomorphismus $V \to V^*$. Daher ist diese Abbildung nicht kanonisch.
 
-Da $V \cong V^\sim$ wenn dim$V<\infty$ ist somit dim$V$ = dim$V^\sim$. Wenn dim$V=\infty$ existieren keine bijektiv und linearen Abbildungen $V \to V^\sim$, nur injektive und lineare Abbildungen mit $\Phi(V) \subsetneq V^\sim$. Man sagt $V$ wird in $V^\sim$ eingebettet. Dann ist dim$V<$ dim$V^\sim$.
+Da $V \cong V^\sim$ wenn dim$V<\infty$ ist somit dim$V$ = dim$V^\sim$. Wenn dim$V=\infty$ existieren keine bijektiv und linearen Abbildungen $V \to V^\sim$, nur injektive und lineare Abbildungen mit $\Phi(V) \subsetneq V^\sim$. Man sagt $V$ wird in $V^\sim$ eingebettet. 
 \end{remark}
 \end{tcolorbox}
 
@@ -2439,12 +2441,11 @@ V^\sim\otimes V^\sim \subseteq \mathfrak{Bil}(V,\Gamma)
 Da $V^\sim \otimes V^\sim$ ein Vektorraum ist, kann auch gezeigt werden, dass er ein Untervektorraum von $\mathfrak{Bil}(V,\Gamma)$ ist.
 \vspace{2em}
 
-In der Vorlesung wird das Tensorprodukt $\varphi \otimes \psi$ direkt als bilineare Funktion definiert. In der Literatur findet man auch die folgende Definition.
-\vspace{1em}
+\begin{tcolorbox}[noVO] \breakafterhead
 
-\begin{tcolorbox}[noVO]
-{\footnotesize Quellen: \href{https://duncan.math.sc.edu/s23/math742/notes/lin_alg.pdf}{Multilinear Algebra by Alexander Duncan, 3. Kapitel Tensor Products, Definition 3.1.} \\
-\url{https://en.wikipedia.org/wiki/Tensor_product#Linearly_disjoint}}
+{\footnotesize Quellen: \href{https://duncan.math.sc.edu/s23/math742/notes/lin_alg.pdf}{Multilinear Algebra by Alexander Duncan, 3. Kapitel Tensor Products, Definition 3.1.}\newline
+\url{https://en.wikipedia.org/wiki/Tensor_product#Linearly_disjoint}}\newline
+In der Vorlesung wird das Tensorprodukt $\varphi \otimes \psi$ direkt als bilineare Funktion definiert. In der Literatur findet man auch die folgende Definition.
 
 \begin{definition}[Nicht Teil der Vorlesung]\label{def:tensorproduktFormal}
 Seien $V$ ein Vektorraum über $\Gamma$ und $V^\sim$ sein Dualraum. Für zwei Funktionen $\varphi,\psi \in V^\sim$ ist das \textbf{Tensorprodukt} definiert als
@@ -2498,6 +2499,35 @@ Das heißt:
 \end{itemize}
 \end{definition}
 \end{tcolorbox}
+\vspace{1em}
+
+Jede bilineare Abbildung ist durch die Bilder von Basisvektoren eindeutig bestimmt:
+\vspace{-1em}
+
+\begin{theorem}\label{thm:bilineareAbbEindeutig}
+Sei $(V,\Gamma)$ ein Vektorraum mit einer Basis $(E_\alpha)_{\alpha \in I}$.  
+Für jede Familie $(f_{\alpha\beta})_{(\alpha,\beta) \in I}$ von Skalaren aus $\Gamma$ existiert genau eine bilineare Abbildung $f\in\mathfrak{Bil}(V,\Gamma)$ mit
+\begin{equation}\label{eq:ftensor}
+f(E_\alpha, E_\beta) = f_{\alpha\beta} \in \Gamma
+\end{equation}
+
+Das heißt $f\in\mathfrak{Bil}(V,\Gamma)$ wird eindeutig durch $(f_{\alpha\beta})_{(\alpha,\beta) \in I}$ bestimmt. 
+\end{theorem}
+\begin{proof} \breakafterhead
+
+\begin{itemize}
+    \item zz: $f$ wird durch $f_{\alpha\beta}$ bestimmt.
+Für beliebige Vektoren $v = v^\alpha E_\alpha$ und $w = w^\beta E_\beta$ gilt:
+\begin{equation*}
+f(v,w) = f(v^\alpha E_\alpha,\, w^\beta E_\beta)
+\overset{f \text{ bilinear}}{=} v^\alpha w^\beta f(E_\alpha, E_\beta)
+\overset{\eqref{eq:ftensor}}{=} v^\alpha w^\beta f_{\alpha\beta}
+\end{equation*}
+Die Abbildung wird also in der Tat durch $f_{\alpha\beta}$ bestimmt. 
+
+\item Die Beweisführung der Eindeutigkeit ist gleich wie die im Beweis von \eqref{thm:lineareAbbEindeutig}: zwei Funktionen, die auf einer Basis übereinstimmen, stimmen überall überein.
+\end{itemize}
+\end{proof}
 
 \begin{theorem}[mit \cref{def:tensorproduktVO}]\label{thm:biltensor}
 Wenn der Vektorraum $V$ endlich dimensional ist, ist der Tensorproduktraum bereits \textit{mengentheoretisch} gleich dem Raum der bilinearen Abbildungen:
@@ -2506,33 +2536,18 @@ V^\sim \otimes V^\sim = \mathfrak{Bil}(V,\Gamma)
 \end{equation*}
 \end{theorem}
 
-
 \begin{proof} 
 $\subseteq$ wurde bereits in \eqref{eq:teilmenge} argumentiert. Daher zeigen wir nun $\supseteq$.
 
 zz: $\forall f \in \mathfrak{Bil}(V,\Gamma) \Rightarrow f \in V^\sim\otimes V^\sim$
 
 Sei $(E_\alpha)_{\alpha\in I}$ eine Basis des Vektorraums $V$ und $f\in\mathfrak{Bil}(V,\Gamma)$. 
-Wir definieren
-\begin{equation}\label{eq:ftensor}
-f(E_\alpha, E_\beta) =: f_{\alpha\beta} \in \Gamma
-\end{equation}
 
-Zeige: $f$ wird durch $f_{\alpha\beta}$ eindeutig bestimmt.
-
-Für beliebige Vektoren $v = v^\alpha E_\alpha$ und $w = w^\beta E_\beta$ gilt:
-\begin{equation*}
-f(v,w) = f(v^\alpha E_\alpha,\, w^\beta E_\beta)
-\overset{f \text{ bilinear}}{=} v^\alpha w^\beta f(E_\alpha, E_\beta)
-\overset{\eqref{eq:ftensor}}{=} v^\alpha w^\beta f_{\alpha\beta}
-\end{equation*}
-Die Abbildung wird also in der Tat durch $f_{\alpha\beta}$ bestimmt. Die Beweisführung der Eindeutigkeit ist gleich wie die im Beweis von \eqref{thm:lineareAbbEindeutig}: zwei Funktionen, die auf einer Basis übereinstimmen, stimmen überall überein.
-
-Kann \eqref{eq:ftensor} nun verwenden, um die Aussage zu zeigen: \newline
+Kann \cref{thm:bilineareAbbEindeutig} nun verwenden, um die Aussage zu zeigen: \newline
 Sei $(e^\alpha)_{\alpha\in I}$ die duale Basis. Dann gilt
 \begin{align*}
 f(E_\alpha, E_\beta)
-&\overset{\eqref{eq:f}}{=} f_{\alpha \beta}
+&\overset{\eqref{eq:ftensor}}{=} f_{\alpha \beta}
 = f_{\gamma \delta} \delta_\alpha^\gamma \delta_\beta^\delta
 \overset{\substack{\text{duale} \\ \text{Basis}}}{=} f_{\gamma\delta}\,e^\gamma(E_\alpha)\,e^\delta(E_\beta) \\
 &\overset{\substack{\eqref{eq:tensorprod}}}{=} f_{\gamma \delta}(e^\gamma \otimes e^\delta)(E_\alpha, E_\beta) 
@@ -2543,11 +2558,11 @@ Damit das letzte Gleichheitszeichen gilt, also die Definition der Linearkombinat
 
 Damit stimmen $f$ und $f_{\gamma \delta}e^\gamma \otimes e^\delta$ auf einer Basis überein und stimmen somit überall überein. Also ist gezeigt, dass jede bilineare Abbildung $f$ als endliche Summe
 \begin{equation*}
-f = f_{\gamma\delta}\, e^\gamma \otimes e^\delta \in V^\sim\otimes V^\sim.
+f = f_{\gamma\delta}\, e^\gamma \otimes e^\delta \in V^\sim\otimes V^\sim
 \end{equation*}
 geschrieben werden kann. Daraus folgt
 \begin{equation*}
-\mathfrak{Bil}(V,\Gamma) \subseteq V^\sim\otimes V^\sim.
+\mathfrak{Bil}(V,\Gamma) \subseteq V^\sim\otimes V^\sim
 \end{equation*}
 
 \end{proof}
@@ -2584,10 +2599,10 @@ Wenn der Vektorraum $V$ unendlich dimensional ist, ist $\Phi$ nicht surjektiv. E
     \item zz: Die Familie $\{ e^\alpha \otimes e^\beta \} \subseteq \mathfrak{Bil}(V,\Gamma)$ ist linear unabhängig.
     
         Also zz: $\forall v,w \in V: \ (\lambda_{\alpha \beta} e^\alpha \otimes e^\beta)(v,w)=0 \ \Rightarrow \ \lambda_{\alpha \beta}=0 \ \forall \alpha, \beta \in I$ \newline        
-        Nach \cref{thm:lineareAbbEindeutig} ist jede lineare Abbildung durch die Bilder der Vektoren einer Basis eindeutig bestimmt. Daher genügt es, die Auswertung von $e^\alpha \otimes e^\beta \in \mathfrak{Bil}(V,\Gamma)$ auf Basiselementen zu betrachten: \newline
+        Nach \cref{thm:bilineareAbbEindeutig} ist jede bilineare Abbildung durch die Bilder von Basisvektoren eindeutig bestimmt. Daher genügt es, die Auswertung von $e^\alpha \otimes e^\beta \in \mathfrak{Bil}(V,\Gamma)$ auf Basiselementen zu betrachten:
         \begin{equation*}
           0 = (\lambda_{\alpha \beta} e^\alpha \otimes e^\beta)(E_\gamma, E_\delta) 
-          \overset{\eqref{def:tensorproduktVO}}{=} \lambda_{\alpha \beta} e^\alpha (E_\gamma) \cdot e^\beta (E_\delta)
+          \overset{\eqref{eq:tensorprod}}{=} \lambda_{\alpha \beta} e^\alpha (E_\gamma) \cdot e^\beta (E_\delta)
           \overset{\eqref{eq:dualeBasis}}{=} \lambda_{\alpha \beta} \delta^\alpha_\gamma \delta^\beta_\delta = \lambda_{\gamma \delta} \quad \forall \gamma, \delta \in I
         \end{equation*}
 
@@ -3840,12 +3855,15 @@ Seien $(X,\mathfrak{X})$ und $(Y,\mathfrak{Y})$ topologische Räume und $f : X \
 \end{itemize}
 \end{remark}
 
-\begin{example}
-Die Funktion $f: (X, \mathfrak{X}) \to (Y, \underbrace{\{\emptyset,Y\}}_{\text{indiskrete Top.}})$ ist stetig: \newline
+\begin{example}\label{ex:stetig}\breakafterhead
+
+\begin{itemize}
+    \item Die Funktion $f: (X, \mathfrak{X}) \to (Y, \underbrace{\{\emptyset,Y\}}_{\text{indiskrete Top.}})$ ist stetig: \newline
 $ f^{-1}(\emptyset)=\{x \in X \ | \ f(x) \in \emptyset\}=\emptyset$ und $ f^{-1}(Y)=\{x \in X \ | \ f(x) \in Y\}=X$. Da immer $\emptyset, X \in \mathfrak{X}$ gilt, ist $f$ stetig.
 
-Die Funktion $f:(X,\underbrace{\mathcal{P}(X)}_{\text{diskrete Top.}}) \to (Y, \mathfrak{Y})$ ist stetig: \newline
+\item Die Funktion $f:(X,\underbrace{\mathcal{P}(X)}_{\text{diskrete Top.}}) \to (Y, \mathfrak{Y})$ ist stetig: \newline
 $\forall \mathcal{O}' \in \mathfrak{Y}: f^{-1}(\mathcal{O}') \subseteq X$ und somit ist $f^{-1}(\mathcal{O}') \in \mathcal{P}(X)$.
+\end{itemize}
 \end{example}
 
 
@@ -4727,7 +4745,13 @@ Ein Vektorraum $V$ über dem Körper $\mathbb{K}\in\{\mathbb{R},\mathbb{C}\}$, v
 
 \begin{tcolorbox}[noVO]
 \begin{remark}[Nicht Teil der VO]\label{rem:topVR}
-Jeder Vektorraum kann, versehen mit der indiskreten Topologie, zu einem topologischen Vektorraum gemacht werden, da die algebraischen Operationen Vektoraddition und Skalarmultiplikation bzgl. der indiskreten Topologie stetig sind.
+Jeder Vektorraum kann, versehen mit der indiskreten Topologie, zu einem topologischen Vektorraum gemacht werden, denn: \newline
+Wegen \cref{ex:stetig} sind alle Funktionen $f:(X,\mathfrak{X}) \to (Y,\{\emptyset, \mathfrak{Y}\})$ bzgl. der indiskreten Topologie stetig, wobei $(X,\mathfrak{X})$ ein beliebiger topologischer Raum ist. Somit sind auch die algebraischen Operationen Vektoraddition und Skalarmultiplikation 
+\begin{align*}
++ &: V\times V \to V,\quad (u,w)\mapsto u + w \\
+\cdot &: \Gamma\times V \to V,\quad (\lambda,u)\mapsto \lambda\cdot u
+\end{align*}
+bzgl. der indiskreten Topologie stetig. Somt wird jeder Vektorraum mit der indiskreten Topologie zu einem topologischen Vektorraum.
 \end{remark}
 
 \begin{remark}[Nicht Teil der VO] \breakafterhead
