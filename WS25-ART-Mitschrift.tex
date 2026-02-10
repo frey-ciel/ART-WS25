@@ -3802,7 +3802,6 @@ Sei $\tilde{x} \in X$ und $(x_n)_{n\in\mathbb{N}} \subset X$ eine bel. Folge. Wa
 \exists N_X \in \mathbb{N} \
 \forall n \ge N_X \text{ sodass } x_n \in X
 \end{equation*}
-
 Da aber die Folge bereits ganz in $X$ liegt, tritt dies schon ab dem 1. Folgenglied ein. So ein Index existiert also und somit konvergiert die Folge gegen $\tilde{x}$. Da die Folge beliebig gewählt war, konvergieren also alle Folgen aus $X$ gegen $\tilde{x}$. Dasselbe kann man nun für alle $x \in X$ durchspielen. Es folgt: alle Folgen in $X$ konvergieren gegen alle $x \in X$. Der Grenzwert der Folgen ist nicht eindeutig. Die Konvergenz bezüglich der indiskreten Topologie besitzt somit nur sehr geringe Aussagekraft.
 
 Jede Folge  $(x_n)_{n\in\mathbb{N}} \subset X$ muss hier nur \underline{eine} Bedingung erfüllen: die Folgenglieder müssen ab einem Index $N_X$ in $X$ liegen.
@@ -3850,7 +3849,11 @@ Die Menge $f^{-1}(B)$ ist immer definiert, $f$ muss dafür nicht invertierbar se
 \begin{definition}
 Seien $(X,\mathfrak{X})$ und $(Y,\mathfrak{Y})$ topologische Räume.
 
-Eine Abbildung $f : X \to Y$ heißt \textbf{stetig} :$\Leftrightarrow$ $\forall \ \mathcal{O}' \in \mathfrak{Y}: f^{-1}(\mathcal{O}') \in \mathfrak{X}$.
+Eine Abbildung $f : X \to Y$ heißt \textbf{stetig} genau dann wenn
+\begin{equation*}
+\forall \, \mathcal{O}' \in \mathfrak{Y}: \, f^{-1}(\mathcal{O}') \in \mathfrak{X}
+\end{equation*}
+D.h. die Urbilder offener Mengen in $\mathfrak{Y}$ sind offen in $\mathfrak{X}$.
 \end{definition}
 Also hängt Stetigkeit ausschließlich von der zugrunde liegenden Topologie ab und benötigt keinen Abstandsbegriff.
 
@@ -3969,12 +3972,12 @@ f(x_n) \overset{\mathfrak{Y}}{\to} f(x) \in Y
 \end{proposition}
 
 \begin{proof}
-zz: $\forall \mathcal{O} \in \mathfrak{Y}:\ f(x) \in \mathcal{O} \ \exists \ N_\mathcal{O} \in \mathbb{N} \ \forall n \ge N_\mathcal{O} \text{ sodass } f(x_n) \in \mathcal{O}$
+zz: $\forall \mathcal{O} \in \mathfrak{Y} \text{ mit}\ f(x) \in \mathcal{O} \ \exists \, N_\mathcal{O} \in \mathbb{N} \ \forall n \ge N_\mathcal{O}: \, f(x_n) \in \mathcal{O}$
 
 Sei $\mathcal{O} \in \mathfrak{Y}$ beliebig mit $f(x) \in \mathcal{O}$. Dann ist $x \in f^{-1}(\mathcal{O})$.\newline
 Da $f$ stetig ist, gilt $f^{-1}(\mathcal{O}) \in \mathfrak{X}$. Da $x_n \overset{\mathfrak{X}}{\to} x \in X$ gilt:
 \begin{equation*}
-\exists \ N_{f^{-1}(\mathcal{O})} \in \mathbb{N} \ \forall n \ge N_{f^{-1}(\mathcal{O})} \text{ sodass } x_n \in f^{-1}(\mathcal{O})
+\exists \ N_{f^{-1}(\mathcal{O})} \in \mathbb{N} \ \forall n \ge N_{f^{-1}(\mathcal{O})}: \, x_n \in f^{-1}(\mathcal{O})
 \end{equation*}
 
 Daraus folgt (mit Def. Urbild)
@@ -4010,7 +4013,7 @@ f^{-1}(\emptyset)
 =
 \{x \in X \mid f(x) \in \emptyset\}
 =
-\emptyset,
+\emptyset
 \end{equation*}
 also $\emptyset \in \mathfrak{X}_f$.
 
@@ -4020,7 +4023,7 @@ f^{-1}(Y)
 =
 \{x \in X \mid f(x) \in Y\}
 =
-X,
+X
 \end{equation*}
 also $X \in \mathfrak{X}_f$.
 
@@ -4061,12 +4064,12 @@ Insbesondere gilt
 \begin{equation*}
 O_1 \cap O_2
 =
-f^{-1}(\mathcal{O}_1' \cap \mathcal{O}_2').
+f^{-1}(\mathcal{O}_1' \cap \mathcal{O}_2')
 \end{equation*}
 
 und es folgt
 \begin{equation*}
-O_1 \cap O_2 \in \mathfrak{X}_f.
+O_1 \cap O_2 \in \mathfrak{X}_f
 \end{equation*}
 
     \item[(O3)] zz: $(\mathcal{O}_\alpha)_{\alpha \in I} \subseteq \mathfrak{X}_f:\ \bigcup_{\alpha \in I} \mathcal{O}_\alpha \in \mathfrak{X}_f$ \newline
@@ -4076,7 +4079,7 @@ Sei $(O_\alpha)_{\alpha \in I} \subseteq \mathfrak{X}_f$.
 Dann existieren offene Mengen $(\mathcal{O}'_\alpha)_{\alpha \in I} \subseteq \mathfrak{Y}$ mit
 \begin{equation*}
 O_\alpha = f^{-1}(\mathcal{O}'_\alpha)
-\quad \text{für alle } \alpha \in I.
+\quad \text{für alle } \alpha \in I
 \end{equation*}
 
 Wir betrachten die Vereinigung:
@@ -4126,7 +4129,7 @@ und damit
 
 \begin{definition}
 Die so definierte Topologie $\mathfrak{X}_f$ heißt die \textbf{initiale Topologie}
-bezüglich der Abbildung $f : X \to (Y,\mathfrak{Y})$.
+bezüglich der Abbildung $f : (X,\mathfrak{X}_f)  \to (Y,\mathfrak{Y})$.
 \end{definition}
 
 Sie ist die \emph{gröbste} Topologie auf $X$, für die $f$ stetig ist. Jede andere Topologie auf $X$, bezüglich der $f$ stetig ist, ist feiner als $\mathfrak{X}_f$.
@@ -4145,7 +4148,7 @@ Sei $(X,\mathfrak{X})$ ein topologischer Raum und sei $U \subseteq X$ eine Teilm
 \begin{minipage}[t]{0.85\textwidth}
 Zu diesem Zweck betrachten wir die sogenannte \textbf{kanonische Einbettungsabbildung}
 \begin{equation*}
-i_U : U \to X, \qquad i_U(x) := x.
+i_U : U \to X, \qquad i_U(x) := x
 \end{equation*}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.15\textwidth}
@@ -4162,7 +4165,7 @@ i_U^{-1}(\mathcal{O}) =
 \end{equation*}
 
 \begin{definition}
-Die \textbf{Spurtopologie} oder \textbf{Teilmengentopologie} auf $U$ ist definiert durch
+Sei $(X,\mathfrak{X})$ ein topologischer Raum und sei $U \subseteq X$. Die \textbf{Spurtopologie} oder \textbf{Teilmengentopologie} auf $U$ ist definiert durch
 \begin{equation*}
 \mathfrak{U}
 :=
@@ -4228,8 +4231,11 @@ Ein Homöomorphismus dehnt, staucht, verbiegt, verzerrt einen Gegenstand so, das
 
 \begin{itemize}
     \item zz: $g^{-1}(\mathfrak{X})=\mathfrak{Y}$
-    
-Aufgrund der Stetigkeit von $f$ gilt: $f^{-1}(\mathfrak{Y}) \subseteq \mathfrak{X}$
+
+\begin{itemize}
+\item["$\subseteq$\textquotedbl] Da $g$ stetig ist, gilt: $g^{-1}(\mathfrak{X}) \subseteq \mathfrak{Y}$
+
+\item["$\supseteq$\textquotedbl] Aufgrund der Stetigkeit von $f$ gilt: $f^{-1}(\mathfrak{Y}) \subseteq \mathfrak{X}$
 
 Wir möchten darauf $g^{-1}$ anwenden. Daher zeigen wir die folgende allgemeine Beziehung.
 
@@ -4259,7 +4265,7 @@ Wenden wir \eqref{eq:subset} nun an, so erhalten wir:
 \mathfrak{Y} \subseteq g^{-1}(\mathfrak{X})
 \end{align*}
 
-Da $g$ stetig ist, gilt: $g^{-1}(\mathfrak{X}) \subseteq \mathfrak{Y}$
+\end{itemize}
 
 Zusammen folgt daher:
 \begin{equation}\label{eq:inverse}
@@ -4280,7 +4286,7 @@ f^{-1}(\mathfrak{Y}) \overset{\eqref{eq:inverse}}{=} \underbrace{f^{-1}(g^{-1}}_
 \url{https://www.tuwien.at/index.php?eID=dumpFile&t=f&f=204097&token=564fbc343ac3892d97b2713d52d540fd084e8ca5} \newline
 \url{https://www.math.tugraz.at/~ganster/lv_materialien/trennungseigenschaften.pdf}}
 
-Trennungseigenschaften geben Auskunft darüber, ob "genügend offene Mengen” vorhanden sind, um Punkte bzw. Teilmengen voneinander zu "trennen". Aus dem Vorhandensein gewisser Trennungseigenschaften ergeben sich meist sehr wichtige Konsequenzen.
+Trennungseigenschaften geben Auskunft darüber, ob "genügend offene Mengen" \ vorhanden sind, um Punkte bzw. Teilmengen voneinander zu "trennen". Aus dem Vorhandensein gewisser Trennungseigenschaften ergeben sich meist sehr wichtige Konsequenzen.
 
 \begin{definition}
 Ein topologischer Raum $(X,\mathfrak{X})$ heißt \textbf{$T_0$-Raum} :$\Leftrightarrow$
@@ -4339,7 +4345,7 @@ Eine Menge $A \subseteq X$ ist \textbf{abgeschlossen} : $\Leftrightarrow$ $A^c:=
 \end{definition}
 
 \begin{remark}
-In der Vorlesung wird statt $X \setminus A$ geschrieben $X - A$.
+In der Vorlesung wird $X - A$ statt $X \setminus A$ geschrieben.
 \end{remark}
 
 \begin{remark}
@@ -4362,7 +4368,7 @@ Sei $x \in X$ beliebig. Sei dazu $x' \in X \setminus \{x\}$, also $x' \neq x$.
 Da der Raum $T_1$ ist, existiert $\mathcal{O}_{x'} \in \mathfrak{X}$
 mit
 \begin{equation*}
-x' \in \mathcal{O}_{x'} \quad \text{und} \quad x \notin \mathcal{O}_{x'}.
+x' \in \mathcal{O}_{x'} \quad \text{und} \quad x \notin \mathcal{O}_{x'}
 \end{equation*}
 Damit gilt 
 \begin{equation*}
@@ -4444,8 +4450,8 @@ Angenommen, eine Folge $(x_n)_{n \in \mathbb{N}}$ konvergiert sowohl gegen $x$ a
 
 Aus der Konvergenz folgt, dann es Indizes $N_x,N_y$ gibt mit
 \begin{align*}
-\forall \mathcal{O}_x \in \mathfrak{X} \text{ mit } x \in \mathcal{O}_x \ \exists \, N_x \in \mathbb{N} \ \forall n \ge N_x \text{ sodass } x_n \in \mathcal{O}_x \\
-\forall \mathcal{O}_y \in \mathfrak{X} \text{ mit } y \in \mathcal{O}_y \ \exists \, N_y \in \mathbb{N} \ \forall n \ge N_y \text{ sodass } x_n \in \mathcal{O}_y
+\forall \, \mathcal{O}_x \in \mathfrak{X} \text{ mit } x \in \mathcal{O}_x \ \exists \, N_x \in \mathbb{N} \ \forall n \ge N_x: \, x_n \in \mathcal{O}_x \\
+\forall \, \mathcal{O}_y \in \mathfrak{X} \text{ mit } y \in \mathcal{O}_y \ \exists \, N_y \in \mathbb{N} \ \forall n \ge N_y: \, x_n \in \mathcal{O}_y
 \end{align*}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.25\textwidth}
@@ -4456,7 +4462,7 @@ Aus der Konvergenz folgt, dann es Indizes $N_x,N_y$ gibt mit
 
 Daher müsste es einen Index $N^* = \text{max}\{N_x, N_y\}$ geben, für den gilt
 \begin{equation*}
-\forall x \ge N^*: \ x_n \in \mathcal{O}_x \land x_n \in \mathcal{O}_y
+\forall n \ge N^*: \ x_n \in \mathcal{O}_x \land x_n \in \mathcal{O}_y
 \end{equation*}
 
 und somit ist
@@ -4811,7 +4817,7 @@ In endlichdimensionalen Vektorräumen sind alle Normen äquivalent. Daher induzi
 Kompaktheit und Parakompaktheit sind zentrale Begriffe der Topologie und spielen später insbesondere bei der Theorie der Mannigfaltigkeiten eine wichtige Rolle.
 
 \begin{definition}
-Sei $(X,\mathfrak{X})$ ein topologischer Raum. Eine Familie offener Mengen $(O_\alpha)_{\alpha\in I} \subseteq \mathfrak{X}$
+Sei $(X,\mathfrak{X})$ ein topologischer Raum. Eine Familie offener Mengen $(\mathcal O_\alpha)_{\alpha\in I} \subseteq \mathfrak{X}$
 heißt \textbf{offene Überdeckung} von $X$, falls
 \begin{equation*}
 X = \bigcup_{\alpha\in I} O_\alpha
@@ -4821,13 +4827,13 @@ X = \bigcup_{\alpha\in I} O_\alpha
 Eine offene Überdeckung heißt \textbf{endlich}, wenn es endlich viele Indizes
 $\alpha_1,\dots,\alpha_N\in I$ gibt mit
 \begin{equation*}
-X = O_{\alpha_1}\cup \dots \cup O_{\alpha_N}
+X = \mathcal O_{\alpha_1}\cup \dots \cup \mathcal O_{\alpha_N}
 \end{equation*}
 
 \begin{definition}
 Ein topologischer Raum $(X,\mathfrak{X})$ heißt \textbf{kompakt}, wenn gilt: zu jeder offenen Überdeckung von $X$ existiert eine endliche Subüberdeckung/Teilüberdeckung. Das heißt
 \begin{equation*}
-\forall (O_\alpha)_{\alpha\in I} \subseteq \mathfrak{X} \text{ mit } X = \bigcup_{\alpha\in I} O_\alpha \ \exists \, \mathcal{O}_{\alpha_1}, ..., \mathcal{O}_{\alpha_N} \in \mathfrak{X}: \ X=O_{\alpha_1}\cup \dots \cup O_{\alpha_N}
+\forall (\mathcal O_\alpha)_{\alpha\in I} \subseteq \mathfrak{X} \text{ mit } X = \bigcup_{\alpha\in I} \mathcal O_\alpha \ \exists \, \alpha_1, ..., \alpha_N \in I: \ X=\mathcal O_{\alpha_1}\cup \dots \cup \mathcal O_{\alpha_N}
 \end{equation*}
 \end{definition}
 
@@ -4846,12 +4852,12 @@ Im $\mathbb{R}^n$ gilt: Eine Teilmenge $M\subseteq\mathbb{R}^n$ ist genau dann k
 \end{remark}
 
 \begin{definition}
-Seien $(O_\alpha)_{\alpha\in I}$ und $(O_\beta)_{\beta\in J}$ offene
+Seien $(\mathcal O_\alpha)_{\alpha\in I}$ und $(\mathcal O_\beta)_{\beta\in J}$ offene
 Überdeckungen von $X$.
-Die Überdeckung $(O_\beta)_{\beta\in J}$ heißt \textbf{Verfeinerung} von
-$(O_\alpha)_{\alpha\in I}$, falls
+Die Überdeckung $(\mathcal O_\beta)_{\beta\in J}$ heißt \textbf{Verfeinerung} von
+$(\mathcal O_\alpha)_{\alpha\in I}$, falls
 \begin{equation*}
-\forall \beta\in J\ \exists \alpha\in I:\ O_\beta \subseteq O_\alpha
+\forall \beta\in J\ \exists \alpha\in I:\ \mathcal O_\beta \subseteq \mathcal O_\alpha
 \end{equation*}
 \end{definition}
 
@@ -4864,11 +4870,11 @@ $\mathcal{O}_1 \subseteq \mathcal{O}_1, \ \mathcal{O}_2 \subseteq \mathcal{O}_2,
 \end{figure}
 
 \begin{definition}
-Eine offene Überdeckung $(O_\alpha)_{\alpha\in I}$ von $X$ heißt
+Eine offene Überdeckung $(\mathcal O_\alpha)_{\alpha\in I}$ von $X$ heißt
 \textbf{lokal endlich}, wenn zu jedem Punkt $x\in X$ eine Umgebung $U(x)$
 existiert, die nur endlich viele Mengen der Überdeckung schneidet, d.h.
 \begin{equation*}
-\forall x \in X \ \exists \, U(x) \in \mathfrak{X} \text{ mit } x \in U(x): \ |\{\alpha\in I \mid O_\alpha \cap U(x) \neq \emptyset \}| < \infty
+\forall x \in X \ \exists \, U(x) \in \mathfrak{X} \text{ mit } x \in U(x): \ |\{\alpha\in I \mid \mathcal O_\alpha \cap U(x) \neq \emptyset \}| < \infty
 \end{equation*}
 \end{definition}
 
@@ -4943,8 +4949,6 @@ heißt ein \textbf{Atlas} der Mannigfaltigkeit $M$, falls gilt:
 M = \bigcup_{\alpha\in I} \mathcal{O}_\alpha
 \end{equation*}
 \end{definition}
-
-Eine Mannigfaltigkeit kann sich somit also eine Ansammlung von $\mathbb{R}^n$s vorstellen.
 
 \begin{example}
 Die Erdoberfläche ist eine 2-dimensionale Mannigfaltigkeit. Jede Region $\mathcal{O}_i$ der gekrümmten Erdoberfläche kann mit einer Karte $(\mathcal{O}_i,\phi_i)$ auf eine Ebene $\phi_i(\mathcal{O}_i) \subseteq \mathbb {R}^2$ abgebildet werden. Ein Atlas ist die Sammlung all dieser Karten, bei der auch Überlappungen zugelassen werden.
@@ -6372,7 +6376,7 @@ C^b_{ca} = \underbrace{dx_c^i}_{\substack{\text{lokal} \\ \text{definiert}}} (\t
 \end{equation}
 
 \begin{proposition}
-$C^b_{ca}$ ist unabhängig von der Wahl der Karte und somit global definiert. Insbesondere ist $C^b_{ca}$ tatsächlich ein (1,2)-Tensorfeld.
+$C^b_{ca}$ ist unabhängig von der Wahl der Karte und somit global definiert. Insbesondere ist $C^b_{ca}$ ein (1,2)-Tensorfeld.
 \end{proposition}
 
 \begin{proof}
