@@ -1563,10 +1563,9 @@ auf den Tangentialräumen. Wie zuvor erwähnt, induziert es eine Metrik. Somit k
 {\footnotesize Quelle: \url{https://de.wikipedia.org/wiki/Pseudo-riemannsche_Mannigfaltigkeit}}\newline
 Ist die Bilinearform $g_p$ symmetrisch und nicht entartet, jedoch nicht positiv definit, so heißt $g$ ein \textbf{pseudo-riemannsche Metrik}.
 \end{definition}
-
 Die pseudo-riemannsche Metrik ist punktweise ein Pseudo-Skalarprodukt auf den Tangentialräumen.
 
-In der Literatur ist der \textbf{metrische Tensor} nicht eindeutig definiert. Manchmal wird damit die riemannsche Metrik, manchmal die pseudo-riemannsche Metrik bezeichnet. 
+In der Literatur ist der \textbf{metrische Tensor} nicht eindeutig definiert. Manchmal wird damit die riemannsche Metrik, manchmal die pseudo-riemannsche Metrik bezeichnet. In dieser Mitschrift ist damit die pseudo-riemannsche Metrik gemeint.
 
 \begin{definition} \breakafterhead
 
@@ -1593,24 +1592,24 @@ Die Matrix $\eta_{\mu\nu}$ ist also auf dem Minkowski-Vektorraum $\mathbb{M}$ ei
 \begin{equation*}
 \eta(x,x) < 0
 \end{equation*}
-Somit erhalten ein "Normquadrat" \ $\|x\|^2$ (genauer: \href{https://de.wikipedia.org/wiki/Quadratische_Form}{quadratische Form} $q(x)$) und keine Norm 
+Somit erhalten ein Längenquadrat/"Normquadrat" \ $\|x\|^2$ (genauer: \href{https://de.wikipedia.org/wiki/Quadratische_Form}{quadratische Form} $q(x)$) und keine Norm 
 \begin{equation*}
 q(x) := \eta(x,x) = \eta_{\mu\nu} x^\mu x^\nu
 \end{equation*}
 
-Das Normquadrat kann somit negativ sein, womit der Name irreführend ist. Entsprechend erhalten wir auch \textit{keine Metrik}, sondern ein \textit{Längenquadrat/Abstandsquadrat} für $s_1 = (ct, x^1, x^2, x^3),\ s_2=(ct, y^1, y^2, y^3) \in \mathbb{M}$
+Das Normquadrat kann somit negativ sein, womit der Name irreführend ist. Entsprechend erhalten wir auch \textit{keine Metrik}, sondern ein \textit{Abstandsquadrat/Raumzeitabstand} für $s_1 = (ct, x^1, x^2, x^3),\ s_2=(ct, y^1, y^2, y^3) \in \mathbb{M}$
 \begin{equation*}
 ds^2:=\Delta s^2 := (s_1-s_2)^2 =q(x-y)
 \end{equation*}
 
-Das Längenquadrat kann somit negativ sein. Wir erhalten also negative Längen. Dennoch wird $\eta$ bzw. $\eta_{\mu\nu}$ als \textbf{Minkowski-Metrik} bezeichnet. Sie stellt die Beziehung von Teilchen/Ereignissen in der flachen Raumzeit dar.
+Das Raumzeitabstand kann somit negativ sein. Wir erhalten also negative Längen. Dennoch wird $\eta$ bzw. $\eta_{\mu\nu}$ als \textbf{Minkowski-Metrik} bezeichnet. Sie stellt die Beziehung von Teilchen/Ereignissen in der flachen Raumzeit dar.
 
-Für das Längenquadrat eines Vektors $v \in \mathbb{M}$ schreiben wir
+Für das \textbf{Längenquadrat} eines Vektors $v \in \mathbb{M}$ schreiben wir
 \begin{equation*}
 v^2= \eta_{\mu\nu}v^\mu v^\nu
 \end{equation*}
 
-Das Längenquadrat $\Delta s^2 := \eta_{\mu\nu}\,\Delta x^\mu \Delta x^\nu$ wird \textbf{Raumzeitabstand} genannt.
+Das Abstandsquadrat $\Delta s^2 := \eta_{\mu\nu}\,\Delta x^\mu \Delta x^\nu$ wird \textbf{Raumzeitabstand} genannt.
 \vspace{1em}
 
 {\footnotesize Quellen: \url{https://matheplanet.com/default3.html?call=article.php?sid=1516}\newline
@@ -3324,7 +3323,7 @@ linear im zweiten Argument und somit $g(v, \cdot) \in V^\sim$. Der metrische Ten
 
 wobei für $v \in V^\sim, w \in V$ gilt $v^\flat(w) := v_b w^b := g(v, w) = g_{ab}v^a w^b$.
 
-Wenn $V$ endlich dimensional ist, ist $\flat$ bijektiv und somit ein Isomorphismus. Dieser ist für $V$ zusammen mit der Bilinearform $g$ sogar ein \textit{kanonischer} Isomorphismus. Seine Inverse ist der \textit{sharp} Operator
+Wenn $V$ endlich dimensional ist, ist $\flat$ bijektiv und somit ein Isomorphismus. Seine Inverse ist der \textit{sharp} Operator
 \begin{equation*}
     \sharp: V^\sim \to V: v_b \mapsto v^\sharp := v^a := g^{-1}(v^\flat, \cdot) = g^{ab}v_b
 \end{equation*}
@@ -3508,29 +3507,29 @@ Die in den Dualraum transportierten Basisvektoren $E_{\alpha b}$ stimmen also mi
 Die Kontraktion eines Tensors reduziert dessen Stufe, indem jeweils ein kontravarianter und ein kovarianter Index \textquotedbl zusammengezogen" \ werden.
 Für einen Tensor
 \begin{equation*}
-t \in \bigotimes\nolimits^{\,q}_{p} V
+t \in \bigotimes\nolimits^{p}_{q} V
 \end{equation*}
 erhält man durch Kontraktion einen Tensor
 \begin{equation*}
-s \in \bigotimes\nolimits^{\,q-1}_{p-1} V
+s \in \bigotimes\nolimits^{p-1}_{q-1} V
 \end{equation*}
 
 Sei also
 \begin{equation*}
-t(\varphi_1,\ldots,\varphi_p,\; v_1,\ldots,v_q) \in \Gamma
+t(\varphi_1,\ldots,\varphi_q,\; v_1,\ldots,v_p) \in \Gamma
 \end{equation*}
 wobei $\varphi_i \in V^\sim$ und $v_j \in V$.
 Die Kontraktion an der $k$-ten kovarianten und $l$-ten kontravarianten Stelle definiert man durch
 \begin{equation*}
-s(\varphi_1,\ldots,\varphi_{p-1},\, v_1,\ldots,v_{q-1}) := t(\varphi_1,\dots,\underbrace{e^\alpha}_{\text{k-te Stelle}, \ 1 \leq k \leq p},\dots,\varphi_p, \, v_1,\dots, \underbrace{E_\alpha}_{\text{l-te Stelle}, \ 1 \leq l \leq q},\dots,v_q)
+s(\varphi_1,\ldots,\varphi_{q-1},\, v_1,\ldots,v_{p-1}) := t(\varphi_1,\dots,\underbrace{e^\alpha}_{\text{k-te Stelle}, \ 1 \leq k \leq q},\dots,\varphi_q, \, v_1,\dots, \underbrace{E_\alpha}_{\text{l-te Stelle}, \ 1 \leq l \leq p},\dots,v_p)
 \end{equation*}
 Wir zeigen nun, dass dies unabhängig von der Wahl der Basis und somit wohldefiniert ist.
 
 Betrachte einen Basiswechsel
 \begin{equation*}
-\tilde{E}_\alpha = \Lambda^\beta_{\alpha} E_\beta,
+\tilde{E}_\alpha = \Lambda^\beta_\alpha E_\beta,
 \qquad
-\tilde{e}^{\,\alpha} = \Sigma^{\alpha}_{\beta} e^{\,\beta}
+\tilde{e}^\alpha = \Sigma^{\alpha}_\beta e^\beta
 \end{equation*}
 mit inversen Transformationsmatrizen
 \begin{equation*}
@@ -3539,10 +3538,10 @@ mit inversen Transformationsmatrizen
 
 Dann gilt:
 \begin{align*}
-t(\varphi_1,\dots,\tilde{e}^\alpha,\dots,\varphi_{p-1},\tilde{E}_\alpha,\dots,v_{q-1})
-&= t(\varphi_1,\dots,\Sigma^\alpha_\beta e^\beta,\dots,\varphi_{p-1}, v_1, \dots, \Lambda^\beta_\alpha E_\beta,\dots,v_{q-1} ) \\
-&= \Sigma^\alpha_\beta\Lambda^\gamma_\alpha \, t(\varphi_1,\dots,e^\beta,\dots,\varphi_{p-1}, v_1, \dots, E_\gamma,\dots,v_{q-1}) \\
-&= \delta^\gamma_\beta\, t(\varphi_1,\dots,e^\beta,\dots,\varphi_{p-1}, v_1, \dots, E_\gamma,\dots,v_{q-1})
+t(\varphi_1,\dots,\tilde{e}^\alpha,\dots,\varphi_{q-1},\tilde{E}_\alpha,\dots,v_{p-1})
+&= t(\varphi_1,\dots,\Sigma^\alpha_\beta e^\beta,\dots,\varphi_{q-1}, v_1, \dots, \Lambda^\beta_\alpha E_\beta,\dots,v_{p-1} ) \\
+&= \Sigma^\alpha_\beta\Lambda^\gamma_\alpha \, t(\varphi_1,\dots,e^\beta,\dots,\varphi_{q-1}, v_1, \dots, E_\gamma,\dots,v_{p-1}) \\
+&= \delta^\gamma_\beta\, t(\varphi_1,\dots,e^\beta,\dots,\varphi_{q-1}, v_1, \dots, E_\gamma,\dots,v_{p-1})
 \end{align*}
 
 Damit ist die Kontraktion basisunabhängig.
@@ -3645,8 +3644,9 @@ Antwort: siehe oben
 \begin{definition}
 Die \textbf{Potenzmenge} $\mathcal{P}(X)$ einer Menge $X$ ist die Menge aller Teilmengen von $X$:
 \begin{equation*}
-    \mathcal{P}(X) := \{ U \mid U \subseteq X \}.
+    \mathcal{P}(X) := \{ U \mid U \subseteq X \}
 \end{equation*}
+Die leere Menge ist immer ein Element der Potenzmenge, denn $\mathcal{P}(\emptyset)= \{\emptyset\}$.
 \end{definition}
 
 \begin{definition}
@@ -3682,7 +3682,7 @@ Antwort: Ich muss mich zuerst fragen, bezüglich welcher Topologie ich die Offen
 \end{tcolorbox}
 
 \begin{example}
-Sei $X$ eine beliebige Grundmenge und $\mathfrak{Y} = \{ \emptyset, X \}$ die sogenannte \textbf{indiskrete Topologie/Klumpentopologie}, wobei $\mathfrak{Y}$ "Kurrent Y"\ ausgesprochen wird. Dann ist $(X, \mathfrak{Y})$ der indiskrete topologische Raum. Dies ist die kleinstmögliche Topologie auf $X$.
+Sei $X$ eine beliebige Grundmenge und $\mathfrak{Y} = \{ \emptyset, X \}$ die sogenannte \textbf{indiskrete Topologie/Klumpentopologie/triviale Topologie}, wobei $\mathfrak{Y}$ "Kurrent Y"\ ausgesprochen wird. Dann ist $(X, \mathfrak{Y})$ der indiskrete topologische Raum. Dies ist die kleinstmögliche Topologie auf $X$.
 
 Wir überprüfen, ob es sich wirklich um eine Topologie handelt:
 \begin{itemize}
@@ -3768,9 +3768,11 @@ Erst durch die Ausstattung einer Menge mit einer Topologie wird es sinnvoll, üb
 \begin{definition}
 Sei $(X,\mathfrak{X})$ ein topologischer Raum und $(x_n)_{n\in\mathbb{N}}$ eine Folge in $X$. Die Folge $(x_n)$ heißt \textbf{konvergent gegen $x\in X$} (bezüglich der Topologie $\mathfrak{X}$), in Zeichen $x_n \overset{\mathfrak{X}}{\to} x$, falls gilt:
 \begin{equation*}
-\underbrace{\forall \mathcal{O} \in \mathfrak{X}:\ x \in \mathcal{O} }_{\text{für alle offenen Umgebungen von }x}
-\underbrace{\exists N_\mathcal{O} \in \mathbb{N} }_{\text{existiert ein Index }N_\mathcal{O}}
-\underbrace{\forall n \ge N_\mathcal{O} \text{ sodass } x_n \in \mathcal{O}}_{\text{ab dem alle Folgenglieder }x_n\text{ in }\mathcal{O} \text{ liegen }}
+\underbrace{\forall \mathcal{O} \in \mathfrak{X}\, \text{ mit} \ x \in \mathcal{O} }_{\substack{\text{für alle offenen } \\ \text{Umgebungen von }x}}
+\quad 
+\underbrace{\exists N_\mathcal{O} \in \mathbb{N} }_{\substack{\text{ existiert ein} \\ \text{ Index }N_\mathcal{O}\ }}
+\quad 
+\underbrace{\text{sodass } \forall n \ge N_\mathcal{O}: \,x_n \in \mathcal{O}}_{\substack{\text{ab dem alle Folgenglieder} \\ x_n\text{ in }\mathcal{O} \text{ liegen}}}
 \end{equation*}
 
 Das bedeutet: Eine Folge konvergiert gegen $x$, wenn sich ihre Folgenglieder ab einem gewissen Index, beliebig nahe bei $x$ befinden. In der Topologie wird diese Nähe nicht über einen Abstand, sondern über offene Mengen beschrieben. Wir schreiben $N_\mathcal{O}$, da der Index von der offenen Menge $\mathcal{O}$ abhängt.
@@ -3784,7 +3786,7 @@ Das bedeutet: Eine Folge konvergiert gegen $x$, wenn sich ihre Folgenglieder ab 
 
 \vspace{1em}
 
-Diese Definition zeigt bereits, dass Konvergenz stark von der vorliegenden Topologie abhängt. Insbesondere gilt:
+Diese Definition zeigt, dass Konvergenz stark von der vorliegenden Topologie abhängt. Insbesondere gilt:
 
 \begin{itemize}
     \item Je \emph{gröber} eine Topologie ist (weniger offene Mengen), desto weniger offene Mengen müssen die Konvergenzbedingung erfüllen, desto \emph{schwächer} ist die Konvergenz.
