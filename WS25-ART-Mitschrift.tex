@@ -1552,7 +1552,7 @@ g_p : T_p M \times T_p M \to \mathbb{R}
 zuordnet. Wobei $T_pM$ der Tangentialraum (Vektorraum) an einem Punkt $p \in M$ ist.
 \end{definition}
 
-Das heißt die riemannsche Metrik ist ein (0,2)-Tensorfeld $g \in \mathcal{T}_2^0(M)$.
+Das heißt die riemannsche Metrik ist ein (0,2)-Tensorfeld $g \in \mathcal{T}_2^0(M)$ und $g_p \in \bigotimes^0_2T_pM$.
 
 {\footnotesize Quelle: \url{https://de.wikipedia.org/wiki/Riemannsche_Mannigfaltigkeit#Riemannsche_Mannigfaltigkeiten_als_metrische_R%C3%A4ume}}\newline
 Die riemannsche Metrik ist keine Metrik im Sinne der Theorie der \href{https://de.wikipedia.org/wiki/Metrischer_Raum#Formale_Definition}{metrischen Räume}, sondern punktweise ein Skalarprodukt
@@ -2685,6 +2685,23 @@ und bzgl. des kanonischen Isomorphismus
 gefunden werden.
 \end{remark}
 \end{tcolorbox}
+\vspace{1em}
+
+Jede multilineare Abbildung ist durch die Bilder von Basisvektoren eindeutig bestimmt:
+\vspace{-1em}
+
+\begin{theorem}\label{thm:multlinAbbEindeutig}
+Sei $(V,\Gamma)$ ein Vektorraum mit einer Basis $(E_\alpha)_{\alpha \in I}$.  
+Für jede Familie $(f_{\alpha_1, ..., \alpha_p})_{(\alpha_1, ..., \alpha_p) \in I}$ von Skalaren aus $\Gamma$ existiert genau eine multilineare Abbildung $f\in\mathfrak{Mult_p}(V,\Gamma)$ mit
+\begin{equation}\label{eq:fmult}
+f(E_{\alpha_1}, ..., E_{\alpha_p}) = f_{\alpha_1, ..., \alpha_p} \in \Gamma
+\end{equation}
+
+Das heißt $f\in\mathfrak{Mult_p}(V,\Gamma)$ wird eindeutig durch $(f_{\alpha_1, ..., \alpha_p})_{(\alpha_1, ..., \alpha_p) \in I}$ bestimmt. 
+\end{theorem}
+\begin{proof}
+Der Beweis, dass $f$ durch diese Darstellung eindeutig bestimmt ist, ist analog zu \cref{thm:bilineareAbbEindeutig}.
+\end{proof}
 
 \begin{theorem}\label{thm:tensorprodraumgleichmulp}
 Wenn der Vektorraum $V$ endlich dimensional ist, ist der Tensorproduktraum p-ter Ordnung mengentheoretisch gleich dem Raum der p-multilinearen Abbildungen:
@@ -2696,18 +2713,9 @@ Wenn der Vektorraum $V$ endlich dimensional ist, ist der Tensorproduktraum p-ter
 \begin{proof}
 $\subseteq$ wurde bereits in \eqref{eq:teilmengeMult_p} argumentiert. Daher zeigen wir nun $\supseteq$.
 
-zz: $\forall f \in \mathfrak{Mult_p}(V,\Gamma) \Rightarrow f \in \bigotimes\nolimits^{\!p}\! V^\sim$
-
-Sei $(E_\alpha)_{\alpha\in I}$ eine Basis von $V$ und $(e^\alpha)_{\alpha\in I}$ die duale Basis. 
-Dann ist für $f\in\mathfrak{Mult_p}(V,\Gamma)$
-\begin{equation}\label{eq:fmult}
-f(E_{\alpha_1},\dots,E_{\alpha_p}) =: f_{\alpha_1\dots\alpha_p} \in \Gamma.
-\end{equation}
-
-Der Beweis, dass $f$ durch diese Darstellung eindeutig bestimmt ist, ist analog zu dem Abschnitt im Beweis von \cref{thm:biliso}.
-
-Sei nun $f \in \mathfrak{Mult_p}(V,\Gamma)$ und 
-$(E_\alpha)_{\alpha\in I}$ eine Basis von $V$ mit dualer Basis $(e^\alpha)_{\alpha\in I}$.
+zz: $\forall f \in \mathfrak{Mult_p}(V,\Gamma) \Rightarrow f \in \bigotimes\nolimits^{\!p}\! V^\sim$\newline
+Kann \cref{thm:multlinAbbEindeutig} nun verwenden, um die Aussage zu zeigen: \newline
+Sei $f \in \mathfrak{Mult_p}(V,\Gamma)$ und $(E_\alpha)_{\alpha\in I}$ eine Basis von $V$ mit dualer Basis $(e^\alpha)_{\alpha\in I}$.
 Dann gilt analog zum bilinearen Fall:
 \begin{equation*}
 \begin{aligned}
@@ -2760,7 +2768,7 @@ Wenn der Vektorraum $V$ unendlich dimensional ist, ist $\Phi$ nicht surjektiv. E
     \item zz: Die Familie $\{ e^{\alpha_1} \otimes \cdots \otimes e^{\alpha_p} \} \subseteq \mathfrak{Mult_p}(V,\Gamma)$ ist linear unabhängig.
     
         Also zz: $\forall v_1,...,v_p \in V: \ (\lambda_{\alpha_1...\alpha_p} e^{\alpha_1} \otimes \cdots \otimes e^{\alpha_p})(v_1,...,v_p)=0 \ \Rightarrow \ \lambda_{\alpha_1...\alpha_p}=0 \ \forall \alpha_1,...,\alpha_p \in I$ \newline        
-        Nach \cref{thm:lineareAbbEindeutig} ist jede lineare Abbildung durch die Bilder der Vektoren einer Basis eindeutig bestimmt. Daher genügt es, die Auswertung von $e^{\alpha_1} \otimes \cdots \otimes e^{\alpha_p} \in \mathfrak{Mult_p}(V,\Gamma)$ auf Basiselementen zu betrachten: \newline
+        Nach \cref{thm:multlinAbbEindeutig} ist jede multilineare Abbildung durch die Bilder von Basisvektoren eindeutig bestimmt. Daher genügt es, die Auswertung von $e^{\alpha_1} \otimes \cdots \otimes e^{\alpha_p} \in \mathfrak{Mult_p}(V,\Gamma)$ auf Basiselementen zu betrachten: \newline
         \begin{align*}
           0 &= (\lambda_{\alpha_1...\alpha_p} e^{\alpha_1} \otimes \cdots \otimes e^{\alpha_p})(E_{\beta_1}, ..., E_{\beta_p}) 
           \overset{\eqref{def:tensorproduktVO}}{=} \lambda_{\alpha_1...\alpha_p} e^{\alpha_1}(E_{\beta_1})\cdot ... \cdot e^{\alpha_p}(E_{\beta_p}) \\
@@ -2776,12 +2784,12 @@ Jeder Vektorraum hat einen Dualraum. Da der Dualraum $V^\sim$ ein Vektorraum ist
 \begin{definition}
 Der \textbf{Doppeldualraum} (auch \textbf{Bidualraum}) eines Vektorraums $(V,\Gamma)$ ist der Dualraum des Dualraums:
 \begin{equation*}
-V^{\sim\sim} := (V^\sim)^\sim = \{\psi: V^\sim \to \Gamma : \Psi \text{ ist linear}\}
+V^{\sim\sim} := (V^\sim)^\sim = \{\Psi: V^\sim \to \Gamma : \Psi \text{ ist linear}\}
 \end{equation*}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/Bidualraum1.jpg}
+\includegraphics[width=0.4\textwidth]{images/Bidualraum1.jpg}
 \end{figure}
 \end{definition}
 
@@ -2792,18 +2800,18 @@ Es gibt eine kanonische Einbettung
 \Phi : V \to V^{\sim\sim}: v \mapsto \Phi_v
 \end{equation*}
 
-wobei das Punktauswertungsfunktional $\Phi_v$ folgendermaßen agiert
+wobei das \textbf{Punktauswertungsfunktional} $\Phi_v$ folgendermaßen agiert
 \begin{equation}\label{eq:Pktauswertungsfunkt}
 \Phi_v: V^\sim \to \Gamma: \varphi \mapsto \Phi_v(\varphi) := \varphi(v)
 \end{equation}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{images/Bidualraum.jpg}
+\includegraphics[width=0.4\textwidth]{images/Bidualraum.jpg}
 \end{figure}
 
 \begin{lemma}
-$\Phi$ ist linear.
+$\Phi$ ist wohldefiniert und linear.
 \end{lemma}
 
 \begin{proof} \breakafterhead
@@ -2867,7 +2875,7 @@ Da $V^{\sim\sim}$ ein Vektorraum ist, kann auch gezeigt werden, dass $V$ mit die
 \begin{tcolorbox}[noVO]
 \begin{remark}[Nicht Teil der VO]
 Wenn obige Definition nicht verwendet wird, kann gezeigt werden, dass $\Phi$ ein kanonischer Isomorphismus ist und somit $V \cong V^{\sim\sim}$. Damit gibt es für jedes $\Phi_v \in V^{\sim\sim}$ genau ein $v \in V$, sodass $\Phi(v) = \Phi_v$ und für $\varphi \in V^\sim: \ \Phi(v)(\varphi)=\Phi_v(\varphi)$. Da die Struktur durch die Linearität von $\Phi$ auch erhalten bleibt und für $\Phi$ keine zusätzliche Struktur erfordert bzw. von der Wahl der Basis unabhängig ist, wird in der Vorlesung direkt obige Definition gewählt. \newline
-Da $V \cong V^{\sim\sim}$ wenn dim$V<\infty$ ist somit dim$V=$ dim$V^{\sim\sim}$. Mit \cref{rem:dualisom} folgt dann dim$V^\sim$= dim$V^{\sim\sim}$. Wenn dim$V=\infty$ ist dim$V<$ dim$V^{\sim\sim}$.
+Da $V \cong V^{\sim\sim}$ wenn dim$V<\infty$ ist somit dim$V=$ dim$V^{\sim\sim}$. Mit \cref{rem:dualisom} folgt dann dim$V^\sim$= dim$V^{\sim\sim}$. Wenn dim$V=\infty$ ist $V\subset V^{\sim\sim}$.
 \end{remark}
 \end{tcolorbox}
 
@@ -2916,7 +2924,7 @@ In vollkommener Analogie zu $\mathfrak{Mult_p}(V,\Gamma)$ gilt im endlichdimensi
 
 und
 \begin{equation*}
-(v_1 \otimes \cdots \otimes v_p)(\varphi_1, ..., \varphi_p)=v_1(\varphi_1) \cdot ... \cdot v_p(\varphi_p)=\varphi_1(v_1)\cdot ... \cdot \varphi_p(v_p) \in \Gamma
+(v_1 \otimes \cdots \otimes v_p)(\varphi_1, ..., \varphi_p)=v_1(\varphi_1) \cdot ... \cdot v_p(\varphi_p)\overset{\eqref{eq:vid}}{=}\varphi_1(v_1)\cdot ... \cdot \varphi_p(v_p) \in \Gamma
 \end{equation*}
 
 \section{Gemischte multilineare Abbildungen}
@@ -2925,10 +2933,10 @@ In den bisherigen Abschnitten haben wir multilineare Abbildungen betrachtet, der
 \begin{definition}
 Sei $(V,\Gamma)$ ein Vektorraum über dem Körper $\Gamma$. Der \textbf{Raum der gemischten p,q-multilinearen Abbildungen} ist definiert als
 \begin{equation}
-\mathfrak{Mult}_{p,q}(V,V^\sim,\Gamma) := \{ t : \underbrace{V \times \cdots \times V}_{p\text{-mal}} \times \underbrace{V^\sim \times \cdots \times V^\sim}_{q\text{-mal}} \to \Gamma \;\big|\; t \text{ linear in jedem Argument}\}
+\mathfrak{Mult_{p,q}}(V,V^\sim,\Gamma) := \{ t : \underbrace{V \times \cdots \times V}_{p\text{-mal}} \times \underbrace{V^\sim \times \cdots \times V^\sim}_{q\text{-mal}} \to \Gamma \;\big|\; t \text{ linear in jedem Argument}\}
 \end{equation}
 
-Ein Element $t \in \mathfrak{Mult}_{p,q}(V,\Gamma)$ bildet somit $v_1, ..., v_p \in V, \ \varphi_1, ..., \varphi_q \in V^\sim$ folgendermaßen ab:
+Ein Element $t \in \mathfrak{Mult_{p,q}}(V,V^\sim,\Gamma)$ bildet somit $v_1, ..., v_p \in V, \ \varphi_1, ..., \varphi_q \in V^\sim$ folgendermaßen ab:
 \begin{equation*}
 (v_1,\dots,v_p,\varphi_1,\dots,\varphi_q) \mapsto t(v_1,\dots,v_p,\varphi_1,\dots,\varphi_q) \in \Gamma
 \end{equation*}
@@ -2957,7 +2965,7 @@ gilt auch
 \begin{equation}\label{eq:tensordef}
 \mathfrak{Mult_{p,q}}(V^\sim,V,\Gamma) = \bigotimes\nolimits^p V \otimes \bigotimes\nolimits^q V^\sim = \bigotimes\nolimits^p_q V
 \end{equation}
-Entsprechend heißen Elemente $t \in \bigotimes\nolimits^p_q V$ \textbf{(p,q)-Tensoren} oder \textbf{Tensoren vom Typ (p,q)}. \textit{Diese} Definition werden wir ab jetzt verwenden.
+Entsprechend heißen Elemente $t \in \bigotimes\nolimits^p_q V$ \textbf{(p,q)-Tensoren} oder \textbf{Tensoren vom Typ (p,q)}. \textit{\underline{Diese}} Definition werden wir ab jetzt verwenden.
 \vspace{1em}
 
 \begin{tcolorbox}[noVO]
@@ -2978,18 +2986,24 @@ Da für endlichdimensionale Vektorräume $V, W$ gilt: $V\otimes W \cong_\text{ka
 \end{tcolorbox}
 
 \begin{remark}
-Für $t \in {\color{blue}\mathfrak{Mult_{p,q}}(V^\sim,V,\Gamma) } = {\color[rgb]{0.08,0.71,0.47}\bigotimes\nolimits^p V \otimes \bigotimes\nolimits^q V^\sim = \bigotimes\nolimits^p_q V}$ gilt: 
+Für $t \in {\color[rgb]{0.08,0.71,0.47}\bigotimes\nolimits^p_q V = \bigotimes\nolimits^p V \otimes \bigotimes\nolimits^q V^\sim } =  {\color{blue}\mathfrak{Mult_{p,q}}(V^\sim,V,\Gamma)}$ gilt: 
 \begin{align*}
-& {\color{blue}t(\underbrace{\varphi_1, \dots, \varphi_p}_{\displaystyle \in V^\sim}, \underbrace{v_1, \dots, v_q}_{\displaystyle \in V}) } \in \Gamma \\
-&t = {\color[rgb]{0.08,0.71,0.47}t^{a_1 \dots a_p}_{b_1 \dots b_q} \underbrace{E_{a_1} \otimes \cdots \otimes E_{a_p}}_{\displaystyle \in V} \otimes \underbrace{e^{b_1}\otimes \cdots \otimes e^{b_q}}_{\displaystyle \in V^\sim} }
+& 
+t = {\color[rgb]{0.08,0.71,0.47}t^{a_1 \dots a_p}_{b_1 \dots b_q} \underbrace{E_{a_1} \otimes \cdots \otimes E_{a_p}}_{\displaystyle \in V} \otimes \underbrace{e^{b_1}\otimes \cdots \otimes e^{b_q}}_{\displaystyle \in V^\sim} } \\
+&{\color{blue}t(\underbrace{\varphi_1, \dots, \varphi_p}_{\displaystyle \in V^\sim}, \underbrace{v_1, \dots, v_q}_{\displaystyle \in V}) } \in \Gamma
 \end{align*}
 
 \begin{itemize}
-    \item In der Darstellung $t(\varphi_1, \dots, \varphi_p, v_1, \dots, v_q)$ nimmt $t$ also p \textit{Argumente} aus dem Dualraum und q \textit{Argumente} aus dem Vektorraum.
+    \item oberer Index (\textbf{kontravarianter Grad}, hier $p$): gibt die Anzahl Vektorräume $V$ im Tensorproduktraum an (Faktoren). Vektorkomponenten tragen obere Zählindizes, Basisvektoren tragen untere Zählindizes: $v = v^\alpha E_\alpha$.
+
+    \item unterer Index (\textbf{kovarianter Grad}, hier $q$): gibt die Anzahl der Dualräume $V^\sim$ im Tensorproduktraum an (Faktoren). Kovektorkomponenten tragen untere Zählindizes, Basiskovektoren tragen obere Zählindizes: $\varphi = \varphi_\alpha e^\alpha$. 
+
     \item In der Darstellung $t= t^{a_1 \dots a_p}_{b_1 \dots b_q} E_{a_1} \otimes \cdots \otimes E_{a_p} \otimes e^{b_1}\otimes \cdots \otimes e^{b_q}$ besteht $t$ aus p \textit{Faktoren} aus dem Vektorraum und q \textit{Faktoren} aus dem Dualraum.
-    \item $p$ wird \textbf{kontravarianter Grad} genannt (Anzahl der Faktoren aus dem Vektorraum $V$). Vektoren $\in V$ tragen obere Indizes: $v = v^\alpha E_\alpha$.
-    \item $q$ wird \textbf{kovarianter Grad} genannt (Anzahl der Faktoren aus dem Dualraum $V^\sim$). Kovektoren $\in V^\sim$ tragen untere Indizes: $\varphi = \varphi_\alpha e^\alpha$. 
+    
+    \item In der Darstellung $t(\varphi_1, \dots, \varphi_p, v_1, \dots, v_q)$ nimmt $t$ also p \textit{Argumente} aus dem Dualraum und q \textit{Argumente} aus dem Vektorraum.
 \end{itemize}
+
+Eselsbrücke: Punkt vor Strich. Der Index gibt die Anzahl aus dem Tensorproduktraum an (Punkt) und die Anzahl der Argumente des jeweils anderen Raumes (Strich/Abbildung).
 \end{remark}
 
 
@@ -3003,7 +3017,7 @@ Je nach Definition sind untenstehende Gleichheitszeichen mengentheoretisch oder 
     \item $\bigotimes\nolimits^0_0 V = \Gamma$ ... Tensor 0. Stufe (Skalar)
     \item $\bigotimes\nolimits^1_0 V = V$ ... Tensor 1. Stufe (Vektor)
     \item $\bigotimes\nolimits^0_1 V = V^\sim$ ... Tensor 1. Stufe (Kovektor/lineares Funktional/Linearform) 
-    \item $\bigotimes\nolimits^1_1 V = V \otimes V^\sim \cong V^\sim \otimes V = L(V,V)$ ... Tensor 2. Stufe (Matrix)
+    \item $\bigotimes\nolimits^1_1 V = V \otimes V^\sim \cong V^\sim \otimes V = \mathfrak{Bil}(V^\sim,V,\Gamma)=\mathfrak{Mult}_{1,1}(V^\sim,V,\Gamma)$ ... Tensor 2. Stufe (Matrix)
     \item $\bigotimes\nolimits^2_0 V = V \otimes V = \mathfrak{Bil}(V^\sim,\Gamma) = \mathfrak{Mult}_{2,0}(V^\sim,V,\Gamma)$ ... Tensor 2. Stufe (Matrix)
     \item $\bigotimes\nolimits^0_2 V = V^\sim \otimes V^\sim = \mathfrak{Bil}(V,\Gamma) = \mathfrak{Mult}_{0,2}(V^\sim,V,\Gamma)$ ... Tensor 2. Stufe (Matrix)
     \item $\bigotimes\nolimits^2_1 V = V \otimes V \otimes V^\sim \cong V^\sim \otimes V \otimes V = \mathfrak{Mult}_{2,1}(V^\sim,V,\Gamma)$ ... Tensor 3. Stufe ("3D Matrix")
@@ -3118,8 +3132,8 @@ Die Erkenntnis ergibt wegen \eqref{eq:dual} durchaus Sinn.
 Die duale Basis transformiert somit \emph{invers} zur Vektorbasis. Die Transformation, die im Vektorraum von der alten Basis 
 in die neue führt, bringt uns im Dualraum von der neuen Basis wieder zurück in die alte. 
 
-\textbf{Kovariant} (Kovektoren $\in V^\sim$): Die Komponenten transformieren gleich (ko = mit) der Basis (untere Indizes: $\varphi=\varphi_\alpha e^\alpha$). \newline
-\textbf{Kontravariant} (Vektoren $\in V$): Die Komponenten transformieren entgegengesetzt zur Basis (obere Indizes: $v=v^\alpha E_\alpha$).
+\textbf{Kovariant} (Kovektoren $\in V^\sim$): Die Komponenten transformieren gleich (ko = mit) der Basis. \newline
+\textbf{Kontravariant} (Vektoren $\in V$): Die Komponenten transformieren entgegengesetzt (kontra) zur Basis.
 
 \begin{figure}[H]
 \centering
@@ -3225,11 +3239,9 @@ dass $t$ zwei kontravariante und einen kovarianten Index besitzt, also ein Tenso
 abstrakt schreiben als
 \begin{equation*}
 t = t^{ab}_c
-\qquad a,b,c \in I
 \end{equation*}
 wobei $a$, $b$ und $c$ \textit{keine} Komponentenindizes sind, sondern lediglich den Typ/Stufe/Grad des Tensors angeben. 
 
-Auch die Objekte, auf die ein Tensor wirkt, tragen abstrakte Indizes. Um zu kennzeichnen, an welchem Index des Tensors ein Argument wirkt, verwendet man für das Argument denselben abstrakten Index. 
 
 \begin{example}[Vektor und Kovektor]
     Sei $v \in V = \bigotimes\nolimits^1_0 V$ und $\varphi \in V^\sim = \bigotimes\nolimits^0_1 V$. Dann ordnen wir zu
@@ -3242,7 +3254,7 @@ Auch die Objekte, auf die ein Tensor wirkt, tragen abstrakte Indizes. Um zu kenn
     \begin{equation*}
     \varphi(v) = \varphi_a v^a = v^a \varphi_a = v(\varphi) \in \Gamma = \bigotimes\nolimits^0_0 V
     \end{equation*}
-    Abbildung und Argument tragen \textit{denselben} abstrakten Index $a$, sodass klar ist, dass $\varphi$ auf $v$ wirkt. Dabei ist nur wichtig, dass sie denselben Index tragen. Da diese nur ein Symbol ist, kann dafür ein beliebiger gewählt werden: $\varphi_a v^a = \varphi_b v^b = \varphi_c v^c$.
+    Abbildung und Argument tragen \textit{denselben} abstrakten Index $a$, sodass klar ist, dass $\varphi$ auf $v$ wirkt. Da dieser nur ein Symbol ist, kann dafür ein beliebiger gewählt werden: $\varphi_a v^a = \varphi_b v^b = \varphi_c v^c$.
 \end{example}
 
 
@@ -3252,12 +3264,12 @@ Auch die Objekte, auf die ein Tensor wirkt, tragen abstrakte Indizes. Um zu kenn
     (\varphi \otimes \psi) \rightarrow (\varphi \otimes \psi)_{ab} = \varphi_a \psi_b
     \end{equation*}
     Für die Auswertung von $(\varphi \otimes \psi)$ auf $v,w \in V$ gilt: $(\varphi \otimes \psi)(v,w)= \varphi(v) \cdot \psi(w) =\varphi_a v^a\psi_b w^b = \varphi_a\psi_b v^a w^b = \psi_b \varphi_a v^a w^b = \psi(w) \cdot \varphi(v)  $
-    Also gilt $\varphi_a \psi_a = \psi_b \varphi_a$. Da aber $\varphi(v) \cdot \psi(w) \neq \psi(v) \cdot \varphi(w)$ ist somit $\varphi_a \psi_b \neq \psi_a \varphi_b$.
+    Also gilt $\varphi_a \psi_b = \psi_b \varphi_a$. Da aber $\varphi(v) \cdot \psi(w) \neq \psi(v) \cdot \varphi(w)$ ist somit $\varphi_a \psi_b \neq \psi_a \varphi_b$.
 \end{example}
 
 
 \begin{example}[Basis]
-Die Basis $(E_\alpha)_{\alpha\in I}$ des Vektorraums $V$ kann in abstrakter Indexschreibweise als $E^a_\alpha$ notiert werden, wobei $a$ der abstrakte Index und $\alpha$ der Zählindex ist, über den summiert wird. Die duale Basis wird entsprechend als $e^\alpha{}_a$ notiert. Es gilt somit:
+Die Basis $(E_\alpha)_{\alpha\in I}$ des Vektorraums $V$ kann in abstrakter Indexschreibweise als $E^a_\alpha$ notiert werden, wobei $a$ der abstrakte Index und $\alpha$ der Zählindex ist, über den summiert wird. Die duale Basis wird entsprechend als $e^\alpha_a$ notiert. Es gilt somit:
 \begin{equation*}
 e^\alpha(E_\beta) =e^\alpha_a E^a_\beta = E^a_\alpha e^\beta_a = \delta^\alpha_\beta
 \end{equation*}
@@ -3275,7 +3287,7 @@ Ein \textbf{metrischer Tensor} (z.B. die Minkowski-Metrik) auf einem Vektorraum 
 g_{ab} \in \bigotimes\nolimits^0_2 V =\mathfrak{Bil}(V, \Gamma)
 \end{equation*}
 
-Die Darstellung eines metrischen Tensors ist bezüglich einer Basis $(E_\alpha)_{\alpha\in I}$ wie üblich eindeutig
+Die Darstellung eines metrischen Tensors ist bezüglich einer Basis $(E_\alpha)_{\alpha\in I}$ nach \cref{thm:multlinAbbEindeutig} eindeutig
 \begin{equation*}
 g_{ab} \, E^a_\alpha \, E^b_\beta = g_{\alpha\beta}
 \end{equation*}
@@ -3283,7 +3295,6 @@ g_{ab} \, E^a_\alpha \, E^b_\beta = g_{\alpha\beta}
 Für die Minkowski-Metrik gilt beispielsweise $\eta_{\alpha\beta} := \mathrm{diag}(-1,1,1,1)$.
 
 Ein metrischer Tensor induziert die lineare Abbildung
-
 \begin{equation*}
 g_{ab}: V \to V^\sim: v^a \mapsto v_b := g_{ab}v^a
 \end{equation*}
@@ -3333,9 +3344,9 @@ und erfüllt
 \begin{equation*}
 g^{ab} e_a{}^\alpha e_b{}^\beta = g^{\alpha\beta}
 \end{equation*}
-wobei $e^\beta{}_a$ die duale Basis bezeichnet. Metrik und inverse Metrik stehen in der Beziehung
+wobei $e^\beta_a$ die duale Basis bezeichnet. Metrik und inverse Metrik stehen in der Beziehung
 \begin{equation*}
-g^{ab}g_{bc} = g^{\alpha \beta} E^a_\alpha E^b_\beta g_{\gamma\delta}e^\gamma_be^\delta_c = g^{\alpha \beta} g_{\gamma\delta} E^a_\alpha \underbrace{E^b_\beta e^\gamma_b}_{= \delta^\gamma_\beta} e^\delta_c = g^{\alpha \beta} g_{\beta \delta} E^a _\alpha e^\delta_c = \delta^\alpha_\delta \delta^\alpha_c = \delta^a_c.
+g^{ab}g_{bc} = g^{\alpha \beta} E^a_\alpha E^b_\beta g_{\gamma\delta}e^\gamma_be^\delta_c = g^{\alpha \beta} g_{\gamma\delta} E^a_\alpha \underbrace{E^b_\beta e^\gamma_b}_{= \delta^\gamma_\beta} e^\delta_c = g^{\alpha \beta} g_{\beta \delta} E^a _\alpha e^\delta_c = \delta^\alpha_\delta \delta^\alpha_c = \delta^a_c
 \end{equation*}
 
 Die inverse Minkowski-Metrik ist ebenso $\eta^{\alpha \beta}=\mathrm{diag}(-1,1,1,1)$.
@@ -3362,7 +3373,9 @@ Das heißt: alle Vektoren in $(E_\alpha)_{\alpha \in I}$ sind normiert und paarw
 Ein Orthonormalsystem $M = (E_\alpha)_{\alpha \in I}$ heißt \textbf{Orthonormalbasis} (ONB) $\Leftrightarrow \ \overline{\operatorname{span} M} = V$.
 \end{definition}
 
-\begin{definition}[Nicht Teil der VO]
+\begin{definition}[Nicht Teil der VO]\breakafterhead
+
+{\footnotesize Quelle: \url{https://matheplanet.com/default3.html?call=article.php?sid=1516}}\newline
 Sei $(V,( \cdot,\cdot))$ ein Pseudo-Skalarproduktraum, wobei das Pseudo-Skalarprodukt eine indefinite symmetrische nicht-entartete Bilinearform ist. Ein System von Vektoren $(E_\alpha)_{\alpha \in I} \subset V$ heißt \textbf{Pseudo-Orthonormalsystem} (ONS), wenn gilt
 \begin{equation*}
 (E_\alpha, E_\beta )
@@ -3389,7 +3402,7 @@ g_{ab}E^a_\alpha E^b_\beta
 \end{cases}
 \end{equation*}
 
-Die Tatsache, dass jede nicht-ausgeartete symmetrische Bilinearform durch Wahl einer geeigneten Basis auf eine Diagonalform mit Einträgen $\pm 1$ gebracht werden kann, folgt aus dem \emph{Trägheitssatz von Sylvester}.
+Die Tatsache, dass jede Bilinearform durch Wahl einer geeigneten Basis auf eine Diagonalform mit Einträgen $\pm 1$ gebracht werden kann, folgt aus dem \href{https://de.wikipedia.org/wiki/Tr%C3%A4gheitssatz_von_Sylvester}{Trägheitssatz von Sylvester}.
 \end{tcolorbox}
 
 \begin{example}[Orthonormalbasis bzgl. der Minkowski-Metrik]\label{ex:pseudoONB}
@@ -3492,7 +3505,7 @@ Die in den Dualraum transportierten Basisvektoren $E_{\alpha b}$ stimmen also mi
 \end{example}
 
 \subsubsection{Kontraktion/Tensorverjüngung}
-Die Kontraktion eines Tensors reduziert dessen Stufe, indem jeweils ein kontravarianter und ein kovarianter Index "zusammengezogen" werden.
+Die Kontraktion eines Tensors reduziert dessen Stufe, indem jeweils ein kontravarianter und ein kovarianter Index \textquotedbl zusammengezogen" \ werden.
 Für einen Tensor
 \begin{equation*}
 t \in \bigotimes\nolimits^{\,q}_{p} V
@@ -3504,7 +3517,7 @@ s \in \bigotimes\nolimits^{\,q-1}_{p-1} V
 
 Sei also
 \begin{equation*}
-t(\varphi_1,\ldots,\varphi_p,\; v_1,\ldots,v_q) \in \Gamma ,
+t(\varphi_1,\ldots,\varphi_p,\; v_1,\ldots,v_q) \in \Gamma
 \end{equation*}
 wobei $\varphi_i \in V^\sim$ und $v_j \in V$.
 Die Kontraktion an der $k$-ten kovarianten und $l$-ten kontravarianten Stelle definiert man durch
@@ -3517,11 +3530,11 @@ Betrachte einen Basiswechsel
 \begin{equation*}
 \tilde{E}_\alpha = \Lambda^\beta_{\alpha} E_\beta,
 \qquad
-\tilde{e}^{\,\alpha} = \Sigma^{\alpha}_{\beta} e^{\,\beta},
+\tilde{e}^{\,\alpha} = \Sigma^{\alpha}_{\beta} e^{\,\beta}
 \end{equation*}
 mit inversen Transformationsmatrizen
 \begin{equation*}
-\Sigma^{\alpha}_{\beta}\, \Lambda^{\beta}_{\gamma} = \delta^\alpha_{\gamma}.
+\Sigma^{\alpha}_{\beta}\, \Lambda^{\beta}_{\gamma} = \delta^\alpha_{\gamma}
 \end{equation*}
 
 Dann gilt:
@@ -3546,7 +3559,7 @@ ergibt sich folgende Rechenvorschrift für die Kontraktion des $k$-ten kontravar
 t^{a_1 \dots c \dots a_p}_{b_1 \dots c \dots b_q}
 \;:=\;
 t^{a_1 \dots a_k \dots a_p}_{b_1 \dots b_l \dots b_q} \, \underbrace{e^\alpha_{\ a_k}\, E^{b_l}_{\ \alpha}}_{= \delta^{b_l}_{a_k}}
-= S^{a_1 \dots a_{k-1},\, a_{k+1} \dots a_p}_{b_1 \dots b_{l-1},\, b_{l+1} \dots b_q}
+= s^{a_1 \dots a_{k-1},\, a_{k+1} \dots a_p}_{b_1 \dots b_{l-1},\, b_{l+1} \dots b_q}
 \;\in\;
 \bigotimes\nolimits^{\,p-1}_{\,q-1} V 
 \end{equation*}
@@ -3555,7 +3568,7 @@ Die Basisvektoren bzw.\ Dualbasisvektoren schreiben wir als
 \begin{equation*}
 E^a_{\alpha} \in \bigotimes\nolimits^1_0 V,
 \qquad
-e^{\alpha}_{a} \in \bigotimes\nolimits^0_1 V,
+e^{\alpha}_{a} \in \bigotimes\nolimits^0_1 V
 \end{equation*}
 mit
 \begin{equation*}
@@ -3564,7 +3577,7 @@ E^a_{\alpha} \, e^{\beta}_{a} = \delta^\beta_{\alpha} \in \bigotimes\nolimits^1_
 
 Für einen Vektor $v \in V$ gilt
 \begin{equation*}
-v^a = v^\alpha E^a_{\alpha}.
+v^a = v^\alpha E^a_{\alpha}
 \end{equation*}
 
 Ebenso für die Wirkung eines Kovektors $e^\beta$ auf einen Vektor $v$:
@@ -3581,11 +3594,11 @@ Schließlich folgt für die kombinierte Wirkung eines Basisvektors und eines Dua
 (E^b_{\alpha} e^{a}_{\beta})\, v^b
 = E^b_{\alpha} (e^{a}_{\beta} v_b)
 = v^\gamma \delta^b_{\gamma} \delta^{a}_{\beta}
-= v^a,
+= v^a
 \end{equation*}
 also insbesondere
 \begin{equation*}
-E^b_{\alpha} \, e^{a}_{b} = \delta^a_{\alpha}.
+E^b_{\alpha} \, e^{a}_{b} = \delta^a_{\alpha}
 \end{equation*}
 
 Damit ist die abstrakte Indexnotation vollständig konsistent mit der ursprünglichen Definition der Kontraktion.
@@ -3606,7 +3619,7 @@ v^b \in \bigotimes\nolimits^1_0 V
 
 Die Matrix-Vektor Multiplikation ist die Wirkung der Matrix auf den Vektor durch Kontraktion über den Index $b$:
 \begin{equation*}
-A^a_b \, v^b = w^a\in \bigotimes\nolimits^1_0 V .
+A^a_b \, v^b = w^a\in \bigotimes\nolimits^1_0 V
 \end{equation*} 
 Der kontrahierte Index verschwindet, sodass das Ergebnis wieder ein Vektor ist. Die Kontraktion reduziert den Tensorgrad von $(1,1)$ und $(1,0)$ zu $(1,0)$.
 \end{remark}
@@ -4882,7 +4895,7 @@ Eine \textbf{(topologische) Mannigfaltigkeit} ist ein topologischer Raum $(M,\ma
 \begin{itemize}
     \item $M$ ist ein Hausdorff-Raum \qquad (Folgen haben eindeutigen Grenzwert)
     \item $M$ ist parakompakt \qquad (um lokale Begriffe zu globalisieren)
-    \item $M$ ist lokal homöomorph zum $(\mathbb{R}^n, \mathfrak{R})$ \qquad ("dem $\mathbb{R}^n$ sehr ähnlich" / sieht im Herangezoomten aus wie der $\mathbb{R}^n$)
+    \item $M$ ist lokal homöomorph zum $(\mathbb{R}^n, \mathfrak{R})$ \qquad ("dem $\mathbb{R}^n$ sehr ähnlich\textquotedbl / sieht im Herangezoomten aus wie der $\mathbb{R}^n$)
 \end{itemize}
 Die Zahl $n$ heißt dann die \textbf{Dimension} der Mannigfaltigkeit $M$.
 \end{definition}
