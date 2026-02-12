@@ -208,6 +208,8 @@ Zuerst gibt es eine kurze Einführung, wie es zur speziellen und allgemeinen Rel
 
 An einigen Stellen habe ich zusätzliche Passagen eingefügt, die zwar nicht Teil der Vorlesung waren, mir aber beim Verständnis geholfen haben. Diese sind entsprechend mit \textit{„nicht Teil der VO“} oder durch einen grauen Strich am linken Rand markiert.
 
+Ich hab das Ganze nach bestem Wissen und Gewissen ausgearbeitet, aber es kann sicherlich Typos und Fehler beinhalten. Bei Fehlern gerne mir eine Email an ART-korrekturen@protonmail.com schicken.
+
 Das Bild des Titelblatts stellt die Raumzeitkrümmung in 3D dar. \newline
 {\footnotesize Quelle: \url{https://sketchfab.com/3d-models/gravity-warping-space-time-749a8acac04049a89dc8d02054a02ee8}}
 
@@ -246,7 +248,7 @@ Das Gravitationsgesetz kann auch mithilfe des Gravitationspotentials (Skalarfeld
 \begin{equation*}
 F^i_{\text{grav}} = -m \partial_i \Phi(x^k(t))
 \end{equation*}
-wobei $\partial_i := \frac{\partial}{\partial x^i}$ die partielle Ableitung nach der $i$-ten Raumkoordinate bezeichnet und somit $\partial_i\Phi = (\nabla \Phi)^i$ die Komponenten des Gradienten des Gravitationspotentials.
+wobei $\partial_i := \frac{\partial}{\partial x^i}$ die partielle Ableitung nach der $i$-ten Raumkoordinate bezeichnet und somit $\partial_i\Phi = (\nabla \Phi)^i$ die Komponenten des Gradienten des Gravitationspotentials ("Gravitationsfeld\textquotedbl).
 
 Zugleich verband Newton das Konzept der \textit{Kraft} mit dem der \textit{Beschleunigung} und formulierte damit die Grundlage der heute sogenannten \textit{Newton’schen Mechanik}. Nach dem zweiten Newtonschen Axiom gilt
 \begin{equation*}
@@ -274,6 +276,23 @@ Alle Körper fallen im selben Gravitationsfeld im Vakuum gleich schnell, unabhä
 \end{quote}
 
 Bei der Mondlandung 1971 wurde dies im Vakuum bestätigt: Hammer und Feder trafen gleichzeitig auf der Mondoberfläche auf: \url{https://www.youtube.com/watch?v=Oo8TaPVsn9Y}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{earth-moon-gravitational-potential-3d.png}
+\caption{Gravitationspotential und Gravitationsfeld von Erde und Mond dargestellt. Der skalare Wert gibt die Höhe an, die Pfeile geben die Richtung an.}
+\label{fig:gravitationspot}
+{\footnotesize Quelle: \url{https://physikbuch.schule/work-in-the-gravitational-field.html}}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{gravfeld.png}
+\caption{Gravitationsfeld von Erde und Mond}
+\label{fig:gravitationsfeld}
+{\footnotesize Quelle: \url{https://physikbuch.schule/work-in-the-gravitational-field.html}}
+\end{figure}
+
 
 Wirken keine Kräfte $(F^i = 0)$, so folgt aus dem zweiten Newtonschen Axiom mit zweimaliger Integration:
 \begin{equation*}
@@ -4608,8 +4627,8 @@ Wir definieren die \textbf{euklidische Topologie} $\mathfrak{R}$ als die Menge a
 schreiben lassen:
 \begin{equation*}
 \mathfrak{R}
-:= \bigl\{\, O \subseteq \mathbb{R}^n \mid
-O = \bigcup_{\alpha \in I} K_\alpha \,\bigr\}
+:= \bigl\{\, \mathcal O \subseteq \mathbb{R}^n \mid
+\mathcal O = \bigcup_{\alpha \in I} K_\alpha \,\bigr\}
 \end{equation*}
 
 Dann heißt $(\mathbb{R}^n,\mathfrak{R})$ \textbf{euklidischer Raum}.
@@ -4642,7 +4661,7 @@ Dazu überprüfen wir die drei Topologieaxiome.
     \mathbb{R}^n = \bigcup_{n \in \mathbb{N}} K(0,n) \in \mathfrak{R}
     \end{equation*}
 
-    \item[(O2)] zz: $\forall O_1, O_2 \in \mathfrak{R}: \mathcal{O}_1 \cap \mathcal{O}_2 \in \mathfrak{R}$
+    \item[(O2)] zz: $\forall \mathcal O_1,  \mathcal O_2 \in \mathfrak{R}: \mathcal{O}_1 \cap \mathcal{O}_2 \in \mathfrak{R}$
 
     Braucht mehr Überlegungen, da der Durchschnitt von Kugeln nicht notwendigerweise eine Kugel sein muss. Seien nun $\mathcal{O}_1, \mathcal{O}_2 \in \mathfrak{R}$. Dann existieren Familien offener Kugeln $(K_\alpha)_{\alpha\in I}$ und
     $(K_\beta)_{\beta\in J}$ mit
@@ -4740,17 +4759,17 @@ Dazu überprüfen wir die drei Topologieaxiome.
     \in \mathfrak{R}.
     \end{equation*}
 
-    \item[(O3)] zz: $\forall (O_\alpha)_{\alpha\in I} \subseteq \mathfrak{R}: \ \bigcup_{\alpha \in I} \mathcal{O}_\alpha \in \mathfrak{R}$
+    \item[(O3)] zz: $\forall (\mathcal O_\alpha)_{\alpha\in I} \subseteq \mathfrak{R}: \ \bigcup_{\alpha \in I} \mathcal{O}_\alpha \in \mathfrak{R}$
     
-    Sei nun $(O_\alpha)_{\alpha\in I} \subseteq \mathfrak{R}$.
+    Sei nun $(\mathcal O_\alpha)_{\alpha\in I} \subseteq \mathfrak{R}$.
     Dann existieren für jedes $\alpha$ offene Kugeln $(K_{\beta})_{\beta\in I_\alpha}$
     mit
     \begin{equation*}
-    O_\alpha = \bigcup_{\beta\in I_\alpha} K_\beta.
+    \mathcal O_\alpha = \bigcup_{\beta\in I_\alpha} K_\beta.
     \end{equation*}
     Daraus folgt
     \begin{equation*}
-    \bigcup_{\alpha\in I} O_\alpha
+    \bigcup_{\alpha\in I} \mathcal O_\alpha
     = \bigcup_{\alpha\in I} \bigcup_{\beta\in I_\alpha} K_\beta \in \mathfrak{R}.
     \end{equation*}
 \end{itemize}
@@ -4820,7 +4839,7 @@ Kompaktheit und Parakompaktheit sind zentrale Begriffe der Topologie und spielen
 Sei $(X,\mathfrak{X})$ ein topologischer Raum. Eine Familie offener Mengen $(\mathcal O_\alpha)_{\alpha\in I} \subseteq \mathfrak{X}$
 heißt \textbf{offene Überdeckung} von $X$, falls
 \begin{equation*}
-X = \bigcup_{\alpha\in I} O_\alpha
+X = \bigcup_{\alpha\in I} \mathcal O_\alpha
 \end{equation*}
 \end{definition}
 
@@ -4985,7 +5004,7 @@ Weitere Beispiele für Mannigfaltigkeiten sind der $\mathbb{R}^n, \mathbb{C}^n$,
 
 
 \section{Kartenwechsel}
-Überlappen sich zwei offene Umgebungen $\mathcal{O}_\alpha, \mathcal{O}_\beta \in \mathfrak{M}$, die homöomorph zum $\mathbb{R}^n$ sind, so wird dessen Durchschnitt durch verschiedene Karten abgebildet. Der Übergang zwischen diesen Darstellungen erfolgt über die \textbf{Kartenwechselabbildung}.
+Überlappen sich zwei offene Umgebungen $\mathcal{O}_\alpha, \mathcal{O}_\beta \in \mathfrak{M}$, die homöomorph zum $\mathbb{R}^n$ sind, so wird dessen Durchschnitt durch verschiedene Karten abgebildet. Der Übergang zwischen diesen Darstellungen erfolgt über die Kartenwechselabbildung.
 
 \begin{definition}
 Für zwei Karten $(O_\alpha,\phi_\alpha)$ und $(O_\beta,\phi_\beta)$ mit
@@ -5008,6 +5027,7 @@ und es gilt
 \qquad
 \psi_{\beta\alpha}\circ\psi_{\alpha\beta} = \mathrm{id}_{\phi_\beta(O_\alpha\cap O_\beta)}
 \end{equation*}
+Das heißt Kartenwechselabbildungen sind bijektiv.
 
 \begin{figure}[H]
 \centering
@@ -5017,13 +5037,13 @@ und es gilt
 
 Seien drei offenen Mengen $\mathcal{O}_\alpha, \mathcal{O}_\beta, \mathcal{O}_\gamma \in \mathfrak{M}$, die homöomorph zum $\mathbb{R}^n$ sind, mit
 \begin{equation*}
-\mathcal{O}_\alpha \cap \mathcal{O}_\beta \cap \mathcal{O}_\gamma \neq \emptyset,
+\mathcal{O}_\alpha \cap \mathcal{O}_\beta \cap \mathcal{O}_\gamma \neq \emptyset
 \end{equation*}
 so können drei Kartenwechsel definiert werden:
 \begin{align*}
-\psi_{\beta\alpha} &= \phi_\beta \circ \phi_\alpha^{-1}, \\
-\psi_{\gamma\beta} &= \phi_\gamma \circ \phi_\beta^{-1}, \\
-\psi_{\gamma\alpha} &= \phi_\gamma \circ \phi_\alpha^{-1}.
+\psi_{\beta\alpha} &= \phi_\beta \circ \phi_\alpha^{-1} \\
+\psi_{\gamma\beta} &= \phi_\gamma \circ \phi_\beta^{-1} \\
+\psi_{\gamma\alpha} &= \phi_\gamma \circ \phi_\alpha^{-1}
 \end{align*}
 
 \begin{proposition}[Dreifachdurchschnittsbedingung]
@@ -5051,7 +5071,7 @@ Es gilt
 \caption{Kartenwechsel zwischen drei Karten}
 \end{figure}
 
-Diese Dreifachdurchschnittsbedingung lässt sich auf beliebige Mehrfachüberlappungen verallgemeinern.
+Diese Dreifachdurchschnittsbedingung lässt sich auf endlich viele Mehrfachüberlappungen verallgemeinern.
 
 Die Vierfachdurchschnittsbedingung ist $\psi_{\alpha \delta} = \psi_{\alpha \beta} \circ ( \psi_{\beta \gamma} \circ \psi_{\gamma \delta})$. Diese folgt direkt aus der Dreifachdurchschnittsbedingung:
 \begin{equation*}
@@ -5060,13 +5080,13 @@ Die Vierfachdurchschnittsbedingung ist $\psi_{\alpha \delta} = \psi_{\alpha \bet
 \overset{\eqref{eq:dreifach}}{=} \psi_{\alpha \delta}
 \end{equation*}
 
-Das kann induktiv weitergeführt werden zur Mehrfachdurchschnittsbedingung
+Das kann induktiv weitergeführt werden zur \textbf{Mehrfachdurchschnittsbedingung}
 \begin{equation*}
 \psi_{\alpha_0\alpha_k}=\psi_{\alpha_0\alpha_1}\circ\psi_{\alpha_1\alpha_2}\circ\dots\circ\psi_{\alpha_{k-1}\alpha_k}
 \end{equation*}
 
 \begin{remark}
-Eine Karte beschreibt, \textit{wie} $\mathcal{O}$ im $\mathbb{R}^n$ dargestellt wird. Beispielsweise durch kartesische Koordinaten $\phi_\alpha(p) = (x, y, z)$ oder durch Zylinderkoordinaten $\phi_\beta(p) = (r, \phi, z)$. Der Kartenwechsel $\psi_{\alpha \beta}$ ist dann die Transformation von den Zylinderkoordinaten in kartesische Koordinaten: $\psi_{\alpha \beta}(r,\phi,z)=(r\cdot \mathrm{cos}\phi,r \cdot \mathrm{sin}\phi, z)=(x,y,z)$.
+Eine Karte beschreibt, \textit{wie} $\mathcal{O}$ im $\mathbb{R}^n$ dargestellt wird. Beispielsweise durch kartesische Koordinaten $\phi_\alpha(p) = (x, y)$ oder durch Polarkoordinaten $\phi_\beta(p) = (r, \varphi)$. Der Kartenwechsel $\psi_{\alpha \beta}$ ist dann die Transformation von den Polarkoordinaten in kartesische Koordinaten: $\psi_{\alpha \beta}(r,\varphi)=(r\cdot \mathrm{cos}\varphi,r \cdot \mathrm{sin}\varphi)=(x,y)$.
 \end{remark}
 
 \underline{Kartenwechsel in Koordinaten}\newline
@@ -5098,7 +5118,7 @@ x_\alpha^k(x_\beta^i):= \psi_{\alpha\beta}^k(x_\beta^i)=x_\alpha^k
 Für zwei Karten $(O,\phi)$ und $(\tilde{O},\tilde{\phi})$ mit $O\cap \tilde{O}\neq\emptyset$ ist der \textbf{Kartenwechsel in Koordinatendarstellung} gegeben durch
 \begin{equation*}
 \psi: \phi(O \cap \tilde{O}) \subseteq \mathbb{R}^n
-\to \tilde{\phi}(O \cap \tilde{O}) \subseteq \mathbb{R}^n : x^k \mapsto \tilde{x}^i(x^k):= \psi^i(x^k)=\tilde{x}^i
+\to \tilde{\phi}(O \cap \tilde{O}) \subseteq \mathbb{R}^n : x^i \mapsto \tilde{x}^k(x^i):= \psi^k(x^i)=\tilde{x}^k
 \end{equation*}
 \end{definition}
 
@@ -5111,7 +5131,7 @@ Eine Abbildung
 \begin{equation*}
 F : M \to \mathbb{R}
 \end{equation*}
-heißt \textbf{reellwertiges Skalarfeld} auf $M$.
+heißt \textbf{Skalarfeld} auf $M$.
 \end{definition}
 
 Skalarfelder bilden also jeden Punkt $p$ einer Mannigfaltigkeit auf einen \textit{Skalar} $F(p)$ ab. Dabei kann es sich beispielsweise um ein Temperaturfeld handeln, das jedem Punkt im Raum eine Temperatur zuweist.
@@ -5128,7 +5148,7 @@ f_\alpha := F \circ \phi_\alpha^{-1}
 \textbf{lokaler Repräsentant} oder auch \textbf{lokale Darstellung} von $F$ in der $\alpha$-Karte.
 \end{definition}
 
-$f_\alpha$ ist keine Koordinatentransformation, sondern die Darstellung eines Skalarfeldes in den Koordinaten der Karte $(\mathcal{O}_\alpha,\phi_\alpha)$. Ob diese Koordinaten kartesisch, zylindrisch oder sphärisch sind, hängt allein von der gewählten Karte ab.
+$f_\alpha$ ist die Darstellung eines Skalarfeldes in den Koordinaten der Karte $(\mathcal{O}_\alpha,\phi_\alpha)$. Ob diese Koordinaten beispielsweise kartesisch, zylindrisch oder sphärisch sind, hängt von der gewählten Karte ab.
 
 Entsprechend erhält man zu einem Atlas $(\mathcal{O}_\alpha,\phi_\alpha)_{\alpha\in I}$
 eine Familie numerischer Funktionen
@@ -5160,13 +5180,12 @@ Sei $x \in \phi_\beta(\mathcal{O}_\alpha \cap \mathcal{O}_\beta)$. Dann ist
 f_\beta(x) = (F \circ \phi_\beta^{-1})(x) = (F \circ \underbrace{(\phi_\alpha^{-1} \circ \phi_\alpha)}_{=\mathrm{id}} \circ \phi_\beta^{-1})(x) = ((F \circ \phi_\alpha^{-1}) \circ (\phi_\alpha \circ \phi_\beta^{-1}))(x) = (f_\alpha \circ \psi_{\alpha\beta})(x)
 \end{equation*}
 \end{proof}
-Die beiden lokalen Darstellungen $f_{\alpha}$ und $f_{\beta}$ beschreiben denselben physikalischen/geometrischen Wert, nur in verschiedenen Koordinaten, da sie vom selben globalen Skalarfeld $F$ stammen. 
+Die beiden lokalen Darstellungen $f_{\alpha}$ und $f_{\beta}$ beschreiben denselben physikalischen/geometrischen Wert, beispielsweise eine Temperatur, nur in verschiedenen Koordinaten, da sie aus demselben globalen Skalarfeld $F$ stammen. 
 
 \subsubsection*{Skalarfelder sind kartenunabhängig (koordinatenunabhängig)}
 Die lokale Darstellung $f_\alpha$ eines Skalarfeldes $F$ erlaubt es, den abstrakten Begriff einer Funktion auf einer Mannigfaltigkeit auf bekannte numerische Funktionen zurückzuführen. Dabei ist zu beachten, dass ein Punkt $p \in M$ je nach Karte durch unterschiedliche Koordinaten beschrieben wird. 
 
-Sei $p \in \mathcal{O}_\alpha \cap \mathcal{O}_\beta$. Dann besitzt $p$ bezüglich der Karten $(\mathcal{O}_\alpha,\phi_\alpha)$ und
-$(\mathcal{O}_\beta,\phi_\beta)$ die Koordinatendarstellungen, die mit der Kartenwechselabbildung (Koordinatenwechselfunktion) \cref{def:kartekoord} ineinander umgerechnet werden können
+Sei $p \in \mathcal{O}_\alpha \cap \mathcal{O}_\beta$. Dann besitzt $p$ bezüglich der Karten $(\mathcal{O}_\alpha,\phi_\alpha)$ und $(\mathcal{O}_\beta,\phi_\beta)$ die Koordinatendarstellungen, die mit der Kartenwechselabbildung (Koordinatenwechselfunktion) \cref{def:kartekoord} ineinander umgerechnet werden können
 \begin{align*}
 x_\beta^k(x_\alpha^i)=x_\beta^k \\
 x_\alpha^k(x_\beta^i)=x_\alpha^k
@@ -5180,7 +5199,7 @@ f_\alpha(x_\alpha^i)
 \overset{\eqref{eq:komp}}{=} f_\beta(x_\beta^k)
 \end{equation}
 
-Dies entspricht der physikalischen Forderung, dass eine skalare Größe – etwa eine Temperatur – unabhängig von der gewählten Karte denselben Wert besitzt. Die numerischen Funktionen hängen von der gewählten Karte (Koordinatendarstellung) ab, der physikalische Wert jedoch nicht.
+Dies entspricht der physikalischen Forderung, dass eine skalare Größe – etwa eine Temperatur – unabhängig von der gewählten Karte/Koordinaten denselben Wert $\in \mathbb{R}$ besitzt. Die numerischen Funktionen hängen von der gewählten Karte (Koordinatendarstellung) ab, der physikalische Wert jedoch nicht.
 
 \underline{Rekonstruktion des Skalarfeldes aus der lokalen Darstellung}\newline
 Umgekehrt kann zu gegebenen lokalen Darstellungen $(f_\alpha)_{\alpha\in I}, \ f_\alpha : \mathbb{R}^n \to \mathbb{R}$ das zugehörige Skalarfeld $F$ gewonnen werden.
@@ -5196,7 +5215,11 @@ F(p) := f_\beta(\phi_\beta^i(p)) = f_\beta(x_\beta^i) \overset{\eqref{eq:numfunk
 
 Da per Definition der Mannigfaltigkeit für jeden Punkt $p \in M$ eine Karte existiert, gilt obiges für alle $p\in M$. Der Wert des Skalarfeldes ist somit unabhängig von der gewählten Karte und eindeutig durch die lokalen Darstellungen bestimmt.
 
-Diese Konstruktion ist analog zur Darstellung eines Vektors in verschiedenen Basen: Die einzelnen Komponenten hängen von der gewählten Basis ab, der Vektor selbst, als abstraktes Objekt, jedoch nicht. Ebenso hängen die lokalen Darstellungen $f_\alpha$ von der Wahl der Karte ab, während das Skalarfeld $F$ kartenunabhängig ist.
+Diese Konstruktion ist analog zur Darstellung eines Vektors $v^a$ in verschiedenen Basen $E^a_i, \, \tilde{E}^a_i$: Die einzelnen Komponenten $v^i, \, \tilde{v}^i$ hängen von der gewählten Basis ab, der Vektor selbst, als abstraktes Objekt, jedoch nicht:
+\begin{equation*}
+v^a = v^iE^a_i = \tilde{v}^i\tilde{E}^a_i
+\end{equation*}
+Ebenso hängen die lokalen Darstellungen $f_\alpha$ von der Wahl der Karte ab, während das Skalarfeld $F$ kartenunabhängig ist.
 
 Mit der Kartenwechselabbildung (Koordinatenwechselfunktion) \eqref{def:kartekoord} kann \eqref{eq:numfunk} nun folgendermaßen dargestellt werden
 \begin{equation*}
@@ -5434,15 +5457,15 @@ Wenden wir nun die Kettenregel auf $\tilde{x}^i(t)=\tilde{x}^i(x^k(t))$ an, so e
 \begin{equation}\label{eq:tangent_transform}
 \tilde{v}^i
 = \left.\frac{d}{dt}\right|_{t=0}\tilde{x}^i(t)
-= \left.\frac{d}{dt}\right|_{t=0}\tilde{x}^i(x(t))
+= \left.\frac{d}{dt}\right|_{t=0}\tilde{x}^i(x^k(t))
+\overset{\substack{\text{Ketten-} \\ \text{regel}}}{=} \left.\frac{\partial \tilde{x}^i(x^k(t))}{\partial x^l}\right|_{t=0}\ \underbrace{\left.\frac{d x^l(t)}{dt}\right|_{t=0}}_{=v^l}
 = \frac{\partial \tilde{x}^i}{\partial x^l}(\underbrace{x^k(0)}_{=:x_0^k})\ v^l
 = \frac{\partial \tilde{x}^i}{\partial x^l}(x_0^k)\ v^l
 \end{equation}
 
 Die Matrix $\frac{\partial \tilde{x}^i}{\partial x^l}$ ist die \textbf{Jacobi-Matrix} des Kartenwechsels. Sie gibt an, wie sich $v^i$ unter einem Kartenwechsel verändert und ist \textbf{linear}. Somit ist diese Transformation linear in $v$. Sie hängt nur vom Punkt $p$ (bzw. $x_0$) ab, nicht von der konkreten Kurve $\gamma$. Wichtig: wir beschränken uns hier auf den einen Punkt $x_0^i$! Global bleibt der Kartenwechsel im Allgemeinen nichtlinear.
 
-Es kann viele verschiedene Kurven geben, die durch denselben Punkt $p$ bzw. in Koordinaten $x_0^i$ laufen und dort dieselbe \glqq Anfangsrichtung\grqq\ $v^i$ besitzen. Wir fassen diese zusammen mit der folgenden \textbf{Äquivalenzrelation}:
-
+Es kann viele verschiedene Kurven geben, die durch denselben Punkt $p$ bzw. in Koordinaten $x_0^i$ laufen und dort dieselbe \glqq Anfangsrichtung\grqq\ $v^i$ besitzen. Wir fassen diese mit der folgenden \textbf{Äquivalenzrelation}, geschrieben in Koordinaten, zusammen:
 \begin{equation*}
 x_1^i(t) \sim x_2^i(t)  :\Leftrightarrow
 \begin{cases}
@@ -5463,11 +5486,11 @@ Transformieren wir in $x_0^k$ die Tangentialvektoren $v_1^i = v_2^i$ zweier Kurv
 \end{equation*}
 Da die Jacobi-Matrix nur von $x_0^k$ bzw. $p \in M$ abhängt, wird dieselbe Matrix auf $v_1^i = v_2^i$ angewandt und wir erhalten $\tilde{v}_1^i=\tilde{v}_2^i$. 
 
-Koordinatenunabhängig geschrieben:
+Es folgt die \textbf{Äquivalenzrelation} ohne Koordinaten:
 \begin{equation*}
 \gamma_1(t) \sim \gamma_2(t)  :\Leftrightarrow
 \begin{cases}
-\gamma_1(0)=\gamma_2(0) \\
+\gamma_1(0)=\gamma_2(0) =p \\
 \dot{\gamma}_1(0) = \dot{\gamma}_2(0)
 \end{cases}
 \end{equation*}
@@ -5479,17 +5502,19 @@ T_pM := \{[\gamma]_\sim \mid \gamma: I\to M \text{ differenzierbar in }p\in M, \
 \end{equation*}
 \end{definition}
 
-\underline{Vektorraumstruktur des Tangentialraums}\newline
-Damit der Tangentialraum zu einem Vektorraum wird, muss er bzgl. der Addition und der Skalarmultiplikation abgeschlossen sein. Zudem muss die Addition und die Skalarmultiplikation unabhängig von der Wahl der Karte sein. 
+\underline{Vektorraumstruktur des Tangentialraums}
+\begin{itemize}
+    \item zz: abgeschlossen bzgl. Addition \newline
+Damit der Tangentialraum zu einem Vektorraum wird, muss er bzgl. der Addition und der Skalarmultiplikation abgeschlossen sein und die Vektorraumaxiome erfüllen. Zudem muss die Addition und Skalarmultiplikation unabhängig von der Wahl der Karte sein. 
 
 In einer fixierten Karte $(\mathcal{O},\phi)$ betrachten dazu zwei Kurven $\gamma_x$ und $\gamma_y$ mit Koordinaten $x^i(t)$ und $y^i(t)$ bzgl. dieser Karte, die beide durch den Punkt $\gamma_x(0)=\gamma_y(0)=p \in \mathcal{O} \subset M$ bzw. in Koordinaten $x^i_0$ verlaufen und in diesem Punkt die Tangentialvektoren 
 \begin{align*}
-v= [\gamma_x]_\sim\in T_pM
+v &= [\gamma_x]_\sim\in T_pM
 \text{ mit Komponenten } 
-v^i := \dot{x}^i_0 \in \mathbb{R} \\
-w= [\gamma_y]_\sim\in T_pM
+v^i := \dot{x}^i(0) \\
+w &= [\gamma_y]_\sim\in T_pM
 \text{ mit Komponenten } 
-w^i := \dot{y}^i_0 \in \mathbb{R}
+w^i := \dot{y}^i(0)
 \end{align*}
 besitzen.
 
@@ -5508,9 +5533,10 @@ Diese Kurve besitzt den Tangentialvektor
 \includegraphics[width=0.3\textwidth]{images/Tpmvek.jpg}
 \end{figure}
 
-Wir definieren die Summe $v+w := [\gamma_z] \in T_pM$ als die Äquivalenzklasse der Kurve $\gamma_z$.
+Wir definieren die Summe $v+w := [\gamma_z]_\sim \in T_pM$ als die Äquivalenzklasse der Kurve $\gamma_z$.
 
-Es bleibt zu zeigen, dass diese Definition unabhängig von der Wahl der Karte ist. Dazu betrachten wir eine zweite Karte $(\tilde{\mathcal{O}},\tilde{\phi})$ mit
+\item zz: Definition der Addition unabhängig von der Wahl der Karte\newline
+Dazu betrachten wir eine zweite Karte $(\tilde{\mathcal{O}},\tilde{\phi})$ mit
 $p\in\tilde{\mathcal{O}}$ und die entsprechenden Koordinatendarstellungen nach dem Kartenwechsel $\psi$ (siehe \eqref{eq:kartenwechselkoord})
 \begin{align*}
 \tilde{x}^i(t) = \psi^i(x^k(t))=\tilde{x}^i(x^k(t))\\
@@ -5535,7 +5561,13 @@ Für die Kurve $\gamma_z$ ergibt sich entsprechend
 
 Damit besitzt die Kurve $\tilde{z}^i(t)$ in der neuen Karte genau den Tangentialvektor, der der Summe der beiden transformierten Tangentialvektoren entspricht. Die Addition ist somit unabhängig von der Wahl der Karte.
 
-Folglich ist die Addition von Tangentialvektoren eine koordinatenunabhängige Operation. Der Beweis für die Skalarmultiplikation wird mit $z^i(t):=x_0^i+(\lambda v^i)t$ geführt und geht analog.
+Folglich ist die Addition von Tangentialvektoren eine koordinatenunabhängige Operation. 
+\item zz: abgeschlossen bzgl. Skalarmultiplikation und Definition unabhängig von der Wahl der Karte\newline
+Der Beweis wird mit $z^i(t):=x_0^i+(\lambda v^i)t$ geführt und geht analog.
+
+\item Vektorraumaxiome \newline
+Wird in der Vorlesung nicht durchexerziert.
+\end{itemize}
 
 Folglich ist der Tangentialraum $T_pM$ ein \textbf{Vektorraum}. Allerdings haben wir bisher eine \textbf{koordinaten- bzw. basisabhängige Darstellung} der Elemente von $T_pM$:\newline
 $v\in T_pM$ (Tangentialvektor) $\Leftrightarrow \exists$ eine Kurve in Koordinaten $x^i(t)$ mit $\phi^i(p)=x^i(0)=: x_0^i$ für ein $p\in \mathcal{O} \subset M$ und $v^i=\dot{x}^i(0)$ und der Kartenwechseltransformation $\tilde v^i = \frac{\partial \tilde{x}^i}{\partial x^k}(x_0^m)\,v^k$.
@@ -5583,6 +5615,17 @@ und dessen Ableitung
 \partial_i := \frac{\partial }{\partial x^i} \overset{\substack{\text{Ketten-} \\ \text{regel}}}{=} \underbrace{\frac{\partial}{\partial \tilde{x}^k}}_{=:\tilde{\partial}_k}\frac{\partial \tilde{x}^k}{\partial x^i} 
  = \tilde{\partial}_k \frac{\partial \tilde{x}^k}{\partial x^i} 
 \end{equation*}
+
+\begin{tcolorbox}[noVO]
+\begin{remark}[Nicht Teil der VO] \breakafterhead
+
+Man kann sich obiges mit dem Folgenden merken
+\begin{equation*}
+\frac{\partial f(\tilde{x}^k(x^i))}{\partial x^i}
+\overset{\substack{\text{Ketten-} \\ \text{regel}}}{=} \frac{\partial f(\tilde{x}^k)}{\partial \tilde{x}^k}\, \frac{\partial \tilde{x}^k(x^i)}{\partial x^i}
+\end{equation*}
+\end{remark}
+\end{tcolorbox}
 
 Also
 \begin{equation}\label{eq:partdiff3_lang}
@@ -5676,11 +5719,11 @@ Das Vektorfeld bildet also jeden Punkt $p \in M$ auf einen Tangentialvektor $v^a
 
 Für jede Karte $(\mathcal{O},\phi)$ mit Koordinaten $x^i$ besitzt $v^a$ lokal eine Darstellung
 \begin{equation*}
-v^a = v^i(x^k)\,\partial_i^a\big|_{x_0^m}
+v^a = v^i(x^k)\,\partial_i^a
 \end{equation*}
 wobei die \textbf{numerischen Funktionen/Vektorfelder (Komponenten des Vektorfelds)}
 \begin{equation*}
-v^i: v^a \circ (\phi^i)^{-1} : \phi^i(\mathcal{O}) \subseteq \mathbb{R}^n \to \mathbb{R}
+v^i:= v^a \circ (\phi^i)^{-1} : \phi^i(\mathcal{O}) \subseteq \mathbb{R}^n \to \mathbb{R}
 \end{equation*}
 $k$-mal stetig differenzierbar sind.
 \end{definition}
@@ -5689,6 +5732,7 @@ $k$-mal stetig differenzierbar sind.
 \begin{tcolorbox}[noVO]
 \begin{definition}[Nicht Teil der VO] \breakafterhead
 
+{\footnotesize Quelle: \url{https://de.wikipedia.org/wiki/Tangentialb%C3%BCndel}}\newline
 Die disjunkte Vereinigung aller Tangentialräume von $M$ heißt \textbf{Tangentialbündel} und wird definiert als
 \begin{equation*}
 TM := \dot{\bigcup_{p \in M}} T_pM
@@ -5702,8 +5746,11 @@ T_pM \cap T_{\tilde{p}}M = \emptyset \text{ (paarweise disjunkt)}
 \end{definition}
 
 Mit dem Tangentialbündel lautet die Definition:
+\vspace{-1em}
+
 \begin{definition}[Nicht Teil der VO] \breakafterhead
 
+{\footnotesize Quelle: \url{https://de.wikipedia.org/wiki/Vektorfeld#Vektorfelder_auf_Mannigfaltigkeiten}}\newline
 Sei $(M, \mathfrak{M})$ eine $C^k$-Mannigfaltigkeit und die kanonische Projektion $\pi:TM \to M$. Ein \textbf{$C^k$-Vektorfeld} ist dann
 \begin{equation*}
 v^a: M \to TM: p \mapsto v^a(p) \in T_pM
@@ -5754,6 +5801,18 @@ Wir suchen wieder nach einem Objekt, das obiges Transformationsverhalten aufweis
 \begin{equation}\label{eq:dualtrafo_lang}
 d\tilde{x}^i\big|_{x_0^m} = \underbrace{\frac{\partial \tilde{x}^i}{\partial x^k}(x_0^m)}_{=\partial_k\tilde{x}^i \big|_{x_0^m}}\, dx^k\big|_{x_0^m}
 \end{equation}
+
+\begin{tcolorbox}[noVO]
+\begin{remark}[Nicht Teil der VO] \breakafterhead
+
+Man kann sich obiges mit dem Folgenden merken
+\begin{equation*}
+\underbrace{\frac{d \tilde{x}^i(x^k(t))}{dt}}_{=d\tilde{x}^i}
+\overset{\substack{\text{totales} \\ \text{Diff.}}}{=} \frac{\partial \tilde{x}^i}{\partial x^k}\, \underbrace{\frac{d x^k}{dt}}_{dx^k}
+\end{equation*}
+\end{remark}
+\end{tcolorbox}
+\vspace{1em}
 
 Die Ableitungen sind wieder immer bzgl. dem Punkt $x_0^m$ zu verstehen. Wir werden nun wieder $\big|_{x_0^m}$ weglassen, um die Schreibweise zu vereinfachen. Damit wird \eqref{eq:dualtrafo_lang} zu
 
@@ -5851,7 +5910,7 @@ Wir haben nach natürlichen Objekten gesucht, deren Transformationsverhalten bei
 \item die totalen Differentiale $dx^i_a$ besitzen dasselbe Transformationsverhalten wie die Basiselemente $e^i_a$ des Dualraums
 \end{itemize}
 
-Die Komponenten sind \emph{keine intrinsischen Eigenschaften}, sondern hängen von der gewählten Basis ab. Wechselt man die Karte, so ändern sich sowohl die Komponenten $v^i$ bzw. $w_i$ als auch die zugehörigen Basisobjekte $\partial_i^a$ bzw. $dx^i_a$ und zwar so, dass sich die Änderungen gegenseitig kompensieren und sich somit das Objekt selbst, der Vektor $v^a$ bzw. der Kovektor $\omega_a$, nicht ändert. (Vergleiche \eqref{eq:vektortrafo} und \eqref{eq:kovektortrafo})
+Die Komponenten hängen von der gewählten Basis ab. Wechselt man die Karte, so ändern sich sowohl die Komponenten $v^i$ bzw. $w_i$ als auch die zugehörigen Basisobjekte $\partial_i^a$ bzw. $dx^i_a$ und zwar so, dass sich die Änderungen gegenseitig kompensieren und sich somit das Objekt selbst, der Vektor $v^a$ bzw. der Kovektor $\omega_a$, nicht ändert. (Vergleiche \eqref{eq:vektortrafo} und \eqref{eq:kovektortrafo})
 \end{remark}
 
 \begin{remark}[Koordinatenunabhängigkeit der dualen Paarung] \breakafterhead
@@ -5905,7 +5964,7 @@ t^{a_1\ldots a_r}_{b_1\ldots b_s} = t^{i_1\ldots i_r}_{j_1\ldots j_s} \, \partia
 \end{equation*}
 wobei die \textbf{numerischen Funktionen/Tensorfelder (Komponenten des Tensorfelds)}
 \begin{equation*}
-t^{i_1\ldots i_r}_{j_1\ldots j_s}: t^{a_1\ldots a_r}_{b_1\ldots b_s} \circ \phi^{-1} : \phi(\mathcal{O}) \subseteq \mathbb{R}^n \to \mathbb{R}
+t^{i_1\ldots i_r}_{j_1\ldots j_s}:= t^{a_1\ldots a_r}_{b_1\ldots b_s} \circ (\phi^{i_1\ldots i_r}_{j_1\ldots j_s})^{-1} : \phi^{i_1\ldots i_r}_{j_1\ldots j_s}(\mathcal{O}) \subseteq \mathbb{R}^n \to \mathbb{R}
 \end{equation*}
 $k$-mal stetig differenzierbar sind.
 \end{definition}
@@ -5997,9 +6056,9 @@ Sei
 \begin{definition}
 Die \textbf{koordinatenkovariante Ableitung eines Skalarfeldes} ist definiert als
 \begin{equation}\label{eq:koordkovskalar}
-\partial_a: \mathcal{T}^0_0(M) \to \mathcal{T}^0_1(M): f \mapsto \partial_a f := \partial_i f\, dx^i_a 
+\partial_a: \mathcal{T}^0_0(M) \to \mathcal{T}^0_1(M): f \mapsto \partial_a f := \partial_i f\, dx^i_a
 \end{equation}
-$\partial_a f$ ist also ein Kovektorfeld. Hierbei wirken Ableitungssymbole nur auf das direkt folgende Objekt, sofern nicht durch Klammern anders gekennzeichnet.
+$\partial_a f$ ist also ein Kovektorfeld, wobei $dx^i_a$ ein Basisvektor ist. Hierbei wirken Ableitungssymbole nur auf das direkt folgende Objekt, sofern nicht durch Klammern anders gekennzeichnet.
 \end{definition}
 
 Die partielle Ableitung wirkt auf der lokalen Darstellung des Skalarfelds, die koordinatenkovariante Ableitung wirkt auf dem Skalarfeld selbst.
@@ -6021,7 +6080,7 @@ Mit der Kettenregel folgt
 
 Zugleich gilt für das totale Differential
 \begin{equation}\label{eq:totdiff}
-dx^i_a = dx^i_a(\tilde{x}^k) = \frac{\partial x^i}{\partial \tilde{x}^k}\, d_a\tilde{x}^k = \tilde{\partial}_k x^i\, d_a\tilde{x}^k
+dx^i_a = dx^i_a(\tilde{x}^k) = \frac{\partial x^i}{\partial \tilde{x}^k}\, d_a\tilde{x}^k = \tilde{\partial}_k x^i\, d\tilde{x}^k_a
 \end{equation}
 
 Setzt man beides zusammen, so ergibt sich
@@ -6036,9 +6095,12 @@ Setzt man beides zusammen, so ergibt sich
 
 Damit ist die koordinatenkovariante Ableitung auf Skalarfeldern unabhängig von der Wahl der Karte. 
 
-\begin{remark}
-Da aus \eqref{eq:kettenreg} folgt, dass $\partial_if$ beim Kartenwechsel kontravariant transformiert und wir bereits wissen, dass $dx^i$ kovariant transformiert, hätte man sofort schließen können, dass die Koordinatenkovariante Ableitung auf Skalarfeldern koordinatenunabhängig ist, da sich die jeweilige Koordinatenabhängigkeit in der Kombination $\partial_i f\,dx^i_a$ aufhebt.
+\begin{tcolorbox}[noVO]
+\begin{remark}[Nicht Teil der VO] \breakafterhead
+
+Da aus \eqref{eq:kettenreg} folgt, dass $\partial_if$ beim Kartenwechsel kontravariant transformiert und wir bereits wissen, dass $dx^i_a$ kovariant transformiert, hätte man sofort schließen können, dass die Koordinatenkovariante Ableitung auf Skalarfeldern koordinatenunabhängig ist, da sich die jeweilige Koordinatenabhängigkeit in der Kombination $\partial_i f\,dx^i_a$ aufhebt.
 \end{remark}
+\end{tcolorbox}
 
 \subsection{Koordinatenkovariante Ableitung auf Vektorfeldern}
 Nachdem wir gesehen haben, dass alle koordinatenkovarianten Ableitungen auf Skalarfeldern in allen Koordinaten übereinstimmen, untersuchen wir nun, ob dies auch für Vektorfelder gilt.
@@ -6050,7 +6112,7 @@ Die \textbf{koordinatenkovariante Ableitung eines Vektorfeldes} bezüglich der K
 \begin{equation*}
 \partial_b: \mathcal{T}^1_0(M) \to \mathcal{T}^1_1(M): v^a \mapsto \partial_b v^a := \partial_j v^i\, dx^j_b \, \partial_i^a
 \end{equation*}
-$\partial_b v^a$ ist also ein Tensorfeld.
+$\partial_b v^a$ ist also ein Tensorfeld, wobei $dx^j_b \, \partial_i^a$ Basisvektoren sind.
 \end{definition}
 
 Mit der Leibnizregel können wir schreiben:
@@ -6148,7 +6210,7 @@ Zusammengefasst erhalten wir:
 \end{itemize}
 
 \begin{remark}
-Das Christoffel-Symbol $\Gamma^a_{cb}$ ist ein lokal im Kartenüberlapp definierter Ausdruck, der vom Kartenwechsel abhängt. Er beschreibt die Differenz zweier Ableitungsoperatoren \eqref{eq:difftensor}, von denen mindestens einer eine koordinatenkovariante Ableitung ist. Das Christoffel-Symbol ist nur \textit{lokal} ein Tensor. Global gesehen, ist es kein Tensor da es bzgl. dem Kartenwechsel nicht wie ein Tensor transformiert. Erst die Differenz \eqref{eq:difftensor} ist (global) ein Tensor, der sogenannte \textbf{Differenzentensor}, da dabei die auftretenden nicht-tensoriellen Anteile wegfallen. \href{https://en.wikipedia.org/wiki/Christoffel_symbols#Transformation_law_under_change_of_variable}{Quelle}
+Das Christoffel-Symbol $\Gamma^a_{cb}$ ist ein lokal im Kartenüberlapp definierter Ausdruck, der vom Kartenwechsel abhängt. Er beschreibt die Differenz zweier Ableitungsoperatoren \eqref{eq:difftensor}, von denen mindestens einer eine koordinatenkovariante Ableitung ist. Das Christoffel-Symbol ist nur \textit{lokal} ein Tensor. Global gesehen, ist es kein Tensor da es bzgl. dem Kartenwechsel nicht wie ein Tensor transformiert. Erst die Differenz \eqref{eq:difftensor} ist (global) ein Tensor, da dabei die auftretenden nicht-tensoriellen Anteile wegfallen. \href{https://en.wikipedia.org/wiki/Christoffel_symbols#Transformation_law_under_change_of_variable}{Quelle}
 \end{remark}
 
 
@@ -6330,7 +6392,7 @@ Es ist egal, ob man zuerst mit $\nabla_a$ ableitet und dann eine Karte wählt od
 
 Jede koordinatenkovariante Ableitung ist eine Kovariante Ableitung, die Umkehrung gilt im Allgemeinen nicht. Die kovariante Ableitung liefert uns einen globalen Ableitungsbegriff im Gegensatz zur koordinatenkovariante Ableitung.
 
-Die kovariante Ableitung ist nicht kanonisch (geht nicht aus der Struktur der Mannigfaltigkeit hervor). Sie ist basisabhängig/kartenabhängig. Daher gibt es viele verschiedene kovariante Ableitungen auf derselben Mannigfaltigkeit. 
+Die kovariante Ableitung ist nicht kanonisch (geht nicht aus der Struktur der Mannigfaltigkeit hervor). Außerdem gibt es viele verschiedene kovariante Ableitungen auf derselben Mannigfaltigkeit. 
 
 Wie sieht die Differenz von zwei kovarianten Ableitungen aus? Wir betrachten dafür zuerst, wie sie auf Skalarfelder wirkt.
 \begin{lemma}
@@ -6346,10 +6408,10 @@ D.h. die Differenz der kovarianten Ableitungen ist \emph{$C^\infty(M)$-linear}.
 
 \begin{proof}
 \begin{equation}\label{eq:skalarzero}
-(\tilde{\nabla}_a - \nabla_a) f \overset{K3}{=} (\tilde{\partial}_a - \partial_a) f
-= \tilde{\partial}_af - \partial_a f \overset{\substack{\eqref{eq:skalartrafo} \\ \text{stimmen auf} \\ \text{Überlapp} \\ \text{überein}}}{=}0
+(\tilde{\nabla}_a - \nabla_a) f \overset{K3}{=} (\partial_a - \partial_a) f
+= 0
 \end{equation}
-Thus
+Somit
 \begin{equation*}
 (\tilde{\nabla}_a - \nabla_a) (fv^b) \overset{K2}{=} 
 \underbrace{(\tilde{\nabla}_a - \nabla_a) f}_{=0} \cdot v^b + f \cdot (\tilde{\nabla}_a - \nabla_a) v^b =
@@ -6367,7 +6429,7 @@ Beachte allerdings, dass Skalarfelder aus der kovariante Ableitungen nicht herau
 Betrachte nun die Differenz in Koordinaten/in einer Karte
 \begin{align*}
 (\tilde{\nabla}_a - \nabla_a) v^b & = (\tilde{\nabla}_a - \nabla_a) (v^i\partial^b_i) \\
-&\overset{\eqref{eq:skalarheraus}}{=} \underbrace{v^i}_{\substack{=v^i \delta^i_j=  v^i\partial^c_jdx^i_c \\ =v^cdx^i_c}}(\tilde{\nabla}_a - \nabla_a) \partial^b_i \\
+&\overset{\eqref{eq:skalarheraus}}{=} \underbrace{v^i}_{\substack{=v^j \delta^i_j=  v^j\partial^c_jdx^i_c \\ =v^cdx^i_c}}(\tilde{\nabla}_a - \nabla_a) \partial^b_i \\
 & = dx_c^i(\tilde{\nabla}_a - \nabla_a) \partial^b_i \ v^c =: C^b_{ca}v^c
 \end{align*}
 Das heißt, in Koordinaten (lokal) ist die Differenz ein Tensor $C^b_{ca}$. Damit folgt die koordinatenabhängige Definition des \textbf{Differenzentensors} in der Karte $x^i$
@@ -6686,7 +6748,7 @@ Damit erhalten wir für ein Vektorfeld $v^c$ und ein Skalarfeld $f$:
 Wir leiten nun die \textbf{Koordinatendarstellung des Riemanntensors} her.
 \begin{align*}
 R^c_{dab} v^d = [\nabla_a,\nabla_b] v^c & = [\nabla_a,\nabla_b] (v^i\partial^c_i) \\
-&\overset{\eqref{eq:skalarheraus1}}{=} \underbrace{v^i}_{\substack{=v^i \delta^i_j=  v^i\partial^d_jdx^i_d \\ =v^ddx^i_d}}[\nabla_a,\nabla_b] \partial^c_i \\
+&\overset{\eqref{eq:skalarheraus1}}{=} \underbrace{v^i}_{\substack{=v^j \delta^i_j=  v^j\partial^d_jdx^i_d \\ =v^ddx^i_d}}[\nabla_a,\nabla_b] \partial^c_i \\
 & = dx_d^i[\nabla_a,\nabla_b] \partial^c_i \ v^d
 \end{align*}
 Damit folgt die koordinatenabhängige Definition des Riemanntensors in der Karte $x^i$
@@ -7200,20 +7262,7 @@ Die Gleichung beschreibt die relative Beschleunigung aufgrund der Gravitation zw
 \item $\partial_i \Phi$: Gradient des Gravitationspotentials: Gravitationsfeld/newtonsche Gravitationsfeldstärke (Vektorfeld)
 \item $\partial_i \partial_j \Phi$: räumliche Änderung des Gravitationsfelds
 \end{itemize}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{earth-moon-gravitational-potential-3d.png}
-\caption{Gravitationspotential und Gravitationsfeld von Erde und Mond dargestellt. Der skalare Wert gibt die Höhe an, die Pfeile geben die Richtung an.}
-{\footnotesize Quelle: \url{https://physikbuch.schule/work-in-the-gravitational-field.html}}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{gravfeld.png}
-\caption{Gravitationsfeld von Erde und Mond}
-{\footnotesize Quelle: \url{https://physikbuch.schule/work-in-the-gravitational-field.html}}
-\end{figure}
+Vgl. \cref{fig:gravitationspot} und \cref{fig:gravitationsfeld}.
 
 Ist das Gravitationsfeld $\partial_i \Phi$ lokal konstant/homogen, so verschwindet dort $\partial_i \partial_j \Phi$ und benachbarte Freifallkurven bleiben parallel (wenn wir beispielsweise zwei Gegenstände im Vakuum dicht nebeneinander fallen lassen). In inhomogenen Gravitationsfeldern hingegen beschreibt die Deviationsgleichung die \emph{\href{https://de.wikipedia.org/wiki/Gezeitenkraft}{Gezeitenkräfte}}.
 
@@ -7340,13 +7389,13 @@ wobei $\rho_m$ die \textbf{Materie-/Energiedichte} bezeichnet und $\Delta$ der L
 
 Um in \eqref{eq:newtalbert} auf die zweite Ableitung zu kommen, müssen wir aus dem Krümmungstensor ein Objekt zweiter Stufe bauen. Dazu kontrahieren wir die Indizes $a$ und $c$ (Spurbildung):
 \begin{equation}
-R_{bd} := R^a_{bad}
+R_{bd} := R^a_{bcd}
 \end{equation}
 $R_{bd}$ wird \textbf{Ricci-Tensor} genannt.
 
 Damit gilt
 \begin{equation*}
-R^a_{bab} u^b u^d =R_{bd}\,u^b u^d = \partial^2 \Phi = \Delta \Phi = 4\pi\,\rho_m
+R^a_{bcb} u^b u^d =R_{bd}\,u^b u^d = \partial^2 \Phi = \Delta \Phi = 4\pi\,\rho_m
 \end{equation*}
 
 Die Materie-/Energiedichte $\rho_m$ kann mit dem \textbf{Energie-Impuls-Tensors} $T_{ab}$ geschrieben werden als
